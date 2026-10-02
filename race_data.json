@@ -1862,39 +1862,9 @@
         "actual_ord": "-",
         "speed_power": 36.800000000000004,
         "distance": "1800",
-        "ai_score": 77.2,
+        "ai_score": 67.2,
         "ai_tags": [
-          "특급 기수 🏇",
-          "과거 스피드 최상 🏎️"
-        ],
-        "odds_display": "-"
-      },
-      {
-        "gate": "3",
-        "name": "용비샤크",
-        "jockey": "김성현",
-        "trainer": "김도현",
-        "weight": "51",
-        "track": "양호",
-        "rc_time": "-",
-        "past_time": "",
-        "g1f_time": "",
-        "win_odds": "0",
-        "pre_ord": "",
-        "gear_info": "",
-        "training_info": "",
-        "combo_info": "",
-        "rc_cnt": "0",
-        "ord1_cnt": "0",
-        "ord2_cnt": "0",
-        "is_front": false,
-        "actual_ord": "-",
-        "speed_power": 28.880000000000003,
-        "distance": "1800",
-        "ai_score": 66.7,
-        "ai_tags": [
-          "경량 부중(51.0kg) ⚡",
-          "스피드 우수 🏎️"
+          "특급 기수 🏇"
         ],
         "odds_display": "-"
       },
@@ -1947,13 +1917,41 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "1",
         "speed_power": 25.27,
         "distance": "1800",
         "ai_score": 65.1,
         "ai_tags": [
           "특급 기수 🏇",
           "외곽 모래회피 복병 🚀"
+        ],
+        "odds_display": "-"
+      },
+      {
+        "gate": "3",
+        "name": "용비샤크",
+        "jockey": "김성현",
+        "trainer": "김도현",
+        "weight": "51",
+        "track": "양호",
+        "rc_time": "-",
+        "past_time": "",
+        "g1f_time": "",
+        "win_odds": "0",
+        "pre_ord": "",
+        "gear_info": "",
+        "training_info": "",
+        "combo_info": "",
+        "rc_cnt": "0",
+        "ord1_cnt": "0",
+        "ord2_cnt": "0",
+        "is_front": false,
+        "actual_ord": "2",
+        "speed_power": 28.880000000000003,
+        "distance": "1800",
+        "ai_score": 61.7,
+        "ai_tags": [
+          "경량 부중(51.0kg) ⚡"
         ],
         "odds_display": "-"
       },
@@ -1976,7 +1974,7 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "3",
         "speed_power": 22.190000000000005,
         "distance": "1800",
         "ai_score": 59.7,
