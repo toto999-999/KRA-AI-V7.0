@@ -8,9 +8,9 @@ from datetime import datetime, timezone, timedelta
 import time
 
 # =========================================================================
-# 프로그램 명칭: KRA전국 승부예상AI_V7.2 (사전 예상순위 영구 고정 완성본)
+# 프로그램 명칭: KRA전국 승부예상AI_V7.5 (실전 복기 반영 챔피언 튜닝본)
 # =========================================================================
-VERSION = "KRA전국 승부예상AI_V7.2"
+VERSION = "KRA전국 승부예상AI_V7.5"
 API_KEY = os.environ.get("KRA_API_KEY", "")
 URL = "http://apis.data.go.kr/B551015/racedetailresult/getracedetailresult"
 
@@ -24,22 +24,28 @@ MEET_CONFIG = [
 ]
 
 JOCKEY_RATES = {
+    # 서울 기수
     "문세영": 33.2, "김용근": 24.5, "빅투아르": 25.1, "유승완": 21.0,
     "송재철": 19.5, "이혁": 19.2, "임다빈": 18.5, "장추열": 18.0,
     "임기원": 17.5, "이동하": 16.0, "조인권": 21.4, "마이아": 22.0,
+    # 부경/영천 기수
     "서승운": 31.5, "최시대": 26.8, "다나카": 25.4, "다비드": 24.2,
     "유현명": 23.8, "정도윤": 22.5, "김혜선": 20.8, "김동영": 17.8,
     "이성재": 16.5, "송경윤": 15.2, "전진구": 14.8, "김어수": 14.5, "손경민": 14.0,
+    # 제주 기수
     "전현준": 26.5, "한영민": 24.2, "임재광": 21.8, "양민재": 19.5,
     "원유일": 18.2, "박재희": 17.5, "곽용남": 16.8, "김한남": 16.0,
     "강수한": 15.5, "이동준": 15.0, "안득수": 20.5, "정명일": 19.0
 }
 
 TRAINER_RATES = {
+    # 서울 조교사
     "서홍수": 24.5, "송문길": 21.5, "배휴준": 20.8, "정호익": 19.5,
     "최용건": 19.0, "박재우": 17.2, "이강서": 16.8, "전승규": 16.0, "서인석": 15.0,
+    # 부경/영천 조교사
     "김영관": 28.0, "라이스": 25.2, "민장기": 22.1, "구영준": 18.5,
     "김도현": 18.2, "안우성": 18.0, "임성실": 17.5, "백광열": 18.8, "강은석": 15.5,
+    # 제주 조교사
     "심도연": 23.5, "김태준": 21.0, "강대은": 20.5, "김길홍": 18.5,
     "윤덕상": 17.8, "김대연": 17.2, "이준호": 16.5, "문성호": 15.8, "고성동": 22.0
 }
@@ -84,6 +90,8 @@ def fetch_meet_data(meet_code, meet_name, date_str):
         items = root.findall(".//item")
         if not items:
             return []
+
+        print(f"[{meet_name}] 마사회 데이터 수신: {len(items)}개 출전마")
 
         races = {}
         for it in items:
@@ -203,7 +211,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                     all_weights.append(55.0)
             max_race_weight = max(all_weights) if all_weights else 55.0
 
-            # 사전 순발력/스피드 계산
+            # 사전 순발력 파워 계산
             for h in r["horses"]:
                 jk_r = JOCKEY_RATES.get(h["jockey"], 12.0)
                 tr_r = TRAINER_RATES.get(h["trainer"], 14.0)
@@ -213,16 +221,16 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 except:
                     w_val = 55.0
                 
-                gate_power = 6.0 if g_val <= 3 else (4.0 if g_val <= 7 else 0.0)
+                gate_power = 5.0 if g_val <= 3 else (3.0 if g_val <= 7 else 0.0)
                 weight_power = (55.0 - w_val) * 1.5
-                front_power = 10.0 if h["is_front"] else 0.0
-                h["speed_power"] = jk_r * 0.8 + tr_r * 0.4 + gate_power + weight_power + front_power
+                front_power = 8.0 if h["is_front"] else 0.0
+                h["speed_power"] = jk_r * 0.7 + tr_r * 0.4 + gate_power + weight_power + front_power
 
             sorted_by_speed = sorted(r["horses"], key=lambda x: x["speed_power"], reverse=True)
             top_speed_gate = str(sorted_by_speed[0]["gate"]).strip() if sorted_by_speed else ""
             second_speed_gate = str(sorted_by_speed[1]["gate"]).strip() if len(sorted_by_speed) > 1 else ""
 
-            # 🎯 [핵심] 사전 예상 점수와 순위 영구 고정 연산!
+            # 각 마필 사전 예상 점수 채점 (경기 후에도 영구 불변!)
             for h in r["horses"]:
                 h["distance"] = str(dist)
                 score = 30.0
@@ -230,13 +238,29 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 g = int(h["gate"]) if str(h["gate"]).isdigit() else 5
                 this_gate = str(h["gate"]).strip()
 
-                # 1. 기수 & 조교사
+                try:
+                    clean_w = float(re.sub(r'[^0-9.]', '', str(h["weight"])))
+                except:
+                    clean_w = 55.0
+
+                # 전적 복승률 계산
+                tot_rc = int(re.sub(r'[^0-9]', '', str(h.get("rc_cnt", "0"))) or 0)
+                ord1_cnt = int(re.sub(r'[^0-9]', '', str(h.get("ord1_cnt", "0"))) or 0)
+                ord2_cnt = int(re.sub(r'[^0-9]', '', str(h.get("ord2_cnt", "0"))) or 0)
+                quinella_rate = round(((ord1_cnt + ord2_cnt) / tot_rc) * 100, 1) if tot_rc >= 3 else 20.0
+
+                # 🎯 [처방 1: 거품 1위마 필터링]
+                # 말이 최근 성적이 너무 저조한데(복승률 15% 미만) 기수만 유명하면 기수 보너스 절반 감쇄!
                 jk_rate = JOCKEY_RATES.get(h["jockey"], 12.0)
-                score += (jk_rate * 0.8)
-                if jk_rate >= 24.0:
-                    tags.append("특급 기수 🏇")
-                elif jk_rate >= 19.0:
-                    tags.append("상위 기수")
+                if tot_rc >= 3 and quinella_rate < 15.0:
+                    score += (jk_rate * 0.45)
+                    tags.append("말 검증필요 ⚠️")
+                else:
+                    score += (jk_rate * 0.75)
+                    if jk_rate >= 24.0:
+                        tags.append("특급 기수 🏇")
+                    elif jk_rate >= 19.0:
+                        tags.append("상위 기수")
 
                 tr_rate = TRAINER_RATES.get(h["trainer"], 14.0)
                 score += (tr_rate * 0.5)
@@ -245,55 +269,57 @@ def fetch_meet_data(meet_code, meet_name, date_str):
 
                 # 2. 게이트 가중치
                 if dist <= 1300:
-                    score += 6.0 if g <= 3 else (4.0 if g <= 7 else 0.0)
+                    score += 5.0 if g <= 3 else (3.0 if g <= 7 else 0.0)
                     if g <= 3:
                         tags.append("단거리 황금게이트 ⚡")
                 elif dist >= 1700:
-                    score += 5.0 if g <= 4 else (3.0 if g <= 8 else 0.0)
+                    score += 4.0 if g <= 4 else (2.0 if g <= 8 else 0.0)
                 else:
-                    score += 5.0 if g <= 4 else (3.0 if g <= 8 else 0.0)
+                    score += 4.0 if g <= 4 else (2.0 if g <= 8 else 0.0)
 
                 # 3. 게이트 적성
                 if h["is_front"] and g <= 3:
-                    score += 5.0
+                    score += 4.0
                     tags.append("인코스 찰떡궁합 🎯")
                 elif (not h["is_front"]) and g >= 8:
-                    score += 4.0
+                    score += 3.0
                     tags.append("외곽 모래회피 복병 🚀")
 
-                # 4. 부담중량 역학 (탑웨이트 챔피언 보정)
-                try:
-                    clean_w = float(re.sub(r'[^0-9.]', '', str(h["weight"])))
-                    if clean_w <= 52.5:
-                        score += (55.0 - clean_w) * 2.0
-                        tags.append(f"경량 부중({clean_w}kg) ⚡")
-                    elif clean_w >= 57.5 and clean_w == max_race_weight:
-                        score += 5.0
-                        tags.append("체급 최강자(탑웨이트) 🏋️")
-                    else:
-                        score -= max(0.0, (clean_w - 55.0) * 0.8)
-                except:
-                    pass
+                # 🎯 [처방 2: 외곽 숨은 다크호스 레이더]
+                # 외곽 8~11번 + 상위 마방(tr_rate>=18%) + 적정 체급(53.5~56.5kg) = 강력 복병마!
+                if g >= 8 and tr_rate >= 18.0 and 53.5 <= clean_w <= 56.5:
+                    score += 6.0
+                    tags.append("숨은 다크호스 💥")
 
-                # 5. 🎯 [사전 예상 스피드 점수 영구 고정!]
-                # 경기 후라고 해서 이 점수를 뺏지 않고 영구 보존합니다!
+                # 🎯 [처방 3: 부담중량 밸런스 패치]
+                if dist >= 1700 and clean_w <= 52.5:
+                    # 1800m 장거리에서는 가볍다고 1등 못함 (체력/스태미너 우선)
+                    score += 2.0
+                    tags.append(f"경량 부중({clean_w}kg) ⚡")
+                elif dist < 1700 and clean_w <= 52.5:
+                    score += (55.0 - clean_w) * 1.8
+                    tags.append(f"경량 부중({clean_w}kg) ⚡")
+                elif clean_w >= 57.5 and clean_w == max_race_weight:
+                    # 제주 6R 로한 교훈: 탑웨이트 체급 최강자 가산점!
+                    score += 5.0
+                    tags.append("체급 최강자(탑웨이트) 🏋️")
+                else:
+                    score -= max(0.0, (clean_w - 55.0) * 0.7)
+
+                # 5. 사전 스피드 뱃지
                 past_sec = parse_time_seconds(h.get("past_time", ""))
                 if past_sec:
-                    score += 10.0
+                    score += 8.0
                     tags.append(f"과거 스피드 최상({round(past_sec,1)}초) 🏎️")
                 elif this_gate == top_speed_gate:
-                    score += 10.0
+                    score += 8.0
                     tags.append("과거 스피드 최상 🏎️")
                 elif this_gate == second_speed_gate:
-                    score += 5.0
+                    score += 4.0
                     tags.append("스피드 우수 🏎️")
 
-                # 6. 전적 기반 통산 복승률
-                tot_rc = int(re.sub(r'[^0-9]', '', str(h.get("rc_cnt", "0"))) or 0)
-                ord1_cnt = int(re.sub(r'[^0-9]', '', str(h.get("ord1_cnt", "0"))) or 0)
-                ord2_cnt = int(re.sub(r'[^0-9]', '', str(h.get("ord2_cnt", "0"))) or 0)
+                # 6. 전적 복승률
                 if tot_rc >= 3:
-                    quinella_rate = round(((ord1_cnt + ord2_cnt) / tot_rc) * 100, 1)
                     if quinella_rate >= 40.0:
                         score += 8.0
                         tags.append(f"통산 복승률 최상({quinella_rate}%) 🏎️")
@@ -304,27 +330,27 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 # 7. 마구 변경
                 g_str = str(h.get("gear_info", "")).strip()
                 if any(k in g_str for k in ["눈가면(신규)", "블링커(신규)", "신규눈가면"]):
-                    score += 6.0
+                    score += 5.0
                     tags.append("눈가면 첫 착용 🤿")
 
                 # 8. 조교 강도
                 t_str = str(h.get("training_info", "")).strip()
                 if any(k in t_str for k in ["습보", "강훈련"]):
-                    score += 7.0
+                    score += 6.0
                     tags.append("새벽 습보 강훈련 🏋️")
                 if h["jockey"] and h["jockey"] in t_str:
-                    score += 5.0
+                    score += 4.0
                     tags.append("기수 직접 전담조교 🚴")
 
                 # 9. 찰떡 콤비
                 c_str = str(h.get("combo_info", "")).strip()
                 if any(k in c_str for k in ["1승", "2승", "우승"]):
-                    score += 6.0
+                    score += 5.0
                     tags.append("찰떡 콤비(우승 경험) 🤝")
 
                 # 10. 선행력
                 if h["is_front"]:
-                    score += 6.0
+                    score += 5.0
                     tags.append("선행 강세 🚀")
 
                 # 11. 승급전
@@ -332,7 +358,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                     score -= 5.0
                     tags.append("승급 첫 도전(검증 필요) 🧱")
 
-                # 🏁 [경기 후 실제 기록 뱃지만 순수 추가] (예상 점수는 절대 건드리지 않음!)
+                # 🏁 경기 후 실제 완주 기록 뱃지 순수 추가
                 sec = parse_time_seconds(h.get("rc_time", ""))
                 if sec:
                     base_time = {
@@ -344,7 +370,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                     elif diff >= 0.0:
                         tags.append("기록 우수")
 
-                # 🏁 [경기 후 G1F 스퍼트 뱃지 순수 추가]
+                # 🏁 경기 후 G1F 스퍼트 뱃지 순수 추가
                 try:
                     m_g1f = re.search(r'(\d+\.?\d*)', str(h.get("g1f_time", "")))
                     if m_g1f:
@@ -358,7 +384,6 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 h["ai_tags"] = tags
                 h["odds_display"] = "-"
 
-            # 사전 예상 점수 기준으로 순위 정렬 (경기 후에도 불변!)
             r["horses"].sort(key=lambda x: x["ai_score"], reverse=True)
 
         return list(races.values())
@@ -410,7 +435,7 @@ def main():
         ))
         with open("race_data.json", "w", encoding="utf-8") as f:
             json.dump(all_races, f, ensure_ascii=False, indent=2)
-        print(f"🎉 성공: [{VERSION}] {target_date} 예상순위 영구 고정 완료!")
+        print(f"🎉 성공: [{VERSION}] {target_date} 실전 튜닝 완료! ({len(all_races)}개 경주)")
     else:
         print("❌ 데이터를 가져오지 못했습니다.")
 
