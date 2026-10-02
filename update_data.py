@@ -8,9 +8,9 @@ from datetime import datetime, timezone, timedelta
 import time
 
 # =========================================================================
-# 프로그램 명칭: KRA전국 승부예상AI_V7.8 (공식 경주거리 100% 전수 일치본)
+# 프로그램 명칭: KRA전국 승부예상AI_V8.0 (스마트 롤링 멀티데이 완성본)
 # =========================================================================
-VERSION = "KRA전국 승부예상AI_V7.8"
+VERSION = "KRA전국 승부예상AI_V8.0"
 API_KEY = os.environ.get("KRA_API_KEY", "")
 URL = "http://apis.data.go.kr/B551015/racedetailresult/getracedetailresult"
 
@@ -23,9 +23,9 @@ MEET_CONFIG = [
     ("3", "부산경남")
 ]
 
-# 🎯 [한국마사회 공식 편성표 1:1 전수 매핑 테이블]
+# 🎯 마사회 공식 편성표 1:1 전수 매핑 테이블 (10월 황금연휴)
 EXACT_RACE_DISTANCES = {
-    # [10월 2일 금요일]
+    # 10월 2일 (금)
     ("20261002", "부산경남", "1"): "1000", ("20261002", "부산경남", "2"): "1000",
     ("20261002", "부산경남", "3"): "1200", ("20261002", "부산경남", "4"): "1400",
     ("20261002", "부산경남", "5"): "1300", ("20261002", "부산경남", "6"): "1300",
@@ -34,7 +34,7 @@ EXACT_RACE_DISTANCES = {
     ("20261002", "제주", "3"): "1000", ("20261002", "제주", "4"): "1000",
     ("20261002", "제주", "5"): "1110", ("20261002", "제주", "6"): "1200", ("20261002", "제주", "7"): "1400",
 
-    # [10월 3일 토요일]
+    # 10월 3일 (토)
     ("20261003", "서울", "1"): "1000", ("20261003", "서울", "2"): "1200",
     ("20261003", "서울", "3"): "1400", ("20261003", "서울", "4"): "1300",
     ("20261003", "서울", "5"): "1200", ("20261003", "서울", "6"): "1700",
@@ -44,7 +44,7 @@ EXACT_RACE_DISTANCES = {
     ("20261003", "제주", "3"): "1000", ("20261003", "제주", "4"): "1110",
     ("20261003", "제주", "5"): "1110", ("20261003", "제주", "6"): "1200", ("20261003", "제주", "7"): "1300",
 
-    # [10월 4일 일요일]
+    # 10월 4일 (일)
     ("20261004", "영천", "1"): "1200", ("20261004", "영천", "2"): "1400",
     ("20261004", "영천", "3"): "1400", ("20261004", "영천", "4"): "1800",
     ("20261004", "영천", "5"): "1200", ("20261004", "영천", "6"): "1200",
@@ -54,7 +54,7 @@ EXACT_RACE_DISTANCES = {
     ("20261004", "서울", "7"): "1800", ("20261004", "서울", "8"): "2000",
     ("20261004", "서울", "9"): "1200", ("20261004", "서울", "10"): "1400", ("20261004", "서울", "11"): "1200",
 
-    # [10월 5일 월요일 대체공휴일]
+    # 10월 5일 (월 대체공휴일)
     ("20261005", "서울", "1"): "1000", ("20261005", "서울", "2"): "1300",
     ("20261005", "서울", "3"): "1200", ("20261005", "서울", "4"): "1400",
     ("20261005", "서울", "5"): "1400", ("20261005", "서울", "6"): "1200",
@@ -62,42 +62,26 @@ EXACT_RACE_DISTANCES = {
     ("20261005", "서울", "9"): "1400", ("20261005", "서울", "10"): "1200",
     ("20261005", "제주", "1"): "900",  ("20261005", "제주", "2"): "1000",
     ("20261005", "제주", "3"): "1000", ("20261005", "제주", "4"): "1110",
-    ("20261005", "제주", "5"): "1200", ("20261005", "제주", "6"): "1300", ("20261005", "제주", "7"): "1300",
-
-    # [9월 20일 일요일 과거 복기]
-    ("20260920", "서울", "1"): "1200", ("20260920", "서울", "2"): "1400",
-    ("20260920", "서울", "3"): "1300", ("20260920", "서울", "4"): "1700",
-    ("20260920", "서울", "5"): "1800", ("20260920", "서울", "6"): "1200",
-    ("20260920", "서울", "7"): "1300", ("20260920", "서울", "8"): "1400",
-    ("20260920", "서울", "9"): "1800", ("20260920", "서울", "10"): "2000", ("20260920", "서울", "11"): "1200",
-    ("20260920", "영천", "1"): "1400", ("20260920", "영천", "2"): "1600",
-    ("20260920", "영천", "3"): "1200", ("20260920", "영천", "4"): "1400",
-    ("20260920", "영천", "5"): "1200", ("20260920", "영천", "6"): "1200"
+    ("20261005", "제주", "5"): "1200", ("20261005", "제주", "6"): "1300", ("20261005", "제주", "7"): "1300"
 }
 
 JOCKEY_RATES = {
-    # 서울 기수
     "문세영": 33.2, "김용근": 24.5, "빅투아르": 25.1, "유승완": 21.0,
     "송재철": 19.5, "이혁": 19.2, "임다빈": 18.5, "장추열": 18.0,
     "임기원": 17.5, "이동하": 16.0, "조인권": 21.4, "마이아": 22.0,
-    # 부경/영천 기수
     "서승운": 31.5, "최시대": 26.8, "다나카": 25.4, "다비드": 24.2,
     "유현명": 23.8, "정도윤": 22.5, "김혜선": 20.8, "김동영": 17.8,
     "이성재": 16.5, "송경윤": 15.2, "전진구": 14.8, "김어수": 14.5, "손경민": 14.0,
-    # 제주 기수
     "전현준": 26.5, "한영민": 24.2, "임재광": 21.8, "양민재": 19.5,
     "원유일": 18.2, "박재희": 17.5, "곽용남": 16.8, "김한남": 16.0,
     "강수한": 15.5, "이동준": 15.0, "안득수": 20.5, "정명일": 19.0
 }
 
 TRAINER_RATES = {
-    # 서울 조교사
     "서홍수": 24.5, "송문길": 21.5, "배휴준": 20.8, "정호익": 19.5,
     "최용건": 19.0, "박재우": 17.2, "이강서": 16.8, "전승규": 16.0, "서인석": 15.0,
-    # 부경/영천 조교사
     "김영관": 28.0, "라이스": 25.2, "민장기": 22.1, "구영준": 18.5,
     "김도현": 18.2, "안우성": 18.0, "임성실": 17.5, "백광열": 18.8, "강은석": 15.5,
-    # 제주 조교사
     "심도연": 23.5, "김태준": 21.0, "강대은": 20.5, "김길홍": 18.5,
     "윤덕상": 17.8, "김대연": 17.2, "이준호": 16.5, "문성호": 15.8, "고성동": 22.0
 }
@@ -135,15 +119,13 @@ def fetch_meet_data(meet_code, meet_name, date_str):
 
     try:
         req = urllib.request.Request(full_url, headers=headers)
-        with urllib.request.urlopen(req, timeout=12) as response:
+        with urllib.request.urlopen(req, timeout=10) as response:
             xml_data = response.read()
 
         root = ET.fromstring(xml_data)
         items = root.findall(".//item")
         if not items:
             return []
-
-        print(f"[{meet_name}] 마사회 데이터 수신: {len(items)}개 출전마")
 
         races = {}
         for it in items:
@@ -186,7 +168,6 @@ def fetch_meet_data(meet_code, meet_name, date_str):
             s1f_rank = gv(["g1p", "s1f", "g1pRank", "ord1p"]) or "99"
             is_front = True if s1f_rank in ["1", "2", "01", "02"] else False
 
-            # 착순 정확 추출
             ord_no = "-"
             direct_ord = gv(["ordNo", "ord_no", "ord", "rc_ord", "rcOrd", "rank", "rankNo", "chaksun"])
             if direct_ord and direct_ord.isdigit() and int(direct_ord) > 0:
@@ -202,7 +183,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                             ord_no = str(int(txt))
                             break
 
-            key = f"{meet_name}_{rc_no}"
+            key = f"{meet_name}_{rc_no}_{date_str}"
             if key not in races:
                 races[key] = {
                     "meet_code": meet_code,
@@ -215,7 +196,6 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                     "horses": []
                 }
 
-            # 중복 마필 방지
             already_exists = any(h["gate"] == gate or h["name"] == name for h in races[key]["horses"])
             if already_exists:
                 continue
@@ -246,12 +226,11 @@ def fetch_meet_data(meet_code, meet_name, date_str):
             meet = r["meet_name"]
             r_no = str(int(r["race_no"])) if str(r["race_no"]).isdigit() else str(r["race_no"])
 
-            # 🎯 [1순위: 마사회 공식 편성표 정확 거리 일치]
+            # 🎯 공식 편성표 정확 거리 일치
             dist_key = (date_str, meet, r_no)
             if dist_key in EXACT_RACE_DISTANCES:
                 actual_dist = EXACT_RACE_DISTANCES[dist_key]
             else:
-                # 2순위: 완주시간 기반 역추산
                 fastest_sec = 999.0
                 for h in r["horses"]:
                     s = parse_time_seconds(h["rc_time"])
@@ -268,7 +247,6 @@ def fetch_meet_data(meet_code, meet_name, date_str):
 
             r["distance"] = actual_dist
             dist = int(actual_dist)
-            print(f"[{meet}] {r_no}R 공식 거리 확정: {actual_dist}m")
 
             # 최고 부담중량
             all_weights = []
@@ -298,7 +276,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
             top_speed_gate = str(sorted_by_speed[0]["gate"]).strip() if sorted_by_speed else ""
             second_speed_gate = str(sorted_by_speed[1]["gate"]).strip() if len(sorted_by_speed) > 1 else ""
 
-            # 사전 예상 점수 영구 고정 채점
+            # 사전 예상 점수 영구 고정 연산
             for h in r["horses"]:
                 h["distance"] = str(dist)
                 score = 30.0
@@ -316,7 +294,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 ord2_cnt = int(re.sub(r'[^0-9]', '', str(h.get("ord2_cnt", "0"))) or 0)
                 quinella_rate = round(((ord1_cnt + ord2_cnt) / tot_rc) * 100, 1) if tot_rc >= 3 else 20.0
 
-                # 1. 거품 1위마 필터링
+                # 1. 기수 & 조교사 (거품 필터링)
                 jk_rate = JOCKEY_RATES.get(h["jockey"], 12.0)
                 if tot_rc >= 3 and quinella_rate < 15.0:
                     score += (jk_rate * 0.45)
@@ -333,7 +311,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 if tr_rate >= 20.0:
                     tags.append("우수 마방 🏆")
 
-                # 2. 거리별 게이트 가중치
+                # 2. 거리별 게이트
                 if dist <= 1300:
                     score += 6.0 if g <= 3 else (4.0 if g <= 7 else 0.0)
                     if g <= 3:
@@ -434,50 +412,54 @@ def fetch_meet_data(meet_code, meet_name, date_str):
         print(f"[{meet_name}] 통신 에러: {e}")
         return []
 
-def find_fast_races():
+# =========================================================================
+# 🎯 [V8.0 핵심] 스마트 롤링 윈도우 탐색기 (오늘 복기 + 내일/다음 예상 공존!)
+# =========================================================================
+def fetch_rolling_window_races():
     now = datetime.now(KST)
-
     today_dt = now.strftime("%Y%m%d")
-    races = []
-    for m_code, m_name in MEET_CONFIG:
-        races.extend(fetch_meet_data(m_code, m_name, today_dt))
-    if races:
-        return races, today_dt
-
     tomorrow_dt = (now + timedelta(days=1)).strftime("%Y%m%d")
-    races = []
-    for m_code, m_name in MEET_CONFIG:
-        races.extend(fetch_meet_data(m_code, m_name, tomorrow_dt))
-    if races:
-        return races, tomorrow_dt
+    
+    # 1. 수집 타겟 날짜: [오늘, 내일] 동시 수집!
+    target_dates = [today_dt, tomorrow_dt]
+    
+    all_collected = []
+    print(f"🔄 롤링 수집 시작: 오늘({today_dt}) 복기 & 내일({tomorrow_dt}) 예상 동시 조회")
 
-    weekday = now.weekday()
-    days_back = weekday + 1 if weekday < 6 else 7
-    last_sun_dt = (now - timedelta(days=days_back)).strftime("%Y%m%d")
-    races = []
-    for m_code, m_name in MEET_CONFIG:
-        races.extend(fetch_meet_data(m_code, m_name, last_sun_dt))
-    if races:
-        return races, last_sun_dt
+    for dt in target_dates:
+        for m_code, m_name in MEET_CONFIG:
+            res = fetch_meet_data(m_code, m_name, dt)
+            all_collected.extend(res)
 
-    return [], ""
+    # 만약 평일 중간이라 오늘/내일 둘 다 경주가 없다면 -> 가장 최근 일요일 복기
+    if not all_collected:
+        weekday = now.weekday()
+        days_back = weekday + 1 if weekday < 6 else 7
+        last_sun_dt = (now - timedelta(days=days_back)).strftime("%Y%m%d")
+        print(f"🔍 최근 일요일({last_sun_dt}) 복기 데이터 단독 수집...")
+        for m_code, m_name in MEET_CONFIG:
+            all_collected.extend(fetch_meet_data(m_code, m_name, last_sun_dt))
+
+    return all_collected
 
 def main():
     if not API_KEY:
         print("❌ KRA_API_KEY 미설정")
         return
 
-    all_races, target_date = find_fast_races()
+    all_races = fetch_rolling_window_races()
 
     if all_races:
         meet_order = {"서울": 1, "부산경남": 2, "영천": 3, "제주": 4}
+        # 🎯 정렬: 날짜 오름차순(오늘 경기 먼저 -> 내일 경기 뒤에), 경마장 순, 경주번호 순
         all_races.sort(key=lambda x: (
+            x["race_date"],
             meet_order.get(x["meet_name"], 9),
             int(x["race_no"]) if x["race_no"].isdigit() else 99
         ))
         with open("race_data.json", "w", encoding="utf-8") as f:
             json.dump(all_races, f, ensure_ascii=False, indent=2)
-        print(f"🎉 성공: [{VERSION}] {target_date} 공식 거리 100% 전수 일치 완료!")
+        print(f"🎉 성공: [{VERSION}] 오늘 복기 & 내일 예상 롤링 저장 완료! (총 {len(all_races)}개 경주)")
     else:
         print("❌ 데이터를 가져오지 못했습니다.")
 
