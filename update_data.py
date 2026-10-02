@@ -8,9 +8,9 @@ from datetime import datetime, timezone, timedelta
 import time
 
 # =========================================================================
-# 프로그램 명칭: KRA전국 승부예상AI_V7.0 (게이트 적성 & 모래회피 탑재 완성본)
+# 프로그램 명칭: KRA전국 승부예상AI_V7.2 (사전 예상순위 영구 고정 완성본)
 # =========================================================================
-VERSION = "KRA전국 승부예상AI_V7.0"
+VERSION = "KRA전국 승부예상AI_V7.2"
 API_KEY = os.environ.get("KRA_API_KEY", "")
 URL = "http://apis.data.go.kr/B551015/racedetailresult/getracedetailresult"
 
@@ -23,7 +23,6 @@ MEET_CONFIG = [
     ("3", "부산경남")
 ]
 
-# 전국 기수 복승률 DB (%)
 JOCKEY_RATES = {
     "문세영": 33.2, "김용근": 24.5, "빅투아르": 25.1, "유승완": 21.0,
     "송재철": 19.5, "이혁": 19.2, "임다빈": 18.5, "장추열": 18.0,
@@ -36,7 +35,6 @@ JOCKEY_RATES = {
     "강수한": 15.5, "이동준": 15.0, "안득수": 20.5, "정명일": 19.0
 }
 
-# 전국 조교사 복승률 DB (%)
 TRAINER_RATES = {
     "서홍수": 24.5, "송문길": 21.5, "배휴준": 20.8, "정호익": 19.5,
     "최용건": 19.0, "박재우": 17.2, "이강서": 16.8, "전승규": 16.0, "서인석": 15.0,
@@ -86,8 +84,6 @@ def fetch_meet_data(meet_code, meet_name, date_str):
         items = root.findall(".//item")
         if not items:
             return []
-
-        print(f"[{meet_name}] 마사회 데이터 수신: {len(items)}개 출전마")
 
         races = {}
         for it in items:
@@ -158,7 +154,6 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                     "horses": []
                 }
 
-            # 중복 마필 방지
             already_exists = any(h["gate"] == gate or h["name"] == name for h in races[key]["horses"])
             if already_exists:
                 continue
@@ -199,10 +194,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
             r["distance"] = actual_dist
             dist = int(actual_dist)
 
-            has_finished = any(h["actual_ord"].isdigit() and int(h["actual_ord"]) > 0 for h in r["horses"]) or \
-                           any(parse_time_seconds(h.get("rc_time", "")) is not None for h in r["horses"])
-
-            # 최고 부담중량(Top Weight) 산출
+            # 최고 부담중량
             all_weights = []
             for h in r["horses"]:
                 try:
@@ -211,7 +203,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                     all_weights.append(55.0)
             max_race_weight = max(all_weights) if all_weights else 55.0
 
-            # 스피드 잠재력 계산
+            # 사전 순발력/스피드 계산
             for h in r["horses"]:
                 jk_r = JOCKEY_RATES.get(h["jockey"], 12.0)
                 tr_r = TRAINER_RATES.get(h["trainer"], 14.0)
@@ -230,6 +222,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
             top_speed_gate = str(sorted_by_speed[0]["gate"]).strip() if sorted_by_speed else ""
             second_speed_gate = str(sorted_by_speed[1]["gate"]).strip() if len(sorted_by_speed) > 1 else ""
 
+            # 🎯 [핵심] 사전 예상 점수와 순위 영구 고정 연산!
             for h in r["horses"]:
                 h["distance"] = str(dist)
                 score = 30.0
@@ -250,7 +243,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 if tr_rate >= 20.0:
                     tags.append("우수 마방 🏆")
 
-                # 2. 거리별 게이트 가중치 (외곽 감점 완전 배제)
+                # 2. 게이트 가중치
                 if dist <= 1300:
                     score += 6.0 if g <= 3 else (4.0 if g <= 7 else 0.0)
                     if g <= 3:
@@ -260,7 +253,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 else:
                     score += 5.0 if g <= 4 else (3.0 if g <= 8 else 0.0)
 
-                # 3. 🎯 [V7.0 신규] 게이트 적성 & 모래 회피 분석!
+                # 3. 게이트 적성
                 if h["is_front"] and g <= 3:
                     score += 5.0
                     tags.append("인코스 찰떡궁합 🎯")
@@ -268,7 +261,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                     score += 4.0
                     tags.append("외곽 모래회피 복병 🚀")
 
-                # 4. 부담중량 역학 (경량마 혜택 & 탑웨이트 챔피언 보정)
+                # 4. 부담중량 역학 (탑웨이트 챔피언 보정)
                 try:
                     clean_w = float(re.sub(r'[^0-9.]', '', str(h["weight"])))
                     if clean_w <= 52.5:
@@ -282,45 +275,31 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 except:
                     pass
 
-                # 5. 스피드 뱃지 (경기전/경기후 자동 분기)
-                if has_finished:
-                    sec = parse_time_seconds(h.get("rc_time", ""))
-                    if sec:
-                        base_time = {
-                            800: 52.0, 900: 59.0, 1000: 65.5, 1110: 73.0, 1200: 74.8, 1400: 88.5
-                        }.get(dist, dist * 0.063 + 0.5)
-                        diff = base_time - sec
-                        if diff >= 1.0:
-                            score += 10.0
-                            tags.append(f"스피드 지수 최상({round(sec,1)}초) 🏎️")
-                        elif diff >= 0.0:
-                            score += 5.0
-                            tags.append("기록 우수")
-                else:
-                    past_sec = parse_time_seconds(h.get("past_time", ""))
-                    if past_sec:
-                        score += 10.0
-                        tags.append(f"과거 스피드 최상({round(past_sec,1)}초) 🏎️")
-                    elif this_gate == top_speed_gate:
-                        score += 10.0
-                        tags.append("과거 스피드 최상 🏎️")
-                    elif this_gate == second_speed_gate:
-                        score += 5.0
-                        tags.append("스피드 우수 🏎️")
+                # 5. 🎯 [사전 예상 스피드 점수 영구 고정!]
+                # 경기 후라고 해서 이 점수를 뺏지 않고 영구 보존합니다!
+                past_sec = parse_time_seconds(h.get("past_time", ""))
+                if past_sec:
+                    score += 10.0
+                    tags.append(f"과거 스피드 최상({round(past_sec,1)}초) 🏎️")
+                elif this_gate == top_speed_gate:
+                    score += 10.0
+                    tags.append("과거 스피드 최상 🏎️")
+                elif this_gate == second_speed_gate:
+                    score += 5.0
+                    tags.append("스피드 우수 🏎️")
 
-                # 6. 전적
-                if not has_finished:
-                    tot_rc = int(re.sub(r'[^0-9]', '', str(h.get("rc_cnt", "0"))) or 0)
-                    ord1_cnt = int(re.sub(r'[^0-9]', '', str(h.get("ord1_cnt", "0"))) or 0)
-                    ord2_cnt = int(re.sub(r'[^0-9]', '', str(h.get("ord2_cnt", "0"))) or 0)
-                    if tot_rc >= 3:
-                        quinella_rate = round(((ord1_cnt + ord2_cnt) / tot_rc) * 100, 1)
-                        if quinella_rate >= 40.0:
-                            score += 8.0
-                            tags.append(f"통산 복승률 최상({quinella_rate}%) 🏎️")
-                        elif quinella_rate >= 25.0:
-                            score += 4.0
-                            tags.append(f"검증된 입상마({quinella_rate}%)")
+                # 6. 전적 기반 통산 복승률
+                tot_rc = int(re.sub(r'[^0-9]', '', str(h.get("rc_cnt", "0"))) or 0)
+                ord1_cnt = int(re.sub(r'[^0-9]', '', str(h.get("ord1_cnt", "0"))) or 0)
+                ord2_cnt = int(re.sub(r'[^0-9]', '', str(h.get("ord2_cnt", "0"))) or 0)
+                if tot_rc >= 3:
+                    quinella_rate = round(((ord1_cnt + ord2_cnt) / tot_rc) * 100, 1)
+                    if quinella_rate >= 40.0:
+                        score += 8.0
+                        tags.append(f"통산 복승률 최상({quinella_rate}%) 🏎️")
+                    elif quinella_rate >= 25.0:
+                        score += 4.0
+                        tags.append(f"검증된 입상마({quinella_rate}%)")
 
                 # 7. 마구 변경
                 g_str = str(h.get("gear_info", "")).strip()
@@ -353,10 +332,33 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                     score -= 5.0
                     tags.append("승급 첫 도전(검증 필요) 🧱")
 
+                # 🏁 [경기 후 실제 기록 뱃지만 순수 추가] (예상 점수는 절대 건드리지 않음!)
+                sec = parse_time_seconds(h.get("rc_time", ""))
+                if sec:
+                    base_time = {
+                        800: 52.0, 900: 59.0, 1000: 65.5, 1110: 73.0, 1200: 74.8, 1400: 88.5
+                    }.get(dist, dist * 0.063 + 0.5)
+                    diff = base_time - sec
+                    if diff >= 1.0:
+                        tags.append(f"스피드 지수 최상({round(sec,1)}초) 🏎️")
+                    elif diff >= 0.0:
+                        tags.append("기록 우수")
+
+                # 🏁 [경기 후 G1F 스퍼트 뱃지 순수 추가]
+                try:
+                    m_g1f = re.search(r'(\d+\.?\d*)', str(h.get("g1f_time", "")))
+                    if m_g1f:
+                        g1f_val = float(m_g1f.group(1))
+                        if 11.0 <= g1f_val <= 12.8:
+                            tags.append(f"직선주로 스퍼트 최강({g1f_val}초) 🚀")
+                except:
+                    pass
+
                 h["ai_score"] = round(score, 1)
                 h["ai_tags"] = tags
                 h["odds_display"] = "-"
 
+            # 사전 예상 점수 기준으로 순위 정렬 (경기 후에도 불변!)
             r["horses"].sort(key=lambda x: x["ai_score"], reverse=True)
 
         return list(races.values())
@@ -368,29 +370,23 @@ def fetch_meet_data(meet_code, meet_name, date_str):
 def find_fast_races():
     now = datetime.now(KST)
 
-    # 1. 오늘 경주 확인
     today_dt = now.strftime("%Y%m%d")
-    print(f"🔍 [1단계] 오늘({today_dt}) 경주 확인...")
     races = []
     for m_code, m_name in MEET_CONFIG:
         races.extend(fetch_meet_data(m_code, m_name, today_dt))
     if races:
         return races, today_dt
 
-    # 2. 내일 경주 확인
     tomorrow_dt = (now + timedelta(days=1)).strftime("%Y%m%d")
-    print(f"🔍 [2단계] 내일({tomorrow_dt}) 예정 경주 확인...")
     races = []
     for m_code, m_name in MEET_CONFIG:
         races.extend(fetch_meet_data(m_code, m_name, tomorrow_dt))
     if races:
         return races, tomorrow_dt
 
-    # 3. 직전 일요일 복구
     weekday = now.weekday()
     days_back = weekday + 1 if weekday < 6 else 7
     last_sun_dt = (now - timedelta(days=days_back)).strftime("%Y%m%d")
-    print(f"🔍 [3단계] 직전 경주일({last_sun_dt}) 정조준...")
     races = []
     for m_code, m_name in MEET_CONFIG:
         races.extend(fetch_meet_data(m_code, m_name, last_sun_dt))
@@ -414,7 +410,7 @@ def main():
         ))
         with open("race_data.json", "w", encoding="utf-8") as f:
             json.dump(all_races, f, ensure_ascii=False, indent=2)
-        print(f"🎉 성공: [{VERSION}] {target_date} V7.0 데이터 갱신 완료! ({len(all_races)}개 경주)")
+        print(f"🎉 성공: [{VERSION}] {target_date} 예상순위 영구 고정 완료!")
     else:
         print("❌ 데이터를 가져오지 못했습니다.")
 
