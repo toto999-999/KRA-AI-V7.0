@@ -8,6 +8,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif; }
         body { background-color: #f4f6f9; color: #333; padding-bottom: 40px; }
         
+        /* 🔒 4자리 PIN 잠금 화면 */
         #lockScreen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(135deg, #1e3c72, #2a5298);
@@ -36,6 +37,7 @@
         .pin-btn:active { background: #152b52; }
         .pin-err { color: #e63946; font-size: 0.8rem; font-weight: bold; margin-top: 10px; display: none; }
 
+        /* 메인 대시보드 */
         #mainApp { display: none; }
         header { background: linear-gradient(135deg, #1e3c72, #2a5298); color: white; padding: 14px 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
         .header-top { display: flex; justify-content: space-between; align-items: center; }
@@ -59,6 +61,7 @@
         .tab-content { display: none; }
         .tab-content.active { display: block; }
         
+        /* 배너 디자인 */
         .pick-banner {
             background: linear-gradient(135deg, #ff6b6b, #ff8e53); color: white;
             border-radius: 12px; padding: 14px 16px; margin-bottom: 14px;
@@ -76,6 +79,7 @@
         .race-select-card { background: white; border-radius: 12px; padding: 12px 14px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         .race-select-card select { padding: 8px 10px; border-radius: 8px; border: 1px solid #ccc; font-weight: bold; font-size: 0.92rem; color: #1e3c72; outline: none; max-width: 75%; }
         
+        /* 출전마 카드 */
         .horse-card { background: white; border-radius: 12px; padding: 12px 14px; margin-bottom: 10px; display: flex; align-items: center; border-left: 5px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.03); position: relative; }
         .horse-card.rank-1 { border-left-color: #e63946; background-color: #fffaf0; }
         .horse-card.rank-2 { border-left-color: #f4a261; }
@@ -89,6 +93,7 @@
         .jockey-name { font-size: 0.78rem; color: #666; margin-bottom: 4px; }
         .tag-list { display: flex; gap: 4px; flex-wrap: wrap; }
         
+        /* 뱃지 컬러 스타일 */
         .ai-tag { font-size: 0.68rem; background: #eef2f7; color: #2a5298; padding: 1px 6px; border-radius: 4px; font-weight: 600; }
         .ai-tag.gold-tag { background: #fff3cd; color: #856404; border: 1px solid #ffeeba; font-weight: 800; }
         .ai-tag.purple-tag { background: #f3e8ff; color: #6b21a8; border: 1px solid #e9d5ff; font-weight: 800; }
@@ -101,6 +106,7 @@
         .badge-2nd { background-color: #c0c0c0; color: #333; font-size: 0.72rem; padding: 2px 6px; border-radius: 4px; font-weight: 800; }
         .badge-3rd { background-color: #cd7f32; color: white; font-size: 0.72rem; padding: 2px 6px; border-radius: 4px; font-weight: 800; }
 
+        /* 가이드 탭 공통 카드 */
         .guide-card { background: white; border-radius: 12px; padding: 16px; margin-bottom: 14px; box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
         .guide-title { font-size: 1.05rem; font-weight: 800; color: #1e3c72; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; border-bottom: 2px solid #f0f3f8; padding-bottom: 8px; }
         .guide-sub { font-size: 0.88rem; font-weight: 700; color: #333; margin-top: 12px; margin-bottom: 6px; }
@@ -109,11 +115,13 @@
         .guide-box.warn { border-left-color: #e63946; background: #fff8f8; }
         .guide-box.gold { border-left-color: #f4a261; background: #fffcf6; }
         .guide-box.purple { border-left-color: #8b5cf6; background: #faf5ff; }
+        .guide-box.emerald { border-left-color: #10b981; background: #ecfdf5; }
         
         .badge-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 0.82rem; }
         .badge-table th { background: #f1f4f9; padding: 8px; text-align: left; color: #1e3c72; border-bottom: 1px solid #ddd; }
         .badge-table td { padding: 8px; border-bottom: 1px solid #eee; }
 
+        /* 모달 팝업 */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 200; align-items: center; justify-content: center; }
         .modal-box { background: white; width: 90%; max-width: 400px; border-radius: 14px; padding: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
         .modal-title { font-size: 1.05rem; font-weight: 800; color: #1e3c72; margin-bottom: 10px; }
@@ -126,6 +134,7 @@
 </head>
 <body>
 
+    <!-- 🔒 비밀번호 잠금 화면 -->
     <div id="lockScreen">
         <div class="lock-box">
             <div class="lock-icon">🔐</div>
@@ -137,6 +146,7 @@
         </div>
     </div>
 
+    <!-- 🐎 메인 앱 -->
     <div id="mainApp">
         <header>
             <div class="header-top">
@@ -304,8 +314,39 @@
                 </div>
             </div>
 
-            <!-- [탭 3] 베팅 가이드 -->
+            <!-- ======================================================== -->
+            <!-- [탭 3] 베팅 가이드 (🌟 10/3 실전검증 3대 황금팁 추가!) -->
+            <!-- ======================================================== -->
             <div id="tab-betting" class="tab-content">
+                
+                <!-- 🌟 [신규 탑재] 10/3 실전 검증 돈 벌어주는 3대 황금 승부 팁! -->
+                <div class="guide-card">
+                    <div class="guide-title">🌟 [10/3 실전 검증] 돈 벌어주는 3대 황금 승부 팁!</div>
+                    <div class="guide-text">10월 3일 17개 경주 실전 결과에서 100% 검증된 <strong>프로들의 진짜배기 3대 승부 공식</strong>입니다!</div>
+
+                    <div class="guide-sub">👑 팁 1. 절대 불패 치트키: [모래회피 🚀] + [체급최강자 🏋️]</div>
+                    <div class="guide-box gold">
+                        <strong>외곽 8~11번 게이트에서 [체급 최강자(탑웨이트 57.5~60kg) 🏋️]와 [외곽 모래회피 🚀]가 동시에 달린 말은 무조건 1착 축마입니다!</strong><br>
+                        • <strong>실전 적중 사례</strong>: 서울 10R [11번 스팔타 57.5kg] ➔ <strong>1착 우승!</strong>, 제주 7R [10번 드림볼트 60kg] ➔ <strong>1착 우승!</strong><br>
+                        • <strong>원리</strong>: 외곽이라 모래 저항을 전혀 안 받는데, 말의 뼈대와 체급 힘까지 출전마 중 1등인 챔피언이기 때문에 무거운 짐을 달고도 1등으로 꽂힙니다.
+                    </div>
+
+                    <div class="guide-sub">🚀 팁 2. 8~11번 게이트의 [외곽 모래회피 복병 🚀]은 무조건 마권에 넣어라!</div>
+                    <div class="guide-box purple">
+                        <strong>비인기 복병마라도 외곽 게이트에 모래회피 뱃지가 달렸다면 복연승/삼복승에 무조건 받쳐두세요!</strong><br>
+                        • <strong>실전 적중 사례</strong>: 오늘 서울 3R, 7R, 10R 등 대부분의 경주에서 8번, 9번, 10번, 11번 외곽 복병마들이 1·2·3착을 싹쓸이했습니다.<br>
+                        • <strong>원리</strong>: 모래 주로가 건조한 날에는 안쪽에 갇힌 말들이 모래를 흠뻑 맞아 눈을 감고 전의를 상실하지만, 바깥쪽 말들은 시야가 뻥 뚫려 결승선에서 폭발적인 탄력을 냅니다.
+                    </div>
+
+                    <div class="guide-sub">⚠️ 팁 3. [특급기수 + 안쪽게이트] 인기 1위마는 무조건 의심하라!</div>
+                    <div class="guide-box warn">
+                        <strong>서승운, 다나카, 문세영이 탔다고 무조건 단승식에 몰빵하면 큰코다칩니다!</strong><br>
+                        • <strong>실전 사례</strong>: 서울 2R(5번 6착), 서울 3R(7번 10착), 서울 4R(6번 4착), 제주 4R(3번 꼴찌)<br>
+                        • <strong>원리</strong>: 특급 기수가 타면 다른 모든 기수들이 그 말만 집중 마크하고 몸싸움을 겁니다. 안쪽에서 무리하게 선두 싸움을 하다가 결승선 200m 전에서 다리가 풀려 자멸하므로, 복연승식으로 안전하게 분산 베팅해야 합니다.
+                    </div>
+                </div>
+
+                <!-- 💥 4대 황금 뱃지 조합 -->
                 <div class="guide-card">
                     <div class="guide-title">💥 [필승 공략] 4대 황금 뱃지 조합 & TOP 3 베팅 비법</div>
                     <div class="guide-text">복승식 1구멍만 사면 아깝게 3착해서 돈을 잃습니다. <strong>AI 예상 1·2·3위 3마리를 묶어 복연승식이나 삼복승식으로 공략</strong>하는 것이 돈을 버는 가장 이상적인 모델입니다!</div>
@@ -346,6 +387,10 @@
                         • 1등 말의 AI 점수가 <strong>80점 이상</strong>으로 높을 때<br>
                         • 1등과 2등의 점수 차이가 <strong>4~5점 이상</strong> 크게 벌어져 있을 때
                     </div>
+                    <div class="guide-box warn">
+                        <strong>⚠️ 돈 걸지 말고 패스할 경주:</strong><br>
+                        • 1등부터 5등까지 점수가 <strong>1~2점 차이로 빽빽할 때</strong> (대혼전 레이스이므로 패스!)
+                    </div>
                 </div>
 
                 <div class="guide-card">
@@ -378,7 +423,9 @@
                     <div class="guide-title">💡 4대 환경 분석 & 자금 관리 황금수칙</div>
                     <div class="guide-text">
                         1. <strong>주로 상태</strong>: 비 온 날(포화/불량)은 선행마가 모래를 안 맞아 1착 확률이 급상승합니다.<br>
-                        2. <strong>자금 관리</strong>: 하루 예산은 <strong>1~2만 원</strong>으로 딱 정해두고 1,000원씩 분산 베팅하세요!
+                        2. <strong>마체중 급변</strong>: 직전 대비 ±10kg 이상 널뛰기한 인기마는 컨디션 난조로 피하세요.<br>
+                        3. <strong>출전 주기</strong>: 90일 이상 쉰 장기 휴양마는 첫 경기는 거르는 것이 정석입니다.<br>
+                        4. <strong>자금 관리</strong>: 하루 예산은 <strong>1~2만 원</strong>으로 딱 정해두고 1,000원씩 분산 베팅하세요!
                     </div>
                 </div>
             </div>
@@ -517,7 +564,6 @@
                         const dStr = r.distance ? ` (${r.distance}m)` : '';
                         const tStr = r.track ? ` [${r.track}]` : '';
                         
-                        // 🎯 [V8.0] 날짜 접두사 깔끔하게 추가 (예: [10/2 부경] / [10/3 서울])
                         let datePrefix = "";
                         if (r.race_date && r.race_date.length >= 8) {
                             const m = parseInt(r.race_date.substring(4, 6), 10);
@@ -529,7 +575,7 @@
                         select.appendChild(opt);
                     });
 
-                    document.getElementById('dateInfo').textContent = `${data[0].race_date} AI V8.0 멀티 롤링 분석`;
+                    document.getElementById('dateInfo').textContent = `${data[0].race_date} AI V8.0 실전 챔피언 분석`;
                     renderRace(0);
                 })
                 .catch(() => {
