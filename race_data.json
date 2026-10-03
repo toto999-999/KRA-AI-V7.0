@@ -15,7 +15,7 @@
         "trainer": "서홍수",
         "weight": "55",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:02.9",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -27,7 +27,7 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "1",
         "speed_power": 35.88,
         "distance": "1000",
         "ai_score": 75.1,
@@ -35,7 +35,8 @@
           "특급 기수 🏇",
           "우수 마방 🏆",
           "단거리 황금게이트 ⚡",
-          "과거 스피드 최상 🏎️"
+          "과거 스피드 최상 🏎️",
+          "스피드 지수 최상(62.9초) 🏎️"
         ],
         "odds_display": "-"
       },
@@ -46,7 +47,7 @@
         "trainer": "정호익",
         "weight": "55",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:03.7",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -58,14 +59,15 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "6",
         "speed_power": 25.400000000000002,
         "distance": "1000",
         "ai_score": 65.2,
         "ai_tags": [
           "상위 기수",
           "외곽 모래회피 복병 🚀",
-          "숨은 다크호스 💥"
+          "숨은 다크호스 💥",
+          "스피드 지수 최상(63.7초) 🏎️"
         ],
         "odds_display": "-"
       },
@@ -76,7 +78,7 @@
         "trainer": "김동균",
         "weight": "55",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:04.1",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -88,13 +90,14 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "10",
         "speed_power": 30.800000000000004,
         "distance": "1000",
         "ai_score": 63.6,
         "ai_tags": [
           "특급 기수 🏇",
-          "외곽 모래회피 복병 🚀"
+          "외곽 모래회피 복병 🚀",
+          "스피드 지수 최상(64.1초) 🏎️"
         ],
         "odds_display": "-"
       },
@@ -105,7 +108,7 @@
         "trainer": "안병기",
         "weight": "53",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:03.5",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -117,14 +120,15 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "4",
         "speed_power": 31.400000000000002,
         "distance": "1000",
         "ai_score": 62.8,
         "ai_tags": [
           "상위 기수",
           "단거리 황금게이트 ⚡",
-          "스피드 우수 🏎️"
+          "스피드 우수 🏎️",
+          "스피드 지수 최상(63.5초) 🏎️"
         ],
         "odds_display": "-"
       },
@@ -135,7 +139,7 @@
         "trainer": "강환민",
         "weight": "55",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:02.9",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -147,12 +151,13 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "2",
         "speed_power": 29.200000000000003,
         "distance": "1000",
         "ai_score": 59.4,
         "ai_tags": [
-          "특급 기수 🏇"
+          "특급 기수 🏇",
+          "스피드 지수 최상(62.9초) 🏎️"
         ],
         "odds_display": "-"
       },
@@ -163,7 +168,7 @@
         "trainer": "이관호",
         "weight": "55",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:04.0",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -175,12 +180,13 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "9",
         "speed_power": 24.96,
         "distance": "1000",
         "ai_score": 55.4,
         "ai_tags": [
-          "상위 기수"
+          "상위 기수",
+          "스피드 지수 최상(64.0초) 🏎️"
         ],
         "odds_display": "-"
       },
@@ -191,7 +197,7 @@
         "trainer": "박지헌",
         "weight": "55",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:03.1",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -203,12 +209,13 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "3",
         "speed_power": 20.400000000000002,
         "distance": "1000",
         "ai_score": 53.9,
         "ai_tags": [
-          "외곽 모래회피 복병 🚀"
+          "외곽 모래회피 복병 🚀",
+          "스피드 지수 최상(63.1초) 🏎️"
         ],
         "odds_display": "-"
       },
@@ -219,7 +226,7 @@
         "trainer": "차우호",
         "weight": "55",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:03.8",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -231,11 +238,13 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "8",
         "speed_power": 22.400000000000002,
         "distance": "1000",
         "ai_score": 53.0,
-        "ai_tags": [],
+        "ai_tags": [
+          "스피드 지수 최상(63.8초) 🏎️"
+        ],
         "odds_display": "-"
       },
       {
@@ -245,7 +254,7 @@
         "trainer": "함완식",
         "weight": "55",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:03.6",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -257,12 +266,13 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "5",
         "speed_power": 21.200000000000003,
         "distance": "1000",
         "ai_score": 52.0,
         "ai_tags": [
-          "단거리 황금게이트 ⚡"
+          "단거리 황금게이트 ⚡",
+          "스피드 지수 최상(63.6초) 🏎️"
         ],
         "odds_display": "-"
       },
@@ -273,7 +283,7 @@
         "trainer": "한만달",
         "weight": "55",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:04.5",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -285,11 +295,13 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "11",
         "speed_power": 19.200000000000003,
         "distance": "1000",
         "ai_score": 50.0,
-        "ai_tags": [],
+        "ai_tags": [
+          "스피드 지수 최상(64.5초) 🏎️"
+        ],
         "odds_display": "-"
       },
       {
@@ -299,7 +311,7 @@
         "trainer": "서범석",
         "weight": "55",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:03.7",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -311,12 +323,13 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "7",
         "speed_power": 15.200000000000003,
         "distance": "1000",
         "ai_score": 49.0,
         "ai_tags": [
-          "외곽 모래회피 복병 🚀"
+          "외곽 모래회피 복병 🚀",
+          "스피드 지수 최상(63.7초) 🏎️"
         ],
         "odds_display": "-"
       }
