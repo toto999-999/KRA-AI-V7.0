@@ -8,9 +8,9 @@ from datetime import datetime, timezone, timedelta
 import time
 
 # =========================================================================
-# 프로그램 명칭: KRA전국 승부예상AI_V8.0 (스마트 롤링 멀티데이 완성본)
+# 프로그램 명칭: KRA전국 승부예상AI_V8.8 (5주치 누적 빅데이터 아카이브 엔진)
 # =========================================================================
-VERSION = "KRA전국 승부예상AI_V8.0"
+VERSION = "KRA전국 승부예상AI_V8.8"
 API_KEY = os.environ.get("KRA_API_KEY", "")
 URL = "http://apis.data.go.kr/B551015/racedetailresult/getracedetailresult"
 
@@ -23,7 +23,7 @@ MEET_CONFIG = [
     ("3", "부산경남")
 ]
 
-# 🎯 마사회 공식 편성표 1:1 전수 매핑 테이블 (10월 황금연휴)
+# 🎯 마사회 공식 편성표 1:1 전수 매핑 테이블 (황금연휴 공식 거리)
 EXACT_RACE_DISTANCES = {
     # 10월 2일 (금)
     ("20261002", "부산경남", "1"): "1000", ("20261002", "부산경남", "2"): "1000",
@@ -44,7 +44,7 @@ EXACT_RACE_DISTANCES = {
     ("20261003", "제주", "3"): "1000", ("20261003", "제주", "4"): "1110",
     ("20261003", "제주", "5"): "1110", ("20261003", "제주", "6"): "1200", ("20261003", "제주", "7"): "1300",
 
-    # 10월 4일 (일)
+    # 10월 4일 (일) 오늘!
     ("20261004", "영천", "1"): "1200", ("20261004", "영천", "2"): "1400",
     ("20261004", "영천", "3"): "1400", ("20261004", "영천", "4"): "1800",
     ("20261004", "영천", "5"): "1200", ("20261004", "영천", "6"): "1200",
@@ -127,6 +127,8 @@ def fetch_meet_data(meet_code, meet_name, date_str):
         if not items:
             return []
 
+        print(f"[{meet_name}] 마사회 데이터 수신: {len(items)}개 출전마")
+
         races = {}
         for it in items:
             def gv(tag_list):
@@ -168,6 +170,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
             s1f_rank = gv(["g1p", "s1f", "g1pRank", "ord1p"]) or "99"
             is_front = True if s1f_rank in ["1", "2", "01", "02"] else False
 
+            # 착순 정확 추출
             ord_no = "-"
             direct_ord = gv(["ordNo", "ord_no", "ord", "rc_ord", "rcOrd", "rank", "rankNo", "chaksun"])
             if direct_ord and direct_ord.isdigit() and int(direct_ord) > 0:
@@ -226,7 +229,6 @@ def fetch_meet_data(meet_code, meet_name, date_str):
             meet = r["meet_name"]
             r_no = str(int(r["race_no"])) if str(r["race_no"]).isdigit() else str(r["race_no"])
 
-            # 🎯 공식 편성표 정확 거리 일치
             dist_key = (date_str, meet, r_no)
             if dist_key in EXACT_RACE_DISTANCES:
                 actual_dist = EXACT_RACE_DISTANCES[dist_key]
@@ -276,7 +278,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
             top_speed_gate = str(sorted_by_speed[0]["gate"]).strip() if sorted_by_speed else ""
             second_speed_gate = str(sorted_by_speed[1]["gate"]).strip() if len(sorted_by_speed) > 1 else ""
 
-            # 사전 예상 점수 영구 고정 연산
+            # 사전 예상 점수 영구 고정 채점
             for h in r["horses"]:
                 h["distance"] = str(dist)
                 score = 30.0
@@ -311,7 +313,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 if tr_rate >= 20.0:
                     tags.append("우수 마방 🏆")
 
-                # 2. 거리별 게이트
+                # 2. 거리별 게이트 가중치
                 if dist <= 1300:
                     score += 6.0 if g <= 3 else (4.0 if g <= 7 else 0.0)
                     if g <= 3:
@@ -334,7 +336,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                     score += 6.0
                     tags.append("숨은 다크호스 💥")
 
-                # 5. 부담중량 역학 (체급 최강자 보정)
+                # 5. 부담중량 역학 (체급 최강자 탑웨이트 보정)
                 if dist >= 1700 and clean_w <= 52.5:
                     score += 2.0
                     tags.append(f"경량 부중({clean_w}kg) ⚡")
@@ -413,53 +415,67 @@ def fetch_meet_data(meet_code, meet_name, date_str):
         return []
 
 # =========================================================================
-# 🎯 [V8.0 핵심] 스마트 롤링 윈도우 탐색기 (오늘 복기 + 내일/다음 예상 공존!)
+# 🎯 [V8.8 핵심] 5주치 누적 병합(Merge) 아카이브 수집기
 # =========================================================================
-def fetch_rolling_window_races():
+def sync_5weeks_archive():
     now = datetime.now(KST)
-    today_dt = now.strftime("%Y%m%d")
-    tomorrow_dt = (now + timedelta(days=1)).strftime("%Y%m%d")
     
-    # 1. 수집 타겟 날짜: [오늘, 내일] 동시 수집!
-    target_dates = [today_dt, tomorrow_dt]
-    
-    all_collected = []
-    print(f"🔄 롤링 수집 시작: 오늘({today_dt}) 복기 & 내일({tomorrow_dt}) 예상 동시 조회")
+    # 1. 기존 race_data.json 파일이 있으면 먼저 불러와서 보존!
+    existing_races = {}
+    if os.path.exists("race_data.json"):
+        try:
+            with open("race_data.json", "r", encoding="utf-8") as f:
+                old_list = json.load(f)
+                for r in old_list:
+                    k = f"{r.get('race_date')}_{r.get('meet_name')}_{r.get('race_no')}"
+                    existing_races[k] = r
+            print(f"📦 기존 저장소에서 {len(existing_races)}개 과거 경주 로드 완료")
+        except Exception:
+            existing_races = {}
 
-    for dt in target_dates:
+    # 2. 수집 대상 날짜: 어제, 오늘, 내일 (실시간 최신 반영)
+    dates_to_fetch = [
+        (now - timedelta(days=1)).strftime("%Y%m%d"), # 어제 (10/3 토 복기 확실 보존!)
+        now.strftime("%Y%m%d"),                        # 오늘 (10/4 일 실시간)
+        (now + timedelta(days=1)).strftime("%Y%m%d")  # 내일 (10/5 월 대체공휴일 사전예상)
+    ]
+
+    print(f"🔄 최신 데이터 수집 대상 날짜: {dates_to_fetch}")
+    for dt in dates_to_fetch:
         for m_code, m_name in MEET_CONFIG:
             res = fetch_meet_data(m_code, m_name, dt)
-            all_collected.extend(res)
+            for r in res:
+                k = f"{r.get('race_date')}_{r.get('meet_name')}_{r.get('race_no')}"
+                existing_races[k] = r  # 덮어쓰거나 새로 추가 (누적 병합!)
 
-    # 만약 평일 중간이라 오늘/내일 둘 다 경주가 없다면 -> 가장 최근 일요일 복기
-    if not all_collected:
-        weekday = now.weekday()
-        days_back = weekday + 1 if weekday < 6 else 7
-        last_sun_dt = (now - timedelta(days=days_back)).strftime("%Y%m%d")
-        print(f"🔍 최근 일요일({last_sun_dt}) 복기 데이터 단독 수집...")
-        for m_code, m_name in MEET_CONFIG:
-            all_collected.extend(fetch_meet_data(m_code, m_name, last_sun_dt))
+    # 3. 5주(35일) 필터링: 35일이 지난 너무 오래된 데이터만 자동 정리!
+    cutoff_date = (now - timedelta(days=35)).strftime("%Y%m%d")
+    final_list = []
+    for k, r in existing_races.items():
+        r_date = str(r.get("race_date", ""))
+        if r_date >= cutoff_date:
+            final_list.append(r)
 
-    return all_collected
+    return final_list
 
 def main():
     if not API_KEY:
         print("❌ KRA_API_KEY 미설정")
         return
 
-    all_races = fetch_rolling_window_races()
+    all_races = sync_5weeks_archive()
 
     if all_races:
         meet_order = {"서울": 1, "부산경남": 2, "영천": 3, "제주": 4}
-        # 🎯 정렬: 날짜 오름차순(오늘 경기 먼저 -> 내일 경기 뒤에), 경마장 순, 경주번호 순
+        # 날짜 오름차순(과거 ➔ 최신), 경마장 순, 경주번호 순 정렬
         all_races.sort(key=lambda x: (
             x["race_date"],
             meet_order.get(x["meet_name"], 9),
-            int(x["race_no"]) if x["race_no"].isdigit() else 99
+            int(x["race_no"]) if str(x["race_no"]).isdigit() else 99
         ))
         with open("race_data.json", "w", encoding="utf-8") as f:
             json.dump(all_races, f, ensure_ascii=False, indent=2)
-        print(f"🎉 성공: [{VERSION}] 오늘 복기 & 내일 예상 롤링 저장 완료! (총 {len(all_races)}개 경주)")
+        print(f"🎉 성공: [{VERSION}] 5주 누적 아카이브 갱신 완료! (총 {len(all_races)}개 경주 영구 보존)")
     else:
         print("❌ 데이터를 가져오지 못했습니다.")
 
