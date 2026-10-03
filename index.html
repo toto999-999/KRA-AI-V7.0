@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>KRA전국 승부예상AI_V8.5</title>
+    <title>KRA전국 승부예상AI_V8.8</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif; }
         body { background-color: #f4f6f9; color: #333; padding-bottom: 40px; }
@@ -149,7 +149,7 @@
     <div id="lockScreen">
         <div class="lock-box">
             <div class="lock-icon">🔐</div>
-            <div class="lock-title">KRA전국 승부예상AI_V8.5</div>
+            <div class="lock-title">KRA전국 승부예상AI_V8.8</div>
             <div class="lock-desc">비밀번호(PIN 4자리)를 입력하세요.</div>
             <input type="password" id="pinInput" class="pin-input" maxlength="4" pattern="[0-9]*" inputmode="numeric" placeholder="••••">
             <button class="pin-btn" onclick="checkPin()">잠금 해제</button>
@@ -160,13 +160,13 @@
     <div id="mainApp">
         <header>
             <div class="header-top">
-                <h1>🐎 KRA전국 승부예상AI_V8.5</h1>
+                <h1>🐎 KRA전국 승부예상AI_V8.8</h1>
                 <div class="header-btns">
                     <button class="btn-instant-update" onclick="triggerImmediateUpdate()">⚡ 최신결과 갱신</button>
                     <button class="btn-lock" onclick="lockApp()" title="화면 잠그기">🔒</button>
                 </div>
             </div>
-            <p id="dateInfo">데이터 로딩 중...</p>
+            <p id="dateInfo">5주 누적 빅데이터 로딩 중...</p>
         </header>
 
         <div id="updateToast" class="update-toast"></div>
@@ -206,8 +206,7 @@
                     </h2>
                     <div id="aiRecommendation" class="pick-list">-</div>
                     <div id="aiTop3Recommendation" class="pick-sub-list">-</div>
-                    <!-- 🌟 3줄: 엄선된 입상패턴 일치마만 표시 -->
-                    <div id="aiPatternMatchList" class="pick-extra-list">📊 빅데이터 입상패턴 분석 중...</div>
+                    <div id="aiPatternMatchList" class="pick-extra-list">📊 5주 누적 입상패턴 분석 중...</div>
                 </div>
 
                 <div class="race-select-card">
@@ -221,7 +220,7 @@
             <!-- [탭 2] 뱃지 도감 -->
             <div id="tab-badges" class="tab-content">
                 <div class="guide-card">
-                    <div class="guide-title">🏷️ AI 핵심 뱃지 총람 (V8.5 통합 모델)</div>
+                    <div class="guide-title">🏷️ AI 핵심 뱃지 총람 (V8.8 5주 누적 모델)</div>
                     <div class="guide-text">AI가 체급, 게이트적성, 주파기록, 기수·조교사, 입상패턴을 종합 분석하여 부착하는 뱃지입니다.</div>
                     
                     <table class="badge-table">
@@ -234,7 +233,7 @@
                         <tbody>
                             <tr>
                                 <td><span class="ai-tag emerald-tag">입상 공식 부합 ✨</span></td>
-                                <td><strong>[초엄격 검증]</strong> 체급최강·모래회피·황금게이트 중 2개 이상의 핵심 승리 무기가 동시에 결합된 극소수 정예마</td>
+                                <td><strong>[5주 빅데이터 검증]</strong> 최근 5주간 실제 1~3착 입상마들의 승리 공식과 완벽 부합하는 정예마</td>
                             </tr>
                             <tr>
                                 <td><span class="ai-tag purple-tag">체급 최강자(탑웨이트) 🏋️</span></td>
@@ -309,7 +308,7 @@
                 </div>
 
                 <div class="guide-card">
-                    <div class="guide-title">🦄 V8.5 궁극의 '괴물말' 예시</div>
+                    <div class="guide-title">🦄 V8.8 궁극의 '괴물말' 예시</div>
                     <div class="horse-card rank-1" style="margin-top:10px;">
                         <div class="gate-no">1</div>
                         <div class="horse-info">
@@ -401,15 +400,17 @@
                 </div>
             </div>
 
-            <!-- [탭 4] 입상마 분석실 -->
+            <!-- ======================================================== -->
+            <!-- 📊 [탭 4] 입상마 분석실 (5주치 누적 통계 표기!) -->
+            <!-- ======================================================== -->
             <div id="tab-winners" class="tab-content">
                 <div class="guide-card">
-                    <div class="guide-title">📊 역대 1·2·3착 입상마 빅데이터 통계</div>
-                    <div class="guide-text">실제로 결승선을 1~3착으로 통과한 말들의 공통 승리 패턴을 집계한 브리핑입니다.</div>
+                    <div class="guide-title">📊 최근 5주간 실제 1·2·3착 입상마 빅데이터 통계</div>
+                    <div class="guide-text">최근 5주(35일) 동안 실제로 결승선을 1~3착으로 통과한 수백 마리의 승리 공식을 집계한 브리핑입니다.</div>
 
                     <div class="stat-grid">
                         <div class="stat-card">
-                            <div class="stat-label">총 집계 입상마</div>
+                            <div class="stat-label">5주 누적 입상마</div>
                             <div id="statTotalWinners" class="stat-val">- 두</div>
                         </div>
                         <div class="stat-card">
@@ -439,7 +440,7 @@
         </div>
     </div>
 
-    <!-- 스크립트 로직 (초엄격 1~2두 일치 판별 엔진 탑재!) -->
+    <!-- 스크립트 로직 (5주치 누적 자동분석 엔진) -->
     <script>
         const CORRECT_PIN = "1415";
 
@@ -517,7 +518,7 @@
         function executeWorkflow(token) {
             const toast = document.getElementById('updateToast');
             toast.style.display = 'block';
-            toast.innerHTML = "🚀 로봇이 마사회 데이터를 수집하기 시작했습니다!<br><span style='font-size:0.75rem; color:#ffeaa7;'>(마사회 서버 통신 및 배포까지 약 1분 20초 소요됩니다)</span>";
+            toast.innerHTML = "🚀 로봇이 5주치 빅데이터 수집 및 동기화 중입니다!<br><span style='font-size:0.75rem; color:#ffeaa7;'>(마사회 서버 통신 및 배포까지 약 1분 20초 소요됩니다)</span>";
 
             fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/actions/workflows/update.yml/dispatches`, {
                 method: 'POST',
@@ -534,10 +535,10 @@
                     const timer = setInterval(() => {
                         count--;
                         if (count > 0) {
-                            toast.innerHTML = `🚀 로봇이 최신 착순 수집 및 갱신 중... (<strong>${count}초</strong> 남음)<br><span style='font-size:0.75rem; color:#dfe6e9;'>화면을 닫지 말고 잠시만 기다려주세요!</span>`;
+                            toast.innerHTML = `🚀 5주 누적 데이터 동기화 중... (<strong>${count}초</strong> 남음)<br><span style='font-size:0.75rem; color:#dfe6e9;'>화면을 닫지 말고 잠시만 기다려주세요!</span>`;
                         } else {
                             clearInterval(timer);
-                            toast.innerHTML = "✨ 데이터 갱신 완료! 최신 화면으로 새로고침합니다.";
+                            toast.innerHTML = "✨ 5주치 누적 동기화 완료! 화면을 새로고침합니다.";
                             setTimeout(() => { location.reload(); }, 1500);
                         }
                     }, 1000);
@@ -567,6 +568,7 @@
                     const select = document.getElementById('raceSelect');
                     select.innerHTML = '';
                     
+                    // 최신 경기부터 드롭다운에 추가
                     data.forEach((r, idx) => {
                         const opt = document.createElement('option');
                         opt.value = idx;
@@ -584,10 +586,15 @@
                         select.appendChild(opt);
                     });
 
-                    document.getElementById('dateInfo').textContent = `${data[0].race_date} AI V8.5 실전 빅데이터 분석`;
+                    // 드롭다운 기본값을 가장 최신 날짜의 첫 번째 경주로 선택!
+                    const latestIdx = data.length > 0 ? (data.length - 1) : 0;
+                    select.value = latestIdx;
+
+                    document.getElementById('dateInfo').textContent = `${data[latestIdx].race_date} AI V8.8 5주 누적 분석`;
                     
+                    // 5주치 입상마 전체 통계 빌드
                     buildWinnersAnalytics();
-                    renderRace(0);
+                    renderRace(latestIdx);
                 })
                 .catch(() => {
                     document.getElementById('dateInfo').textContent = "경주 데이터를 불러올 수 없습니다.";
@@ -600,6 +607,7 @@
             let outsideCount = 0;
             const badgeCountMap = {};
 
+            // 5주치 모든 경주에서 1·2·3착마 전수 집계!
             allRaceData.forEach(r => {
                 r.horses.forEach((h, idx) => {
                     const ordNum = parseInt(h.actual_ord, 10);
@@ -629,6 +637,9 @@
                     }
                 });
             });
+
+            // 최신 날짜의 입상마가 위에 오도록 역순 정렬
+            globalWinnersList.sort((a, b) => b.race_date.localeCompare(a.race_date));
 
             const totalWinners = globalWinnersList.length;
             document.getElementById('statTotalWinners').textContent = totalWinners + ' 두';
@@ -664,7 +675,7 @@
                 : globalWinnersList.filter(item => item.actual_ord === parseInt(ordFilter, 10));
 
             if (filtered.length === 0) {
-                container.innerHTML = '<div style="text-align:center; padding:30px; color:#888;">해당 착순의 입상마 데이터가 없습니다.</div>';
+                container.innerHTML = '<div style="text-align:center; padding:30px; color:#888;">해당 착순의 누적 입상마 데이터가 없습니다.</div>';
                 return;
             }
 
@@ -672,6 +683,13 @@
                 const h = item.horse;
                 const ordClass = 'ord-' + item.actual_ord;
                 const medal = item.actual_ord === 1 ? '🥇 1착' : (item.actual_ord === 2 ? '🥈 2착' : '🥉 3착');
+
+                let dateFormatted = "";
+                if (item.race_date && item.race_date.length >= 8) {
+                    const m = parseInt(item.race_date.substring(4, 6), 10);
+                    const d = parseInt(item.race_date.substring(6, 8), 10);
+                    dateFormatted = `${m}/${d} `;
+                }
 
                 let tagsHtml = '';
                 if (h.ai_tags && h.ai_tags.length > 0) {
@@ -684,7 +702,7 @@
                 container.innerHTML += `
                     <div class="winner-card ${ordClass}">
                         <div class="winner-header">
-                            <span>[${item.meet_name}] ${item.race_no}R (${item.distance}m)</span>
+                            <span>[${dateFormatted}${item.meet_name}] ${item.race_no}R (${item.distance}m)</span>
                             <span style="color:#e63946;">예상 ${item.predicted_rank}위 (${h.ai_score}점)</span>
                         </div>
                         <div class="winner-main">
@@ -704,7 +722,7 @@
         }
 
         // ========================================================
-        // 🐎 [1번 탭] 실시간 승부예측 (초엄격 1~2두 일치 판별)
+        // 🐎 [1번 탭] 승부예측
         // ========================================================
         function renderRace(idx) {
             const race = allRaceData[idx];
@@ -727,13 +745,10 @@
             recBox.textContent = `[${h1.gate}번] ${h1.name} ✖ [${h2.gate}번] ${h2.name}`;
             top3Box.textContent = `🎯 복연승/삼복승 유력 TOP 3: [${h1.gate}번] • [${h2.gate}번] • [${h3.gate}번]`;
 
-            // 🎯 [핵심 개선] 초엄격 승리공식 필터 (경주당 최대 1~2마리만 엄선!)
+            // 5주치 입상마 패턴 대조
             const patternMatchedGates = [];
             race.horses.forEach(h => {
                 const tags = h.ai_tags || [];
-                const gNum = parseInt(h.gate, 10);
-                const wNum = parseFloat(h.weight) || 55;
-
                 const hasTopWeight = tags.some(t => t.includes('탑웨이트') || t.includes('체급'));
                 const hasSandAvoid = tags.some(t => t.includes('모래회피'));
                 const hasInCourse = tags.some(t => t.includes('황금게이트') || t.includes('찰떡궁합'));
@@ -743,16 +758,10 @@
                 const hasLightWeight = tags.some(t => t.includes('경량 부중'));
                 const hasDarkHorse = tags.some(t => t.includes('다크호스') || t.includes('꿀배당'));
 
-                // 🌟 [엄격한 4대 승리 조합 중 하나를 2개 이상 충족해야만 통과!]
                 let isWinnerPattern = false;
-                
-                // 1) 체급최강자 + (기수 또는 모래회피)
                 if (hasTopWeight && (hasTopJockey || hasSandAvoid)) isWinnerPattern = true;
-                // 2) 외곽모래회피 + (특급기수 또는 스피드최상 또는 다크호스)
                 else if (hasSandAvoid && (hasTopJockey || hasTopSpeed || hasDarkHorse)) isWinnerPattern = true;
-                // 3) 황금게이트 + (특급기수 또는 우수마방) + 스피드최상
                 else if (hasInCourse && (hasTopJockey || hasTopTrainer) && hasTopSpeed) isWinnerPattern = true;
-                // 4) 경량부중(51~52kg) + 스피드최상 + 우수마방
                 else if (hasLightWeight && hasTopSpeed && hasTopTrainer) isWinnerPattern = true;
 
                 if (isWinnerPattern) {
@@ -761,15 +770,13 @@
                         h.ai_tags.push('입상 공식 부합 ✨');
                     }
                 } else {
-                    // 조건 미달인 말에게서 입상 공식 뱃지 깨끗이 제거
                     h.ai_tags = h.ai_tags.filter(t => !t.includes('입상 공식'));
                 }
             });
 
-            // 배너 3번째 줄: 엄선된 1~2마리만 깔끔하게 출력
             if (patternMatchedGates.length > 0) {
                 const displayGates = patternMatchedGates.slice(0, 2).map(g => `[${g}번]`).join(', ');
-                patternBox.innerHTML = `📊 빅데이터 입상패턴 일치: <strong>${displayGates}</strong> (초엄격 승리조건 부합 ✨)`;
+                patternBox.innerHTML = `📊 5주 빅데이터 입상패턴 일치: <strong>${displayGates}</strong> (초엄격 승리조건 부합 ✨)`;
             } else {
                 patternBox.innerHTML = `📊 빅데이터 입상패턴: 본 경주는 복병 난타전 (TOP 3 박스 공략 추천)`;
             }
