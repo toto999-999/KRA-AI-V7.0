@@ -72,6 +72,15 @@
         .pick-list { font-size: 1.15rem; font-weight: 800; margin-top: 4px; line-height: 1.35; }
         .pick-sub-list { font-size: 0.85rem; font-weight: 600; opacity: 0.95; margin-top: 6px; padding-top: 6px; border-top: 1px solid rgba(255,255,255,0.25); }
         .pick-extra-list { font-size: 0.82rem; font-weight: 700; color: #fff; background: rgba(0,0,0,0.22); padding: 5px 8px; border-radius: 6px; margin-top: 6px; display: flex; align-items: center; gap: 4px; }
+        
+        /* 🎯 [신규] 삼복승/복연승 유력 추천 경주 강조 바 */
+        .special-target-bar {
+            display: none; background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            color: #fff; padding: 6px 10px; border-radius: 8px; margin-bottom: 10px;
+            font-size: 0.8rem; font-weight: 800; box-shadow: 0 2px 6px rgba(255, 75, 43, 0.35);
+            display: flex; align-items: center; justify-content: space-between; animation: fadeIn 0.3s ease;
+        }
+
         .hit-status-tag { font-size: 0.75rem; background: rgba(255,255,255,0.25); padding: 2px 8px; border-radius: 20px; font-weight: bold; }
 
         .race-select-card { background: white; border-radius: 12px; padding: 12px 14px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
@@ -199,6 +208,13 @@
         <div class="container">
             <!-- [탭 1] 실시간 승부예측 -->
             <div id="tab-pred" class="tab-content active">
+                
+                <!-- 🎯 [신규] 삼복승 / 복연승 유력 추천 경주일 때만 깜짝 노출되는 하이라이트 배너 -->
+                <div id="specialTargetBar" class="special-target-bar">
+                    <span>🔥 AI 엄격선별: 삼복승·복연승 초강력 추천 경주!</span>
+                    <span id="targetBadgeDetail" style="font-size:0.72rem; opacity:0.9;">TOP 3 집중 분리</span>
+                </div>
+
                 <div id="pickBanner" class="pick-banner">
                     <h2>
                         <span id="bannerTitle">🏆 AI 실전 추천 (복승 1-2위 & 복연승 TOP3)</span>
@@ -556,6 +572,27 @@
         let allRaceData = [];
         let globalWinnersList = [];
 
+        // 🎯 [신규] 프론트엔드 자체 검증 Fallback 판별 함수 (JSON 이전 버전 호환)
+        function checkRaceTrioTarget(r) {
+            if (r.is_trio_target !== undefined) return r.is_trio_target;
+            const dist = parseInt(r.distance, 10) || 1200;
+            if (dist > 1200 || !r.horses || r.horses.length < 5) return false;
+            
+            const s1 = r.horses[0]?.ai_score || 0;
+            const s2 = r.horses[1]?.ai_score || 0;
+            const s3 = r.horses[2]?.ai_score || 0;
+            const s4 = r.horses[3]?.ai_score || 0;
+
+            const condScore = (s1 >= 68.0 && s2 >= 62.0 && s3 >= 58.5);
+            const condGap = ((s3 - s4) >= 3.2);
+
+            const top3Tags = (r.horses[0]?.ai_tags || []).concat(r.horses[1]?.ai_tags || []).concat(r.horses[2]?.ai_tags || []);
+            const jkCnt = top3Tags.filter(t => t.includes('특급 기수') || t.includes('상위 기수')).length;
+            const spCnt = top3Tags.filter(t => t.includes('스피드') || t.includes('황금게이트')).length;
+
+            return (condScore && condGap && jkCnt >= 2 && spCnt >= 2);
+        }
+
         function loadData() {
             fetch('./race_data.json?nocache=' + Date.now())
                 .then(res => res.json())
@@ -582,7 +619,15 @@
                             datePrefix = `${m}/${d} `;
                         }
 
-                        opt.textContent = `[${datePrefix}${r.meet_name}] ${r.race_no}R${dStr}${tStr}`;
+                        // 🎯 [신규] 유력 추천 경주 드롭다운 표기 추가
+                        const isTarget = checkRaceTrioTarget(r);
+                        const targetBadge = isTarget ? "🔥[삼복·복연] " : "";
+
+                        opt.textContent = `${targetBadge}[${datePrefix}${r.meet_name}] ${r.race_no}R${dStr}${tStr}`;
+                        if (isTarget) {
+                            opt.style.fontWeight = "800";
+                            opt.style.color = "#d63031";
+                        }
                         select.appendChild(opt);
                     });
 
@@ -734,9 +779,22 @@
             const top3Box = document.getElementById('aiTop3Recommendation');
             const patternBox = document.getElementById('aiPatternMatchList');
             const distLabel = document.getElementById('distLabel');
+            const targetBar = document.getElementById('specialTargetBar');
             list.innerHTML = '';
 
             distLabel.textContent = `경주 (${race.distance || '1200'}m | ${race.track || '주로 양호'})`;
+
+            // 🎯 [신규] 삼복승 / 복연승 엄격 승부 경주 배너 표시 제어
+            const isTargetRace = checkRaceTrioTarget(race);
+            if (isTargetRace) {
+                targetBar.style.display = 'flex';
+                const s3 = race.horses[2]?.ai_score || 0;
+                const s4 = race.horses[3]?.ai_score || 0;
+                const gap = (s3 - s4).toFixed(1);
+                document.getElementById('targetBadgeDetail').textContent = `3-4위 격차 +${gap}점 (능력 분리형)`;
+            } else {
+                targetBar.style.display = 'none';
+            }
 
             const h1 = race.horses[0];
             const h2 = race.horses[1] || race.horses[0];
