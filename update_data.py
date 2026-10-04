@@ -102,6 +102,49 @@ def parse_time_seconds(time_str):
         pass
     return None
 
+# =========================================================================
+# 🎯 [신규 기능] 삼복승 / 복연승 적중 유력 초엄격 판별 알고리즘
+# =========================================================================
+def evaluate_trio_confidence(race):
+    """
+    단거리(1200m 이하)에서 상위 3두의 능력치가 압도적이고,
+    4위 이하와의 점수 차이가 확실하게 벌어진 경주만 선별 (자주 나오지 않음)
+    """
+    horses = race.get("horses", [])
+    if len(horses) < 6:
+        return False, ""
+
+    try:
+        dist = int(race.get("distance", "1200"))
+    except:
+        dist = 1200
+
+    # 1. 거리 조건: 단거리(1200m 이하) 한정
+    if dist > 1200:
+        return False, ""
+
+    h1, h2, h3 = horses[0], horses[1], horses[2]
+    h4 = horses[3]
+
+    s1, s2, s3, s4 = h1.get("ai_score", 0), h2.get("ai_score", 0), h3.get("ai_score", 0), h4.get("ai_score", 0)
+
+    # 2. 점수 기준치 (능력치 상위 집중)
+    cond_scores = (s1 >= 68.0 and s2 >= 62.0 and s3 >= 58.5)
+    
+    # 3. 3위와 4위의 격차(능력 분리형 경주)
+    gap_3_4 = s3 - s4
+    cond_gap = (gap_3_4 >= 3.2)
+
+    # 4. 상위 3두 중 특급/상위 기수 및 스피드 지수 집중도
+    top3_tags = (h1.get("ai_tags", []) + h2.get("ai_tags", []) + h3.get("ai_tags", []))
+    jockey_power_cnt = sum(1 for t in top3_tags if "특급 기수" in t or "상위 기수" in t)
+    speed_power_cnt = sum(1 for t in top3_tags if "스피드" in t or "황금게이트" in t)
+
+    if cond_scores and cond_gap and (jockey_power_cnt >= 2) and (speed_power_cnt >= 2):
+        return True, f"TOP 3 능력 분리 완성 (3-4위 격차 +{round(gap_3_4, 1)}점) • 스피드/기수 우위 완벽 집중"
+
+    return False, ""
+
 def fetch_meet_data(meet_code, meet_name, date_str):
     params = {
         "serviceKey": API_KEY,
@@ -408,6 +451,11 @@ def fetch_meet_data(meet_code, meet_name, date_str):
 
             r["horses"].sort(key=lambda x: x["ai_score"], reverse=True)
 
+            # 🎯 [신규] 삼복승/복연승 유력 경주 판정 플래그 부여
+            is_target, reason = evaluate_trio_confidence(r)
+            r["is_trio_target"] = is_target
+            r["trio_reason"] = reason
+
         return list(races.values())
 
     except Exception as e:
@@ -454,6 +502,11 @@ def sync_5weeks_archive():
     for k, r in existing_races.items():
         r_date = str(r.get("race_date", ""))
         if r_date >= cutoff_date:
+            # 기존 과거 데이터 중 is_trio_target이 누락된 항목도 재검사하여 보정
+            if "is_trio_target" not in r:
+                is_target, reason = evaluate_trio_confidence(r)
+                r["is_trio_target"] = is_target
+                r["trio_reason"] = reason
             final_list.append(r)
 
     return final_list
