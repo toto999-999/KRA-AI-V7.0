@@ -333,7 +333,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "1",
@@ -653,7 +655,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "1",
@@ -963,7 +967,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "1",
@@ -1289,7 +1295,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "1",
@@ -1608,7 +1616,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "1",
@@ -1927,7 +1937,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "1",
@@ -2250,7 +2262,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "1",
@@ -2549,7 +2563,9 @@
         "ai_tags": [],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "1",
@@ -2879,7 +2895,9 @@
         "ai_tags": [],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "1",
@@ -3209,7 +3227,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "2",
@@ -3496,7 +3516,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "2",
@@ -3795,7 +3817,9 @@
         "ai_tags": [],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "2",
@@ -4089,7 +4113,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "2",
@@ -4387,7 +4413,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "2",
@@ -4682,7 +4710,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "2",
@@ -4917,7 +4947,9 @@
         "ai_tags": [],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "2",
@@ -5210,7 +5242,9 @@
         "ai_tags": [],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "1",
@@ -5540,7 +5574,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "1",
@@ -5876,7 +5912,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "1",
@@ -6163,7 +6201,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "1",
@@ -6481,7 +6521,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "1",
@@ -6810,7 +6852,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "1",
@@ -7125,7 +7169,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "1",
@@ -7462,7 +7508,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "1",
@@ -7855,7 +7903,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "1",
@@ -8121,7 +8171,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": true,
+    "trio_reason": "TOP 3 능력 분리 완성 (3-4위 격차 +6.5점) • 스피드/기수 우위 완벽 집중"
   },
   {
     "meet_code": "1",
@@ -8450,7 +8502,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "1",
@@ -8468,7 +8522,7 @@
         "trainer": "송문길",
         "weight": "*52.5",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:14.2",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -8480,7 +8534,7 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "3",
         "speed_power": 43.550000000000004,
         "distance": "1200",
         "ai_score": 82.9,
@@ -8489,7 +8543,8 @@
           "우수 마방 🏆",
           "단거리 황금게이트 ⚡",
           "경량 부중(52.5kg) ⚡",
-          "과거 스피드 최상 🏎️"
+          "과거 스피드 최상 🏎️",
+          "기록 우수"
         ],
         "odds_display": "-"
       },
@@ -8500,7 +8555,7 @@
         "trainer": "문세영",
         "weight": "54.5",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:14.2",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -8512,14 +8567,15 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "4",
         "speed_power": 25.950000000000003,
         "distance": "1200",
         "ai_score": 62.4,
         "ai_tags": [
           "특급 기수 🏇",
           "외곽 모래회피 복병 🚀",
-          "스피드 우수 🏎️"
+          "스피드 우수 🏎️",
+          "기록 우수"
         ],
         "odds_display": "-"
       },
@@ -8530,7 +8586,7 @@
         "trainer": "박재우",
         "weight": "54.5",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:12.6",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -8542,13 +8598,14 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "1",
         "speed_power": 25.23,
         "distance": "1200",
         "ai_score": 58.1,
         "ai_tags": [
           "상위 기수",
-          "외곽 모래회피 복병 🚀"
+          "외곽 모래회피 복병 🚀",
+          "스피드 지수 최상(72.6초) 🏎️"
         ],
         "odds_display": "-"
       },
@@ -8559,7 +8616,7 @@
         "trainer": "신삼영",
         "weight": "51",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:17.8",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -8571,7 +8628,7 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "10",
         "speed_power": 25.200000000000003,
         "distance": "1200",
         "ai_score": 57.2,
@@ -8587,7 +8644,7 @@
         "trainer": "조현수",
         "weight": "*52.5",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:14.3",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -8599,13 +8656,14 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "6",
         "speed_power": 24.950000000000003,
         "distance": "1200",
         "ai_score": 56.5,
         "ai_tags": [
           "단거리 황금게이트 ⚡",
-          "경량 부중(52.5kg) ⚡"
+          "경량 부중(52.5kg) ⚡",
+          "기록 우수"
         ],
         "odds_display": "-"
       },
@@ -8616,7 +8674,7 @@
         "trainer": "이강서",
         "weight": "52.5",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:14.3",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -8628,12 +8686,13 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "5",
         "speed_power": 24.07,
         "distance": "1200",
         "ai_score": 55.9,
         "ai_tags": [
-          "경량 부중(52.5kg) ⚡"
+          "경량 부중(52.5kg) ⚡",
+          "기록 우수"
         ],
         "odds_display": "-"
       },
@@ -8644,7 +8703,7 @@
         "trainer": "박재우",
         "weight": "54",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:21.7",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -8656,7 +8715,7 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "11",
         "speed_power": 23.98,
         "distance": "1200",
         "ai_score": 53.6,
@@ -8672,7 +8731,7 @@
         "trainer": "토니",
         "weight": "52.5",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:13.3",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -8684,13 +8743,14 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "2",
         "speed_power": 18.950000000000003,
         "distance": "1200",
         "ai_score": 53.5,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
-          "경량 부중(52.5kg) ⚡"
+          "경량 부중(52.5kg) ⚡",
+          "스피드 지수 최상(73.3초) 🏎️"
         ],
         "odds_display": "-"
       },
@@ -8701,7 +8761,7 @@
         "trainer": "백종수",
         "weight": "*52.5",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:15.0",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -8713,7 +8773,7 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "9",
         "speed_power": 18.950000000000003,
         "distance": "1200",
         "ai_score": 53.5,
@@ -8730,7 +8790,7 @@
         "trainer": "정호익",
         "weight": "54",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:14.8",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -8742,11 +8802,13 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "8",
         "speed_power": 22.900000000000002,
         "distance": "1200",
         "ai_score": 52.8,
-        "ai_tags": [],
+        "ai_tags": [
+          "기록 우수"
+        ],
         "odds_display": "-"
       },
       {
@@ -8756,7 +8818,7 @@
         "trainer": "홍윤화",
         "weight": "56",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:14.8",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -8768,14 +8830,18 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "7",
         "speed_power": 17.700000000000003,
         "distance": "1200",
         "ai_score": 49.3,
-        "ai_tags": [],
+        "ai_tags": [
+          "기록 우수"
+        ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "4",
@@ -9110,7 +9176,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": true,
+    "trio_reason": "TOP 3 능력 분리 완성 (3-4위 격차 +6.2점) • 스피드/기수 우위 완벽 집중"
   },
   {
     "meet_code": "4",
@@ -9444,7 +9512,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "4",
@@ -9780,7 +9850,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "4",
@@ -10110,7 +10182,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "4",
@@ -10444,7 +10518,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "4",
@@ -10779,7 +10855,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": true,
+    "trio_reason": "TOP 3 능력 분리 완성 (3-4위 격차 +4.0점) • 스피드/기수 우위 완벽 집중"
   },
   {
     "meet_code": "1",
@@ -11100,7 +11178,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "1",
@@ -11417,7 +11497,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "1",
@@ -11738,7 +11820,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "1",
@@ -12057,7 +12141,9 @@
         "ai_tags": [],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "1",
@@ -12374,7 +12460,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "1",
@@ -12703,7 +12791,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "1",
@@ -13023,7 +13113,9 @@
         "ai_tags": [],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "1",
@@ -13317,7 +13409,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "1",
@@ -13637,7 +13731,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "1",
@@ -13962,7 +14058,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "2",
@@ -14249,7 +14347,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "2",
@@ -14544,7 +14644,9 @@
         "ai_tags": [],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "2",
@@ -14839,7 +14941,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "2",
@@ -15137,7 +15241,9 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "2",
@@ -15435,7 +15541,9 @@
         "ai_tags": [],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": true,
+    "trio_reason": "TOP 3 능력 분리 완성 (3-4위 격차 +7.5점) • 스피드/기수 우위 완벽 집중"
   },
   {
     "meet_code": "2",
@@ -15642,7 +15750,9 @@
         "ai_tags": [],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   },
   {
     "meet_code": "2",
@@ -15883,6 +15993,8 @@
         ],
         "odds_display": "-"
       }
-    ]
+    ],
+    "is_trio_target": false,
+    "trio_reason": ""
   }
 ]
