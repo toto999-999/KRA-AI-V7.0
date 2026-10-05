@@ -9,7 +9,7 @@ from collections import Counter
 import time
 
 # =========================================================================
-# 프로그램 명칭: KRA전국 승부예상AI_V7.0 (착순 정밀 수집 & 역발상 전개 엔진)
+# 프로그램 명칭: KRA전국 승부예상AI_V7.0 (착순 전수 수집 & 역발상 전개 엔진)
 # =========================================================================
 VERSION = "KRA전국 승부예상AI_V7.0"
 API_KEY = os.environ.get("KRA_API_KEY", "")
@@ -182,20 +182,20 @@ def fetch_meet_data(meet_code, meet_name, date_str):
             s1f_rank = gv(["g1p", "s1f", "g1pRank", "ord1p"]) or "99"
             is_front = True if s1f_rank in ["1", "2", "01", "02"] else False
 
-            # 🎯 [착순 정밀 수집 강화]
+            # 🎯 [착순 정밀 전수 추출: raceRk, ord, rank 모두 커버]
             ord_no = "-"
-            direct_ord = gv(["ord", "ordNo", "ord_no", "rc_ord", "rcOrd", "rank", "rankNo", "chaksun"])
+            direct_ord = gv(["ord", "ordNo", "ord_no", "rc_ord", "rcOrd", "raceRk", "rank", "rankNo", "chaksun", "plc"])
             clean_ord = re.sub(r'[^0-9]', '', str(direct_ord))
-            if clean_ord and int(clean_ord) > 0:
+            if clean_ord and int(clean_ord) > 0 and int(clean_ord) <= 30:
                 ord_no = str(int(clean_ord))
             else:
                 for child in it:
                     tag_low = child.tag.lower()
                     if any(ex in tag_low for ex in ["cnt", "s1f", "g1p", "g2p", "g3p", "g4p", "pass", "time"]):
                         continue
-                    if any(k in tag_low for k in ["ord", "rank", "plc", "place", "chak"]):
+                    if any(k in tag_low for k in ["ord", "rank", "plc", "place", "chak", "rk"]):
                         txt = re.sub(r'[^0-9]', '', str(child.text or ""))
-                        if txt and int(txt) > 0:
+                        if txt and int(txt) > 0 and int(txt) <= 30:
                             ord_no = str(int(txt))
                             break
 
@@ -264,7 +264,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 raw_jk = JOCKEY_RATES.get(h["jockey"], 12.0)
                 tr_rate = TRAINER_RATES.get(h["trainer"], 14.0)
 
-                # 💡 [역발상 1] 마칠기삼 거품 필터
+                # 역발상 4대 필터 적용
                 if tot_rc >= 3 and quinella_rate < 15.0:
                     jk_rate = raw_jk * 0.45
                     tags.append("기수 거품 주의 🎈")
@@ -275,7 +275,6 @@ def fetch_meet_data(meet_code, meet_name, date_str):
 
                 if tr_rate >= 20.0: tags.append("우수 마방 🏆")
 
-                # 💡 [역발상 2] 부담중량 임계치 감점
                 weight_penalty = 0.0
                 if dist >= 1400 and clean_w >= 57.0:
                     weight_penalty = (clean_w - 56.5) * 2.5
@@ -288,13 +287,11 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 if dist <= 1300 and g <= 3: tags.append("단거리 황금게이트 ⚡")
                 elif g >= 8 and (not h["is_front"]): tags.append("외곽 모래회피 복병 🚀")
 
-                # 💡 [역발상 3] 집중 견제 페널티
                 target_mark_penalty = 0.0
                 if g <= 3 and h["is_front"] and raw_jk >= 24.0:
                     target_mark_penalty = 6.0
                     tags.append("집중 견제 주의 ⚠️")
 
-                # 💡 [역발상 4] 2선 프리런 마필 발굴
                 free_run_bonus = 0.0
                 if not h["is_front"] and 4 <= g <= 9:
                     free_run_bonus = 8.0
@@ -415,7 +412,7 @@ def main():
         ))
         with open("race_data.json", "w", encoding="utf-8") as f:
             json.dump(all_races, f, ensure_ascii=False, indent=2)
-        print(f"🎉 성공: [{VERSION}] 역발상 전개 엔진 갱신 완료! (총 {len(all_races)}개 경주)")
+        print(f"🎉 성공: [{VERSION}] 착순 전수 수집 및 역발상 전개 엔진 갱신 완료!")
     else:
         print("❌ 데이터를 가져오지 못했습니다.")
 
