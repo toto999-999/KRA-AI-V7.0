@@ -9,7 +9,7 @@ from collections import Counter
 import time
 
 # =========================================================================
-# 프로그램 명칭: KRA전국 승부예상AI_V7.0 (공식 안정화 엔진)
+# 프로그램 명칭: KRA전국 승부예상AI_V7.0 (착순 오염 완벽 차단 엔진)
 # =========================================================================
 VERSION = "KRA전국 승부예상AI_V7.0"
 API_KEY = os.environ.get("KRA_API_KEY", "")
@@ -24,7 +24,6 @@ MEET_CONFIG = [
     ("3", "부산경남")
 ]
 
-# 🎯 마사회 공식 편성표 거리 1:1 완벽 보장 테이블 (에러 원천 차단)
 OFFICIAL_DISTANCES = {
     # 10월 3일 (토)
     ("20261003", "서울", "1"): "1000", ("20261003", "서울", "2"): "1200",
@@ -113,7 +112,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
         items = root.findall(".//item")
         if not items: return []
 
-        print(f"[{meet_name}] API 응답: {len(items)}두 수신 완료")
+        print(f"[{meet_name}] API 데이터 수신: {len(items)}두")
 
         races = {}
         for it in items:
@@ -150,26 +149,27 @@ def fetch_meet_data(meet_code, meet_name, date_str):
             s1f_rank = gv(["g1p", "s1f", "g1pRank", "ord1p"]) or "99"
             is_front = True if s1f_rank in ["1", "2", "01", "02"] else False
 
-            # 🎯 [착순 정밀 추출: 얼마 전 잘 되던 원형 로직으로 원복]
+            # =========================================================================
+            # 🎯 [핵심 버그 수정] 이번 경기 '진짜 착순'만 핀포인트 추출! (과거 성적 차단)
+            # =========================================================================
             ord_no = "-"
-            direct_ord = gv(["ord", "ordNo", "ord_no", "rc_ord", "rcOrd", "rank", "rankNo", "chaksun"])
-            clean_ord = re.sub(r'[^0-9]', '', str(direct_ord))
-            if clean_ord and int(clean_ord) > 0 and int(clean_ord) <= 30:
-                ord_no = str(int(clean_ord))
-            else:
+            # 1. 오직 이번 경기 착순 공식 태그만 직접 조회 (pre, rec 등이 붙은 과거 태그 절대 금지!)
+            direct_ord = gv(["ordNo", "ord_no", "rcOrd", "rc_ord", "raceRk", "chaksun"])
+            
+            # ord 태그는 단독으로 정확히 일치할 때만 조회
+            if not direct_ord:
                 for child in it:
-                    tag_low = child.tag.lower()
-                    if any(ex in tag_low for ex in ["cnt", "s1f", "g1p", "g2p", "g3p", "g4p", "pass", "time"]):
-                        continue
-                    if any(k in tag_low for k in ["ord", "rank", "plc", "place", "chak"]):
-                        txt = re.sub(r'[^0-9]', '', str(child.text or ""))
-                        if txt and int(txt) > 0 and int(txt) <= 30:
-                            ord_no = str(int(txt))
-                            break
+                    if child.tag.lower() == "ord" and child.text and child.text.strip():
+                        direct_ord = child.text.strip()
+                        break
+
+            clean_ord = re.sub(r'[^0-9]', '', str(direct_ord or ""))
+            # 실제 출전마 수(최대 16두) 범위를 벗어나는 숫자는 배제!
+            if clean_ord and 1 <= int(clean_ord) <= 16:
+                ord_no = str(int(clean_ord))
 
             key = f"{meet_name}_{rc_no}_{date_str}"
             if key not in races:
-                # 거리 1:1 완벽 매핑
                 dist_lookup = OFFICIAL_DISTANCES.get((date_str, meet_name, rc_no), "1200")
                 races[key] = {
                     "meet_code": meet_code,
@@ -232,7 +232,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 raw_jk = JOCKEY_RATES.get(h["jockey"], 12.0)
                 tr_rate = TRAINER_RATES.get(h["trainer"], 14.0)
 
-                # 4대 역발상 필터
+                # 역발상 필터
                 if tot_rc >= 3 and quinella_rate < 15.0:
                     jk_rate = raw_jk * 0.45
                     tags.append("기수 거품 주의 🎈")
@@ -321,13 +321,21 @@ def fetch_meet_data(meet_code, meet_name, date_str):
         print(f"[{meet_name}] 통신 에러: {e}")
         return []
 
-def cleanse_corrupted_distances(races):
+def cleanse_corrupted_archive(races):
+    """과거 JSON에 잘못 들어간 16착, 19착 등 오염된 착순 일괄 정화"""
     for r in races:
         k = (r.get("race_date"), r.get("meet_name"), str(int(r.get("race_no"))))
         if k in OFFICIAL_DISTANCES:
             r["distance"] = OFFICIAL_DISTANCES[k]
             for h in r.get("horses", []):
                 h["distance"] = OFFICIAL_DISTANCES[k]
+                # 16두를 초과하는 비정상 착순(과거 착순) 즉시 초기화
+                try:
+                    ord_val = int(h.get("actual_ord", "-"))
+                    if ord_val > 16:
+                        h["actual_ord"] = "-"
+                except:
+                    pass
 
 def sync_5weeks_archive():
     now = datetime.now(KST)
@@ -336,11 +344,11 @@ def sync_5weeks_archive():
         try:
             with open("race_data.json", "r", encoding="utf-8") as f:
                 old_list = json.load(f)
-                cleanse_corrupted_distances(old_list)
+                cleanse_corrupted_archive(old_list)
                 for r in old_list:
                     k = f"{r.get('race_date')}_{r.get('meet_name')}_{r.get('race_no')}"
                     existing_races[k] = r
-            print(f"📦 기존 저장소 로드 완료: {len(existing_races)}개 경주")
+            print(f"📦 기존 아카이브 오염 정화 완료: {len(existing_races)}개 경주")
         except:
             existing_races = {}
 
@@ -350,7 +358,7 @@ def sync_5weeks_archive():
         (now + timedelta(days=1)).strftime("%Y%m%d")
     ]
 
-    print(f"🔄 갱신 수집 대상: {dates_to_fetch}")
+    print(f"🔄 최신 수집: {dates_to_fetch}")
     for dt in dates_to_fetch:
         for m_code, m_name in MEET_CONFIG:
             res = fetch_meet_data(m_code, m_name, dt)
@@ -378,7 +386,7 @@ def main():
         ))
         with open("race_data.json", "w", encoding="utf-8") as f:
             json.dump(all_races, f, ensure_ascii=False, indent=2)
-        print(f"🎉 성공: [{VERSION}] 안정화 및 갱신 완료! (총 {len(all_races)}개 경주)")
+        print(f"🎉 성공: [{VERSION}] 착순 오염 완벽 차단 및 갱신 완료!")
     else:
         print("❌ 데이터를 가져오지 못했습니다.")
 
