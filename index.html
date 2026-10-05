@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>KRA전국 승부예상AI_V10.0</title>
+    <title>KRA전국 승부예상AI_V7.0</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif; }
         body { background-color: #f4f6f9; color: #333; padding-bottom: 40px; }
@@ -152,7 +152,7 @@
         .modal-title { font-size: 1.05rem; font-weight: 800; color: #1e3c72; margin-bottom: 10px; }
         .modal-input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; margin: 10px 0; font-size: 0.85rem; }
         .modal-btn-row { display: flex; gap: 8px; justify-content: flex-end; margin-top: 12px; }
-        .modal-btn { padding: 8px 14px; border-radius: 6px; border: none; font-weight: bold; cursor: pointer; font-size: 0.82rem; }
+        .modal-btn { padding: 8px 14px; border-radius: 6px; border: none; font-weight: bold; cursor: font-size: 0.82rem; }
         .modal-btn.primary { background: #1e3c72; color: white; }
         .modal-btn.secondary { background: #eee; color: #333; }
     </style>
@@ -162,7 +162,7 @@
     <div id="lockScreen">
         <div class="lock-box">
             <div class="lock-icon">🔐</div>
-            <div class="lock-title">KRA전국 승부예상AI_V10.0</div>
+            <div class="lock-title">KRA전국 승부예상AI_V7.0</div>
             <div class="lock-desc">비밀번호(PIN 4자리)를 입력하세요.</div>
             <input type="password" id="pinInput" class="pin-input" maxlength="4" pattern="[0-9]*" inputmode="numeric" placeholder="••••">
             <button class="pin-btn" onclick="checkPin()">잠금 해제</button>
@@ -173,13 +173,13 @@
     <div id="mainApp">
         <header>
             <div class="header-top">
-                <h1>🐎 KRA전국 승부예상AI_V10.0</h1>
+                <h1>🐎 KRA전국 승부예상AI_V7.0</h1>
                 <div class="header-btns">
                     <button class="btn-instant-update" onclick="triggerImmediateUpdate()">⚡ 최신결과 갱신</button>
                     <button class="btn-lock" onclick="lockApp()" title="화면 잠그기">🔒</button>
                 </div>
             </div>
-            <p id="dateInfo">전개 시나리오 & 포지션 매칭 엔진 가동 중...</p>
+            <p id="dateInfo">공식 거리 & 전개 역학 엔진 가동 중...</p>
         </header>
 
         <div id="updateToast" class="update-toast"></div>
@@ -206,7 +206,7 @@
         </nav>
 
         <div class="container">
-            <!-- [탭 1] 실시간 승부예측 -->
+            <!-- [탭 1] 승부예측 -->
             <div id="tab-pred" class="tab-content active">
                 <div id="specialTargetBar" class="special-target-bar">
                     <span>🔥 AI 엄격선별: 삼복승·복연승 초강력 추천 경주!</span>
@@ -279,7 +279,7 @@
             <!-- [탭 3] 베팅 가이드 -->
             <div id="tab-betting" class="tab-content">
                 <div class="guide-card">
-                    <div class="guide-title">👑 V10.0 역할 매칭 실전 베팅 비법</div>
+                    <div class="guide-title">👑 V7.0 역할 매칭 실전 베팅 비법</div>
                     <div class="guide-box gold">
                         <strong>1. 복승식 공략법</strong>: [1착 우승축] ✖ [2착 선입마] 2두 단통 승부!
                     </div>
@@ -328,7 +328,7 @@
         </div>
     </div>
 
-    <!-- 프론트 스크립트 (기존 기능 100% 호환) -->
+    <!-- 프론트 스크립트 -->
     <script>
         const CORRECT_PIN = "1415";
 
@@ -404,7 +404,7 @@
         function executeWorkflow(token) {
             const toast = document.getElementById('updateToast');
             toast.style.display = 'block';
-            toast.innerHTML = "🚀 로봇이 전개 시나리오 & 포지션 매칭 분석 중입니다!<br><span style='font-size:0.75rem; color:#ffeaa7;'>(약 1분 소요)</span>";
+            toast.innerHTML = "🚀 V7.0 전개 역학 분석 동기화 중입니다!<br><span style='font-size:0.75rem; color:#ffeaa7;'>(마사회 서버 통신 중)</span>";
 
             fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/actions/workflows/update.yml/dispatches`, {
                 method: 'POST',
@@ -421,10 +421,10 @@
                     const timer = setInterval(() => {
                         count--;
                         if (count > 0) {
-                            toast.innerHTML = `🚀 V10.0 전개 역학 분석 동기화 중... (<strong>${count}초</strong> 남음)`;
+                            toast.innerHTML = `🚀 V7.0 데이터 갱신 중... (<strong>${count}초</strong> 남음)`;
                         } else {
                             clearInterval(timer);
-                            toast.innerHTML = "✨ 분석 완료! 화면을 새로고침합니다.";
+                            toast.innerHTML = "✨ V7.0 동기화 완료! 화면을 새로고침합니다.";
                             setTimeout(() => { location.reload(); }, 1500);
                         }
                     }, 1000);
@@ -478,7 +478,7 @@
 
                     const latestIdx = data.length > 0 ? (data.length - 1) : 0;
                     select.value = latestIdx;
-                    document.getElementById('dateInfo').textContent = `${data[latestIdx].race_date} AI V10.0 전개 시나리오 엔진`;
+                    document.getElementById('dateInfo').textContent = `${data[latestIdx].race_date} AI V7.0 표준 엔진`;
                     
                     buildWinnersAnalytics();
                     renderRace(latestIdx);
@@ -614,11 +614,9 @@
             const h2 = race.horses[1] || race.horses[0];
             const h3 = race.horses[2] || race.horses[1] || race.horses[0];
 
-            // 🎯 [핵심] 역할별 명확한 추천 문구 노출!
             recBox.innerHTML = `🥇 [${h1.gate}번 ${h1.name}] ✖ 🥈 [${h2.gate}번 ${h2.name}]`;
             top3Box.innerHTML = `🎯 <strong>삼복승 조합</strong>: [${h1.gate}번] 축마 ➔ [${h2.gate}번] 선입 ➔ 🥉 <strong>[${h3.gate}번 ${h3.name}] 복병!</strong>`;
             
-            // 시나리오 진단 노출
             patternBox.innerHTML = race.scenario_title ? `📊 ${race.scenario_title}<br><span style="font-size:0.75rem; opacity:0.85;">${race.scenario_desc || ''}</span>` : `📊 전개 분석 완료`;
 
             const actual1st = race.horses.find(h => parseInt(h.actual_ord, 10) === 1);
