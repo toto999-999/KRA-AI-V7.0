@@ -179,7 +179,7 @@
                     <button class="btn-lock" onclick="lockApp()" title="화면 잠그기">🔒</button>
                 </div>
             </div>
-            <p id="dateInfo">역발상 전개 엔진 가동 중...</p>
+            <p id="dateInfo">데이터 로딩 중...</p>
         </header>
 
         <div id="updateToast" class="update-toast"></div>
@@ -231,7 +231,7 @@
                 <div id="horseList"></div>
             </div>
 
-            <!-- [탭 2] 뱃지 도감 (총 20개 완전체) -->
+            <!-- [탭 2] 뱃지 도감 (20종 완전체) -->
             <div id="tab-badges" class="tab-content">
                 <div class="guide-card">
                     <div class="guide-title">🏷️ AI 핵심 뱃지 총람 (V7.0 역발상 전개 모델)</div>
@@ -417,7 +417,7 @@
         </div>
     </div>
 
-    <!-- 스크립트 로직 (착순 1착 확인중 버그 완벽 수정!) -->
+    <!-- 스크립트 로직 (얼마 전 잘 되던 원형 복원!) -->
     <script>
         const CORRECT_PIN = "1415";
 
@@ -493,7 +493,7 @@
         function executeWorkflow(token) {
             const toast = document.getElementById('updateToast');
             toast.style.display = 'block';
-            toast.innerHTML = "🚀 V7.0 역발상 전개 엔진 데이터 동기화 중입니다!<br><span style='font-size:0.75rem; color:#ffeaa7;'>(약 1분 소요)</span>";
+            toast.innerHTML = "🚀 V7.0 데이터 갱신 중입니다!<br><span style='font-size:0.75rem; color:#ffeaa7;'>(마사회 서버 통신 중)</span>";
 
             fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/actions/workflows/update.yml/dispatches`, {
                 method: 'POST',
@@ -513,12 +513,12 @@
                             toast.innerHTML = `🚀 V7.0 데이터 갱신 중... (<strong>${count}초</strong> 남음)`;
                         } else {
                             clearInterval(timer);
-                            toast.innerHTML = "✨ V7.0 동기화 완료! 화면을 새로고침합니다.";
+                            toast.innerHTML = "✨ 갱신 완료! 화면을 새로고침합니다.";
                             setTimeout(() => { location.reload(); }, 1500);
                         }
                     }, 1000);
                 } else {
-                    toast.innerHTML = "❌ 갱신 실패: 토큰 권한을 확인해주세요.";
+                    toast.innerHTML = "❌ 갱신 요청 실패: 깃허브 토큰 권한을 확인해주세요.";
                     setTimeout(() => { toast.style.display = 'none'; }, 4000);
                 }
             })
@@ -676,7 +676,7 @@
         }
 
         // ========================================================
-        // 🐎 [1번 탭] 착순 렌더링 (착순 확정 버그 100% 수정)
+        // 🐎 [1번 탭] 전개 포지션 추천 렌더링 (원형 복원!)
         // ========================================================
         function renderRace(idx) {
             const race = allRaceData[idx];
@@ -708,16 +708,15 @@
             top3Box.innerHTML = `🎯 <strong>삼복승 조합</strong>: [${h1.gate}번] 축마 ➔ [${h2.gate}번] 선입 ➔ 🥉 <strong>[${h3.gate}번 ${h3.name}] 복병!</strong>`;
             patternBox.innerHTML = race.scenario_title ? `📊 ${race.scenario_title}<br><span style="font-size:0.75rem; opacity:0.85;">${race.scenario_desc || ''}</span>` : `📊 전개 분석 완료`;
 
-            // 🎯 [정밀 착순 판별]
-            const actual1st = race.horses.find(h => parseInt(String(h.actual_ord).trim(), 10) === 1);
-            const actual2nd = race.horses.find(h => parseInt(String(h.actual_ord).trim(), 10) === 2);
-            const actual3rd = race.horses.find(h => parseInt(String(h.actual_ord).trim(), 10) === 3);
+            // 얼마 전 잘 작동하던 착순 판정 로직으로 원복
+            const actual1st = race.horses.find(h => parseInt(h.actual_ord, 10) === 1);
+            const actual2nd = race.horses.find(h => parseInt(h.actual_ord, 10) === 2);
+            const actual3rd = race.horses.find(h => parseInt(h.actual_ord, 10) === 3);
 
             banner.className = 'pick-banner';
 
-            // 1착과 2착이 모두 완벽히 확정되었을 때만 경기 종료 및 복기 판정
             if (actual1st && actual2nd) {
-                const actualTop3Gates = [actual1st.gate, actual2nd.gate, actual3rd ? actual3rd.gate : null].filter(Boolean);
+                const actualTop3Gates = [actual1st.gate, actual2nd.gate, (actual3rd ? actual3rd.gate : null)].filter(Boolean);
                 const aiTop3 = [h1.gate, h2.gate, h3.gate];
                 const matchedInTop3 = aiTop3.filter(g => actualTop3Gates.includes(g)).length;
 
@@ -725,44 +724,26 @@
                     banner.classList.add('hit-exact');
                     bannerTitle.textContent = "🎯 복연승/삼복승 전개 적중!";
                     hitTag.textContent = "포지션 적중 🏆";
-                    recBox.textContent = `실제 결과: 1착 [${actual1st.gate}번 ${actual1st.name}] - 2착 [${actual2nd.gate}번 ${actual2nd.name}]`;
+                    recBox.textContent = `실제 결과: 1착 [${actual1st.gate}번] - 2착 [${actual2nd.gate}번]`;
                 } else if (h1.gate === actual1st.gate) {
                     banner.classList.add('hit-win');
                     bannerTitle.textContent = "🎯 1착 우승축마 적중!";
                     hitTag.textContent = "1착 적중 🥇";
-                    recBox.textContent = `실제 결과: 1착 [${actual1st.gate}번 ${actual1st.name}] - 2착 [${actual2nd.gate}번 ${actual2nd.name}]`;
+                    recBox.textContent = `실제 결과: 1착 [${actual1st.gate}번] - 2착 [${actual2nd.gate}번]`;
                 } else {
                     banner.classList.add('finished-miss');
                     bannerTitle.textContent = "🏁 경주 종료 (결과 복기)";
                     hitTag.textContent = "경기 완료";
-                    recBox.textContent = `실제 결과: 1착 [${actual1st.gate}번 ${actual1st.name}] - 2착 [${actual2nd.gate}번 ${actual2nd.name}]`;
+                    recBox.textContent = `실제 결과: 1착 [${actual1st.gate}번] - 2착 [${actual2nd.gate}번]`;
                 }
-            } else if (actual1st) {
-                // 1착만 먼저 확정되고 2착 심의 중일 때
-                banner.classList.add('finished-miss');
-                bannerTitle.textContent = "🏁 경주 종료 (착순 확정 중)";
-                hitTag.textContent = "1착 확정";
-                recBox.textContent = `실제 결과: 1착 [${actual1st.gate}번 ${actual1st.name}] (2착 판독 중...)`;
             } else {
-                // 경기 시작 전이거나 아직 마사회에서 1착 심의 중일 때
-                const isUnderReview = race.horses.some(h => {
-                    const o = parseInt(h.actual_ord, 10);
-                    return !isNaN(o) && o > 2;
-                });
-
-                if (isUnderReview) {
-                    bannerTitle.textContent = "⏳ 마사회 공식 착순 심의/판독 중";
-                    hitTag.textContent = "심의 진행 중";
-                    recBox.innerHTML = `경주 종료 직후 사진 판독 중입니다. 잠시 후 [⚡ 최신결과 갱신]을 눌러주세요.`;
-                } else {
-                    bannerTitle.textContent = "🏆 AI 전개 포지션 추천 (1착축 ✖ 2착선입 ✖ 3착복병)";
-                    hitTag.textContent = "경기 전 예상";
-                }
+                bannerTitle.textContent = "🏆 AI 전개 포지션 추천 (1착축 ✖ 2착선입 ✖ 3착복병)";
+                hitTag.textContent = "경기 전 예상";
             }
 
             race.horses.forEach((h, i) => {
                 const rankClass = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : '';
-                const ordNum = parseInt(String(h.actual_ord).trim(), 10);
+                const ordNum = parseInt(h.actual_ord, 10);
                 
                 let badgeHtml = '';
                 if (ordNum === 1) badgeHtml = '<span class="badge-1st">실제 1착 🥇</span>';
