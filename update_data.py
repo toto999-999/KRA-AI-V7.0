@@ -9,7 +9,7 @@ from collections import Counter
 import time
 
 # =========================================================================
-# 프로그램 명칭: KRA전국 승부예상AI_V7.0 (공식 거리 & 전개 역학 표준화 엔진)
+# 프로그램 명칭: KRA전국 승부예상AI_V7.0 (4대 실전 역발상 전개 엔진)
 # =========================================================================
 VERSION = "KRA전국 승부예상AI_V7.0"
 API_KEY = os.environ.get("KRA_API_KEY", "")
@@ -25,7 +25,6 @@ MEET_CONFIG = [
     ("3", "부산경남")
 ]
 
-# 공인 기수 승률 DB
 JOCKEY_RATES = {
     "문세영": 33.2, "김용근": 24.5, "빅투아르": 25.1, "유승완": 21.0,
     "송재철": 19.5, "이혁": 19.2, "임다빈": 18.5, "장추열": 18.0,
@@ -38,7 +37,6 @@ JOCKEY_RATES = {
     "강수한": 15.5, "이동준": 15.0, "안득수": 20.5, "정명일": 19.0
 }
 
-# 공인 조교사 승률 DB
 TRAINER_RATES = {
     "서홍수": 24.5, "송문길": 21.5, "배휴준": 20.8, "정호익": 19.5,
     "최용건": 19.0, "박재우": 17.2, "이강서": 16.8, "전승규": 16.0, "서인석": 15.0,
@@ -73,13 +71,9 @@ def sanitize_jockey_and_trainer(jockey, trainer):
     jk = clean_name(jockey)
     tr = clean_name(trainer)
 
-    # 문세영이 조교사에 들어간 필드 역전 교정
     if tr == "문세영":
-        if jk in TRAINER_RATES:
-            jk, tr = tr, jk
-        else:
-            tr = "관리팀"
-            jk = "문세영"
+        if jk in TRAINER_RATES: jk, tr = tr, jk
+        else: tr, jk = "관리팀", "문세영"
 
     if tr in ["서승운", "김용근", "빅투아르", "유승완", "최시대", "다나카"] and jk in TRAINER_RATES:
         jk, tr = tr, jk
@@ -87,7 +81,6 @@ def sanitize_jockey_and_trainer(jockey, trainer):
     return jk, tr
 
 def get_official_race_distances(meet_code, date_str):
-    """KRA raceresult 엔드포인트에서 공식 경주거리(rcDist)를 맵핑"""
     params = {
         "serviceKey": API_KEY,
         "pageNo": "1",
@@ -96,11 +89,9 @@ def get_official_race_distances(meet_code, date_str):
         "rc_date": date_str
     }
     url = f"{URL_RACE_INFO}?{urllib.parse.urlencode(params)}"
-    headers = {"User-Agent": "Mozilla/5.0"}
     dist_map = {}
-
     try:
-        req = urllib.request.Request(url, headers=headers)
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
         with urllib.request.urlopen(req, timeout=8) as res:
             xml = res.read()
         root = ET.fromstring(xml)
@@ -114,17 +105,10 @@ def get_official_race_distances(meet_code, date_str):
     return dist_map
 
 def infer_distance_from_times(horses, meet_name):
-    """시간 데이터 기반 정밀 역산 fallback"""
-    valid_times = []
-    for h in horses:
-        sec = parse_time_seconds(h.get("rc_time", ""))
-        if sec and sec > 30.0:
-            valid_times.append(sec)
-    
-    if not valid_times:
-        return "1200"
-
+    valid_times = [parse_time_seconds(h.get("rc_time", "")) for h in horses if parse_time_seconds(h.get("rc_time", "")) and parse_time_seconds(h.get("rc_time", "")) > 30.0]
+    if not valid_times: return "1200"
     min_sec = min(valid_times)
+
     if meet_name == "제주":
         if min_sec < 64.0: return "900"
         elif min_sec < 77.0: return "1000"
@@ -142,9 +126,7 @@ def infer_distance_from_times(horses, meet_name):
         else: return "2000"
 
 def fetch_meet_data(meet_code, meet_name, date_str):
-    # 1. 공식 경주거리 사전 수집
     official_dists = get_official_race_distances(meet_code, date_str)
-
     params = {
         "serviceKey": API_KEY,
         "pageNo": "1",
@@ -153,17 +135,15 @@ def fetch_meet_data(meet_code, meet_name, date_str):
         "rc_date": date_str
     }
     full_url = f"{URL_DETAIL}?{urllib.parse.urlencode(params)}"
-    headers = {"User-Agent": "Mozilla/5.0"}
 
     try:
-        req = urllib.request.Request(full_url, headers=headers)
+        req = urllib.request.Request(full_url, headers={"User-Agent": "Mozilla/5.0"})
         with urllib.request.urlopen(req, timeout=12) as response:
             xml_data = response.read()
 
         root = ET.fromstring(xml_data)
         items = root.findall(".//item")
-        if not items:
-            return []
+        if not items: return []
 
         print(f"[{meet_name}] API 응답: {len(items)}두 수신")
 
@@ -172,17 +152,14 @@ def fetch_meet_data(meet_code, meet_name, date_str):
             def gv(tag_list):
                 for t in tag_list:
                     n = it.find(t)
-                    if n is not None and n.text and n.text.strip():
-                        return n.text.strip()
+                    if n is not None and n.text and n.text.strip(): return n.text.strip()
                     for child in it:
-                        if child.tag.lower() == t.lower():
-                            if child.text and child.text.strip():
-                                return child.text.strip()
+                        if child.tag.lower() == t.lower() and child.text and child.text.strip():
+                            return child.text.strip()
                 return ""
 
             raw_rc_no = gv(["rcNo", "rc_no"]) or "1"
             rc_no = str(int(raw_rc_no)) if raw_rc_no.isdigit() else raw_rc_no
-
             raw_gate = gv(["chulNo", "chul_no", "gateNo", "hrNo"]) or "0"
             gate = str(int(raw_gate)) if raw_gate.isdigit() else raw_gate
             name = clean_name(gv(["hrName", "hr_name"]) or "경주마")
@@ -193,13 +170,11 @@ def fetch_meet_data(meet_code, meet_name, date_str):
 
             weight = gv(["wgBudam", "wg_budam", "weight"]) or "55.0"
             track = gv(["track", "track_state", "trackCond", "weather"]) or "양호"
-
             rc_time = gv(["rcTime", "rc_time", "record", "rcRecord", "ordTime"]) or ""
             past_time = gv(["bestRecord", "bestRcTime", "recentRecord", "recentRcTime", "preRcTime"]) or ""
             g1f_time = gv(["g1f", "g1f_time", "g1fTime", "g1fRecord", "g_1f"]) or ""
             win_odds = gv(["winOdds", "win_odds", "win_rate", "odds"]) or "0"
             pre_ord = gv(["preOrd", "pre_ord", "recentOrd", "preRcOrd"]) or ""
-            
             rc_cnt = gv(["rcCnt", "rc_cnt", "totRcCnt"]) or "0"
             ord1_cnt = gv(["ord1Cnt", "ord1_cnt", "totOrd1Cnt"]) or "0"
             ord2_cnt = gv(["ord2Cnt", "ord2_cnt", "totOrd2Cnt"]) or "0"
@@ -211,16 +186,6 @@ def fetch_meet_data(meet_code, meet_name, date_str):
             direct_ord = gv(["ordNo", "ord_no", "ord", "rc_ord", "rcOrd", "rank", "rankNo", "chaksun"])
             if direct_ord and direct_ord.isdigit() and int(direct_ord) > 0:
                 ord_no = str(int(direct_ord))
-            else:
-                for child in it:
-                    tag_low = child.tag.lower()
-                    if any(ex in tag_low for ex in ["cnt", "s1f", "g1p", "g2p", "g3p", "g4p", "pass", "time"]):
-                        continue
-                    if any(k in tag_low for k in ["ord", "rank", "plc", "place", "chak"]):
-                        txt = child.text.strip() if child.text else ""
-                        if txt.isdigit() and int(txt) > 0:
-                            ord_no = str(int(txt))
-                            break
 
             key = f"{meet_name}_{rc_no}_{date_str}"
             if key not in races:
@@ -235,36 +200,22 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                     "horses": []
                 }
 
-            already_exists = any(h["gate"] == gate or h["name"] == name for h in races[key]["horses"])
-            if already_exists:
+            if any(h["gate"] == gate or h["name"] == name for h in races[key]["horses"]):
                 continue
 
             races[key]["horses"].append({
-                "gate": gate,
-                "name": name,
-                "jockey": jockey,
-                "trainer": trainer,
-                "weight": weight,
-                "track": track,
-                "rc_time": rc_time,
-                "past_time": past_time,
-                "g1f_time": g1f_time,
-                "win_odds": win_odds,
-                "pre_ord": pre_ord,
-                "rc_cnt": rc_cnt,
-                "ord1_cnt": ord1_cnt,
-                "ord2_cnt": ord2_cnt,
-                "is_front": is_front,
-                "actual_ord": ord_no
+                "gate": gate, "name": name, "jockey": jockey, "trainer": trainer,
+                "weight": weight, "track": track, "rc_time": rc_time, "past_time": past_time,
+                "g1f_time": g1f_time, "win_odds": win_odds, "pre_ord": pre_ord,
+                "rc_cnt": rc_cnt, "ord1_cnt": ord1_cnt, "ord2_cnt": ord2_cnt,
+                "is_front": is_front, "actual_ord": ord_no
             })
 
         for r in races.values():
-            # 공식 거리가 비어있으면 실제 주파 기록으로 역산하여 100% 매핑
             if not r["distance"] or int(r["distance"]) < 800:
                 r["distance"] = infer_distance_from_times(r["horses"], r["meet_name"])
             dist = int(r["distance"])
 
-            # 전개 판도 자동 진단
             front_cnt = sum(1 for h in r["horses"] if h["is_front"])
             if dist >= 1700 and front_cnt >= 3:
                 scenario_type = "OVERPACED"
@@ -285,7 +236,9 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 except: all_weights.append(55.0)
             max_race_weight = max(all_weights) if all_weights else 55.0
 
-            # 객관적 통계 기반 채점 (과적합 요소 제거)
+            # =========================================================================
+            # 🎯 4대 실전 역발상 분석 채점 공식
+            # =========================================================================
             for h in r["horses"]:
                 h["distance"] = str(dist)
                 tags = []
@@ -299,35 +252,59 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 quinella_rate = round(((ord1_cnt + ord2_cnt) / tot_rc) * 100, 1) if tot_rc >= 3 else 20.0
                 win_rate = round((ord1_cnt / tot_rc) * 100, 1) if tot_rc >= 3 else 10.0
 
-                jk_rate = JOCKEY_RATES.get(h["jockey"], 12.0)
+                raw_jk = JOCKEY_RATES.get(h["jockey"], 12.0)
                 tr_rate = TRAINER_RATES.get(h["trainer"], 14.0)
 
-                if jk_rate >= 24.0: tags.append("특급 기수 🏇")
-                elif jk_rate >= 19.0: tags.append("상위 기수")
+                # 💡 [역발상 1] 마칠기삼 거품 필터: 말 능력 부족 시 기수 점수 50% 디스카운트
+                if tot_rc >= 3 and quinella_rate < 15.0:
+                    jk_rate = raw_jk * 0.45
+                    tags.append("기수 거품 주의 🎈")
+                else:
+                    jk_rate = raw_jk
+                    if jk_rate >= 24.0: tags.append("특급 기수 🏇")
+                    elif jk_rate >= 19.0: tags.append("상위 기수")
+
                 if tr_rate >= 20.0: tags.append("우수 마방 🏆")
 
-                if clean_w <= 52.5: tags.append(f"경량 부중({clean_w}kg) ⚡")
-                elif clean_w >= 57.5 and clean_w == max_race_weight: tags.append("체급 최강자(탑웨이트) 🏋️")
+                # 💡 [역발상 2] 부담중량 임계치 감점: 중장거리 57kg 이상 등짐 페널티
+                weight_penalty = 0.0
+                if dist >= 1400 and clean_w >= 57.0:
+                    weight_penalty = (clean_w - 56.5) * 2.5
+                    tags.append(f"과부중 주의({clean_w}kg) 🧱")
+                elif clean_w <= 52.5:
+                    tags.append(f"경량 부중({clean_w}kg) ⚡")
+                elif clean_w >= 57.5 and clean_w == max_race_weight:
+                    tags.append("체급 최강자(탑웨이트) 🏋️")
+
                 if dist <= 1300 and g <= 3: tags.append("단거리 황금게이트 ⚡")
                 elif g >= 8 and (not h["is_front"]): tags.append("외곽 모래회피 복병 🚀")
 
-                # 1착 결정력 지수
-                score_1st = 25.0 + (win_rate * 0.7) + (jk_rate * 0.4)
+                # 💡 [역발상 3] 집중 견제 페널티: [특급기수 + 인코스 + 선행마] 1착 자멸 감점
+                target_mark_penalty = 0.0
+                if g <= 3 and h["is_front"] and raw_jk >= 24.0:
+                    target_mark_penalty = 6.0
+                    tags.append("집중 견제 주의 ⚠️")
+
+                # 💡 [역발상 4] 2선 프리런 마필 발굴: 앞선 싸움 피하는 선입 복병에게 우승 가산점
+                free_run_bonus = 0.0
+                if not h["is_front"] and 4 <= g <= 9:
+                    free_run_bonus = 8.0
+                    tags.append("2선 프리런 황금전개 👑")
+
+                # 🥇 1착 우승 지수
+                score_1st = 25.0 + (win_rate * 0.7) + (jk_rate * 0.35) - weight_penalty - target_mark_penalty + free_run_bonus
                 if scenario_type == "MONOPOLY" and h["is_front"]:
                     score_1st += 18.0
                     tags.append("단독선행 독주마 👑")
                 elif scenario_type == "OVERPACED":
-                    if h["is_front"]:
-                        score_1st -= 12.0
-                        tags.append("선행 경합 자멸주의 ⚠️")
-                    else:
-                        score_1st += 8.0
+                    if h["is_front"]: score_1st -= 12.0
+                    else: score_1st += 8.0
 
-                # 2착 연승 지수
-                score_2nd = 25.0 + (quinella_rate * 0.5) + (jk_rate * 0.3) + (tr_rate * 0.3)
-                if dist <= 1300 and g <= 3: score_2nd += 6.0
+                # 🥈 2착 선입/버티기 지수
+                score_2nd = 25.0 + (quinella_rate * 0.5) + (jk_rate * 0.3) + (tr_rate * 0.3) - (weight_penalty * 0.5)
+                if dist <= 1300 and g <= 3: score_2nd += 5.0
 
-                # 3착 복병 지수 (경량 부중, 외곽 모래회피, 중장거리 추입)
+                # 🥉 3착 복병 지수 (경량 + 외곽 + 중장거리 막판 추입)
                 score_3rd = 25.0
                 if clean_w <= 52.5: score_3rd += 12.0
                 if g >= 8: score_3rd += 8.0
@@ -365,8 +342,6 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 h["ai_score"] = round(45.0 + (h["score_2nd"] * 0.3), 1)
 
             r["horses"] = [pick_1st, pick_2nd, pick_3rd] + rem_others
-
-            # 엄격 조건 (단거리 능력분리 또는 중장거리 과열 추입전)
             r["is_trio_target"] = (scenario_type == "OVERPACED" or (dist <= 1200 and pick_1st["ai_score"] >= 68.0))
             r["trio_reason"] = r["scenario_title"]
 
@@ -377,10 +352,8 @@ def fetch_meet_data(meet_code, meet_name, date_str):
         return []
 
 def cleanse_corrupted_distances(races):
-    """과거 JSON에 1200m로 잘못 기록된 중장거리(1700m, 1800m, 2000m 등)를 주파 시간으로 일괄 수복"""
     for r in races:
         d = r.get("distance", "")
-        # 주파 시간이 110초 이상인데 1200m로 되어 있는 오염 데이터 교정
         actual_inferred = infer_distance_from_times(r.get("horses", []), r.get("meet_name", ""))
         if d == "1200" and actual_inferred in ["1700", "1800", "2000"]:
             print(f"🧹 [거리 수복] {r.get('race_date')} {r.get('meet_name')} {r.get('race_no')}R: {d}m ➔ {actual_inferred}m 정화 완료")
@@ -399,7 +372,7 @@ def sync_5weeks_archive():
                 for r in old_list:
                     k = f"{r.get('race_date')}_{r.get('meet_name')}_{r.get('race_no')}"
                     existing_races[k] = r
-            print(f"📦 기존 아카이브 정화 및 로드 완료: {len(existing_races)}개 경주")
+            print(f"📦 기존 아카이브 정화 완료: {len(existing_races)}개 경주")
         except:
             existing_races = {}
 
@@ -409,7 +382,7 @@ def sync_5weeks_archive():
         (now + timedelta(days=1)).strftime("%Y%m%d")
     ]
 
-    print(f"🔄 최신 수집 대상: {dates_to_fetch}")
+    print(f"🔄 최신 수집: {dates_to_fetch}")
     for dt in dates_to_fetch:
         for m_code, m_name in MEET_CONFIG:
             res = fetch_meet_data(m_code, m_name, dt)
@@ -437,7 +410,7 @@ def main():
         ))
         with open("race_data.json", "w", encoding="utf-8") as f:
             json.dump(all_races, f, ensure_ascii=False, indent=2)
-        print(f"🎉 성공: [{VERSION}] 공식 거리 및 전개 역학 표준화 완료! (총 {len(all_races)}개 경주)")
+        print(f"🎉 성공: [{VERSION}] 역발상 전개 엔진 갱신 완료! (총 {len(all_races)}개 경주)")
     else:
         print("❌ 데이터를 가져오지 못했습니다.")
 
