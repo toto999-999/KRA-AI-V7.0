@@ -230,7 +230,7 @@
                 <div id="horseList"></div>
             </div>
 
-            <!-- 탭 2: 20종 뱃지도감 완전체 -->
+            <!-- 탭 2: 20종 뱃지도감 완전체 복원 -->
             <div id="tab-badges" class="tab-content">
                 <div class="guide-card">
                     <div class="guide-title">🏷️ AI 핵심 뱃지 총람 (V7.0 역발상 전개 모델)</div>
@@ -416,7 +416,7 @@
         </div>
     </div>
 
-    <!-- 스크립트 로직 -->
+    <!-- 스크립트 로직 (얼마 전 잘 되던 복기 판정 100% 원복) -->
     <script>
         const CORRECT_PIN = "1415";
 
@@ -675,7 +675,7 @@
         }
 
         // ========================================================
-        // 🐎 [1번 탭] 전개 포지션 추천 렌더링
+        // 🐎 [1번 탭] 전개 포지션 추천 렌더링 (원형 100% 복원!)
         // ========================================================
         function renderRace(idx) {
             const race = allRaceData[idx];
@@ -707,15 +707,15 @@
             top3Box.innerHTML = `🎯 <strong>삼복승 조합</strong>: [${h1.gate}번] 축마 ➔ [${h2.gate}번] 선입 ➔ 🥉 <strong>[${h3.gate}번 ${h3.name}] 복병!</strong>`;
             patternBox.innerHTML = race.scenario_title ? `📊 ${race.scenario_title}<br><span style="font-size:0.75rem; opacity:0.85;">${race.scenario_desc || ''}</span>` : `📊 전개 분석 완료`;
 
-            // 진짜 1착, 2착 여부 파악
-            const actual1st = race.horses.find(h => parseInt(String(h.actual_ord).trim(), 10) === 1);
-            const actual2nd = race.horses.find(h => parseInt(String(h.actual_ord).trim(), 10) === 2);
-            const actual3rd = race.horses.find(h => parseInt(String(h.actual_ord).trim(), 10) === 3);
+            // 얼마 전 잘 작동하던 착순 판정 100% 원복
+            const actual1st = race.horses.find(h => parseInt(h.actual_ord, 10) === 1);
+            const actual2nd = race.horses.find(h => parseInt(h.actual_ord, 10) === 2);
+            const actual3rd = race.horses.find(h => parseInt(h.actual_ord, 10) === 3);
 
             banner.className = 'pick-banner';
 
             if (actual1st && actual2nd) {
-                const actualTop3Gates = [actual1st.gate, actual2nd.gate, actual3rd ? actual3rd.gate : null].filter(Boolean);
+                const actualTop3Gates = [actual1st.gate, actual2nd.gate, (actual3rd ? actual3rd.gate : null)].filter(Boolean);
                 const aiTop3 = [h1.gate, h2.gate, h3.gate];
                 const matchedInTop3 = aiTop3.filter(g => actualTop3Gates.includes(g)).length;
 
@@ -742,8 +742,8 @@
 
             race.horses.forEach((h, i) => {
                 const rankClass = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : '';
-                const ordNum = parseInt(String(h.actual_ord).trim(), 10);
-                const isValidOrd = (!isNaN(ordNum) && ordNum >= 1 && ordNum <= 16);
+                const ordNum = parseInt(h.actual_ord, 10);
+                const isValidOrd = (!isNaN(ordNum) && ordNum >= 1 && ordNum <= 20);
 
                 let badgeHtml = '';
                 if (isValidOrd) {
