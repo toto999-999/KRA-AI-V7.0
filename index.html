@@ -130,22 +130,15 @@
         .badge-table th { background: #f1f4f9; padding: 8px; text-align: left; color: #1e3c72; border-bottom: 1px solid #ddd; }
         .badge-table td { padding: 8px; border-bottom: 1px solid #eee; }
 
-        /* 실전 복기 미니 위젯 전용 스타일 */
-        .case-study-box {
-            background: #fff; border: 2px solid #1e3c72; border-radius: 10px; padding: 12px; margin: 12px 0;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+        /* 📸 자르지 않은 원본 사진 뷰어 스타일 */
+        .full-screenshot-box {
+            width: 100%; background: #fff; border-radius: 12px; padding: 10px;
+            border: 2px solid #1e3c72; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin: 12px 0 16px 0;
         }
-        .case-study-header {
-            background: #1e3c72; color: #fff; padding: 6px 10px; border-radius: 6px; font-size: 0.8rem;
-            font-weight: 800; display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;
+        .full-screenshot-img {
+            width: 100%; max-width: 440px; display: block; margin: 0 auto;
+            border-radius: 8px; border: 1px solid #ddd;
         }
-        .case-horse-row {
-            display: flex; justify-content: space-between; align-items: center; padding: 6px 8px;
-            border-bottom: 1px dashed #eee; font-size: 0.8rem;
-        }
-        .case-horse-row:last-child { border-bottom: none; }
-        .case-tag-won { background: #ffd700; color: #7a5800; padding: 1px 6px; border-radius: 4px; font-weight: 800; font-size: 0.72rem; }
-        .case-tag-loss { background: #eee; color: #888; padding: 1px 6px; border-radius: 4px; font-weight: 800; font-size: 0.72rem; }
 
         .filter-row { display: flex; gap: 6px; margin-bottom: 14px; }
         .filter-btn { flex: 1; padding: 8px 0; background: white; border: 1px solid #ddd; border-radius: 8px; font-size: 0.78rem; font-weight: bold; color: #666; cursor: pointer; text-align: center; }
@@ -383,45 +376,34 @@
             </div>
 
             <!-- ======================================================== -->
-            <!-- 🎯 [탭 3] 베팅 가이드 (10/5 서울 10R 실전 복기 위젯 탑재!) -->
+            <!-- 🎯 [탭 3] 베팅 가이드 (자르지 않은 원본 사진 & 실전 비법) -->
             <!-- ======================================================== -->
             <div id="tab-betting" class="tab-content">
                 
-                <!-- 👑 [신규 탑재] 10/5 서울 10R 실전 복기 위젯 & 베팅 비법 -->
                 <div class="guide-card" style="border: 2px solid #e63946;">
                     <div class="guide-title" style="color:#e63946;">
-                        🔥 [10/5 서울 10R 실전 검증] 100배 고배당 쓸어 담는 '역발상 복병 축' 베팅 비법!
+                        📸 [10/5 서울 10R 실전 화면] 자르지 않은 원본 그대로 보기
                     </div>
                     <div class="guide-text">
-                        10월 5일 서울 10R에서 <strong>인기 1위마가 9착으로 침몰</strong>하고, AI가 집어낸 <strong>[3착 복병마 9번]이 1착 우승</strong>, <strong>[8번 복병]이 2착</strong>하여 초대박 배당이 터졌습니다! 이 화면이 나왔을 때 마권을 어떻게 짜야 하는지 완벽히 정리해 드립니다.
+                        사용자님께서 직접 분석하신 <strong>10월 5일 서울 10R 실전 복기 전체 화면</strong>입니다. 인기 1위마의 침몰과 3착 복병마의 우승을 한눈에 대조해 보세요!
                     </div>
 
-                    <!-- 실전 화면 재현 미니 위젯 -->
-                    <div class="case-study-box">
-                        <div class="case-study-header">
-                            <span>[10/5 서울 10R 1200m] 실전 AI 복기 화면</span>
-                            <span style="color:#ffd700;">실제 결과: 9번 ➔ 8번 ➔ 6번</span>
-                        </div>
-                        <div class="case-horse-row" style="background:#fff8f8;">
-                            <div>
-                                <span style="background:#e63946; color:#fff; padding:1px 5px; border-radius:4px; font-weight:800; font-size:0.75rem;">5번</span>
-                                <strong>용비태양</strong> (56.5kg / 서승운) <span class="ai-tag warn-tag">인기 1위</span>
+                    <!-- 📸 자르지 않은 원본 사진 뷰어 -->
+                    <div class="full-screenshot-box">
+                        <img src="./case_study_1005.png" alt="10/5 서울 10R 실전 복기 원본 화면" class="full-screenshot-img" onerror="this.style.display='none'; document.getElementById('fallbackCaseBox').style.display='block';">
+                        
+                        <!-- 만약 이미지 파일이 없을 경우 100% 동일하게 1위~11위 전체를 보여주는 풀스크린 폴백 -->
+                        <div id="fallbackCaseBox" style="display:none;">
+                            <div style="background:#1e3c72; color:#fff; padding:8px 10px; border-radius:6px; font-weight:800; font-size:0.85rem; margin-bottom:8px;">
+                                [10/5 서울 10R (1200m)] 실제 1착 [9번] - 2착 [8번]
                             </div>
-                            <div><span class="case-tag-loss">실제 9착 (침몰)</span></div>
-                        </div>
-                        <div class="case-horse-row" style="background:#f0fdf4;">
-                            <div>
-                                <span style="background:#0284c7; color:#fff; padding:1px 5px; border-radius:4px; font-weight:800; font-size:0.75rem;">9번</span>
-                                <strong>혁무상</strong> (*52.5kg / 루이스) <span class="ai-tag gold-tag">경량·프리런·모래회피</span>
+                            <div style="font-size:0.75rem; color:#666; margin-bottom:10px; line-height:1.4;">
+                                • <strong>1착 우승축</strong>: 5번 용비태양 (76점 / 56.5kg / 서승운) ➔ <strong>실제 9착 침몰</strong><br>
+                                • <strong>2착 선입마</strong>: 3번 레전드와우 (71점 / 55kg / 정도윤) ➔ <strong>실제 4착</strong><br>
+                                • <strong>3착 복병마</strong>: 9번 혁무상 (63점 / 52.5kg / 루이스) ➔ <strong>실제 1착 우승! 🥇</strong><br>
+                                • <strong>일반 출전마</strong>: 8번 송당황태자 (58.9점 / 56kg / 임다빈) ➔ <strong>실제 2착 준우승! 🥈</strong><br>
+                                • <strong>일반 출전마</strong>: 6번 그레이스루트 (58.1점 / 52kg / 김태희) ➔ <strong>실제 3착 입상! 🥉</strong>
                             </div>
-                            <div><span class="case-tag-won">실제 1착 우승! 🥇</span></div>
-                        </div>
-                        <div class="case-horse-row" style="background:#f0fdf4;">
-                            <div>
-                                <span style="background:#475569; color:#fff; padding:1px 5px; border-radius:4px; font-weight:800; font-size:0.75rem;">8번</span>
-                                <strong>송당황태자</strong> (56kg / 임다빈) <span class="ai-tag gold-tag">프리런·모래회피</span>
-                            </div>
-                            <div><span class="case-tag-won">실제 2착 준우승! 🥈</span></div>
                         </div>
                     </div>
 
@@ -453,7 +435,6 @@
                     </div>
                 </div>
 
-                <!-- 기존 실전 가이드 -->
                 <div class="guide-card">
                     <div class="guide-title">🌟 [서울 7R 실전 교훈] 중장거리(1700m+) 절대 불패 베팅법!</div>
                     <div class="guide-box warn">
