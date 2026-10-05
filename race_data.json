@@ -5251,9 +5251,9 @@
     "meet_name": "서울",
     "race_no": "1",
     "race_date": "20261004",
-    "distance": "1000",
+    "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
         "gate": "5",
@@ -5275,9 +5275,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "-",
+        "horse_dist": "",
         "speed_power": 38.2,
-        "distance": "1000",
-        "ai_score": 73.1,
+        "distance": "1200",
+        "ai_score": 71.5,
         "ai_tags": [
           "특급 기수 🏇",
           "과거 스피드 최상 🏎️"
@@ -5304,9 +5305,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "6",
+        "horse_dist": "",
         "speed_power": 29.96,
-        "distance": "1000",
-        "ai_score": 61.4,
+        "distance": "1200",
+        "ai_score": 60.4,
         "ai_tags": [
           "상위 기수",
           "단거리 황금게이트 ⚡",
@@ -5335,9 +5337,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "8",
+        "horse_dist": "",
         "speed_power": 28.200000000000003,
-        "distance": "1000",
-        "ai_score": 58.4,
+        "distance": "1200",
+        "ai_score": 57.1,
         "ai_tags": [
           "특급 기수 🏇",
           "외곽 모래회피 복병 🚀",
@@ -5365,9 +5368,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "3",
+        "horse_dist": "",
         "speed_power": 27.400000000000002,
-        "distance": "1000",
-        "ai_score": 55.0,
+        "distance": "1200",
+        "ai_score": 54.2,
         "ai_tags": [
           "단거리 황금게이트 ⚡",
           "스피드 지수 최상(62.1초) 🏎️"
@@ -5394,9 +5398,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "7",
+        "horse_dist": "",
         "speed_power": 23.0,
-        "distance": "1000",
-        "ai_score": 53.5,
+        "distance": "1200",
+        "ai_score": 52.6,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
           "스피드 지수 최상(63.6초) 🏎️"
@@ -5423,9 +5428,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "5",
+        "horse_dist": "",
         "speed_power": 24.200000000000003,
-        "distance": "1000",
-        "ai_score": 52.0,
+        "distance": "1200",
+        "ai_score": 51.4,
         "ai_tags": [
           "단거리 황금게이트 ⚡",
           "스피드 지수 최상(62.6초) 🏎️"
@@ -5452,9 +5458,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "4",
+        "horse_dist": "",
         "speed_power": 19.32,
-        "distance": "1000",
-        "ai_score": 50.4,
+        "distance": "1200",
+        "ai_score": 49.8,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
           "스피드 지수 최상(62.2초) 🏎️"
@@ -5481,11 +5488,12 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "9",
+        "horse_dist": "",
         "speed_power": 22.200000000000003,
-        "distance": "1000",
-        "ai_score": 50.0,
+        "distance": "1200",
+        "ai_score": 49.4,
         "ai_tags": [
-          "기록 우수"
+          "스피드 지수 최상(64.9초) 🏎️"
         ],
         "odds_display": "-"
       },
@@ -5509,11 +5517,12 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "10",
+        "horse_dist": "",
         "speed_power": 22.200000000000003,
-        "distance": "1000",
-        "ai_score": 50.0,
+        "distance": "1200",
+        "ai_score": 49.4,
         "ai_tags": [
-          "기록 우수"
+          "스피드 지수 최상(65.0초) 🏎️"
         ],
         "odds_display": "-"
       },
@@ -5537,9 +5546,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 22.200000000000003,
-        "distance": "1000",
-        "ai_score": 50.0,
+        "distance": "1200",
+        "ai_score": 49.4,
         "ai_tags": [
           "스피드 지수 최상(62.0초) 🏎️"
         ],
@@ -5565,9 +5575,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "1",
+        "horse_dist": "",
         "speed_power": 18.200000000000003,
-        "distance": "1000",
-        "ai_score": 49.0,
+        "distance": "1200",
+        "ai_score": 48.4,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
           "스피드 지수 최상(61.8초) 🏎️"
@@ -5583,9 +5594,9 @@
     "meet_name": "서울",
     "race_no": "2",
     "race_date": "20261004",
-    "distance": "1300",
+    "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
         "gate": "3",
@@ -5607,9 +5618,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "6",
+        "horse_dist": "",
         "speed_power": 34.95,
-        "distance": "1300",
-        "ai_score": 73.9,
+        "distance": "1200",
+        "ai_score": 72.7,
         "ai_tags": [
           "특급 기수 🏇",
           "단거리 황금게이트 ⚡",
@@ -5638,13 +5650,13 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "1",
+        "horse_dist": "",
         "speed_power": 27.400000000000002,
-        "distance": "1300",
-        "ai_score": 64.0,
+        "distance": "1200",
+        "ai_score": 63.4,
         "ai_tags": [
           "경량 부중(51.0kg) ⚡",
-          "스피드 우수 🏎️",
-          "스피드 지수 최상(81.0초) 🏎️"
+          "스피드 우수 🏎️"
         ],
         "odds_display": "-"
       },
@@ -5668,14 +5680,14 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "3",
+        "horse_dist": "",
         "speed_power": 25.400000000000002,
-        "distance": "1300",
-        "ai_score": 61.5,
+        "distance": "1200",
+        "ai_score": 60.9,
         "ai_tags": [
           "우수 마방 🏆",
           "외곽 모래회피 복병 🚀",
-          "경량 부중(51.0kg) ⚡",
-          "기록 우수"
+          "경량 부중(51.0kg) ⚡"
         ],
         "odds_display": "-"
       },
@@ -5699,9 +5711,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "7",
+        "horse_dist": "",
         "speed_power": 26.35,
-        "distance": "1300",
-        "ai_score": 61.4,
+        "distance": "1200",
+        "ai_score": 60.5,
         "ai_tags": [
           "우수 마방 🏆",
           "외곽 모래회피 복병 🚀",
@@ -5729,9 +5742,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "10",
+        "horse_dist": "",
         "speed_power": 24.650000000000002,
-        "distance": "1300",
-        "ai_score": 60.5,
+        "distance": "1200",
+        "ai_score": 59.9,
         "ai_tags": [
           "우수 마방 🏆",
           "외곽 모래회피 복병 🚀",
@@ -5759,13 +5773,13 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "4",
+        "horse_dist": "",
         "speed_power": 23.700000000000003,
-        "distance": "1300",
-        "ai_score": 58.4,
+        "distance": "1200",
+        "ai_score": 57.6,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
-          "경량 부중(52.0kg) ⚡",
-          "기록 우수"
+          "경량 부중(52.0kg) ⚡"
         ],
         "odds_display": "-"
       },
@@ -5789,9 +5803,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "8",
+        "horse_dist": "",
         "speed_power": 24.950000000000003,
-        "distance": "1300",
-        "ai_score": 56.5,
+        "distance": "1200",
+        "ai_score": 55.9,
         "ai_tags": [
           "단거리 황금게이트 ⚡",
           "경량 부중(52.5kg) ⚡"
@@ -5818,9 +5833,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "9",
+        "horse_dist": "",
         "speed_power": 24.21,
-        "distance": "1300",
-        "ai_score": 55.0,
+        "distance": "1200",
+        "ai_score": 54.1,
         "ai_tags": [
           "상위 기수"
         ],
@@ -5846,9 +5862,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "11",
+        "horse_dist": "",
         "speed_power": 22.950000000000003,
-        "distance": "1300",
-        "ai_score": 54.5,
+        "distance": "1200",
+        "ai_score": 53.9,
         "ai_tags": [
           "경량 부중(52.5kg) ⚡"
         ],
@@ -5874,12 +5891,12 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 22.950000000000003,
-        "distance": "1300",
-        "ai_score": 54.5,
+        "distance": "1200",
+        "ai_score": 53.9,
         "ai_tags": [
-          "경량 부중(52.5kg) ⚡",
-          "기록 우수"
+          "경량 부중(52.5kg) ⚡"
         ],
         "odds_display": "-"
       },
@@ -5903,12 +5920,12 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "5",
+        "horse_dist": "",
         "speed_power": 23.450000000000003,
-        "distance": "1300",
-        "ai_score": 52.0,
+        "distance": "1200",
+        "ai_score": 51.4,
         "ai_tags": [
-          "단거리 황금게이트 ⚡",
-          "기록 우수"
+          "단거리 황금게이트 ⚡"
         ],
         "odds_display": "-"
       }
@@ -5921,10 +5938,41 @@
     "meet_name": "서울",
     "race_no": "3",
     "race_date": "20261004",
-    "distance": "1700",
+    "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
+      {
+        "gate": "2",
+        "name": "신천하트",
+        "jockey": "문세영",
+        "trainer": "관리팀",
+        "weight": "54",
+        "track": "양호",
+        "rc_time": "1:53.6",
+        "past_time": "",
+        "g1f_time": "",
+        "win_odds": "0",
+        "pre_ord": "",
+        "gear_info": "",
+        "training_info": "",
+        "combo_info": "",
+        "rc_cnt": "0",
+        "ord1_cnt": "0",
+        "ord2_cnt": "0",
+        "is_front": false,
+        "actual_ord": "3",
+        "horse_dist": "",
+        "speed_power": 39.660000000000004,
+        "distance": "1200",
+        "ai_score": 74.2,
+        "ai_tags": [
+          "특급 기수 🏇",
+          "단거리 황금게이트 ⚡",
+          "과거 스피드 최상 🏎️"
+        ],
+        "odds_display": "-"
+      },
       {
         "gate": "1",
         "name": "지산포에버",
@@ -5945,41 +5993,14 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "5",
+        "horse_dist": "",
         "speed_power": 26.900000000000002,
-        "distance": "1700",
-        "ai_score": 65.0,
+        "distance": "1200",
+        "ai_score": 61.0,
         "ai_tags": [
           "상위 기수",
-          "과거 스피드 최상 🏎️"
-        ],
-        "odds_display": "-"
-      },
-      {
-        "gate": "8",
-        "name": "플라잉드림",
-        "jockey": "김용근",
-        "trainer": "이준철",
-        "weight": "55",
-        "track": "양호",
-        "rc_time": "1:56.1",
-        "past_time": "",
-        "g1f_time": "",
-        "win_odds": "0",
-        "pre_ord": "",
-        "gear_info": "",
-        "training_info": "",
-        "combo_info": "",
-        "rc_cnt": "0",
-        "ord1_cnt": "0",
-        "ord2_cnt": "0",
-        "is_front": false,
-        "actual_ord": "7",
-        "speed_power": 25.200000000000003,
-        "distance": "1700",
-        "ai_score": 61.4,
-        "ai_tags": [
-          "특급 기수 🏇",
-          "외곽 모래회피 복병 🚀"
+          "단거리 황금게이트 ⚡",
+          "스피드 우수 🏎️"
         ],
         "odds_display": "-"
       },
@@ -6003,13 +6024,44 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "8",
+        "horse_dist": "",
         "speed_power": 19.42,
-        "distance": "1700",
-        "ai_score": 58.4,
+        "distance": "1200",
+        "ai_score": 57.8,
         "ai_tags": [
           "우수 마방 🏆",
           "외곽 모래회피 복병 🚀",
           "숨은 다크호스 💥"
+        ],
+        "odds_display": "-"
+      },
+      {
+        "gate": "8",
+        "name": "플라잉드림",
+        "jockey": "김용근",
+        "trainer": "이준철",
+        "weight": "55",
+        "track": "양호",
+        "rc_time": "1:56.1",
+        "past_time": "",
+        "g1f_time": "",
+        "win_odds": "0",
+        "pre_ord": "",
+        "gear_info": "",
+        "training_info": "",
+        "combo_info": "",
+        "rc_cnt": "0",
+        "ord1_cnt": "0",
+        "ord2_cnt": "0",
+        "is_front": false,
+        "actual_ord": "7",
+        "horse_dist": "",
+        "speed_power": 25.200000000000003,
+        "distance": "1200",
+        "ai_score": 57.1,
+        "ai_tags": [
+          "특급 기수 🏇",
+          "외곽 모래회피 복병 🚀"
         ],
         "odds_display": "-"
       },
@@ -6033,40 +6085,11 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "1",
+        "horse_dist": "",
         "speed_power": 25.5,
-        "distance": "1700",
-        "ai_score": 57.5,
-        "ai_tags": [
-          "스피드 우수 🏎️"
-        ],
-        "odds_display": "-"
-      },
-      {
-        "gate": "4",
-        "name": "라이징윈드",
-        "jockey": "푸르칸",
-        "trainer": "배휴준",
-        "weight": "54",
-        "track": "양호",
-        "rc_time": "1:53.9",
-        "past_time": "",
-        "g1f_time": "",
-        "win_odds": "0",
-        "pre_ord": "",
-        "gear_info": "",
-        "training_info": "",
-        "combo_info": "",
-        "rc_cnt": "0",
-        "ord1_cnt": "0",
-        "ord2_cnt": "0",
-        "is_front": false,
-        "actual_ord": "4",
-        "speed_power": 23.42,
-        "distance": "1700",
-        "ai_score": 54.4,
-        "ai_tags": [
-          "우수 마방 🏆"
-        ],
+        "distance": "1200",
+        "ai_score": 53.6,
+        "ai_tags": [],
         "odds_display": "-"
       },
       {
@@ -6089,20 +6112,21 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 22.900000000000002,
-        "distance": "1700",
+        "distance": "1200",
         "ai_score": 53.2,
         "ai_tags": [],
         "odds_display": "-"
       },
       {
-        "gate": "2",
-        "name": "신천하트",
-        "jockey": "조상범",
-        "trainer": "문세영",
+        "gate": "4",
+        "name": "라이징윈드",
+        "jockey": "푸르칸",
+        "trainer": "배휴준",
         "weight": "54",
         "track": "양호",
-        "rc_time": "1:53.6",
+        "rc_time": "1:53.9",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -6114,11 +6138,14 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "3",
-        "speed_power": 22.700000000000003,
-        "distance": "1700",
-        "ai_score": 51.0,
-        "ai_tags": [],
+        "actual_ord": "4",
+        "horse_dist": "",
+        "speed_power": 23.42,
+        "distance": "1200",
+        "ai_score": 52.8,
+        "ai_tags": [
+          "우수 마방 🏆"
+        ],
         "odds_display": "-"
       },
       {
@@ -6141,10 +6168,13 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "9",
+        "horse_dist": "",
         "speed_power": 22.700000000000003,
-        "distance": "1700",
-        "ai_score": 51.0,
-        "ai_tags": [],
+        "distance": "1200",
+        "ai_score": 51.4,
+        "ai_tags": [
+          "단거리 황금게이트 ⚡"
+        ],
         "odds_display": "-"
       },
       {
@@ -6167,9 +6197,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "6",
+        "horse_dist": "",
         "speed_power": 20.700000000000003,
-        "distance": "1700",
-        "ai_score": 49.0,
+        "distance": "1200",
+        "ai_score": 49.4,
         "ai_tags": [],
         "odds_display": "-"
       },
@@ -6193,9 +6224,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "10",
+        "horse_dist": "",
         "speed_power": 16.700000000000003,
-        "distance": "1700",
-        "ai_score": 49.0,
+        "distance": "1200",
+        "ai_score": 48.4,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
@@ -6212,7 +6244,7 @@
     "race_date": "20261004",
     "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
         "gate": "8",
@@ -6234,9 +6266,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "11",
+        "horse_dist": "",
         "speed_power": 32.300000000000004,
         "distance": "1200",
-        "ai_score": 71.6,
+        "ai_score": 70.0,
         "ai_tags": [
           "특급 기수 🏇",
           "외곽 모래회피 복병 🚀",
@@ -6264,9 +6297,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "7",
+        "horse_dist": "",
         "speed_power": 28.46,
         "distance": "1200",
-        "ai_score": 61.4,
+        "ai_score": 60.4,
         "ai_tags": [
           "상위 기수",
           "단거리 황금게이트 ⚡",
@@ -6294,9 +6328,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "6",
+        "horse_dist": "",
         "speed_power": 25.680000000000003,
         "distance": "1200",
-        "ai_score": 58.8,
+        "ai_score": 57.6,
         "ai_tags": [
           "특급 기수 🏇",
           "외곽 모래회피 복병 🚀"
@@ -6323,9 +6358,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "4",
+        "horse_dist": "",
         "speed_power": 23.700000000000003,
         "distance": "1200",
-        "ai_score": 55.4,
+        "ai_score": 54.8,
         "ai_tags": [
           "경량 부중(52.0kg) ⚡"
         ],
@@ -6351,9 +6387,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 23.520000000000003,
         "distance": "1200",
-        "ai_score": 54.4,
+        "ai_score": 53.6,
         "ai_tags": [],
         "odds_display": "-"
       },
@@ -6377,9 +6414,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "5",
+        "horse_dist": "",
         "speed_power": 21.200000000000003,
         "distance": "1200",
-        "ai_score": 52.0,
+        "ai_score": 51.4,
         "ai_tags": [
           "단거리 황금게이트 ⚡"
         ],
@@ -6405,9 +6443,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "10",
+        "horse_dist": "",
         "speed_power": 19.700000000000003,
         "distance": "1200",
-        "ai_score": 51.3,
+        "ai_score": 50.7,
         "ai_tags": [
           "단거리 황금게이트 ⚡"
         ],
@@ -6433,9 +6472,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "8",
+        "horse_dist": "",
         "speed_power": 22.200000000000003,
         "distance": "1200",
-        "ai_score": 50.0,
+        "ai_score": 49.4,
         "ai_tags": [],
         "odds_display": "-"
       },
@@ -6459,9 +6499,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "9",
+        "horse_dist": "",
         "speed_power": 18.1,
         "distance": "1200",
-        "ai_score": 49.8,
+        "ai_score": 49.2,
         "ai_tags": [],
         "odds_display": "-"
       },
@@ -6485,9 +6526,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "1",
+        "horse_dist": "",
         "speed_power": 15.200000000000003,
         "distance": "1200",
-        "ai_score": 49.0,
+        "ai_score": 48.4,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
@@ -6513,9 +6555,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "3",
+        "horse_dist": "",
         "speed_power": 13.700000000000003,
         "distance": "1200",
-        "ai_score": 48.3,
+        "ai_score": 47.7,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
@@ -6532,7 +6575,7 @@
     "race_date": "20261004",
     "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
         "gate": "2",
@@ -6554,9 +6597,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "6",
+        "horse_dist": "",
         "speed_power": 38.300000000000004,
         "distance": "1200",
-        "ai_score": 74.6,
+        "ai_score": 73.0,
         "ai_tags": [
           "특급 기수 🏇",
           "단거리 황금게이트 ⚡",
@@ -6584,9 +6628,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "8",
+        "horse_dist": "",
         "speed_power": 36.0,
         "distance": "1200",
-        "ai_score": 71.6,
+        "ai_score": 70.3,
         "ai_tags": [
           "특급 기수 🏇",
           "경량 부중(51.0kg) ⚡",
@@ -6614,9 +6659,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "4",
+        "horse_dist": "",
         "speed_power": 31.180000000000003,
         "distance": "1200",
-        "ai_score": 59.8,
+        "ai_score": 58.6,
         "ai_tags": [
           "특급 기수 🏇"
         ],
@@ -6642,9 +6688,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "1",
+        "horse_dist": "",
         "speed_power": 26.450000000000003,
         "distance": "1200",
-        "ai_score": 57.1,
+        "ai_score": 56.0,
         "ai_tags": [
           "상위 기수",
           "기록 우수"
@@ -6671,9 +6718,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "5",
+        "horse_dist": "",
         "speed_power": 24.950000000000003,
         "distance": "1200",
-        "ai_score": 56.5,
+        "ai_score": 55.9,
         "ai_tags": [
           "단거리 황금게이트 ⚡",
           "경량 부중(52.5kg) ⚡"
@@ -6700,9 +6748,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "3",
+        "horse_dist": "",
         "speed_power": 20.450000000000003,
         "distance": "1200",
-        "ai_score": 55.3,
+        "ai_score": 54.7,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
           "경량 부중(51.5kg) ⚡"
@@ -6729,9 +6778,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "7",
+        "horse_dist": "",
         "speed_power": 22.400000000000002,
         "distance": "1200",
-        "ai_score": 54.2,
+        "ai_score": 53.6,
         "ai_tags": [
           "우수 마방 🏆",
           "외곽 모래회피 복병 🚀"
@@ -6758,9 +6808,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "10",
+        "horse_dist": "",
         "speed_power": 18.950000000000003,
         "distance": "1200",
-        "ai_score": 53.5,
+        "ai_score": 52.9,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
           "경량 부중(52.5kg) ⚡"
@@ -6787,9 +6838,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 19.200000000000003,
         "distance": "1200",
-        "ai_score": 52.4,
+        "ai_score": 51.8,
         "ai_tags": [
           "우수 마방 🏆",
           "기록 우수"
@@ -6816,9 +6868,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "9",
+        "horse_dist": "",
         "speed_power": 22.700000000000003,
         "distance": "1200",
-        "ai_score": 52.0,
+        "ai_score": 51.4,
         "ai_tags": [
           "단거리 황금게이트 ⚡"
         ],
@@ -6844,9 +6897,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "11",
+        "horse_dist": "",
         "speed_power": 18.200000000000003,
         "distance": "1200",
-        "ai_score": 49.0,
+        "ai_score": 48.4,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
@@ -6861,9 +6915,9 @@
     "meet_name": "서울",
     "race_no": "6",
     "race_date": "20261004",
-    "distance": "1400",
+    "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
         "gate": "4",
@@ -6885,42 +6939,13 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 29.98,
-        "distance": "1400",
-        "ai_score": 68.1,
+        "distance": "1200",
+        "ai_score": 66.0,
         "ai_tags": [
           "상위 기수",
           "과거 스피드 최상 🏎️"
-        ],
-        "odds_display": "-"
-      },
-      {
-        "gate": "10",
-        "name": "에클레어",
-        "jockey": "김아현",
-        "trainer": "서홍수",
-        "weight": "*52.5",
-        "track": "양호",
-        "rc_time": "1:31.3",
-        "past_time": "",
-        "g1f_time": "",
-        "win_odds": "0",
-        "pre_ord": "",
-        "gear_info": "",
-        "training_info": "",
-        "combo_info": "",
-        "rc_cnt": "0",
-        "ord1_cnt": "0",
-        "ord2_cnt": "0",
-        "is_front": false,
-        "actual_ord": "11",
-        "speed_power": 23.150000000000002,
-        "distance": "1400",
-        "ai_score": 58.8,
-        "ai_tags": [
-          "우수 마방 🏆",
-          "외곽 모래회피 복병 🚀",
-          "경량 부중(52.5kg) ⚡"
         ],
         "odds_display": "-"
       },
@@ -6944,22 +6969,24 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "7",
+        "horse_dist": "",
         "speed_power": 25.900000000000002,
-        "distance": "1400",
-        "ai_score": 58.0,
+        "distance": "1200",
+        "ai_score": 58.2,
         "ai_tags": [
+          "단거리 황금게이트 ⚡",
           "스피드 우수 🏎️"
         ],
         "odds_display": "-"
       },
       {
-        "gate": "8",
-        "name": "파이널질주",
-        "jockey": "조상범",
-        "trainer": "임채덕",
+        "gate": "10",
+        "name": "에클레어",
+        "jockey": "김아현",
+        "trainer": "서홍수",
         "weight": "*52.5",
         "track": "양호",
-        "rc_time": "1:30.0",
+        "rc_time": "1:31.3",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -6971,11 +6998,13 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "8",
-        "speed_power": 18.950000000000003,
-        "distance": "1400",
-        "ai_score": 56.5,
+        "actual_ord": "11",
+        "horse_dist": "",
+        "speed_power": 23.150000000000002,
+        "distance": "1200",
+        "ai_score": 58.1,
         "ai_tags": [
+          "우수 마방 🏆",
           "외곽 모래회피 복병 🚀",
           "경량 부중(52.5kg) ⚡"
         ],
@@ -7001,10 +7030,41 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "10",
+        "horse_dist": "",
         "speed_power": 22.950000000000003,
-        "distance": "1400",
-        "ai_score": 53.5,
+        "distance": "1200",
+        "ai_score": 53.9,
         "ai_tags": [
+          "경량 부중(52.5kg) ⚡"
+        ],
+        "odds_display": "-"
+      },
+      {
+        "gate": "8",
+        "name": "파이널질주",
+        "jockey": "조상범",
+        "trainer": "임채덕",
+        "weight": "*52.5",
+        "track": "양호",
+        "rc_time": "1:30.0",
+        "past_time": "",
+        "g1f_time": "",
+        "win_odds": "0",
+        "pre_ord": "",
+        "gear_info": "",
+        "training_info": "",
+        "combo_info": "",
+        "rc_cnt": "0",
+        "ord1_cnt": "0",
+        "ord2_cnt": "0",
+        "is_front": false,
+        "actual_ord": "8",
+        "horse_dist": "",
+        "speed_power": 18.950000000000003,
+        "distance": "1200",
+        "ai_score": 52.9,
+        "ai_tags": [
+          "외곽 모래회피 복병 🚀",
           "경량 부중(52.5kg) ⚡"
         ],
         "odds_display": "-"
@@ -7029,10 +7089,13 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "4",
+        "horse_dist": "",
         "speed_power": 24.200000000000003,
-        "distance": "1400",
-        "ai_score": 51.0,
-        "ai_tags": [],
+        "distance": "1200",
+        "ai_score": 51.4,
+        "ai_tags": [
+          "단거리 황금게이트 ⚡"
+        ],
         "odds_display": "-"
       },
       {
@@ -7055,10 +7118,13 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "9",
+        "horse_dist": "",
         "speed_power": 23.450000000000003,
-        "distance": "1400",
-        "ai_score": 51.0,
-        "ai_tags": [],
+        "distance": "1200",
+        "ai_score": 51.4,
+        "ai_tags": [
+          "단거리 황금게이트 ⚡"
+        ],
         "odds_display": "-"
       },
       {
@@ -7081,9 +7147,37 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "1",
+        "horse_dist": "",
         "speed_power": 20.700000000000003,
-        "distance": "1400",
-        "ai_score": 49.0,
+        "distance": "1200",
+        "ai_score": 49.4,
+        "ai_tags": [],
+        "odds_display": "-"
+      },
+      {
+        "gate": "5",
+        "name": "킹스파이시",
+        "jockey": "김태훈",
+        "trainer": "서인석",
+        "weight": "56",
+        "track": "양호",
+        "rc_time": "1:29.3",
+        "past_time": "",
+        "g1f_time": "",
+        "win_odds": "0",
+        "pre_ord": "",
+        "gear_info": "",
+        "training_info": "",
+        "combo_info": "",
+        "rc_cnt": "0",
+        "ord1_cnt": "0",
+        "ord2_cnt": "0",
+        "is_front": false,
+        "actual_ord": "3",
+        "horse_dist": "",
+        "speed_power": 18.1,
+        "distance": "1200",
+        "ai_score": 49.2,
         "ai_tags": [],
         "odds_display": "-"
       },
@@ -7107,38 +7201,13 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "5",
+        "horse_dist": "",
         "speed_power": 16.700000000000003,
-        "distance": "1400",
-        "ai_score": 49.0,
+        "distance": "1200",
+        "ai_score": 48.4,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
-        "odds_display": "-"
-      },
-      {
-        "gate": "5",
-        "name": "킹스파이시",
-        "jockey": "김태훈",
-        "trainer": "서인석",
-        "weight": "56",
-        "track": "양호",
-        "rc_time": "1:29.3",
-        "past_time": "",
-        "g1f_time": "",
-        "win_odds": "0",
-        "pre_ord": "",
-        "gear_info": "",
-        "training_info": "",
-        "combo_info": "",
-        "rc_cnt": "0",
-        "ord1_cnt": "0",
-        "ord2_cnt": "0",
-        "is_front": false,
-        "actual_ord": "3",
-        "speed_power": 18.1,
-        "distance": "1400",
-        "ai_score": 48.8,
-        "ai_tags": [],
         "odds_display": "-"
       },
       {
@@ -7161,9 +7230,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "6",
+        "horse_dist": "",
         "speed_power": 12.200000000000003,
-        "distance": "1400",
-        "ai_score": 47.6,
+        "distance": "1200",
+        "ai_score": 47.0,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
@@ -7178,9 +7248,9 @@
     "meet_name": "서울",
     "race_no": "7",
     "race_date": "20261004",
-    "distance": "1800",
+    "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
         "gate": "1",
@@ -7202,13 +7272,14 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "3",
+        "horse_dist": "",
         "speed_power": 29.35,
-        "distance": "1800",
-        "ai_score": 65.1,
+        "distance": "1200",
+        "ai_score": 67.8,
         "ai_tags": [
+          "단거리 황금게이트 ⚡",
           "경량 부중(52.5kg) ⚡",
-          "과거 스피드 최상 🏎️",
-          "스피드 지수 최상(75.5초) 🏎️"
+          "과거 스피드 최상 🏎️"
         ],
         "odds_display": "-"
       },
@@ -7232,14 +7303,15 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "7",
+        "horse_dist": "",
         "speed_power": 27.950000000000003,
-        "distance": "1800",
-        "ai_score": 60.8,
+        "distance": "1200",
+        "ai_score": 63.6,
         "ai_tags": [
           "우수 마방 🏆",
+          "단거리 황금게이트 ⚡",
           "경량 부중(52.5kg) ⚡",
-          "스피드 우수 🏎️",
-          "스피드 지수 최상(76.6초) 🏎️"
+          "스피드 우수 🏎️"
         ],
         "odds_display": "-"
       },
@@ -7263,13 +7335,13 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "5",
+        "horse_dist": "",
         "speed_power": 27.150000000000002,
-        "distance": "1800",
-        "ai_score": 58.2,
+        "distance": "1200",
+        "ai_score": 59.1,
         "ai_tags": [
           "우수 마방 🏆",
-          "경량 부중(52.5kg) ⚡",
-          "스피드 지수 최상(76.3초) 🏎️"
+          "경량 부중(52.5kg) ⚡"
         ],
         "odds_display": "-"
       },
@@ -7293,13 +7365,13 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "1",
+        "horse_dist": "",
         "speed_power": 26.12,
-        "distance": "1800",
-        "ai_score": 57.8,
+        "distance": "1200",
+        "ai_score": 57.7,
         "ai_tags": [
           "상위 기수",
-          "우수 마방 🏆",
-          "스피드 지수 최상(75.1초) 🏎️"
+          "우수 마방 🏆"
         ],
         "odds_display": "-"
       },
@@ -7323,42 +7395,13 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 24.150000000000002,
-        "distance": "1800",
-        "ai_score": 55.9,
+        "distance": "1200",
+        "ai_score": 57.5,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
-          "경량 부중(52.5kg) ⚡",
-          "스피드 지수 최상(75.5초) 🏎️"
-        ],
-        "odds_display": "-"
-      },
-      {
-        "gate": "11",
-        "name": "퍼플코리아",
-        "jockey": "이동하",
-        "trainer": "최용건",
-        "weight": "53",
-        "track": "양호",
-        "rc_time": "1:16.0",
-        "past_time": "",
-        "g1f_time": "",
-        "win_odds": "0",
-        "pre_ord": "",
-        "gear_info": "",
-        "training_info": "",
-        "combo_info": "",
-        "rc_cnt": "0",
-        "ord1_cnt": "0",
-        "ord2_cnt": "0",
-        "is_front": false,
-        "actual_ord": "4",
-        "speed_power": 23.400000000000002,
-        "distance": "1800",
-        "ai_score": 54.5,
-        "ai_tags": [
-          "외곽 모래회피 복병 🚀",
-          "스피드 지수 최상(76.0초) 🏎️"
+          "경량 부중(52.5kg) ⚡"
         ],
         "odds_display": "-"
       },
@@ -7382,12 +7425,12 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "8",
+        "horse_dist": "",
         "speed_power": 24.950000000000003,
-        "distance": "1800",
-        "ai_score": 53.5,
+        "distance": "1200",
+        "ai_score": 56.4,
         "ai_tags": [
-          "경량 부중(52.5kg) ⚡",
-          "스피드 지수 최상(76.7초) 🏎️"
+          "경량 부중(52.5kg) ⚡"
         ],
         "odds_display": "-"
       },
@@ -7411,70 +7454,13 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "6",
+        "horse_dist": "",
         "speed_power": 24.950000000000003,
-        "distance": "1800",
-        "ai_score": 53.0,
+        "distance": "1200",
+        "ai_score": 55.9,
         "ai_tags": [
-          "경량 부중(52.5kg) ⚡",
-          "스피드 지수 최상(76.3초) 🏎️"
-        ],
-        "odds_display": "-"
-      },
-      {
-        "gate": "8",
-        "name": "그냥가라",
-        "jockey": "조상범",
-        "trainer": "토니",
-        "weight": "54",
-        "track": "양호",
-        "rc_time": "1:16.7",
-        "past_time": "",
-        "g1f_time": "",
-        "win_odds": "0",
-        "pre_ord": "",
-        "gear_info": "",
-        "training_info": "",
-        "combo_info": "",
-        "rc_cnt": "0",
-        "ord1_cnt": "0",
-        "ord2_cnt": "0",
-        "is_front": false,
-        "actual_ord": "9",
-        "speed_power": 16.700000000000003,
-        "distance": "1800",
-        "ai_score": 52.0,
-        "ai_tags": [
-          "외곽 모래회피 복병 🚀",
-          "스피드 지수 최상(76.7초) 🏎️"
-        ],
-        "odds_display": "-"
-      },
-      {
-        "gate": "6",
-        "name": "성실대로",
-        "jockey": "김태현",
-        "trainer": "심승태",
-        "weight": "*52.5",
-        "track": "양호",
-        "rc_time": "1:16.9",
-        "past_time": "",
-        "g1f_time": "",
-        "win_odds": "0",
-        "pre_ord": "",
-        "gear_info": "",
-        "training_info": "",
-        "combo_info": "",
-        "rc_cnt": "0",
-        "ord1_cnt": "0",
-        "ord2_cnt": "0",
-        "is_front": false,
-        "actual_ord": "10",
-        "speed_power": 22.950000000000003,
-        "distance": "1800",
-        "ai_score": 51.0,
-        "ai_tags": [
-          "경량 부중(52.5kg) ⚡",
-          "스피드 지수 최상(76.9초) 🏎️"
+          "단거리 황금게이트 ⚡",
+          "경량 부중(52.5kg) ⚡"
         ],
         "odds_display": "-"
       },
@@ -7498,13 +7484,100 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "11",
+        "horse_dist": "",
         "speed_power": 21.200000000000003,
-        "distance": "1800",
-        "ai_score": 51.0,
+        "distance": "1200",
+        "ai_score": 55.6,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
-          "경량 부중(51.0kg) ⚡",
-          "스피드 지수 최상(77.3초) 🏎️"
+          "경량 부중(51.0kg) ⚡"
+        ],
+        "odds_display": "-"
+      },
+      {
+        "gate": "6",
+        "name": "성실대로",
+        "jockey": "김태현",
+        "trainer": "심승태",
+        "weight": "*52.5",
+        "track": "양호",
+        "rc_time": "1:16.9",
+        "past_time": "",
+        "g1f_time": "",
+        "win_odds": "0",
+        "pre_ord": "",
+        "gear_info": "",
+        "training_info": "",
+        "combo_info": "",
+        "rc_cnt": "0",
+        "ord1_cnt": "0",
+        "ord2_cnt": "0",
+        "is_front": false,
+        "actual_ord": "10",
+        "horse_dist": "",
+        "speed_power": 22.950000000000003,
+        "distance": "1200",
+        "ai_score": 53.9,
+        "ai_tags": [
+          "경량 부중(52.5kg) ⚡"
+        ],
+        "odds_display": "-"
+      },
+      {
+        "gate": "11",
+        "name": "퍼플코리아",
+        "jockey": "이동하",
+        "trainer": "최용건",
+        "weight": "53",
+        "track": "양호",
+        "rc_time": "1:16.0",
+        "past_time": "",
+        "g1f_time": "",
+        "win_odds": "0",
+        "pre_ord": "",
+        "gear_info": "",
+        "training_info": "",
+        "combo_info": "",
+        "rc_cnt": "0",
+        "ord1_cnt": "0",
+        "ord2_cnt": "0",
+        "is_front": false,
+        "actual_ord": "4",
+        "horse_dist": "",
+        "speed_power": 23.400000000000002,
+        "distance": "1200",
+        "ai_score": 53.7,
+        "ai_tags": [
+          "외곽 모래회피 복병 🚀"
+        ],
+        "odds_display": "-"
+      },
+      {
+        "gate": "8",
+        "name": "그냥가라",
+        "jockey": "조상범",
+        "trainer": "토니",
+        "weight": "54",
+        "track": "양호",
+        "rc_time": "1:16.7",
+        "past_time": "",
+        "g1f_time": "",
+        "win_odds": "0",
+        "pre_ord": "",
+        "gear_info": "",
+        "training_info": "",
+        "combo_info": "",
+        "rc_cnt": "0",
+        "ord1_cnt": "0",
+        "ord2_cnt": "0",
+        "is_front": false,
+        "actual_ord": "9",
+        "horse_dist": "",
+        "speed_power": 16.700000000000003,
+        "distance": "1200",
+        "ai_score": 48.4,
+        "ai_tags": [
+          "외곽 모래회피 복병 🚀"
         ],
         "odds_display": "-"
       }
@@ -7517,9 +7590,9 @@
     "meet_name": "서울",
     "race_no": "8",
     "race_date": "20261004",
-    "distance": "2000",
+    "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
         "gate": "13",
@@ -7541,25 +7614,25 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "11",
+        "horse_dist": "",
         "speed_power": 32.300000000000004,
-        "distance": "2000",
-        "ai_score": 71.6,
+        "distance": "1200",
+        "ai_score": 70.0,
         "ai_tags": [
           "특급 기수 🏇",
           "외곽 모래회피 복병 🚀",
-          "과거 스피드 최상 🏎️",
-          "스피드 지수 최상(119.0초) 🏎️"
+          "과거 스피드 최상 🏎️"
         ],
         "odds_display": "-"
       },
       {
-        "gate": "5",
-        "name": "클러치매직",
-        "jockey": "빅투아르",
-        "trainer": "리카디",
-        "weight": "55",
+        "gate": "10",
+        "name": "태평히어로",
+        "jockey": "문세영",
+        "trainer": "관리팀",
+        "weight": "56",
         "track": "양호",
-        "rc_time": "1:55.7",
+        "rc_time": "1:57.2",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -7571,14 +7644,15 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "1",
-        "speed_power": 29.680000000000003,
-        "distance": "2000",
-        "ai_score": 62.8,
+        "actual_ord": "6",
+        "horse_dist": "",
+        "speed_power": 30.660000000000004,
+        "distance": "1200",
+        "ai_score": 66.5,
         "ai_tags": [
           "특급 기수 🏇",
-          "스피드 우수 🏎️",
-          "스피드 지수 최상(115.7초) 🏎️"
+          "외곽 모래회피 복병 🚀",
+          "스피드 우수 🏎️"
         ],
         "odds_display": "-"
       },
@@ -7602,12 +7676,13 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "7",
+        "horse_dist": "",
         "speed_power": 21.900000000000002,
-        "distance": "2000",
-        "ai_score": 61.5,
+        "distance": "1200",
+        "ai_score": 61.7,
         "ai_tags": [
-          "체급 최강자(탑웨이트) 🏋️",
-          "스피드 지수 최상(117.2초) 🏎️"
+          "단거리 황금게이트 ⚡",
+          "체급 최강자(탑웨이트) 🏋️"
         ],
         "odds_display": "-"
       },
@@ -7631,14 +7706,14 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "4",
+        "horse_dist": "",
         "speed_power": 24.400000000000002,
-        "distance": "2000",
-        "ai_score": 60.4,
+        "distance": "1200",
+        "ai_score": 59.2,
         "ai_tags": [
           "상위 기수",
           "우수 마방 🏆",
-          "외곽 모래회피 복병 🚀",
-          "스피드 지수 최상(116.3초) 🏎️"
+          "외곽 모래회피 복병 🚀"
         ],
         "odds_display": "-"
       },
@@ -7662,12 +7737,41 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "3",
+        "horse_dist": "",
         "speed_power": 19.900000000000002,
-        "distance": "2000",
-        "ai_score": 58.9,
+        "distance": "1200",
+        "ai_score": 59.0,
         "ai_tags": [
-          "체급 최강자(탑웨이트) 🏋️",
-          "스피드 지수 최상(115.8초) 🏎️"
+          "체급 최강자(탑웨이트) 🏋️"
+        ],
+        "odds_display": "-"
+      },
+      {
+        "gate": "5",
+        "name": "클러치매직",
+        "jockey": "빅투아르",
+        "trainer": "리카디",
+        "weight": "55",
+        "track": "양호",
+        "rc_time": "1:55.7",
+        "past_time": "",
+        "g1f_time": "",
+        "win_odds": "0",
+        "pre_ord": "",
+        "gear_info": "",
+        "training_info": "",
+        "combo_info": "",
+        "rc_cnt": "0",
+        "ord1_cnt": "0",
+        "ord2_cnt": "0",
+        "is_front": false,
+        "actual_ord": "1",
+        "horse_dist": "",
+        "speed_power": 29.680000000000003,
+        "distance": "1200",
+        "ai_score": 58.6,
+        "ai_tags": [
+          "특급 기수 🏇"
         ],
         "odds_display": "-"
       },
@@ -7691,13 +7795,13 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 15.5,
-        "distance": "2000",
-        "ai_score": 58.5,
+        "distance": "1200",
+        "ai_score": 57.6,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
-          "체급 최강자(탑웨이트) 🏋️",
-          "스피드 지수 최상(115.8초) 🏎️"
+          "체급 최강자(탑웨이트) 🏋️"
         ],
         "odds_display": "-"
       },
@@ -7721,12 +7825,12 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "5",
+        "horse_dist": "",
         "speed_power": 14.700000000000003,
-        "distance": "2000",
-        "ai_score": 56.0,
+        "distance": "1200",
+        "ai_score": 54.4,
         "ai_tags": [
-          "체급 최강자(탑웨이트) 🏋️",
-          "스피드 지수 최상(117.0초) 🏎️"
+          "체급 최강자(탑웨이트) 🏋️"
         ],
         "odds_display": "-"
       },
@@ -7750,12 +7854,12 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "13",
+        "horse_dist": "",
         "speed_power": 14.700000000000003,
-        "distance": "2000",
-        "ai_score": 54.0,
+        "distance": "1200",
+        "ai_score": 54.4,
         "ai_tags": [
-          "체급 최강자(탑웨이트) 🏋️",
-          "스피드 지수 최상(120.4초) 🏎️"
+          "체급 최강자(탑웨이트) 🏋️"
         ],
         "odds_display": "-"
       },
@@ -7779,13 +7883,13 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "10",
+        "horse_dist": "",
         "speed_power": 10.700000000000003,
-        "distance": "2000",
-        "ai_score": 54.0,
+        "distance": "1200",
+        "ai_score": 53.4,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
-          "체급 최강자(탑웨이트) 🏋️",
-          "스피드 지수 최상(118.7초) 🏎️"
+          "체급 최강자(탑웨이트) 🏋️"
         ],
         "odds_display": "-"
       },
@@ -7809,11 +7913,12 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "12",
+        "horse_dist": "",
         "speed_power": 20.98,
-        "distance": "2000",
-        "ai_score": 51.9,
+        "distance": "1200",
+        "ai_score": 52.3,
         "ai_tags": [
-          "스피드 지수 최상(119.3초) 🏎️"
+          "단거리 황금게이트 ⚡"
         ],
         "odds_display": "-"
       },
@@ -7837,11 +7942,12 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "9",
+        "horse_dist": "",
         "speed_power": 22.700000000000003,
-        "distance": "2000",
-        "ai_score": 51.0,
+        "distance": "1200",
+        "ai_score": 51.4,
         "ai_tags": [
-          "스피드 지수 최상(118.0초) 🏎️"
+          "단거리 황금게이트 ⚡"
         ],
         "odds_display": "-"
       },
@@ -7865,41 +7971,12 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "8",
+        "horse_dist": "",
         "speed_power": 12.200000000000003,
-        "distance": "2000",
-        "ai_score": 50.6,
+        "distance": "1200",
+        "ai_score": 47.0,
         "ai_tags": [
-          "외곽 모래회피 복병 🚀",
-          "스피드 지수 최상(117.9초) 🏎️"
-        ],
-        "odds_display": "-"
-      },
-      {
-        "gate": "10",
-        "name": "태평히어로",
-        "jockey": "코지",
-        "trainer": "문세영",
-        "weight": "56",
-        "track": "양호",
-        "rc_time": "1:57.2",
-        "past_time": "",
-        "g1f_time": "",
-        "win_odds": "0",
-        "pre_ord": "",
-        "gear_info": "",
-        "training_info": "",
-        "combo_info": "",
-        "rc_cnt": "0",
-        "ord1_cnt": "0",
-        "ord2_cnt": "0",
-        "is_front": false,
-        "actual_ord": "6",
-        "speed_power": 13.700000000000003,
-        "distance": "2000",
-        "ai_score": 48.3,
-        "ai_tags": [
-          "외곽 모래회피 복병 🚀",
-          "스피드 지수 최상(117.2초) 🏎️"
+          "외곽 모래회피 복병 🚀"
         ],
         "odds_display": "-"
       }
@@ -7914,13 +7991,13 @@
     "race_date": "20261004",
     "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
         "gate": "4",
         "name": "제타마스터",
-        "jockey": "서승운",
-        "trainer": "문세영",
+        "jockey": "문세영",
+        "trainer": "관리팀",
         "weight": "*52.5",
         "track": "양호",
         "rc_time": "1:56.6",
@@ -7936,9 +8013,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "7",
-        "speed_power": 38.550000000000004,
+        "horse_dist": "",
+        "speed_power": 39.910000000000004,
         "distance": "1200",
-        "ai_score": 77.1,
+        "ai_score": 76.7,
         "ai_tags": [
           "특급 기수 🏇",
           "경량 부중(52.5kg) ⚡",
@@ -7966,9 +8044,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "1",
+        "horse_dist": "",
         "speed_power": 35.43000000000001,
         "distance": "1200",
-        "ai_score": 70.3,
+        "ai_score": 69.1,
         "ai_tags": [
           "특급 기수 🏇",
           "단거리 황금게이트 ⚡",
@@ -7997,9 +8076,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "4",
+        "horse_dist": "",
         "speed_power": 32.150000000000006,
         "distance": "1200",
-        "ai_score": 63.9,
+        "ai_score": 63.0,
         "ai_tags": [
           "단거리 황금게이트 ⚡",
           "경량 부중(52.5kg) ⚡"
@@ -8026,9 +8106,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 29.96,
         "distance": "1200",
-        "ai_score": 57.4,
+        "ai_score": 56.4,
         "ai_tags": [
           "상위 기수",
           "단거리 황금게이트 ⚡"
@@ -8055,9 +8136,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "8",
+        "horse_dist": "",
         "speed_power": 22.950000000000003,
         "distance": "1200",
-        "ai_score": 54.5,
+        "ai_score": 53.9,
         "ai_tags": [
           "경량 부중(52.5kg) ⚡"
         ],
@@ -8083,9 +8165,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "9",
+        "horse_dist": "",
         "speed_power": 19.200000000000003,
         "distance": "1200",
-        "ai_score": 50.0,
+        "ai_score": 49.4,
         "ai_tags": [],
         "odds_display": "-"
       },
@@ -8109,9 +8192,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "3",
+        "horse_dist": "",
         "speed_power": 22.200000000000003,
         "distance": "1200",
-        "ai_score": 50.0,
+        "ai_score": 49.4,
         "ai_tags": [],
         "odds_display": "-"
       },
@@ -8135,9 +8219,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "5",
+        "horse_dist": "",
         "speed_power": 15.57,
         "distance": "1200",
-        "ai_score": 50.0,
+        "ai_score": 49.4,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
@@ -8163,9 +8248,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "6",
+        "horse_dist": "",
         "speed_power": 16.700000000000003,
         "distance": "1200",
-        "ai_score": 49.0,
+        "ai_score": 48.4,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
@@ -8173,16 +8259,16 @@
       }
     ],
     "is_trio_target": true,
-    "trio_reason": "TOP 3 능력 분리 완성 (3-4위 격차 +6.5점) • 스피드/기수 우위 완벽 집중"
+    "trio_reason": "TOP 3 능력 분리 완성 (3-4위 격차 +6.6점) • 스피드/기수 우위 집중"
   },
   {
     "meet_code": "1",
     "meet_name": "서울",
     "race_no": "10",
     "race_date": "20261004",
-    "distance": "1400",
+    "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
         "gate": "5",
@@ -8204,14 +8290,14 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "3",
+        "horse_dist": "",
         "speed_power": 30.150000000000002,
-        "distance": "1400",
+        "distance": "1200",
         "ai_score": 68.2,
         "ai_tags": [
           "상위 기수",
           "경량 부중(52.5kg) ⚡",
-          "과거 스피드 최상 🏎️",
-          "기록 우수"
+          "과거 스피드 최상 🏎️"
         ],
         "odds_display": "-"
       },
@@ -8235,13 +8321,14 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "5",
+        "horse_dist": "",
         "speed_power": 29.75,
-        "distance": "1400",
-        "ai_score": 64.0,
+        "distance": "1200",
+        "ai_score": 64.1,
         "ai_tags": [
+          "단거리 황금게이트 ⚡",
           "경량 부중(52.5kg) ⚡",
-          "스피드 우수 🏎️",
-          "기록 우수"
+          "스피드 우수 🏎️"
         ],
         "odds_display": "-"
       },
@@ -8265,9 +8352,98 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "8",
+        "horse_dist": "",
         "speed_power": 25.150000000000002,
-        "distance": "1400",
-        "ai_score": 58.2,
+        "distance": "1200",
+        "ai_score": 56.6,
+        "ai_tags": [
+          "경량 부중(52.5kg) ⚡"
+        ],
+        "odds_display": "-"
+      },
+      {
+        "gate": "1",
+        "name": "스터닝레이디",
+        "jockey": "루이스",
+        "trainer": "서인석",
+        "weight": "*52.5",
+        "track": "양호",
+        "rc_time": "1:29.1",
+        "past_time": "",
+        "g1f_time": "",
+        "win_odds": "0",
+        "pre_ord": "",
+        "gear_info": "",
+        "training_info": "",
+        "combo_info": "",
+        "rc_cnt": "0",
+        "ord1_cnt": "0",
+        "ord2_cnt": "0",
+        "is_front": false,
+        "actual_ord": "7",
+        "horse_dist": "",
+        "speed_power": 25.35,
+        "distance": "1200",
+        "ai_score": 56.4,
+        "ai_tags": [
+          "단거리 황금게이트 ⚡",
+          "경량 부중(52.5kg) ⚡"
+        ],
+        "odds_display": "-"
+      },
+      {
+        "gate": "7",
+        "name": "플러터",
+        "jockey": "김효정",
+        "trainer": "신삼영",
+        "weight": "57.5",
+        "track": "양호",
+        "rc_time": "1:29.0",
+        "past_time": "",
+        "g1f_time": "",
+        "win_odds": "0",
+        "pre_ord": "",
+        "gear_info": "",
+        "training_info": "",
+        "combo_info": "",
+        "rc_cnt": "0",
+        "ord1_cnt": "0",
+        "ord2_cnt": "0",
+        "is_front": false,
+        "actual_ord": "6",
+        "horse_dist": "",
+        "speed_power": 15.450000000000003,
+        "distance": "1200",
+        "ai_score": 54.4,
+        "ai_tags": [
+          "체급 최강자(탑웨이트) 🏋️"
+        ],
+        "odds_display": "-"
+      },
+      {
+        "gate": "6",
+        "name": "마스터플랜",
+        "jockey": "최범현",
+        "trainer": "김동균",
+        "weight": "*52.5",
+        "track": "양호",
+        "rc_time": "1:29.7",
+        "past_time": "",
+        "g1f_time": "",
+        "win_odds": "0",
+        "pre_ord": "",
+        "gear_info": "",
+        "training_info": "",
+        "combo_info": "",
+        "rc_cnt": "0",
+        "ord1_cnt": "0",
+        "ord2_cnt": "0",
+        "is_front": false,
+        "actual_ord": "9",
+        "horse_dist": "",
+        "speed_power": 22.950000000000003,
+        "distance": "1200",
+        "ai_score": 53.9,
         "ai_tags": [
           "경량 부중(52.5kg) ⚡"
         ],
@@ -8293,69 +8469,13 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 19.700000000000003,
-        "distance": "1400",
-        "ai_score": 57.4,
+        "distance": "1200",
+        "ai_score": 53.8,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
-          "경량 부중(52.0kg) ⚡",
-          "기록 우수"
-        ],
-        "odds_display": "-"
-      },
-      {
-        "gate": "1",
-        "name": "스터닝레이디",
-        "jockey": "루이스",
-        "trainer": "서인석",
-        "weight": "*52.5",
-        "track": "양호",
-        "rc_time": "1:29.1",
-        "past_time": "",
-        "g1f_time": "",
-        "win_odds": "0",
-        "pre_ord": "",
-        "gear_info": "",
-        "training_info": "",
-        "combo_info": "",
-        "rc_cnt": "0",
-        "ord1_cnt": "0",
-        "ord2_cnt": "0",
-        "is_front": false,
-        "actual_ord": "7",
-        "speed_power": 25.35,
-        "distance": "1400",
-        "ai_score": 56.0,
-        "ai_tags": [
-          "경량 부중(52.5kg) ⚡"
-        ],
-        "odds_display": "-"
-      },
-      {
-        "gate": "7",
-        "name": "플러터",
-        "jockey": "김효정",
-        "trainer": "신삼영",
-        "weight": "57.5",
-        "track": "양호",
-        "rc_time": "1:29.0",
-        "past_time": "",
-        "g1f_time": "",
-        "win_odds": "0",
-        "pre_ord": "",
-        "gear_info": "",
-        "training_info": "",
-        "combo_info": "",
-        "rc_cnt": "0",
-        "ord1_cnt": "0",
-        "ord2_cnt": "0",
-        "is_front": false,
-        "actual_ord": "6",
-        "speed_power": 15.450000000000003,
-        "distance": "1400",
-        "ai_score": 54.0,
-        "ai_tags": [
-          "체급 최강자(탑웨이트) 🏋️"
+          "경량 부중(52.0kg) ⚡"
         ],
         "odds_display": "-"
       },
@@ -8379,9 +8499,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "11",
+        "horse_dist": "",
         "speed_power": 11.450000000000003,
-        "distance": "1400",
-        "ai_score": 54.0,
+        "distance": "1200",
+        "ai_score": 53.4,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
           "체급 최강자(탑웨이트) 🏋️"
@@ -8408,41 +8529,13 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "4",
+        "horse_dist": "",
         "speed_power": 20.21,
-        "distance": "1400",
-        "ai_score": 54.0,
+        "distance": "1200",
+        "ai_score": 53.1,
         "ai_tags": [
           "상위 기수",
-          "외곽 모래회피 복병 🚀",
-          "기록 우수"
-        ],
-        "odds_display": "-"
-      },
-      {
-        "gate": "6",
-        "name": "마스터플랜",
-        "jockey": "최범현",
-        "trainer": "김동균",
-        "weight": "*52.5",
-        "track": "양호",
-        "rc_time": "1:29.7",
-        "past_time": "",
-        "g1f_time": "",
-        "win_odds": "0",
-        "pre_ord": "",
-        "gear_info": "",
-        "training_info": "",
-        "combo_info": "",
-        "rc_cnt": "0",
-        "ord1_cnt": "0",
-        "ord2_cnt": "0",
-        "is_front": false,
-        "actual_ord": "9",
-        "speed_power": 22.950000000000003,
-        "distance": "1400",
-        "ai_score": 53.5,
-        "ai_tags": [
-          "경량 부중(52.5kg) ⚡"
+          "외곽 모래회피 복병 🚀"
         ],
         "odds_display": "-"
       },
@@ -8466,11 +8559,12 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "1",
+        "horse_dist": "",
         "speed_power": 20.450000000000003,
-        "distance": "1400",
-        "ai_score": 50.6,
+        "distance": "1200",
+        "ai_score": 51.0,
         "ai_tags": [
-          "기록 우수"
+          "단거리 황금게이트 ⚡"
         ],
         "odds_display": "-"
       },
@@ -8494,9 +8588,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "10",
+        "horse_dist": "",
         "speed_power": 14.450000000000003,
-        "distance": "1400",
-        "ai_score": 48.6,
+        "distance": "1200",
+        "ai_score": 48.0,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
@@ -8513,7 +8608,7 @@
     "race_date": "20261004",
     "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
         "gate": "3",
@@ -8535,9 +8630,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "3",
+        "horse_dist": "",
         "speed_power": 43.550000000000004,
         "distance": "1200",
-        "ai_score": 82.9,
+        "ai_score": 81.3,
         "ai_tags": [
           "특급 기수 🏇",
           "우수 마방 🏆",
@@ -8551,8 +8647,8 @@
       {
         "gate": "9",
         "name": "무빙볼케이노",
-        "jockey": "김용근",
-        "trainer": "문세영",
+        "jockey": "문세영",
+        "trainer": "관리팀",
         "weight": "54.5",
         "track": "양호",
         "rc_time": "1:14.2",
@@ -8568,9 +8664,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "4",
-        "speed_power": 25.950000000000003,
+        "horse_dist": "",
+        "speed_power": 32.910000000000004,
         "distance": "1200",
-        "ai_score": 62.4,
+        "ai_score": 67.2,
         "ai_tags": [
           "특급 기수 🏇",
           "외곽 모래회피 복병 🚀",
@@ -8599,9 +8696,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "1",
+        "horse_dist": "",
         "speed_power": 25.23,
         "distance": "1200",
-        "ai_score": 58.1,
+        "ai_score": 57.0,
         "ai_tags": [
           "상위 기수",
           "외곽 모래회피 복병 🚀",
@@ -8629,9 +8727,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "10",
+        "horse_dist": "",
         "speed_power": 25.200000000000003,
         "distance": "1200",
-        "ai_score": 57.2,
+        "ai_score": 56.6,
         "ai_tags": [
           "경량 부중(51.0kg) ⚡"
         ],
@@ -8657,9 +8756,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "6",
+        "horse_dist": "",
         "speed_power": 24.950000000000003,
         "distance": "1200",
-        "ai_score": 56.5,
+        "ai_score": 55.9,
         "ai_tags": [
           "단거리 황금게이트 ⚡",
           "경량 부중(52.5kg) ⚡",
@@ -8687,9 +8787,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "5",
+        "horse_dist": "",
         "speed_power": 24.07,
         "distance": "1200",
-        "ai_score": 55.9,
+        "ai_score": 55.3,
         "ai_tags": [
           "경량 부중(52.5kg) ⚡",
           "기록 우수"
@@ -8716,9 +8817,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "11",
+        "horse_dist": "",
         "speed_power": 23.98,
         "distance": "1200",
-        "ai_score": 53.6,
+        "ai_score": 53.0,
         "ai_tags": [
           "단거리 황금게이트 ⚡"
         ],
@@ -8744,9 +8846,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 18.950000000000003,
         "distance": "1200",
-        "ai_score": 53.5,
+        "ai_score": 52.9,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
           "경량 부중(52.5kg) ⚡",
@@ -8774,9 +8877,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "9",
+        "horse_dist": "",
         "speed_power": 18.950000000000003,
         "distance": "1200",
-        "ai_score": 53.5,
+        "ai_score": 52.9,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
           "경량 부중(52.5kg) ⚡"
@@ -8803,9 +8907,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "8",
+        "horse_dist": "",
         "speed_power": 22.900000000000002,
         "distance": "1200",
-        "ai_score": 52.8,
+        "ai_score": 52.1,
         "ai_tags": [
           "기록 우수"
         ],
@@ -8831,9 +8936,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "7",
+        "horse_dist": "",
         "speed_power": 17.700000000000003,
         "distance": "1200",
-        "ai_score": 49.3,
+        "ai_score": 48.7,
         "ai_tags": [
           "기록 우수"
         ],
@@ -8850,11 +8956,11 @@
     "race_date": "20261004",
     "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
         "gate": "1",
-        "name": "[부]골든포인트",
+        "name": "골든포인트",
         "jockey": "다나카",
         "trainer": "윤영훈",
         "weight": "53.5",
@@ -8872,9 +8978,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 34.17,
         "distance": "1200",
-        "ai_score": 70.0,
+        "ai_score": 68.8,
         "ai_tags": [
           "특급 기수 🏇",
           "단거리 황금게이트 ⚡",
@@ -8885,7 +8992,7 @@
       },
       {
         "gate": "8",
-        "name": "[부]토함산드래곤",
+        "name": "토함산드래곤",
         "jockey": "정도윤",
         "trainer": "백광열",
         "weight": "55",
@@ -8903,9 +9010,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "3",
+        "horse_dist": "",
         "speed_power": 25.52,
         "distance": "1200",
-        "ai_score": 65.3,
+        "ai_score": 64.2,
         "ai_tags": [
           "상위 기수",
           "외곽 모래회피 복병 🚀",
@@ -8916,7 +9024,7 @@
       },
       {
         "gate": "4",
-        "name": "[부]트릭샷",
+        "name": "트릭샷",
         "jockey": "조인권",
         "trainer": "임성실",
         "weight": "56",
@@ -8934,9 +9042,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "1",
+        "horse_dist": "",
         "speed_power": 26.62,
         "distance": "1200",
-        "ai_score": 62.1,
+        "ai_score": 61.0,
         "ai_tags": [
           "상위 기수",
           "스피드 우수 🏎️",
@@ -8946,7 +9055,7 @@
       },
       {
         "gate": "10",
-        "name": "[부]그레이트파워",
+        "name": "그레이트파워",
         "jockey": "송경윤",
         "trainer": "최기홍",
         "weight": "*52.5",
@@ -8964,9 +9073,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "11",
+        "horse_dist": "",
         "speed_power": 21.51,
         "distance": "1200",
-        "ai_score": 55.9,
+        "ai_score": 55.1,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
           "경량 부중(52.5kg) ⚡"
@@ -8975,7 +9085,7 @@
       },
       {
         "gate": "7",
-        "name": "[부]챔프걸",
+        "name": "챔프걸",
         "jockey": "채상현",
         "trainer": "강은석",
         "weight": "*52.5",
@@ -8993,9 +9103,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "6",
+        "horse_dist": "",
         "speed_power": 23.55,
         "distance": "1200",
-        "ai_score": 55.2,
+        "ai_score": 54.6,
         "ai_tags": [
           "경량 부중(52.5kg) ⚡",
           "스피드 지수 최상(73.4초) 🏎️"
@@ -9004,7 +9115,7 @@
       },
       {
         "gate": "5",
-        "name": "[부]원더풀라크",
+        "name": "원더풀라크",
         "jockey": "진겸",
         "trainer": "토마스",
         "weight": "*52.5",
@@ -9022,9 +9133,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "4",
+        "horse_dist": "",
         "speed_power": 22.950000000000003,
         "distance": "1200",
-        "ai_score": 54.5,
+        "ai_score": 53.9,
         "ai_tags": [
           "경량 부중(52.5kg) ⚡",
           "스피드 지수 최상(73.2초) 🏎️"
@@ -9033,7 +9145,7 @@
       },
       {
         "gate": "6",
-        "name": "[부]짝사랑",
+        "name": "짝사랑",
         "jockey": "신윤섭",
         "trainer": "박재호",
         "weight": "*52.5",
@@ -9051,9 +9163,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "9",
+        "horse_dist": "",
         "speed_power": 22.950000000000003,
         "distance": "1200",
-        "ai_score": 54.5,
+        "ai_score": 53.9,
         "ai_tags": [
           "경량 부중(52.5kg) ⚡",
           "기록 우수"
@@ -9062,7 +9175,7 @@
       },
       {
         "gate": "2",
-        "name": "[부]오아시스기적",
+        "name": "오아시스기적",
         "jockey": "윤형석",
         "trainer": "백광열",
         "weight": "53.5",
@@ -9080,9 +9193,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "7",
+        "horse_dist": "",
         "speed_power": 25.37,
         "distance": "1200",
-        "ai_score": 54.4,
+        "ai_score": 53.8,
         "ai_tags": [
           "단거리 황금게이트 ⚡",
           "스피드 지수 최상(73.6초) 🏎️"
@@ -9091,7 +9205,7 @@
       },
       {
         "gate": "9",
-        "name": "[부]캄패스트",
+        "name": "캄패스트",
         "jockey": "이현종",
         "trainer": "강형곤",
         "weight": "*52.5",
@@ -9109,9 +9223,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "8",
+        "horse_dist": "",
         "speed_power": 18.950000000000003,
         "distance": "1200",
-        "ai_score": 53.5,
+        "ai_score": 52.9,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
           "경량 부중(52.5kg) ⚡",
@@ -9121,7 +9236,7 @@
       },
       {
         "gate": "3",
-        "name": "[부]블랙질주",
+        "name": "블랙질주",
         "jockey": "다실바",
         "trainer": "박재호",
         "weight": "54",
@@ -9139,9 +9254,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "5",
+        "horse_dist": "",
         "speed_power": 22.700000000000003,
         "distance": "1200",
-        "ai_score": 52.0,
+        "ai_score": 51.4,
         "ai_tags": [
           "단거리 황금게이트 ⚡",
           "스피드 지수 최상(73.2초) 🏎️"
@@ -9150,7 +9266,7 @@
       },
       {
         "gate": "11",
-        "name": "[부]불의평화",
+        "name": "불의평화",
         "jockey": "홍환웅",
         "trainer": "강형곤",
         "weight": "53",
@@ -9168,9 +9284,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "10",
+        "horse_dist": "",
         "speed_power": 18.200000000000003,
         "distance": "1200",
-        "ai_score": 49.0,
+        "ai_score": 48.4,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
@@ -9178,20 +9295,20 @@
       }
     ],
     "is_trio_target": true,
-    "trio_reason": "TOP 3 능력 분리 완성 (3-4위 격차 +6.2점) • 스피드/기수 우위 완벽 집중"
+    "trio_reason": "TOP 3 능력 분리 완성 (3-4위 격차 +5.9점) • 스피드/기수 우위 집중"
   },
   {
     "meet_code": "4",
     "meet_name": "영천",
     "race_no": "2",
     "race_date": "20261004",
-    "distance": "1400",
+    "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
         "gate": "6",
-        "name": "[부]빅스마일",
+        "name": "빅스마일",
         "jockey": "최시대",
         "trainer": "이정표",
         "weight": "*52.5",
@@ -9209,20 +9326,20 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "7",
+        "horse_dist": "",
         "speed_power": 34.790000000000006,
-        "distance": "1400",
-        "ai_score": 72.6,
+        "distance": "1200",
+        "ai_score": 72.3,
         "ai_tags": [
           "특급 기수 🏇",
           "경량 부중(52.5kg) ⚡",
-          "과거 스피드 최상 🏎️",
-          "스피드 지수 최상(86.2초) 🏎️"
+          "과거 스피드 최상 🏎️"
         ],
         "odds_display": "-"
       },
       {
         "gate": "5",
-        "name": "[부]정문스킵",
+        "name": "정문스킵",
         "jockey": "정도윤",
         "trainer": "라이스",
         "weight": "53.5",
@@ -9240,20 +9357,20 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 34.33,
-        "distance": "1400",
-        "ai_score": 66.5,
+        "distance": "1200",
+        "ai_score": 66.3,
         "ai_tags": [
           "상위 기수",
           "우수 마방 🏆",
-          "스피드 우수 🏎️",
-          "스피드 지수 최상(85.0초) 🏎️"
+          "스피드 우수 🏎️"
         ],
         "odds_display": "-"
       },
       {
         "gate": "7",
-        "name": "[부]오아시스킹덤",
+        "name": "오아시스킹덤",
         "jockey": "다나카",
         "trainer": "백광열",
         "weight": "55",
@@ -9271,48 +9388,18 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "4",
+        "horse_dist": "",
         "speed_power": 31.84,
-        "distance": "1400",
-        "ai_score": 61.4,
+        "distance": "1200",
+        "ai_score": 61.2,
         "ai_tags": [
-          "특급 기수 🏇",
-          "스피드 지수 최상(85.8초) 🏎️"
-        ],
-        "odds_display": "-"
-      },
-      {
-        "gate": "8",
-        "name": "[부]그랜드히어로",
-        "jockey": "다비드",
-        "trainer": "구민성",
-        "weight": "53.5",
-        "track": "양호",
-        "rc_time": "1:26.2",
-        "past_time": "",
-        "g1f_time": "",
-        "win_odds": "0",
-        "pre_ord": "",
-        "gear_info": "",
-        "training_info": "",
-        "combo_info": "",
-        "rc_cnt": "0",
-        "ord1_cnt": "0",
-        "ord2_cnt": "0",
-        "is_front": false,
-        "actual_ord": "5",
-        "speed_power": 27.21,
-        "distance": "1400",
-        "ai_score": 61.1,
-        "ai_tags": [
-          "특급 기수 🏇",
-          "외곽 모래회피 복병 🚀",
-          "스피드 지수 최상(86.2초) 🏎️"
+          "특급 기수 🏇"
         ],
         "odds_display": "-"
       },
       {
         "gate": "3",
-        "name": "[부]월드볼드맨",
+        "name": "월드볼드맨",
         "jockey": "조인권",
         "trainer": "임성실",
         "weight": "54",
@@ -9330,18 +9417,49 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "3",
+        "horse_dist": "",
         "speed_power": 31.62,
-        "distance": "1400",
-        "ai_score": 59.8,
+        "distance": "1200",
+        "ai_score": 59.7,
         "ai_tags": [
           "상위 기수",
-          "스피드 지수 최상(85.8초) 🏎️"
+          "단거리 황금게이트 ⚡"
+        ],
+        "odds_display": "-"
+      },
+      {
+        "gate": "8",
+        "name": "그랜드히어로",
+        "jockey": "다비드",
+        "trainer": "구민성",
+        "weight": "53.5",
+        "track": "양호",
+        "rc_time": "1:26.2",
+        "past_time": "",
+        "g1f_time": "",
+        "win_odds": "0",
+        "pre_ord": "",
+        "gear_info": "",
+        "training_info": "",
+        "combo_info": "",
+        "rc_cnt": "0",
+        "ord1_cnt": "0",
+        "ord2_cnt": "0",
+        "is_front": false,
+        "actual_ord": "5",
+        "horse_dist": "",
+        "speed_power": 27.21,
+        "distance": "1200",
+        "ai_score": 56.9,
+        "ai_tags": [
+          "특급 기수 🏇",
+          "외곽 모래회피 복병 🚀"
         ],
         "odds_display": "-"
       },
       {
         "gate": "4",
-        "name": "[부]위라이크머니",
+        "name": "위라이크머니",
         "jockey": "전진구",
         "trainer": "조용배",
         "weight": "*52.5",
@@ -9359,18 +9477,18 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "10",
+        "horse_dist": "",
         "speed_power": 25.19,
-        "distance": "1400",
-        "ai_score": 57.6,
+        "distance": "1200",
+        "ai_score": 55.9,
         "ai_tags": [
-          "경량 부중(52.5kg) ⚡",
-          "스피드 지수 최상(86.8초) 🏎️"
+          "경량 부중(52.5kg) ⚡"
         ],
         "odds_display": "-"
       },
       {
         "gate": "11",
-        "name": "[부]승리예약",
+        "name": "승리예약",
         "jockey": "이홍락",
         "trainer": "강형곤",
         "weight": "51",
@@ -9388,19 +9506,19 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "11",
+        "horse_dist": "",
         "speed_power": 21.200000000000003,
-        "distance": "1400",
-        "ai_score": 56.2,
+        "distance": "1200",
+        "ai_score": 55.6,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
-          "경량 부중(51.0kg) ⚡",
-          "기록 우수"
+          "경량 부중(51.0kg) ⚡"
         ],
         "odds_display": "-"
       },
       {
         "gate": "2",
-        "name": "[부]베스트타이거",
+        "name": "베스트타이거",
         "jockey": "손경민",
         "trainer": "문현철",
         "weight": "54",
@@ -9418,17 +9536,18 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "1",
+        "horse_dist": "",
         "speed_power": 24.3,
-        "distance": "1400",
-        "ai_score": 52.5,
+        "distance": "1200",
+        "ai_score": 52.8,
         "ai_tags": [
-          "스피드 지수 최상(85.0초) 🏎️"
+          "단거리 황금게이트 ⚡"
         ],
         "odds_display": "-"
       },
       {
         "gate": "1",
-        "name": "[부]트리플제이",
+        "name": "트리플제이",
         "jockey": "김성현",
         "trainer": "임금만",
         "weight": "53",
@@ -9446,17 +9565,18 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "9",
+        "horse_dist": "",
         "speed_power": 24.200000000000003,
-        "distance": "1400",
-        "ai_score": 51.0,
+        "distance": "1200",
+        "ai_score": 51.4,
         "ai_tags": [
-          "스피드 지수 최상(86.4초) 🏎️"
+          "단거리 황금게이트 ⚡"
         ],
         "odds_display": "-"
       },
       {
         "gate": "9",
-        "name": "[부]서귀그레이트",
+        "name": "서귀그레이트",
         "jockey": "진겸",
         "trainer": "강형곤",
         "weight": "55",
@@ -9474,18 +9594,18 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "6",
+        "horse_dist": "",
         "speed_power": 15.200000000000003,
-        "distance": "1400",
-        "ai_score": 49.0,
+        "distance": "1200",
+        "ai_score": 48.4,
         "ai_tags": [
-          "외곽 모래회피 복병 🚀",
-          "스피드 지수 최상(86.2초) 🏎️"
+          "외곽 모래회피 복병 🚀"
         ],
         "odds_display": "-"
       },
       {
         "gate": "10",
-        "name": "[부]달빛위에",
+        "name": "달빛위에",
         "jockey": "다실바",
         "trainer": "토마스",
         "weight": "53.5",
@@ -9503,12 +9623,12 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "8",
+        "horse_dist": "",
         "speed_power": 17.450000000000003,
-        "distance": "1400",
-        "ai_score": 49.0,
+        "distance": "1200",
+        "ai_score": 48.4,
         "ai_tags": [
-          "외곽 모래회피 복병 🚀",
-          "스피드 지수 최상(86.3초) 🏎️"
+          "외곽 모래회피 복병 🚀"
         ],
         "odds_display": "-"
       }
@@ -9521,13 +9641,13 @@
     "meet_name": "영천",
     "race_no": "3",
     "race_date": "20261004",
-    "distance": "1400",
+    "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
         "gate": "3",
-        "name": "[부]스마트샤말",
+        "name": "스마트샤말",
         "jockey": "최시대",
         "trainer": "김도현",
         "weight": "52.5",
@@ -9545,20 +9665,21 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "3",
+        "horse_dist": "",
         "speed_power": 38.47,
-        "distance": "1400",
-        "ai_score": 76.7,
+        "distance": "1200",
+        "ai_score": 76.4,
         "ai_tags": [
           "특급 기수 🏇",
+          "단거리 황금게이트 ⚡",
           "경량 부중(52.5kg) ⚡",
-          "과거 스피드 최상 🏎️",
-          "스피드 지수 최상(85.5초) 🏎️"
+          "과거 스피드 최상 🏎️"
         ],
         "odds_display": "-"
       },
       {
         "gate": "5",
-        "name": "[부]엘카사도르",
+        "name": "엘카사도르",
         "jockey": "다나카",
         "trainer": "안우성",
         "weight": "*52.5",
@@ -9576,20 +9697,20 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "10",
+        "horse_dist": "",
         "speed_power": 35.269999999999996,
-        "distance": "1400",
-        "ai_score": 69.5,
+        "distance": "1200",
+        "ai_score": 69.3,
         "ai_tags": [
           "특급 기수 🏇",
           "경량 부중(52.5kg) ⚡",
-          "스피드 우수 🏎️",
-          "스피드 지수 최상(87.3초) 🏎️"
+          "스피드 우수 🏎️"
         ],
         "odds_display": "-"
       },
       {
         "gate": "7",
-        "name": "[부]대길의꿈",
+        "name": "대길의꿈",
         "jockey": "다비드",
         "trainer": "구영준",
         "weight": "55",
@@ -9607,18 +9728,18 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "11",
+        "horse_dist": "",
         "speed_power": 30.759999999999998,
-        "distance": "1400",
-        "ai_score": 60.4,
+        "distance": "1200",
+        "ai_score": 60.2,
         "ai_tags": [
-          "특급 기수 🏇",
-          "스피드 지수 최상(87.4초) 🏎️"
+          "특급 기수 🏇"
         ],
         "odds_display": "-"
       },
       {
         "gate": "2",
-        "name": "[부]차밍스텔라",
+        "name": "차밍스텔라",
         "jockey": "이성재",
         "trainer": "토마스",
         "weight": "*52.5",
@@ -9636,18 +9757,19 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "5",
+        "horse_dist": "",
         "speed_power": 28.55,
-        "distance": "1400",
-        "ai_score": 58.9,
+        "distance": "1200",
+        "ai_score": 59.0,
         "ai_tags": [
-          "경량 부중(52.5kg) ⚡",
-          "스피드 지수 최상(85.7초) 🏎️"
+          "단거리 황금게이트 ⚡",
+          "경량 부중(52.5kg) ⚡"
         ],
         "odds_display": "-"
       },
       {
         "gate": "9",
-        "name": "[부]보령의쾌속",
+        "name": "보령의쾌속",
         "jockey": "김동영",
         "trainer": "임금만",
         "weight": "*52.5",
@@ -9665,19 +9787,19 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 23.590000000000003,
-        "distance": "1400",
-        "ai_score": 57.9,
+        "distance": "1200",
+        "ai_score": 57.0,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
-          "경량 부중(52.5kg) ⚡",
-          "스피드 지수 최상(85.1초) 🏎️"
+          "경량 부중(52.5kg) ⚡"
         ],
         "odds_display": "-"
       },
       {
         "gate": "6",
-        "name": "[부]벨로시퀸",
+        "name": "벨로시퀸",
         "jockey": "송경윤",
         "trainer": "최기홍",
         "weight": "*52.5",
@@ -9695,18 +9817,18 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "9",
+        "horse_dist": "",
         "speed_power": 25.51,
-        "distance": "1400",
-        "ai_score": 55.9,
+        "distance": "1200",
+        "ai_score": 56.1,
         "ai_tags": [
-          "경량 부중(52.5kg) ⚡",
-          "스피드 지수 최상(87.2초) 🏎️"
+          "경량 부중(52.5kg) ⚡"
         ],
         "odds_display": "-"
       },
       {
         "gate": "1",
-        "name": "[부]오버로드킹",
+        "name": "오버로드킹",
         "jockey": "진겸",
         "trainer": "권승주",
         "weight": "*52.5",
@@ -9724,18 +9846,19 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "8",
+        "horse_dist": "",
         "speed_power": 24.950000000000003,
-        "distance": "1400",
-        "ai_score": 55.5,
+        "distance": "1200",
+        "ai_score": 55.9,
         "ai_tags": [
-          "경량 부중(52.5kg) ⚡",
-          "스피드 지수 최상(87.1초) 🏎️"
+          "단거리 황금게이트 ⚡",
+          "경량 부중(52.5kg) ⚡"
         ],
         "odds_display": "-"
       },
       {
         "gate": "4",
-        "name": "[부]돌핀킥",
+        "name": "돌핀킥",
         "jockey": "서강주",
         "trainer": "권승주",
         "weight": "*52.5",
@@ -9753,18 +9876,18 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "7",
+        "horse_dist": "",
         "speed_power": 22.950000000000003,
-        "distance": "1400",
-        "ai_score": 55.5,
+        "distance": "1200",
+        "ai_score": 53.9,
         "ai_tags": [
-          "경량 부중(52.5kg) ⚡",
-          "스피드 지수 최상(85.9초) 🏎️"
+          "경량 부중(52.5kg) ⚡"
         ],
         "odds_display": "-"
       },
       {
         "gate": "10",
-        "name": "[부]필승여제",
+        "name": "필승여제",
         "jockey": "이현종",
         "trainer": "강은석",
         "weight": "*52.5",
@@ -9782,19 +9905,19 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "1",
+        "horse_dist": "",
         "speed_power": 19.55,
-        "distance": "1400",
-        "ai_score": 54.2,
+        "distance": "1200",
+        "ai_score": 53.6,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
-          "경량 부중(52.5kg) ⚡",
-          "스피드 지수 최상(84.5초) 🏎️"
+          "경량 부중(52.5kg) ⚡"
         ],
         "odds_display": "-"
       },
       {
         "gate": "8",
-        "name": "[부]월드댄서캣",
+        "name": "월드댄서캣",
         "jockey": "최은경",
         "trainer": "방동석",
         "weight": "54",
@@ -9812,18 +9935,18 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "4",
+        "horse_dist": "",
         "speed_power": 16.700000000000003,
-        "distance": "1400",
-        "ai_score": 52.0,
+        "distance": "1200",
+        "ai_score": 48.4,
         "ai_tags": [
-          "외곽 모래회피 복병 🚀",
-          "스피드 지수 최상(85.6초) 🏎️"
+          "외곽 모래회피 복병 🚀"
         ],
         "odds_display": "-"
       },
       {
         "gate": "11",
-        "name": "[부]슈펙스월드",
+        "name": "슈펙스월드",
         "jockey": "다실바",
         "trainer": "문현철",
         "weight": "57",
@@ -9841,12 +9964,12 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "5",
+        "horse_dist": "",
         "speed_power": 12.200000000000003,
-        "distance": "1400",
-        "ai_score": 47.6,
+        "distance": "1200",
+        "ai_score": 47.0,
         "ai_tags": [
-          "외곽 모래회피 복병 🚀",
-          "스피드 지수 최상(85.7초) 🏎️"
+          "외곽 모래회피 복병 🚀"
         ],
         "odds_display": "-"
       }
@@ -9859,13 +9982,13 @@
     "meet_name": "영천",
     "race_no": "4",
     "race_date": "20261004",
-    "distance": "1800",
+    "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
         "gate": "4",
-        "name": "[부]네버기브업",
+        "name": "네버기브업",
         "jockey": "다비드",
         "trainer": "문현철",
         "weight": "51.5",
@@ -9883,20 +10006,20 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "7",
+        "horse_dist": "",
         "speed_power": 34.21,
-        "distance": "1800",
-        "ai_score": 70.2,
+        "distance": "1200",
+        "ai_score": 72.2,
         "ai_tags": [
           "특급 기수 🏇",
           "경량 부중(51.5kg) ⚡",
-          "과거 스피드 최상 🏎️",
-          "스피드 지수 최상(114.7초) 🏎️"
+          "과거 스피드 최상 🏎️"
         ],
         "odds_display": "-"
       },
       {
         "gate": "7",
-        "name": "[부]원대한꿈",
+        "name": "원대한꿈",
         "jockey": "다나카",
         "trainer": "구민성",
         "weight": "*52.5",
@@ -9914,20 +10037,20 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "6",
+        "horse_dist": "",
         "speed_power": 33.67,
-        "distance": "1800",
-        "ai_score": 65.0,
+        "distance": "1200",
+        "ai_score": 67.3,
         "ai_tags": [
           "특급 기수 🏇",
           "경량 부중(52.5kg) ⚡",
-          "스피드 우수 🏎️",
-          "스피드 지수 최상(113.8초) 🏎️"
+          "스피드 우수 🏎️"
         ],
         "odds_display": "-"
       },
       {
         "gate": "9",
-        "name": "[부]어화둥둥",
+        "name": "어화둥둥",
         "jockey": "정도윤",
         "trainer": "구민성",
         "weight": "58",
@@ -9945,20 +10068,20 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "4",
+        "horse_dist": "",
         "speed_power": 19.1,
-        "distance": "1800",
-        "ai_score": 61.9,
+        "distance": "1200",
+        "ai_score": 60.8,
         "ai_tags": [
           "상위 기수",
           "외곽 모래회피 복병 🚀",
-          "체급 최강자(탑웨이트) 🏋️",
-          "스피드 지수 최상(113.7초) 🏎️"
+          "체급 최강자(탑웨이트) 🏋️"
         ],
         "odds_display": "-"
       },
       {
         "gate": "3",
-        "name": "[부]닥터캡틴",
+        "name": "닥터캡틴",
         "jockey": "송경윤",
         "trainer": "백광열",
         "weight": "57.5",
@@ -9976,129 +10099,18 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "5",
+        "horse_dist": "",
         "speed_power": 21.93,
-        "distance": "1800",
-        "ai_score": 54.0,
+        "distance": "1200",
+        "ai_score": 54.3,
         "ai_tags": [
-          "스피드 지수 최상(113.8초) 🏎️"
-        ],
-        "odds_display": "-"
-      },
-      {
-        "gate": "2",
-        "name": "[부]헤이브라더",
-        "jockey": "손경민",
-        "trainer": "권승주",
-        "weight": "54.5",
-        "track": "양호",
-        "rc_time": "1:52.1",
-        "past_time": "",
-        "g1f_time": "",
-        "win_odds": "0",
-        "pre_ord": "",
-        "gear_info": "",
-        "training_info": "",
-        "combo_info": "",
-        "rc_cnt": "0",
-        "ord1_cnt": "0",
-        "ord2_cnt": "0",
-        "is_front": false,
-        "actual_ord": "1",
-        "speed_power": 23.55,
-        "distance": "1800",
-        "ai_score": 52.5,
-        "ai_tags": [
-          "스피드 지수 최상(112.1초) 🏎️"
-        ],
-        "odds_display": "-"
-      },
-      {
-        "gate": "10",
-        "name": "[부]아너드칸",
-        "jockey": "이성재",
-        "trainer": "강형곤",
-        "weight": "54",
-        "track": "양호",
-        "rc_time": "1:53.5",
-        "past_time": "",
-        "g1f_time": "",
-        "win_odds": "0",
-        "pre_ord": "",
-        "gear_info": "",
-        "training_info": "",
-        "combo_info": "",
-        "rc_cnt": "0",
-        "ord1_cnt": "0",
-        "ord2_cnt": "0",
-        "is_front": false,
-        "actual_ord": "3",
-        "speed_power": 20.3,
-        "distance": "1800",
-        "ai_score": 52.4,
-        "ai_tags": [
-          "외곽 모래회피 복병 🚀",
-          "스피드 지수 최상(113.5초) 🏎️"
-        ],
-        "odds_display": "-"
-      },
-      {
-        "gate": "5",
-        "name": "[부]벌마의엔젤",
-        "jockey": "윤형석",
-        "trainer": "백광열",
-        "weight": "53",
-        "track": "양호",
-        "rc_time": "1:59.7",
-        "past_time": "",
-        "g1f_time": "",
-        "win_odds": "0",
-        "pre_ord": "",
-        "gear_info": "",
-        "training_info": "",
-        "combo_info": "",
-        "rc_cnt": "0",
-        "ord1_cnt": "0",
-        "ord2_cnt": "0",
-        "is_front": false,
-        "actual_ord": "11",
-        "speed_power": 24.12,
-        "distance": "1800",
-        "ai_score": 51.4,
-        "ai_tags": [],
-        "odds_display": "-"
-      },
-      {
-        "gate": "8",
-        "name": "[부]원더풀존스",
-        "jockey": "다실바",
-        "trainer": "토마스",
-        "weight": "56",
-        "track": "양호",
-        "rc_time": "1:54.8",
-        "past_time": "",
-        "g1f_time": "",
-        "win_odds": "0",
-        "pre_ord": "",
-        "gear_info": "",
-        "training_info": "",
-        "combo_info": "",
-        "rc_cnt": "0",
-        "ord1_cnt": "0",
-        "ord2_cnt": "0",
-        "is_front": false,
-        "actual_ord": "8",
-        "speed_power": 13.700000000000003,
-        "distance": "1800",
-        "ai_score": 51.3,
-        "ai_tags": [
-          "외곽 모래회피 복병 🚀",
-          "스피드 지수 최상(114.8초) 🏎️"
+          "단거리 황금게이트 ⚡"
         ],
         "odds_display": "-"
       },
       {
         "gate": "6",
-        "name": "[부]운주챌린지",
+        "name": "운주챌린지",
         "jockey": "서강주",
         "trainer": "권승주",
         "weight": "*52.5",
@@ -10116,18 +10128,103 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "10",
+        "horse_dist": "",
         "speed_power": 22.950000000000003,
-        "distance": "1800",
-        "ai_score": 51.0,
+        "distance": "1200",
+        "ai_score": 53.9,
         "ai_tags": [
-          "경량 부중(52.5kg) ⚡",
-          "기록 우수"
+          "경량 부중(52.5kg) ⚡"
+        ],
+        "odds_display": "-"
+      },
+      {
+        "gate": "2",
+        "name": "헤이브라더",
+        "jockey": "손경민",
+        "trainer": "권승주",
+        "weight": "54.5",
+        "track": "양호",
+        "rc_time": "1:52.1",
+        "past_time": "",
+        "g1f_time": "",
+        "win_odds": "0",
+        "pre_ord": "",
+        "gear_info": "",
+        "training_info": "",
+        "combo_info": "",
+        "rc_cnt": "0",
+        "ord1_cnt": "0",
+        "ord2_cnt": "0",
+        "is_front": false,
+        "actual_ord": "1",
+        "horse_dist": "",
+        "speed_power": 23.55,
+        "distance": "1200",
+        "ai_score": 52.8,
+        "ai_tags": [
+          "단거리 황금게이트 ⚡"
+        ],
+        "odds_display": "-"
+      },
+      {
+        "gate": "5",
+        "name": "벌마의엔젤",
+        "jockey": "윤형석",
+        "trainer": "백광열",
+        "weight": "53",
+        "track": "양호",
+        "rc_time": "1:59.7",
+        "past_time": "",
+        "g1f_time": "",
+        "win_odds": "0",
+        "pre_ord": "",
+        "gear_info": "",
+        "training_info": "",
+        "combo_info": "",
+        "rc_cnt": "0",
+        "ord1_cnt": "0",
+        "ord2_cnt": "0",
+        "is_front": false,
+        "actual_ord": "11",
+        "horse_dist": "",
+        "speed_power": 24.12,
+        "distance": "1200",
+        "ai_score": 51.8,
+        "ai_tags": [],
+        "odds_display": "-"
+      },
+      {
+        "gate": "10",
+        "name": "아너드칸",
+        "jockey": "이성재",
+        "trainer": "강형곤",
+        "weight": "54",
+        "track": "양호",
+        "rc_time": "1:53.5",
+        "past_time": "",
+        "g1f_time": "",
+        "win_odds": "0",
+        "pre_ord": "",
+        "gear_info": "",
+        "training_info": "",
+        "combo_info": "",
+        "rc_cnt": "0",
+        "ord1_cnt": "0",
+        "ord2_cnt": "0",
+        "is_front": false,
+        "actual_ord": "3",
+        "horse_dist": "",
+        "speed_power": 20.3,
+        "distance": "1200",
+        "ai_score": 51.5,
+        "ai_tags": [
+          "외곽 모래회피 복병 🚀"
         ],
         "odds_display": "-"
       },
       {
         "gate": "1",
-        "name": "[부]금아거티",
+        "name": "금아거티",
         "jockey": "진겸",
         "trainer": "이상영",
         "weight": "57.5",
@@ -10145,17 +10242,18 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 17.450000000000003,
-        "distance": "1800",
-        "ai_score": 49.2,
+        "distance": "1200",
+        "ai_score": 49.6,
         "ai_tags": [
-          "스피드 지수 최상(112.7초) 🏎️"
+          "단거리 황금게이트 ⚡"
         ],
         "odds_display": "-"
       },
       {
         "gate": "11",
-        "name": "[부]금아디스팅션",
+        "name": "금아디스팅션",
         "jockey": "신윤섭",
         "trainer": "문현철",
         "weight": "55.5",
@@ -10173,18 +10271,47 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "9",
+        "horse_dist": "",
         "speed_power": 14.450000000000003,
-        "distance": "1800",
-        "ai_score": 48.6,
+        "distance": "1200",
+        "ai_score": 48.0,
         "ai_tags": [
-          "외곽 모래회피 복병 🚀",
-          "스피드 지수 최상(115.9초) 🏎️"
+          "외곽 모래회피 복병 🚀"
+        ],
+        "odds_display": "-"
+      },
+      {
+        "gate": "8",
+        "name": "원더풀존스",
+        "jockey": "다실바",
+        "trainer": "토마스",
+        "weight": "56",
+        "track": "양호",
+        "rc_time": "1:54.8",
+        "past_time": "",
+        "g1f_time": "",
+        "win_odds": "0",
+        "pre_ord": "",
+        "gear_info": "",
+        "training_info": "",
+        "combo_info": "",
+        "rc_cnt": "0",
+        "ord1_cnt": "0",
+        "ord2_cnt": "0",
+        "is_front": false,
+        "actual_ord": "8",
+        "horse_dist": "",
+        "speed_power": 13.700000000000003,
+        "distance": "1200",
+        "ai_score": 47.7,
+        "ai_tags": [
+          "외곽 모래회피 복병 🚀"
         ],
         "odds_display": "-"
       }
     ],
-    "is_trio_target": false,
-    "trio_reason": ""
+    "is_trio_target": true,
+    "trio_reason": "TOP 3 능력 분리 완성 (3-4위 격차 +6.5점) • 스피드/기수 우위 집중"
   },
   {
     "meet_code": "4",
@@ -10193,11 +10320,11 @@
     "race_date": "20261004",
     "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
         "gate": "9",
-        "name": "[부]올더베스트",
+        "name": "올더베스트",
         "jockey": "최시대",
         "trainer": "백광열",
         "weight": "53",
@@ -10215,9 +10342,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "9",
+        "horse_dist": "",
         "speed_power": 31.96,
         "distance": "1200",
-        "ai_score": 70.5,
+        "ai_score": 69.2,
         "ai_tags": [
           "특급 기수 🏇",
           "외곽 모래회피 복병 🚀",
@@ -10228,7 +10356,7 @@
       },
       {
         "gate": "2",
-        "name": "[부]탐라퍼스트",
+        "name": "탐라퍼스트",
         "jockey": "정도윤",
         "trainer": "문현철",
         "weight": "55",
@@ -10246,9 +10374,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 29.6,
         "distance": "1200",
-        "ai_score": 63.9,
+        "ai_score": 62.8,
         "ai_tags": [
           "상위 기수",
           "단거리 황금게이트 ⚡",
@@ -10259,7 +10388,7 @@
       },
       {
         "gate": "1",
-        "name": "[부]상임볼트",
+        "name": "상임볼트",
         "jockey": "홍환웅",
         "trainer": "임금만",
         "weight": "51",
@@ -10277,9 +10406,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "3",
+        "horse_dist": "",
         "speed_power": 27.200000000000003,
         "distance": "1200",
-        "ai_score": 59.2,
+        "ai_score": 58.6,
         "ai_tags": [
           "단거리 황금게이트 ⚡",
           "경량 부중(51.0kg) ⚡",
@@ -10289,7 +10419,7 @@
       },
       {
         "gate": "5",
-        "name": "[부]보령원로드",
+        "name": "보령원로드",
         "jockey": "김동영",
         "trainer": "임금만",
         "weight": "*52.5",
@@ -10307,9 +10437,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "7",
+        "horse_dist": "",
         "speed_power": 27.590000000000003,
         "distance": "1200",
-        "ai_score": 58.9,
+        "ai_score": 58.0,
         "ai_tags": [
           "경량 부중(52.5kg) ⚡",
           "스피드 지수 최상(73.7초) 🏎️"
@@ -10318,7 +10449,7 @@
       },
       {
         "gate": "3",
-        "name": "[부]조이오브퀸",
+        "name": "조이오브퀸",
         "jockey": "서강주",
         "trainer": "안우성",
         "weight": "*52.5",
@@ -10336,9 +10467,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "4",
+        "horse_dist": "",
         "speed_power": 26.55,
         "distance": "1200",
-        "ai_score": 58.5,
+        "ai_score": 57.9,
         "ai_tags": [
           "단거리 황금게이트 ⚡",
           "경량 부중(52.5kg) ⚡",
@@ -10348,7 +10480,7 @@
       },
       {
         "gate": "11",
-        "name": "[부]스마트러너",
+        "name": "스마트러너",
         "jockey": "김어수",
         "trainer": "김도현",
         "weight": "*52.5",
@@ -10366,9 +10498,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "10",
+        "horse_dist": "",
         "speed_power": 22.630000000000003,
         "distance": "1200",
-        "ai_score": 57.5,
+        "ai_score": 56.8,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
           "경량 부중(52.5kg) ⚡"
@@ -10377,7 +10510,7 @@
       },
       {
         "gate": "7",
-        "name": "[부]러너스하이",
+        "name": "러너스하이",
         "jockey": "조인권",
         "trainer": "방동석",
         "weight": "56.5",
@@ -10395,9 +10528,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "5",
+        "horse_dist": "",
         "speed_power": 24.470000000000002,
         "distance": "1200",
-        "ai_score": 56.0,
+        "ai_score": 54.9,
         "ai_tags": [
           "상위 기수",
           "스피드 지수 최상(73.6초) 🏎️"
@@ -10406,7 +10540,7 @@
       },
       {
         "gate": "8",
-        "name": "[부]송정투데이",
+        "name": "송정투데이",
         "jockey": "전진구",
         "trainer": "유현명",
         "weight": "*52.5",
@@ -10424,9 +10558,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "8",
+        "horse_dist": "",
         "speed_power": 21.19,
         "distance": "1200",
-        "ai_score": 55.6,
+        "ai_score": 54.9,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
           "경량 부중(52.5kg) ⚡",
@@ -10436,7 +10571,7 @@
       },
       {
         "gate": "6",
-        "name": "[부]라이트닝포스",
+        "name": "라이트닝포스",
         "jockey": "이성재",
         "trainer": "토마스",
         "weight": "56.5",
@@ -10454,9 +10589,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "6",
+        "horse_dist": "",
         "speed_power": 20.55,
         "distance": "1200",
-        "ai_score": 52.3,
+        "ai_score": 51.5,
         "ai_tags": [
           "스피드 지수 최상(73.7초) 🏎️"
         ],
@@ -10464,7 +10600,7 @@
       },
       {
         "gate": "4",
-        "name": "[부]무적이",
+        "name": "무적이",
         "jockey": "손경민",
         "trainer": "권승주",
         "weight": "54.5",
@@ -10482,9 +10618,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "1",
+        "horse_dist": "",
         "speed_power": 21.55,
         "distance": "1200",
-        "ai_score": 51.5,
+        "ai_score": 50.8,
         "ai_tags": [
           "스피드 지수 최상(71.4초) 🏎️"
         ],
@@ -10492,7 +10629,7 @@
       },
       {
         "gate": "10",
-        "name": "[부]리플즈마린",
+        "name": "리플즈마린",
         "jockey": "송경윤",
         "trainer": "최기홍",
         "weight": "54",
@@ -10510,9 +10647,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "11",
+        "horse_dist": "",
         "speed_power": 19.26,
         "distance": "1200",
-        "ai_score": 51.4,
+        "ai_score": 50.6,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
@@ -10529,11 +10667,11 @@
     "race_date": "20261004",
     "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
         "gate": "1",
-        "name": "[부]벌마의에이스",
+        "name": "벌마의에이스",
         "jockey": "최시대",
         "trainer": "양영남",
         "weight": "54.5",
@@ -10551,9 +10689,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 33.790000000000006,
         "distance": "1200",
-        "ai_score": 71.1,
+        "ai_score": 69.8,
         "ai_tags": [
           "특급 기수 🏇",
           "단거리 황금게이트 ⚡",
@@ -10564,7 +10703,7 @@
       },
       {
         "gate": "4",
-        "name": "[부]벌마브라운",
+        "name": "벌마브라운",
         "jockey": "정도윤",
         "trainer": "백광열",
         "weight": "54.5",
@@ -10582,9 +10721,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "3",
+        "horse_dist": "",
         "speed_power": 30.27,
         "distance": "1200",
-        "ai_score": 64.3,
+        "ai_score": 63.1,
         "ai_tags": [
           "상위 기수",
           "스피드 우수 🏎️",
@@ -10594,7 +10734,7 @@
       },
       {
         "gate": "9",
-        "name": "[부]월드블루핀캣",
+        "name": "월드블루핀캣",
         "jockey": "조인권",
         "trainer": "방동석",
         "weight": "*52.5",
@@ -10612,9 +10752,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "7",
+        "horse_dist": "",
         "speed_power": 26.470000000000002,
         "distance": "1200",
-        "ai_score": 60.5,
+        "ai_score": 59.5,
         "ai_tags": [
           "상위 기수",
           "외곽 모래회피 복병 🚀",
@@ -10625,7 +10766,7 @@
       },
       {
         "gate": "3",
-        "name": "[부]골든",
+        "name": "골든",
         "jockey": "최은경",
         "trainer": "조용배",
         "weight": "*52.5",
@@ -10643,9 +10784,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "1",
+        "horse_dist": "",
         "speed_power": 24.950000000000003,
         "distance": "1200",
-        "ai_score": 56.5,
+        "ai_score": 55.9,
         "ai_tags": [
           "단거리 황금게이트 ⚡",
           "경량 부중(52.5kg) ⚡",
@@ -10655,7 +10797,7 @@
       },
       {
         "gate": "5",
-        "name": "[부]유림세상",
+        "name": "유림세상",
         "jockey": "다실바",
         "trainer": "하무선",
         "weight": "58",
@@ -10673,9 +10815,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "5",
+        "horse_dist": "",
         "speed_power": 14.700000000000003,
         "distance": "1200",
-        "ai_score": 55.0,
+        "ai_score": 54.4,
         "ai_tags": [
           "체급 최강자(탑웨이트) 🏋️",
           "스피드 지수 최상(73.4초) 🏎️"
@@ -10684,7 +10827,7 @@
       },
       {
         "gate": "6",
-        "name": "[부]밀크데이",
+        "name": "밀크데이",
         "jockey": "서강주",
         "trainer": "조용배",
         "weight": "*52.5",
@@ -10702,9 +10845,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "6",
+        "horse_dist": "",
         "speed_power": 22.950000000000003,
         "distance": "1200",
-        "ai_score": 54.5,
+        "ai_score": 53.9,
         "ai_tags": [
           "경량 부중(52.5kg) ⚡",
           "스피드 지수 최상(73.6초) 🏎️"
@@ -10713,7 +10857,7 @@
       },
       {
         "gate": "7",
-        "name": "[부]스타퓨리",
+        "name": "스타퓨리",
         "jockey": "유광희",
         "trainer": "임금만",
         "weight": "52.5",
@@ -10731,9 +10875,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "11",
+        "horse_dist": "",
         "speed_power": 22.950000000000003,
         "distance": "1200",
-        "ai_score": 54.5,
+        "ai_score": 53.9,
         "ai_tags": [
           "경량 부중(52.5kg) ⚡"
         ],
@@ -10741,7 +10886,7 @@
       },
       {
         "gate": "8",
-        "name": "[부]디먼스파이",
+        "name": "디먼스파이",
         "jockey": "채상현",
         "trainer": "양영남",
         "weight": "*52.5",
@@ -10759,9 +10904,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "9",
+        "horse_dist": "",
         "speed_power": 18.950000000000003,
         "distance": "1200",
-        "ai_score": 53.5,
+        "ai_score": 52.9,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
           "경량 부중(52.5kg) ⚡",
@@ -10771,7 +10917,7 @@
       },
       {
         "gate": "2",
-        "name": "[부]스카이질주",
+        "name": "스카이질주",
         "jockey": "이현종",
         "trainer": "강은석",
         "weight": "54.5",
@@ -10789,9 +10935,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "4",
+        "horse_dist": "",
         "speed_power": 22.55,
         "distance": "1200",
-        "ai_score": 52.8,
+        "ai_score": 52.1,
         "ai_tags": [
           "단거리 황금게이트 ⚡",
           "스피드 지수 최상(72.4초) 🏎️"
@@ -10800,7 +10947,7 @@
       },
       {
         "gate": "10",
-        "name": "[부]그레이트톱",
+        "name": "그레이트톱",
         "jockey": "송경윤",
         "trainer": "최기홍",
         "weight": "55.5",
@@ -10818,9 +10965,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "10",
+        "horse_dist": "",
         "speed_power": 17.01,
         "distance": "1200",
-        "ai_score": 51.0,
+        "ai_score": 50.3,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
@@ -10828,7 +10976,7 @@
       },
       {
         "gate": "11",
-        "name": "[부]블랙스프링",
+        "name": "블랙스프링",
         "jockey": "손경민",
         "trainer": "유현명",
         "weight": "54.5",
@@ -10846,9 +10994,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "8",
+        "horse_dist": "",
         "speed_power": 17.55,
         "distance": "1200",
-        "ai_score": 50.5,
+        "ai_score": 49.8,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
           "기록 우수"
@@ -10857,25 +11006,25 @@
       }
     ],
     "is_trio_target": true,
-    "trio_reason": "TOP 3 능력 분리 완성 (3-4위 격차 +4.0점) • 스피드/기수 우위 완벽 집중"
+    "trio_reason": "TOP 3 능력 분리 완성 (3-4위 격차 +3.6점) • 스피드/기수 우위 집중"
   },
   {
     "meet_code": "1",
     "meet_name": "서울",
     "race_no": "1",
     "race_date": "20261005",
-    "distance": "1000",
+    "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
-        "gate": "10",
-        "name": "루나삭스",
-        "jockey": "빅투아르",
-        "trainer": "이신우",
-        "weight": "53",
+        "gate": "1",
+        "name": "스마트빅뱅",
+        "jockey": "문세영",
+        "trainer": "관리팀",
+        "weight": "55",
         "track": "양호",
-        "rc_time": "1:16.7",
+        "rc_time": "1:19.9",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -10887,13 +11036,14 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "5",
-        "speed_power": 28.680000000000003,
-        "distance": "1000",
-        "ai_score": 66.8,
+        "actual_ord": "11",
+        "horse_dist": "",
+        "speed_power": 38.160000000000004,
+        "distance": "1200",
+        "ai_score": 74.2,
         "ai_tags": [
           "특급 기수 🏇",
-          "외곽 모래회피 복병 🚀",
+          "단거리 황금게이트 ⚡",
           "과거 스피드 최상 🏎️"
         ],
         "odds_display": "-"
@@ -10918,9 +11068,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "7",
+        "horse_dist": "",
         "speed_power": 22.6,
-        "distance": "1000",
-        "ai_score": 62.6,
+        "distance": "1200",
+        "ai_score": 61.7,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
           "숨은 다크호스 💥"
@@ -10928,13 +11079,13 @@
         "odds_display": "-"
       },
       {
-        "gate": "5",
-        "name": "블루피니시",
-        "jockey": "마이아",
-        "trainer": "김동균",
-        "weight": "55",
+        "gate": "10",
+        "name": "루나삭스",
+        "jockey": "빅투아르",
+        "trainer": "이신우",
+        "weight": "53",
         "track": "양호",
-        "rc_time": "1:19.6",
+        "rc_time": "1:16.7",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -10946,12 +11097,14 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "10",
-        "speed_power": 27.200000000000003,
-        "distance": "1000",
-        "ai_score": 61.5,
+        "actual_ord": "5",
+        "horse_dist": "",
+        "speed_power": 28.680000000000003,
+        "distance": "1200",
+        "ai_score": 61.6,
         "ai_tags": [
-          "상위 기수",
+          "특급 기수 🏇",
+          "외곽 모래회피 복병 🚀",
           "스피드 우수 🏎️"
         ],
         "odds_display": "-"
@@ -10976,12 +11129,42 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "6",
+        "horse_dist": "",
         "speed_power": 25.400000000000002,
-        "distance": "1000",
-        "ai_score": 57.2,
+        "distance": "1200",
+        "ai_score": 56.6,
         "ai_tags": [
           "우수 마방 🏆",
           "단거리 황금게이트 ⚡"
+        ],
+        "odds_display": "-"
+      },
+      {
+        "gate": "5",
+        "name": "블루피니시",
+        "jockey": "마이아",
+        "trainer": "김동균",
+        "weight": "55",
+        "track": "양호",
+        "rc_time": "1:19.6",
+        "past_time": "",
+        "g1f_time": "",
+        "win_odds": "0",
+        "pre_ord": "",
+        "gear_info": "",
+        "training_info": "",
+        "combo_info": "",
+        "rc_cnt": "0",
+        "ord1_cnt": "0",
+        "ord2_cnt": "0",
+        "is_front": false,
+        "actual_ord": "10",
+        "horse_dist": "",
+        "speed_power": 27.200000000000003,
+        "distance": "1200",
+        "ai_score": 56.4,
+        "ai_tags": [
+          "상위 기수"
         ],
         "odds_display": "-"
       },
@@ -11005,9 +11188,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "4",
+        "horse_dist": "",
         "speed_power": 26.400000000000002,
-        "distance": "1000",
-        "ai_score": 56.8,
+        "distance": "1200",
+        "ai_score": 55.7,
         "ai_tags": [
           "상위 기수"
         ],
@@ -11033,9 +11217,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "3",
+        "horse_dist": "",
         "speed_power": 24.4,
-        "distance": "1000",
-        "ai_score": 55.8,
+        "distance": "1200",
+        "ai_score": 55.0,
         "ai_tags": [
           "우수 마방 🏆",
           "외곽 모래회피 복병 🚀"
@@ -11062,38 +11247,11 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "8",
+        "horse_dist": "",
         "speed_power": 26.6,
-        "distance": "1000",
-        "ai_score": 54.1,
+        "distance": "1200",
+        "ai_score": 53.2,
         "ai_tags": [],
-        "odds_display": "-"
-      },
-      {
-        "gate": "1",
-        "name": "스마트빅뱅",
-        "jockey": "김정준",
-        "trainer": "문세영",
-        "weight": "55",
-        "track": "양호",
-        "rc_time": "1:19.9",
-        "past_time": "",
-        "g1f_time": "",
-        "win_odds": "0",
-        "pre_ord": "",
-        "gear_info": "",
-        "training_info": "",
-        "combo_info": "",
-        "rc_cnt": "0",
-        "ord1_cnt": "0",
-        "ord2_cnt": "0",
-        "is_front": false,
-        "actual_ord": "11",
-        "speed_power": 21.200000000000003,
-        "distance": "1000",
-        "ai_score": 52.0,
-        "ai_tags": [
-          "단거리 황금게이트 ⚡"
-        ],
         "odds_display": "-"
       },
       {
@@ -11116,9 +11274,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "1",
+        "horse_dist": "",
         "speed_power": 21.200000000000003,
-        "distance": "1000",
-        "ai_score": 52.0,
+        "distance": "1200",
+        "ai_score": 51.4,
         "ai_tags": [
           "단거리 황금게이트 ⚡"
         ],
@@ -11144,9 +11303,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "9",
+        "horse_dist": "",
         "speed_power": 22.200000000000003,
-        "distance": "1000",
-        "ai_score": 50.0,
+        "distance": "1200",
+        "ai_score": 49.4,
         "ai_tags": [],
         "odds_display": "-"
       },
@@ -11170,9 +11330,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 18.6,
-        "distance": "1000",
-        "ai_score": 49.5,
+        "distance": "1200",
+        "ai_score": 48.9,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
@@ -11187,9 +11348,9 @@
     "meet_name": "서울",
     "race_no": "2",
     "race_date": "20261005",
-    "distance": "1300",
+    "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
         "gate": "2",
@@ -11211,9 +11372,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "5",
+        "horse_dist": "",
         "speed_power": 38.300000000000004,
-        "distance": "1300",
-        "ai_score": 74.6,
+        "distance": "1200",
+        "ai_score": 73.0,
         "ai_tags": [
           "특급 기수 🏇",
           "단거리 황금게이트 ⚡",
@@ -11241,9 +11403,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "8",
+        "horse_dist": "",
         "speed_power": 30.1,
-        "distance": "1300",
-        "ai_score": 63.6,
+        "distance": "1200",
+        "ai_score": 62.7,
         "ai_tags": [
           "단거리 황금게이트 ⚡",
           "스피드 우수 🏎️"
@@ -11270,9 +11433,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "7",
+        "horse_dist": "",
         "speed_power": 27.700000000000003,
-        "distance": "1300",
-        "ai_score": 58.7,
+        "distance": "1200",
+        "ai_score": 57.4,
         "ai_tags": [
           "특급 기수 🏇"
         ],
@@ -11298,9 +11462,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "1",
+        "horse_dist": "",
         "speed_power": 19.46,
-        "distance": "1300",
-        "ai_score": 53.7,
+        "distance": "1200",
+        "ai_score": 52.7,
         "ai_tags": [
           "상위 기수",
           "외곽 모래회피 복병 🚀"
@@ -11327,9 +11492,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "11",
+        "horse_dist": "",
         "speed_power": 23.1,
-        "distance": "1300",
-        "ai_score": 52.5,
+        "distance": "1200",
+        "ai_score": 51.9,
         "ai_tags": [
           "단거리 황금게이트 ⚡"
         ],
@@ -11355,9 +11521,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 21.98,
-        "distance": "1300",
-        "ai_score": 51.6,
+        "distance": "1200",
+        "ai_score": 51.0,
         "ai_tags": [],
         "odds_display": "-"
       },
@@ -11381,9 +11548,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "4",
+        "horse_dist": "",
         "speed_power": 17.98,
-        "distance": "1300",
-        "ai_score": 50.6,
+        "distance": "1200",
+        "ai_score": 50.0,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
@@ -11409,9 +11577,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "6",
+        "horse_dist": "",
         "speed_power": 20.700000000000003,
-        "distance": "1300",
-        "ai_score": 50.0,
+        "distance": "1200",
+        "ai_score": 49.4,
         "ai_tags": [],
         "odds_display": "-"
       },
@@ -11435,9 +11604,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "10",
+        "horse_dist": "",
         "speed_power": 20.700000000000003,
-        "distance": "1300",
-        "ai_score": 50.0,
+        "distance": "1200",
+        "ai_score": 49.4,
         "ai_tags": [],
         "odds_display": "-"
       },
@@ -11461,9 +11631,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "9",
+        "horse_dist": "",
         "speed_power": 16.700000000000003,
-        "distance": "1300",
-        "ai_score": 49.0,
+        "distance": "1200",
+        "ai_score": 48.4,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
@@ -11489,9 +11660,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "3",
+        "horse_dist": "",
         "speed_power": 13.700000000000003,
-        "distance": "1300",
-        "ai_score": 48.3,
+        "distance": "1200",
+        "ai_score": 47.7,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
@@ -11508,7 +11680,7 @@
     "race_date": "20261005",
     "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
         "gate": "5",
@@ -11530,9 +11702,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "6",
+        "horse_dist": "",
         "speed_power": 37.42,
         "distance": "1200",
-        "ai_score": 74.0,
+        "ai_score": 72.4,
         "ai_tags": [
           "특급 기수 🏇",
           "과거 스피드 최상 🏎️"
@@ -11559,9 +11732,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "1",
+        "horse_dist": "",
         "speed_power": 25.400000000000002,
         "distance": "1200",
-        "ai_score": 59.8,
+        "ai_score": 58.7,
         "ai_tags": [
           "상위 기수",
           "외곽 모래회피 복병 🚀",
@@ -11589,9 +11763,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "10",
+        "horse_dist": "",
         "speed_power": 25.1,
         "distance": "1200",
-        "ai_score": 57.0,
+        "ai_score": 56.2,
         "ai_tags": [
           "단거리 황금게이트 ⚡"
         ],
@@ -11617,9 +11792,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "9",
+        "horse_dist": "",
         "speed_power": 24.950000000000003,
         "distance": "1200",
-        "ai_score": 56.5,
+        "ai_score": 55.9,
         "ai_tags": [
           "단거리 황금게이트 ⚡",
           "경량 부중(52.5kg) ⚡"
@@ -11646,9 +11822,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "7",
+        "horse_dist": "",
         "speed_power": 20.950000000000003,
         "distance": "1200",
-        "ai_score": 56.0,
+        "ai_score": 55.4,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
           "경량 부중(52.5kg) ⚡"
@@ -11675,9 +11852,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "5",
+        "horse_dist": "",
         "speed_power": 23.0,
         "distance": "1200",
-        "ai_score": 55.1,
+        "ai_score": 54.2,
         "ai_tags": [
           "단거리 황금게이트 ⚡"
         ],
@@ -11703,9 +11881,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "8",
+        "horse_dist": "",
         "speed_power": 18.950000000000003,
         "distance": "1200",
-        "ai_score": 53.5,
+        "ai_score": 52.9,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
           "경량 부중(52.5kg) ⚡"
@@ -11732,9 +11911,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "11",
+        "horse_dist": "",
         "speed_power": 21.92,
         "distance": "1200",
-        "ai_score": 53.4,
+        "ai_score": 52.8,
         "ai_tags": [
           "우수 마방 🏆"
         ],
@@ -11760,9 +11940,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "4",
+        "horse_dist": "",
         "speed_power": 20.35,
         "distance": "1200",
-        "ai_score": 50.5,
+        "ai_score": 49.9,
         "ai_tags": [],
         "odds_display": "-"
       },
@@ -11786,9 +11967,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 17.700000000000003,
         "distance": "1200",
-        "ai_score": 49.3,
+        "ai_score": 48.7,
         "ai_tags": [],
         "odds_display": "-"
       },
@@ -11812,9 +11994,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "3",
+        "horse_dist": "",
         "speed_power": 18.200000000000003,
         "distance": "1200",
-        "ai_score": 49.0,
+        "ai_score": 48.4,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
@@ -11829,9 +12012,9 @@
     "meet_name": "서울",
     "race_no": "4",
     "race_date": "20261005",
-    "distance": "1400",
+    "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
         "gate": "3",
@@ -11853,11 +12036,13 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "5",
+        "horse_dist": "",
         "speed_power": 40.550000000000004,
-        "distance": "1400",
-        "ai_score": 78.1,
+        "distance": "1200",
+        "ai_score": 77.5,
         "ai_tags": [
           "특급 기수 🏇",
+          "단거리 황금게이트 ⚡",
           "경량 부중(52.5kg) ⚡",
           "과거 스피드 최상 🏎️"
         ],
@@ -11883,9 +12068,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "7",
+        "horse_dist": "",
         "speed_power": 30.71,
-        "distance": "1400",
-        "ai_score": 68.9,
+        "distance": "1200",
+        "ai_score": 67.7,
         "ai_tags": [
           "특급 기수 🏇",
           "외곽 모래회피 복병 🚀",
@@ -11914,40 +12100,13 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "9",
+        "horse_dist": "",
         "speed_power": 25.700000000000003,
-        "distance": "1400",
-        "ai_score": 56.4,
+        "distance": "1200",
+        "ai_score": 56.8,
         "ai_tags": [
+          "단거리 황금게이트 ⚡",
           "경량 부중(52.0kg) ⚡"
-        ],
-        "odds_display": "-"
-      },
-      {
-        "gate": "11",
-        "name": "카우보이퀸",
-        "jockey": "권중석",
-        "trainer": "조현수",
-        "weight": "51",
-        "track": "양호",
-        "rc_time": "1:30.9",
-        "past_time": "",
-        "g1f_time": "",
-        "win_odds": "0",
-        "pre_ord": "",
-        "gear_info": "",
-        "training_info": "",
-        "combo_info": "",
-        "rc_cnt": "0",
-        "ord1_cnt": "0",
-        "ord2_cnt": "0",
-        "is_front": false,
-        "actual_ord": "6",
-        "speed_power": 21.200000000000003,
-        "distance": "1400",
-        "ai_score": 56.2,
-        "ai_tags": [
-          "외곽 모래회피 복병 🚀",
-          "경량 부중(51.0kg) ⚡"
         ],
         "odds_display": "-"
       },
@@ -11971,11 +12130,42 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "3",
+        "horse_dist": "",
         "speed_power": 26.400000000000002,
-        "distance": "1400",
-        "ai_score": 55.8,
+        "distance": "1200",
+        "ai_score": 55.7,
         "ai_tags": [
           "상위 기수"
+        ],
+        "odds_display": "-"
+      },
+      {
+        "gate": "11",
+        "name": "카우보이퀸",
+        "jockey": "권중석",
+        "trainer": "조현수",
+        "weight": "51",
+        "track": "양호",
+        "rc_time": "1:30.9",
+        "past_time": "",
+        "g1f_time": "",
+        "win_odds": "0",
+        "pre_ord": "",
+        "gear_info": "",
+        "training_info": "",
+        "combo_info": "",
+        "rc_cnt": "0",
+        "ord1_cnt": "0",
+        "ord2_cnt": "0",
+        "is_front": false,
+        "actual_ord": "6",
+        "horse_dist": "",
+        "speed_power": 21.200000000000003,
+        "distance": "1200",
+        "ai_score": 55.6,
+        "ai_tags": [
+          "외곽 모래회피 복병 🚀",
+          "경량 부중(51.0kg) ⚡"
         ],
         "odds_display": "-"
       },
@@ -11999,9 +12189,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 24.6,
-        "distance": "1400",
-        "ai_score": 55.5,
+        "distance": "1200",
+        "ai_score": 55.4,
         "ai_tags": [
           "상위 기수"
         ],
@@ -12027,37 +12218,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "10",
+        "horse_dist": "",
         "speed_power": 19.900000000000002,
-        "distance": "1400",
-        "ai_score": 52.0,
-        "ai_tags": [
-          "외곽 모래회피 복병 🚀"
-        ],
-        "odds_display": "-"
-      },
-      {
-        "gate": "8",
-        "name": "승리바로우즈",
-        "jockey": "코지",
-        "trainer": "서인석",
-        "weight": "56.5",
-        "track": "양호",
-        "rc_time": "1:32.2",
-        "past_time": "",
-        "g1f_time": "",
-        "win_odds": "0",
-        "pre_ord": "",
-        "gear_info": "",
-        "training_info": "",
-        "combo_info": "",
-        "rc_cnt": "0",
-        "ord1_cnt": "0",
-        "ord2_cnt": "0",
-        "is_front": false,
-        "actual_ord": "11",
-        "speed_power": 13.350000000000001,
-        "distance": "1400",
-        "ai_score": 51.5,
+        "distance": "1200",
+        "ai_score": 51.2,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
@@ -12083,9 +12247,39 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "8",
+        "horse_dist": "",
         "speed_power": 19.700000000000003,
-        "distance": "1400",
-        "ai_score": 50.3,
+        "distance": "1200",
+        "ai_score": 50.7,
+        "ai_tags": [
+          "단거리 황금게이트 ⚡"
+        ],
+        "odds_display": "-"
+      },
+      {
+        "gate": "6",
+        "name": "실버문",
+        "jockey": "최범현",
+        "trainer": "성상현",
+        "weight": "53.5",
+        "track": "양호",
+        "rc_time": "1:30.5",
+        "past_time": "",
+        "g1f_time": "",
+        "win_odds": "0",
+        "pre_ord": "",
+        "gear_info": "",
+        "training_info": "",
+        "combo_info": "",
+        "rc_cnt": "0",
+        "ord1_cnt": "0",
+        "ord2_cnt": "0",
+        "is_front": false,
+        "actual_ord": "4",
+        "horse_dist": "",
+        "speed_power": 21.450000000000003,
+        "distance": "1200",
+        "ai_score": 49.4,
         "ai_tags": [],
         "odds_display": "-"
       },
@@ -12109,20 +12303,21 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "1",
+        "horse_dist": "",
         "speed_power": 16.950000000000003,
-        "distance": "1400",
-        "ai_score": 50.0,
+        "distance": "1200",
+        "ai_score": 48.4,
         "ai_tags": [],
         "odds_display": "-"
       },
       {
-        "gate": "6",
-        "name": "실버문",
-        "jockey": "최범현",
-        "trainer": "성상현",
-        "weight": "53.5",
+        "gate": "8",
+        "name": "승리바로우즈",
+        "jockey": "코지",
+        "trainer": "서인석",
+        "weight": "56.5",
         "track": "양호",
-        "rc_time": "1:30.5",
+        "rc_time": "1:32.2",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -12134,11 +12329,14 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "4",
-        "speed_power": 21.450000000000003,
-        "distance": "1400",
-        "ai_score": 49.0,
-        "ai_tags": [],
+        "actual_ord": "11",
+        "horse_dist": "",
+        "speed_power": 13.350000000000001,
+        "distance": "1200",
+        "ai_score": 47.9,
+        "ai_tags": [
+          "외곽 모래회피 복병 🚀"
+        ],
         "odds_display": "-"
       }
     ],
@@ -12150,10 +12348,41 @@
     "meet_name": "서울",
     "race_no": "5",
     "race_date": "20261005",
-    "distance": "1400",
+    "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
+      {
+        "gate": "2",
+        "name": "벌교엠퍼러",
+        "jockey": "문세영",
+        "trainer": "관리팀",
+        "weight": "55.5",
+        "track": "양호",
+        "rc_time": "1:52.8",
+        "past_time": "",
+        "g1f_time": "",
+        "win_odds": "0",
+        "pre_ord": "",
+        "gear_info": "",
+        "training_info": "",
+        "combo_info": "",
+        "rc_cnt": "0",
+        "ord1_cnt": "0",
+        "ord2_cnt": "0",
+        "is_front": false,
+        "actual_ord": "6",
+        "horse_dist": "",
+        "speed_power": 37.410000000000004,
+        "distance": "1200",
+        "ai_score": 73.9,
+        "ai_tags": [
+          "특급 기수 🏇",
+          "단거리 황금게이트 ⚡",
+          "과거 스피드 최상 🏎️"
+        ],
+        "odds_display": "-"
+      },
       {
         "gate": "1",
         "name": "블랙마마",
@@ -12174,40 +12403,13 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "1",
+        "horse_dist": "",
         "speed_power": 32.730000000000004,
-        "distance": "1400",
-        "ai_score": 68.1,
+        "distance": "1200",
+        "ai_score": 64.0,
         "ai_tags": [
           "상위 기수",
-          "과거 스피드 최상 🏎️"
-        ],
-        "odds_display": "-"
-      },
-      {
-        "gate": "3",
-        "name": "크리솔피스",
-        "jockey": "정도윤",
-        "trainer": "안병기",
-        "weight": "54.5",
-        "track": "양호",
-        "rc_time": "1:52.3",
-        "past_time": "",
-        "g1f_time": "",
-        "win_odds": "0",
-        "pre_ord": "",
-        "gear_info": "",
-        "training_info": "",
-        "combo_info": "",
-        "rc_cnt": "0",
-        "ord1_cnt": "0",
-        "ord2_cnt": "0",
-        "is_front": false,
-        "actual_ord": "4",
-        "speed_power": 30.35,
-        "distance": "1400",
-        "ai_score": 62.9,
-        "ai_tags": [
-          "상위 기수",
+          "단거리 황금게이트 ⚡",
           "스피드 우수 🏎️"
         ],
         "odds_display": "-"
@@ -12232,11 +12434,42 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 30.35,
-        "distance": "1400",
-        "ai_score": 61.1,
+        "distance": "1200",
+        "ai_score": 61.2,
         "ai_tags": [
           "경량 부중(52.5kg) ⚡"
+        ],
+        "odds_display": "-"
+      },
+      {
+        "gate": "3",
+        "name": "크리솔피스",
+        "jockey": "정도윤",
+        "trainer": "안병기",
+        "weight": "54.5",
+        "track": "양호",
+        "rc_time": "1:52.3",
+        "past_time": "",
+        "g1f_time": "",
+        "win_odds": "0",
+        "pre_ord": "",
+        "gear_info": "",
+        "training_info": "",
+        "combo_info": "",
+        "rc_cnt": "0",
+        "ord1_cnt": "0",
+        "ord2_cnt": "0",
+        "is_front": false,
+        "actual_ord": "4",
+        "horse_dist": "",
+        "speed_power": 30.35,
+        "distance": "1200",
+        "ai_score": 58.8,
+        "ai_tags": [
+          "상위 기수",
+          "단거리 황금게이트 ⚡"
         ],
         "odds_display": "-"
       },
@@ -12260,9 +12493,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "7",
+        "horse_dist": "",
         "speed_power": 25.950000000000003,
-        "distance": "1400",
-        "ai_score": 57.2,
+        "distance": "1200",
+        "ai_score": 57.6,
         "ai_tags": [
           "우수 마방 🏆",
           "경량 부중(52.5kg) ⚡"
@@ -12289,40 +12523,13 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "3",
+        "horse_dist": "",
         "speed_power": 18.950000000000003,
-        "distance": "1400",
-        "ai_score": 53.5,
+        "distance": "1200",
+        "ai_score": 52.9,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
           "경량 부중(52.5kg) ⚡"
-        ],
-        "odds_display": "-"
-      },
-      {
-        "gate": "8",
-        "name": "원더풀치프",
-        "jockey": "김정준",
-        "trainer": "서인석",
-        "weight": "53.5",
-        "track": "양호",
-        "rc_time": "-",
-        "past_time": "",
-        "g1f_time": "",
-        "win_odds": "0",
-        "pre_ord": "",
-        "gear_info": "",
-        "training_info": "",
-        "combo_info": "",
-        "rc_cnt": "0",
-        "ord1_cnt": "0",
-        "ord2_cnt": "0",
-        "is_front": false,
-        "actual_ord": "-",
-        "speed_power": 17.85,
-        "distance": "1400",
-        "ai_score": 52.5,
-        "ai_tags": [
-          "외곽 모래회피 복병 🚀"
         ],
         "odds_display": "-"
       },
@@ -12346,35 +12553,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "-",
+        "horse_dist": "",
         "speed_power": 22.200000000000003,
-        "distance": "1400",
-        "ai_score": 51.0,
-        "ai_tags": [],
-        "odds_display": "-"
-      },
-      {
-        "gate": "2",
-        "name": "벌교엠퍼러",
-        "jockey": "김철호",
-        "trainer": "문세영",
-        "weight": "55.5",
-        "track": "양호",
-        "rc_time": "1:52.8",
-        "past_time": "",
-        "g1f_time": "",
-        "win_odds": "0",
-        "pre_ord": "",
-        "gear_info": "",
-        "training_info": "",
-        "combo_info": "",
-        "rc_cnt": "0",
-        "ord1_cnt": "0",
-        "ord2_cnt": "0",
-        "is_front": false,
-        "actual_ord": "6",
-        "speed_power": 20.450000000000003,
-        "distance": "1400",
-        "ai_score": 50.6,
+        "distance": "1200",
+        "ai_score": 49.4,
         "ai_tags": [],
         "odds_display": "-"
       },
@@ -12398,10 +12580,40 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "8",
+        "horse_dist": "",
         "speed_power": 17.75,
-        "distance": "1400",
-        "ai_score": 49.0,
+        "distance": "1200",
+        "ai_score": 49.4,
         "ai_tags": [],
+        "odds_display": "-"
+      },
+      {
+        "gate": "8",
+        "name": "원더풀치프",
+        "jockey": "김정준",
+        "trainer": "서인석",
+        "weight": "53.5",
+        "track": "양호",
+        "rc_time": "-",
+        "past_time": "",
+        "g1f_time": "",
+        "win_odds": "0",
+        "pre_ord": "",
+        "gear_info": "",
+        "training_info": "",
+        "combo_info": "",
+        "rc_cnt": "0",
+        "ord1_cnt": "0",
+        "ord2_cnt": "0",
+        "is_front": false,
+        "actual_ord": "-",
+        "horse_dist": "",
+        "speed_power": 17.85,
+        "distance": "1200",
+        "ai_score": 48.9,
+        "ai_tags": [
+          "외곽 모래회피 복병 🚀"
+        ],
         "odds_display": "-"
       },
       {
@@ -12424,9 +12636,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "9",
+        "horse_dist": "",
         "speed_power": 17.450000000000003,
-        "distance": "1400",
-        "ai_score": 49.0,
+        "distance": "1200",
+        "ai_score": 48.4,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
@@ -12452,9 +12665,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "5",
+        "horse_dist": "",
         "speed_power": 16.700000000000003,
-        "distance": "1400",
-        "ai_score": 49.0,
+        "distance": "1200",
+        "ai_score": 48.4,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
@@ -12471,7 +12685,7 @@
     "race_date": "20261005",
     "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
         "gate": "7",
@@ -12493,9 +12707,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "9",
+        "horse_dist": "",
         "speed_power": 31.050000000000004,
         "distance": "1200",
-        "ai_score": 77.6,
+        "ai_score": 76.0,
         "ai_tags": [
           "특급 기수 🏇",
           "체급 최강자(탑웨이트) 🏋️",
@@ -12523,9 +12738,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "1",
+        "horse_dist": "",
         "speed_power": 30.150000000000002,
         "distance": "1200",
-        "ai_score": 65.2,
+        "ai_score": 64.2,
         "ai_tags": [
           "상위 기수",
           "경량 부중(52.5kg) ⚡",
@@ -12553,9 +12769,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "3",
+        "horse_dist": "",
         "speed_power": 27.85,
         "distance": "1200",
-        "ai_score": 59.9,
+        "ai_score": 59.1,
         "ai_tags": [
           "우수 마방 🏆",
           "단거리 황금게이트 ⚡"
@@ -12582,9 +12799,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "7",
+        "horse_dist": "",
         "speed_power": 25.200000000000003,
         "distance": "1200",
-        "ai_score": 58.4,
+        "ai_score": 57.1,
         "ai_tags": [
           "특급 기수 🏇",
           "외곽 모래회피 복병 🚀"
@@ -12611,9 +12829,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "11",
+        "horse_dist": "",
         "speed_power": 24.950000000000003,
         "distance": "1200",
-        "ai_score": 56.5,
+        "ai_score": 55.9,
         "ai_tags": [
           "단거리 황금게이트 ⚡",
           "경량 부중(52.5kg) ⚡"
@@ -12640,9 +12859,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "4",
+        "horse_dist": "",
         "speed_power": 24.950000000000003,
         "distance": "1200",
-        "ai_score": 56.5,
+        "ai_score": 55.9,
         "ai_tags": [
           "단거리 황금게이트 ⚡",
           "경량 부중(52.5kg) ⚡"
@@ -12669,9 +12889,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "8",
+        "horse_dist": "",
         "speed_power": 20.450000000000003,
         "distance": "1200",
-        "ai_score": 55.3,
+        "ai_score": 54.7,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
           "경량 부중(51.5kg) ⚡"
@@ -12698,9 +12919,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "5",
+        "horse_dist": "",
         "speed_power": 22.950000000000003,
         "distance": "1200",
-        "ai_score": 54.5,
+        "ai_score": 53.9,
         "ai_tags": [
           "경량 부중(52.5kg) ⚡"
         ],
@@ -12726,9 +12948,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "6",
+        "horse_dist": "",
         "speed_power": 22.950000000000003,
         "distance": "1200",
-        "ai_score": 54.5,
+        "ai_score": 53.9,
         "ai_tags": [
           "경량 부중(52.5kg) ⚡"
         ],
@@ -12754,9 +12977,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "10",
+        "horse_dist": "",
         "speed_power": 11.450000000000003,
         "distance": "1200",
-        "ai_score": 54.0,
+        "ai_score": 53.4,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
           "체급 최강자(탑웨이트) 🏋️"
@@ -12783,9 +13007,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 13.75,
         "distance": "1200",
-        "ai_score": 49.0,
+        "ai_score": 48.4,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
@@ -12800,9 +13025,9 @@
     "meet_name": "서울",
     "race_no": "7",
     "race_date": "20261005",
-    "distance": "1700",
+    "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
         "gate": "1",
@@ -12824,11 +13049,13 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "10",
+        "horse_dist": "",
         "speed_power": 40.550000000000004,
-        "distance": "1700",
-        "ai_score": 75.6,
+        "distance": "1200",
+        "ai_score": 77.5,
         "ai_tags": [
           "특급 기수 🏇",
+          "단거리 황금게이트 ⚡",
           "경량 부중(52.5kg) ⚡",
           "과거 스피드 최상 🏎️"
         ],
@@ -12854,11 +13081,13 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "8",
+        "horse_dist": "",
         "speed_power": 32.7,
-        "distance": "1700",
-        "ai_score": 64.4,
+        "distance": "1200",
+        "ai_score": 64.2,
         "ai_tags": [
           "특급 기수 🏇",
+          "단거리 황금게이트 ⚡",
           "스피드 우수 🏎️"
         ],
         "odds_display": "-"
@@ -12883,9 +13112,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "1",
+        "horse_dist": "",
         "speed_power": 26.35,
-        "distance": "1700",
-        "ai_score": 59.2,
+        "distance": "1200",
+        "ai_score": 61.0,
         "ai_tags": [
           "우수 마방 🏆",
           "외곽 모래회피 복병 🚀",
@@ -12913,9 +13143,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "7",
+        "horse_dist": "",
         "speed_power": 25.950000000000003,
-        "distance": "1700",
-        "ai_score": 56.8,
+        "distance": "1200",
+        "ai_score": 57.6,
         "ai_tags": [
           "우수 마방 🏆",
           "경량 부중(52.5kg) ⚡"
@@ -12942,9 +13173,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 26.1,
-        "distance": "1700",
-        "ai_score": 56.2,
+        "distance": "1200",
+        "ai_score": 56.0,
         "ai_tags": [
           "상위 기수"
         ],
@@ -12970,9 +13202,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "11",
+        "horse_dist": "",
         "speed_power": 20.450000000000003,
-        "distance": "1700",
-        "ai_score": 54.0,
+        "distance": "1200",
+        "ai_score": 54.7,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
           "경량 부중(51.5kg) ⚡"
@@ -12999,9 +13232,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "9",
+        "horse_dist": "",
         "speed_power": 18.150000000000002,
-        "distance": "1700",
-        "ai_score": 52.8,
+        "distance": "1200",
+        "ai_score": 51.9,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
@@ -13027,10 +13261,13 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "5",
+        "horse_dist": "",
         "speed_power": 21.200000000000003,
-        "distance": "1700",
-        "ai_score": 51.0,
-        "ai_tags": [],
+        "distance": "1200",
+        "ai_score": 51.4,
+        "ai_tags": [
+          "단거리 황금게이트 ⚡"
+        ],
         "odds_display": "-"
       },
       {
@@ -13053,9 +13290,37 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "3",
+        "horse_dist": "",
         "speed_power": 18.450000000000003,
-        "distance": "1700",
-        "ai_score": 48.6,
+        "distance": "1200",
+        "ai_score": 49.0,
+        "ai_tags": [],
+        "odds_display": "-"
+      },
+      {
+        "gate": "7",
+        "name": "칸맥스",
+        "jockey": "김정준",
+        "trainer": "서인석",
+        "weight": "57",
+        "track": "양호",
+        "rc_time": "1:59.4",
+        "past_time": "",
+        "g1f_time": "",
+        "win_odds": "0",
+        "pre_ord": "",
+        "gear_info": "",
+        "training_info": "",
+        "combo_info": "",
+        "rc_cnt": "0",
+        "ord1_cnt": "0",
+        "ord2_cnt": "0",
+        "is_front": false,
+        "actual_ord": "4",
+        "horse_dist": "",
+        "speed_power": 16.6,
+        "distance": "1200",
+        "ai_score": 48.5,
         "ai_tags": [],
         "odds_display": "-"
       },
@@ -13079,52 +13344,27 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "6",
+        "horse_dist": "",
         "speed_power": 13.700000000000003,
-        "distance": "1700",
-        "ai_score": 48.3,
+        "distance": "1200",
+        "ai_score": 47.7,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
         "odds_display": "-"
-      },
-      {
-        "gate": "7",
-        "name": "칸맥스",
-        "jockey": "김정준",
-        "trainer": "서인석",
-        "weight": "57",
-        "track": "양호",
-        "rc_time": "1:59.4",
-        "past_time": "",
-        "g1f_time": "",
-        "win_odds": "0",
-        "pre_ord": "",
-        "gear_info": "",
-        "training_info": "",
-        "combo_info": "",
-        "rc_cnt": "0",
-        "ord1_cnt": "0",
-        "ord2_cnt": "0",
-        "is_front": false,
-        "actual_ord": "4",
-        "speed_power": 16.6,
-        "distance": "1700",
-        "ai_score": 48.1,
-        "ai_tags": [],
-        "odds_display": "-"
       }
     ],
-    "is_trio_target": false,
-    "trio_reason": ""
+    "is_trio_target": true,
+    "trio_reason": "TOP 3 능력 분리 완성 (3-4위 격차 +3.4점) • 스피드/기수 우위 집중"
   },
   {
     "meet_code": "1",
     "meet_name": "서울",
     "race_no": "8",
     "race_date": "20261005",
-    "distance": "1800",
+    "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
         "gate": "7",
@@ -13146,14 +13386,14 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "7",
+        "horse_dist": "",
         "speed_power": 38.550000000000004,
-        "distance": "1800",
-        "ai_score": 73.6,
+        "distance": "1200",
+        "ai_score": 75.5,
         "ai_tags": [
           "특급 기수 🏇",
           "경량 부중(52.5kg) ⚡",
-          "과거 스피드 최상 🏎️",
-          "스피드 지수 최상(103.0초) 🏎️"
+          "과거 스피드 최상 🏎️"
         ],
         "odds_display": "-"
       },
@@ -13177,15 +13417,15 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "9",
+        "horse_dist": "",
         "speed_power": 31.200000000000003,
-        "distance": "1800",
-        "ai_score": 67.4,
+        "distance": "1200",
+        "ai_score": 68.3,
         "ai_tags": [
           "특급 기수 🏇",
           "외곽 모래회피 복병 🚀",
           "경량 부중(51.0kg) ⚡",
-          "스피드 우수 🏎️",
-          "스피드 지수 최상(103.6초) 🏎️"
+          "스피드 우수 🏎️"
         ],
         "odds_display": "-"
       },
@@ -13209,70 +13449,14 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "8",
+        "horse_dist": "",
         "speed_power": 23.950000000000003,
-        "distance": "1800",
-        "ai_score": 63.5,
+        "distance": "1200",
+        "ai_score": 63.4,
         "ai_tags": [
           "상위 기수",
-          "체급 최강자(탑웨이트) 🏋️",
-          "스피드 지수 최상(103.1초) 🏎️"
-        ],
-        "odds_display": "-"
-      },
-      {
-        "gate": "5",
-        "name": "슈어윈",
-        "jockey": "유승완",
-        "trainer": "백종수",
-        "weight": "53",
-        "track": "양호",
-        "rc_time": "1:42.9",
-        "past_time": "",
-        "g1f_time": "",
-        "win_odds": "0",
-        "pre_ord": "",
-        "gear_info": "",
-        "training_info": "",
-        "combo_info": "",
-        "rc_cnt": "0",
-        "ord1_cnt": "0",
-        "ord2_cnt": "0",
-        "is_front": false,
-        "actual_ord": "5",
-        "speed_power": 29.400000000000002,
-        "distance": "1800",
-        "ai_score": 55.8,
-        "ai_tags": [
-          "상위 기수",
-          "스피드 지수 최상(102.9초) 🏎️"
-        ],
-        "odds_display": "-"
-      },
-      {
-        "gate": "3",
-        "name": "탑티어",
-        "jockey": "장추열",
-        "trainer": "차우호",
-        "weight": "54",
-        "track": "양호",
-        "rc_time": "1:42.6",
-        "past_time": "",
-        "g1f_time": "",
-        "win_odds": "0",
-        "pre_ord": "",
-        "gear_info": "",
-        "training_info": "",
-        "combo_info": "",
-        "rc_cnt": "0",
-        "ord1_cnt": "0",
-        "ord2_cnt": "0",
-        "is_front": false,
-        "actual_ord": "4",
-        "speed_power": 27.5,
-        "distance": "1800",
-        "ai_score": 55.5,
-        "ai_tags": [
-          "스피드 지수 최상(102.6초) 🏎️"
+          "단거리 황금게이트 ⚡",
+          "체급 최강자(탑웨이트) 🏋️"
         ],
         "odds_display": "-"
       },
@@ -13296,23 +13480,24 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "6",
+        "horse_dist": "",
         "speed_power": 24.950000000000003,
-        "distance": "1800",
-        "ai_score": 53.0,
+        "distance": "1200",
+        "ai_score": 55.9,
         "ai_tags": [
-          "경량 부중(52.5kg) ⚡",
-          "스피드 지수 최상(102.9초) 🏎️"
+          "단거리 황금게이트 ⚡",
+          "경량 부중(52.5kg) ⚡"
         ],
         "odds_display": "-"
       },
       {
-        "gate": "4",
-        "name": "마이엠파이어",
-        "jockey": "루이스",
-        "trainer": "정호익",
-        "weight": "57.5",
+        "gate": "5",
+        "name": "슈어윈",
+        "jockey": "유승완",
+        "trainer": "백종수",
+        "weight": "53",
         "track": "양호",
-        "rc_time": "1:46.5",
+        "rc_time": "1:42.9",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -13324,12 +13509,42 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "10",
-        "speed_power": 17.650000000000002,
-        "distance": "1800",
-        "ai_score": 52.0,
+        "actual_ord": "5",
+        "horse_dist": "",
+        "speed_power": 29.400000000000002,
+        "distance": "1200",
+        "ai_score": 55.7,
         "ai_tags": [
-          "스피드 지수 최상(106.5초) 🏎️"
+          "상위 기수"
+        ],
+        "odds_display": "-"
+      },
+      {
+        "gate": "3",
+        "name": "탑티어",
+        "jockey": "장추열",
+        "trainer": "차우호",
+        "weight": "54",
+        "track": "양호",
+        "rc_time": "1:42.6",
+        "past_time": "",
+        "g1f_time": "",
+        "win_odds": "0",
+        "pre_ord": "",
+        "gear_info": "",
+        "training_info": "",
+        "combo_info": "",
+        "rc_cnt": "0",
+        "ord1_cnt": "0",
+        "ord2_cnt": "0",
+        "is_front": false,
+        "actual_ord": "4",
+        "horse_dist": "",
+        "speed_power": 27.5,
+        "distance": "1200",
+        "ai_score": 55.6,
+        "ai_tags": [
+          "단거리 황금게이트 ⚡"
         ],
         "odds_display": "-"
       },
@@ -13353,13 +13568,40 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 23.75,
-        "distance": "1800",
-        "ai_score": 52.0,
+        "distance": "1200",
+        "ai_score": 54.9,
         "ai_tags": [
-          "경량 부중(52.5kg) ⚡",
-          "스피드 지수 최상(101.9초) 🏎️"
+          "경량 부중(52.5kg) ⚡"
         ],
+        "odds_display": "-"
+      },
+      {
+        "gate": "4",
+        "name": "마이엠파이어",
+        "jockey": "루이스",
+        "trainer": "정호익",
+        "weight": "57.5",
+        "track": "양호",
+        "rc_time": "1:46.5",
+        "past_time": "",
+        "g1f_time": "",
+        "win_odds": "0",
+        "pre_ord": "",
+        "gear_info": "",
+        "training_info": "",
+        "combo_info": "",
+        "rc_cnt": "0",
+        "ord1_cnt": "0",
+        "ord2_cnt": "0",
+        "is_front": false,
+        "actual_ord": "10",
+        "horse_dist": "",
+        "speed_power": 17.650000000000002,
+        "distance": "1200",
+        "ai_score": 50.4,
+        "ai_tags": [],
         "odds_display": "-"
       },
       {
@@ -13382,12 +13624,12 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "1",
+        "horse_dist": "",
         "speed_power": 16.32,
-        "distance": "1800",
-        "ai_score": 50.4,
+        "distance": "1200",
+        "ai_score": 49.8,
         "ai_tags": [
-          "외곽 모래회피 복병 🚀",
-          "스피드 지수 최상(101.8초) 🏎️"
+          "외곽 모래회피 복병 🚀"
         ],
         "odds_display": "-"
       },
@@ -13411,27 +13653,27 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "3",
+        "horse_dist": "",
         "speed_power": 18.200000000000003,
-        "distance": "1800",
-        "ai_score": 49.0,
+        "distance": "1200",
+        "ai_score": 48.4,
         "ai_tags": [
-          "외곽 모래회피 복병 🚀",
-          "스피드 지수 최상(102.0초) 🏎️"
+          "외곽 모래회피 복병 🚀"
         ],
         "odds_display": "-"
       }
     ],
-    "is_trio_target": false,
-    "trio_reason": ""
+    "is_trio_target": true,
+    "trio_reason": "TOP 3 능력 분리 완성 (3-4위 격차 +7.5점) • 스피드/기수 우위 집중"
   },
   {
     "meet_code": "1",
     "meet_name": "서울",
     "race_no": "9",
     "race_date": "20261005",
-    "distance": "1400",
+    "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
         "gate": "1",
@@ -13440,7 +13682,7 @@
         "trainer": "안병기",
         "weight": "53.5",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:31.3",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -13452,12 +13694,14 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "10",
+        "horse_dist": "",
         "speed_power": 39.050000000000004,
-        "distance": "1400",
-        "ai_score": 73.6,
+        "distance": "1200",
+        "ai_score": 73.0,
         "ai_tags": [
           "특급 기수 🏇",
+          "단거리 황금게이트 ⚡",
           "과거 스피드 최상 🏎️"
         ],
         "odds_display": "-"
@@ -13469,7 +13713,7 @@
         "trainer": "배휴준",
         "weight": "55.5",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:29.0",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -13481,10 +13725,11 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "5",
+        "horse_dist": "",
         "speed_power": 22.93,
-        "distance": "1400",
-        "ai_score": 63.4,
+        "distance": "1200",
+        "ai_score": 62.5,
         "ai_tags": [
           "상위 기수",
           "우수 마방 🏆",
@@ -13500,7 +13745,7 @@
         "trainer": "정호익",
         "weight": "*52.5",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:31.9",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -13512,10 +13757,11 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "11",
+        "horse_dist": "",
         "speed_power": 25.150000000000002,
-        "distance": "1400",
-        "ai_score": 62.2,
+        "distance": "1200",
+        "ai_score": 60.6,
         "ai_tags": [
           "경량 부중(52.5kg) ⚡",
           "스피드 우수 🏎️"
@@ -13529,7 +13775,7 @@
         "trainer": "서홍수",
         "weight": "55",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:28.5",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -13541,10 +13787,11 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "3",
+        "horse_dist": "",
         "speed_power": 19.400000000000002,
-        "distance": "1400",
-        "ai_score": 60.2,
+        "distance": "1200",
+        "ai_score": 59.6,
         "ai_tags": [
           "우수 마방 🏆",
           "외곽 모래회피 복병 🚀",
@@ -13559,7 +13806,7 @@
         "trainer": "심승태",
         "weight": "*52.5",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:29.0",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -13571,11 +13818,13 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "6",
+        "horse_dist": "",
         "speed_power": 24.950000000000003,
-        "distance": "1400",
-        "ai_score": 55.5,
+        "distance": "1200",
+        "ai_score": 55.9,
         "ai_tags": [
+          "단거리 황금게이트 ⚡",
           "경량 부중(52.5kg) ⚡"
         ],
         "odds_display": "-"
@@ -13587,7 +13836,7 @@
         "trainer": "이준철",
         "weight": "52.5",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:29.4",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -13599,10 +13848,11 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "7",
+        "horse_dist": "",
         "speed_power": 22.950000000000003,
-        "distance": "1400",
-        "ai_score": 53.5,
+        "distance": "1200",
+        "ai_score": 53.9,
         "ai_tags": [
           "경량 부중(52.5kg) ⚡"
         ],
@@ -13615,7 +13865,7 @@
         "trainer": "이강서",
         "weight": "56.5",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:28.9",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -13627,10 +13877,11 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "4",
+        "horse_dist": "",
         "speed_power": 21.270000000000003,
-        "distance": "1400",
-        "ai_score": 52.4,
+        "distance": "1200",
+        "ai_score": 52.6,
         "ai_tags": [],
         "odds_display": "-"
       },
@@ -13641,7 +13892,7 @@
         "trainer": "문병기",
         "weight": "57",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:27.7",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -13653,39 +13904,12 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "1",
+        "horse_dist": "",
         "speed_power": 21.0,
-        "distance": "1400",
-        "ai_score": 52.1,
+        "distance": "1200",
+        "ai_score": 52.2,
         "ai_tags": [],
-        "odds_display": "-"
-      },
-      {
-        "gate": "8",
-        "name": "손에손잡고",
-        "jockey": "오수철",
-        "trainer": "이동국",
-        "weight": "54.5",
-        "track": "양호",
-        "rc_time": "-",
-        "past_time": "",
-        "g1f_time": "",
-        "win_odds": "0",
-        "pre_ord": "",
-        "gear_info": "",
-        "training_info": "",
-        "combo_info": "",
-        "rc_cnt": "0",
-        "ord1_cnt": "0",
-        "ord2_cnt": "0",
-        "is_front": false,
-        "actual_ord": "-",
-        "speed_power": 15.950000000000003,
-        "distance": "1400",
-        "ai_score": 52.0,
-        "ai_tags": [
-          "외곽 모래회피 복병 🚀"
-        ],
         "odds_display": "-"
       },
       {
@@ -13695,7 +13919,7 @@
         "trainer": "신삼영",
         "weight": "54.5",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:29.9",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -13707,11 +13931,14 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "9",
+        "horse_dist": "",
         "speed_power": 21.950000000000003,
-        "distance": "1400",
-        "ai_score": 51.0,
-        "ai_tags": [],
+        "distance": "1200",
+        "ai_score": 51.4,
+        "ai_tags": [
+          "단거리 황금게이트 ⚡"
+        ],
         "odds_display": "-"
       },
       {
@@ -13721,7 +13948,7 @@
         "trainer": "서인석",
         "weight": "55.5",
         "track": "양호",
-        "rc_time": "-",
+        "rc_time": "1:28.4",
         "past_time": "",
         "g1f_time": "",
         "win_odds": "0",
@@ -13733,10 +13960,40 @@
         "ord1_cnt": "0",
         "ord2_cnt": "0",
         "is_front": false,
-        "actual_ord": "-",
+        "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 14.850000000000001,
-        "distance": "1400",
-        "ai_score": 49.1,
+        "distance": "1200",
+        "ai_score": 48.5,
+        "ai_tags": [
+          "외곽 모래회피 복병 🚀"
+        ],
+        "odds_display": "-"
+      },
+      {
+        "gate": "8",
+        "name": "손에손잡고",
+        "jockey": "오수철",
+        "trainer": "이동국",
+        "weight": "54.5",
+        "track": "양호",
+        "rc_time": "1:29.9",
+        "past_time": "",
+        "g1f_time": "",
+        "win_odds": "0",
+        "pre_ord": "",
+        "gear_info": "",
+        "training_info": "",
+        "combo_info": "",
+        "rc_cnt": "0",
+        "ord1_cnt": "0",
+        "ord2_cnt": "0",
+        "is_front": false,
+        "actual_ord": "8",
+        "horse_dist": "",
+        "speed_power": 15.950000000000003,
+        "distance": "1200",
+        "ai_score": 48.4,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
@@ -13753,7 +14010,7 @@
     "race_date": "20261005",
     "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
         "gate": "5",
@@ -13775,9 +14032,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "-",
+        "horse_dist": "",
         "speed_power": 32.550000000000004,
         "distance": "1200",
-        "ai_score": 71.6,
+        "ai_score": 70.0,
         "ai_tags": [
           "특급 기수 🏇",
           "과거 스피드 최상 🏎️"
@@ -13804,9 +14062,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "-",
+        "horse_dist": "",
         "speed_power": 29.6,
         "distance": "1200",
-        "ai_score": 63.9,
+        "ai_score": 62.8,
         "ai_tags": [
           "상위 기수",
           "단거리 황금게이트 ⚡",
@@ -13834,9 +14093,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "-",
+        "horse_dist": "",
         "speed_power": 21.1,
         "distance": "1200",
-        "ai_score": 61.9,
+        "ai_score": 61.0,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
           "숨은 다크호스 💥"
@@ -13863,9 +14123,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "-",
+        "horse_dist": "",
         "speed_power": 16.46,
         "distance": "1200",
-        "ai_score": 59.4,
+        "ai_score": 58.4,
         "ai_tags": [
           "상위 기수",
           "외곽 모래회피 복병 🚀",
@@ -13893,9 +14154,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "-",
+        "horse_dist": "",
         "speed_power": 24.98,
         "distance": "1200",
-        "ai_score": 57.0,
+        "ai_score": 56.4,
         "ai_tags": [
           "경량 부중(52.0kg) ⚡"
         ],
@@ -13921,9 +14183,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "-",
+        "horse_dist": "",
         "speed_power": 27.020000000000003,
         "distance": "1200",
-        "ai_score": 56.4,
+        "ai_score": 55.6,
         "ai_tags": [
           "단거리 황금게이트 ⚡"
         ],
@@ -13949,9 +14212,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "-",
+        "horse_dist": "",
         "speed_power": 24.23,
         "distance": "1200",
-        "ai_score": 56.1,
+        "ai_score": 55.5,
         "ai_tags": [
           "경량 부중(52.5kg) ⚡"
         ],
@@ -13977,9 +14241,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "-",
+        "horse_dist": "",
         "speed_power": 18.950000000000003,
         "distance": "1200",
-        "ai_score": 53.5,
+        "ai_score": 52.9,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
           "경량 부중(52.5kg) ⚡"
@@ -14006,9 +14271,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "-",
+        "horse_dist": "",
         "speed_power": 24.200000000000003,
         "distance": "1200",
-        "ai_score": 52.0,
+        "ai_score": 51.4,
         "ai_tags": [
           "단거리 황금게이트 ⚡"
         ],
@@ -14034,9 +14300,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "-",
+        "horse_dist": "",
         "speed_power": 16.6,
         "distance": "1200",
-        "ai_score": 49.1,
+        "ai_score": 48.5,
         "ai_tags": [],
         "odds_display": "-"
       },
@@ -14060,9 +14327,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "-",
+        "horse_dist": "",
         "speed_power": 16.700000000000003,
         "distance": "1200",
-        "ai_score": 49.0,
+        "ai_score": 48.4,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
@@ -14077,9 +14345,9 @@
     "meet_name": "제주",
     "race_no": "1",
     "race_date": "20261005",
-    "distance": "900",
+    "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
         "gate": "3",
@@ -14101,9 +14369,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "9",
+        "horse_dist": "",
         "speed_power": 26.8,
-        "distance": "900",
-        "ai_score": 65.2,
+        "distance": "1200",
+        "ai_score": 64.3,
         "ai_tags": [
           "상위 기수",
           "단거리 황금게이트 ⚡",
@@ -14131,9 +14400,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "4",
+        "horse_dist": "",
         "speed_power": 24.560000000000002,
-        "distance": "900",
-        "ai_score": 59.5,
+        "distance": "1200",
+        "ai_score": 58.7,
         "ai_tags": [
           "스피드 우수 🏎️"
         ],
@@ -14159,9 +14429,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "6",
+        "horse_dist": "",
         "speed_power": 22.200000000000003,
-        "distance": "900",
-        "ai_score": 53.2,
+        "distance": "1200",
+        "ai_score": 52.6,
         "ai_tags": [
           "단거리 황금게이트 ⚡"
         ],
@@ -14187,38 +14458,11 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "10",
+        "horse_dist": "",
         "speed_power": 22.0,
-        "distance": "900",
-        "ai_score": 52.6,
+        "distance": "1200",
+        "ai_score": 51.9,
         "ai_tags": [],
-        "odds_display": "-"
-      },
-      {
-        "gate": "8",
-        "name": "붉은진주",
-        "jockey": "이동준",
-        "trainer": "문성호",
-        "weight": "55",
-        "track": "양호",
-        "rc_time": "1:17.9",
-        "past_time": "",
-        "g1f_time": "",
-        "win_odds": "0",
-        "pre_ord": "",
-        "gear_info": "",
-        "training_info": "",
-        "combo_info": "",
-        "rc_cnt": "0",
-        "ord1_cnt": "0",
-        "ord2_cnt": "0",
-        "is_front": false,
-        "actual_ord": "7",
-        "speed_power": 18.32,
-        "distance": "900",
-        "ai_score": 52.1,
-        "ai_tags": [
-          "외곽 모래회피 복병 🚀"
-        ],
         "odds_display": "-"
       },
       {
@@ -14241,11 +14485,41 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 21.200000000000003,
-        "distance": "900",
-        "ai_score": 52.0,
+        "distance": "1200",
+        "ai_score": 51.4,
         "ai_tags": [
           "단거리 황금게이트 ⚡"
+        ],
+        "odds_display": "-"
+      },
+      {
+        "gate": "8",
+        "name": "붉은진주",
+        "jockey": "이동준",
+        "trainer": "문성호",
+        "weight": "55",
+        "track": "양호",
+        "rc_time": "1:17.9",
+        "past_time": "",
+        "g1f_time": "",
+        "win_odds": "0",
+        "pre_ord": "",
+        "gear_info": "",
+        "training_info": "",
+        "combo_info": "",
+        "rc_cnt": "0",
+        "ord1_cnt": "0",
+        "ord2_cnt": "0",
+        "is_front": false,
+        "actual_ord": "7",
+        "horse_dist": "",
+        "speed_power": 18.32,
+        "distance": "1200",
+        "ai_score": 51.4,
+        "ai_tags": [
+          "외곽 모래회피 복병 🚀"
         ],
         "odds_display": "-"
       },
@@ -14269,9 +14543,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "3",
+        "horse_dist": "",
         "speed_power": 20.48,
-        "distance": "900",
-        "ai_score": 51.6,
+        "distance": "1200",
+        "ai_score": 51.0,
         "ai_tags": [],
         "odds_display": "-"
       },
@@ -14295,9 +14570,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "5",
+        "horse_dist": "",
         "speed_power": 16.720000000000002,
-        "distance": "900",
-        "ai_score": 50.9,
+        "distance": "1200",
+        "ai_score": 50.3,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
@@ -14323,9 +14599,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "1",
+        "horse_dist": "",
         "speed_power": 19.200000000000003,
-        "distance": "900",
-        "ai_score": 50.0,
+        "distance": "1200",
+        "ai_score": 49.4,
         "ai_tags": [],
         "odds_display": "-"
       },
@@ -14349,9 +14626,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "8",
+        "horse_dist": "",
         "speed_power": 15.200000000000003,
-        "distance": "900",
-        "ai_score": 49.0,
+        "distance": "1200",
+        "ai_score": 48.4,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
@@ -14366,9 +14644,9 @@
     "meet_name": "제주",
     "race_no": "2",
     "race_date": "20261005",
-    "distance": "1000",
+    "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
         "gate": "1",
@@ -14390,9 +14668,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 35.84,
-        "distance": "1000",
-        "ai_score": 72.1,
+        "distance": "1200",
+        "ai_score": 71.0,
         "ai_tags": [
           "상위 기수",
           "우수 마방 🏆",
@@ -14421,9 +14700,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "4",
+        "horse_dist": "",
         "speed_power": 28.300000000000004,
-        "distance": "1000",
-        "ai_score": 64.2,
+        "distance": "1200",
+        "ai_score": 63.2,
         "ai_tags": [
           "상위 기수",
           "우수 마방 🏆",
@@ -14452,9 +14732,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "9",
+        "horse_dist": "",
         "speed_power": 15.310000000000002,
-        "distance": "1000",
-        "ai_score": 59.5,
+        "distance": "1200",
+        "ai_score": 58.7,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
           "체급 최강자(탑웨이트) 🏋️"
@@ -14481,9 +14762,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "1",
+        "horse_dist": "",
         "speed_power": 26.300000000000004,
-        "distance": "1000",
-        "ai_score": 58.8,
+        "distance": "1200",
+        "ai_score": 57.4,
         "ai_tags": [
           "특급 기수 🏇"
         ],
@@ -14509,9 +14791,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "7",
+        "horse_dist": "",
         "speed_power": 24.950000000000003,
-        "distance": "1000",
-        "ai_score": 56.5,
+        "distance": "1200",
+        "ai_score": 55.9,
         "ai_tags": [
           "단거리 황금게이트 ⚡",
           "경량 부중(52.5kg) ⚡"
@@ -14538,9 +14821,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "10",
+        "horse_dist": "",
         "speed_power": 21.200000000000003,
-        "distance": "1000",
-        "ai_score": 56.2,
+        "distance": "1200",
+        "ai_score": 55.6,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
           "경량 부중(51.0kg) ⚡"
@@ -14567,9 +14851,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "5",
+        "horse_dist": "",
         "speed_power": 24.5,
-        "distance": "1000",
-        "ai_score": 53.9,
+        "distance": "1200",
+        "ai_score": 53.1,
         "ai_tags": [],
         "odds_display": "-"
       },
@@ -14593,9 +14878,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "3",
+        "horse_dist": "",
         "speed_power": 18.950000000000003,
-        "distance": "1000",
-        "ai_score": 53.5,
+        "distance": "1200",
+        "ai_score": 52.9,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
           "경량 부중(52.5kg) ⚡"
@@ -14622,9 +14908,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "6",
+        "horse_dist": "",
         "speed_power": 21.23,
-        "distance": "1000",
-        "ai_score": 51.6,
+        "distance": "1200",
+        "ai_score": 51.0,
         "ai_tags": [],
         "odds_display": "-"
       },
@@ -14648,9 +14935,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "8",
+        "horse_dist": "",
         "speed_power": 16.200000000000003,
-        "distance": "1000",
-        "ai_score": 48.6,
+        "distance": "1200",
+        "ai_score": 48.0,
         "ai_tags": [],
         "odds_display": "-"
       }
@@ -14663,9 +14951,9 @@
     "meet_name": "제주",
     "race_no": "3",
     "race_date": "20261005",
-    "distance": "1000",
+    "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
         "gate": "2",
@@ -14687,9 +14975,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "4",
+        "horse_dist": "",
         "speed_power": 35.800000000000004,
-        "distance": "1000",
-        "ai_score": 70.9,
+        "distance": "1200",
+        "ai_score": 69.5,
         "ai_tags": [
           "특급 기수 🏇",
           "단거리 황금게이트 ⚡",
@@ -14717,9 +15006,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "8",
+        "horse_dist": "",
         "speed_power": 32.56,
-        "distance": "1000",
-        "ai_score": 68.7,
+        "distance": "1200",
+        "ai_score": 67.9,
         "ai_tags": [
           "단거리 황금게이트 ⚡",
           "경량 부중(51.0kg) ⚡",
@@ -14747,9 +15037,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "1",
+        "horse_dist": "",
         "speed_power": 32.21,
-        "distance": "1000",
-        "ai_score": 64.5,
+        "distance": "1200",
+        "ai_score": 63.5,
         "ai_tags": [
           "우수 마방 🏆",
           "경량 부중(51.5kg) ⚡"
@@ -14776,9 +15067,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "3",
+        "horse_dist": "",
         "speed_power": 21.200000000000003,
-        "distance": "1000",
-        "ai_score": 56.2,
+        "distance": "1200",
+        "ai_score": 55.6,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
           "경량 부중(51.0kg) ⚡"
@@ -14805,9 +15097,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "9",
+        "horse_dist": "",
         "speed_power": 12.420000000000002,
-        "distance": "1000",
-        "ai_score": 55.9,
+        "distance": "1200",
+        "ai_score": 55.3,
         "ai_tags": [
           "체급 최강자(탑웨이트) 🏋️"
         ],
@@ -14833,9 +15126,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "-",
+        "horse_dist": "",
         "speed_power": 23.750000000000004,
-        "distance": "1000",
-        "ai_score": 55.3,
+        "distance": "1200",
+        "ai_score": 54.3,
         "ai_tags": [
           "상위 기수"
         ],
@@ -14861,9 +15155,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 22.700000000000003,
-        "distance": "1000",
-        "ai_score": 52.0,
+        "distance": "1200",
+        "ai_score": 51.4,
         "ai_tags": [
           "단거리 황금게이트 ⚡"
         ],
@@ -14889,9 +15184,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "6",
+        "horse_dist": "",
         "speed_power": 14.700000000000003,
-        "distance": "1000",
-        "ai_score": 47.9,
+        "distance": "1200",
+        "ai_score": 47.3,
         "ai_tags": [],
         "odds_display": "-"
       },
@@ -14915,9 +15211,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "5",
+        "horse_dist": "",
         "speed_power": 10.700000000000003,
-        "distance": "1000",
-        "ai_score": 46.9,
+        "distance": "1200",
+        "ai_score": 46.3,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
@@ -14943,9 +15240,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "7",
+        "horse_dist": "",
         "speed_power": 8.450000000000003,
-        "distance": "1000",
-        "ai_score": 45.9,
+        "distance": "1200",
+        "ai_score": 45.2,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
@@ -14960,9 +15258,9 @@
     "meet_name": "제주",
     "race_no": "4",
     "race_date": "20261005",
-    "distance": "1110",
+    "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
         "gate": "5",
@@ -14984,9 +15282,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "6",
+        "horse_dist": "",
         "speed_power": 30.500000000000004,
-        "distance": "1110",
-        "ai_score": 69.8,
+        "distance": "1200",
+        "ai_score": 68.8,
         "ai_tags": [
           "상위 기수",
           "경량 부중(52.0kg) ⚡",
@@ -15014,9 +15313,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "8",
+        "horse_dist": "",
         "speed_power": 20.090000000000003,
-        "distance": "1110",
-        "ai_score": 66.1,
+        "distance": "1200",
+        "ai_score": 65.0,
         "ai_tags": [
           "상위 기수",
           "우수 마방 🏆",
@@ -15045,9 +15345,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "7",
+        "horse_dist": "",
         "speed_power": 25.200000000000003,
-        "distance": "1110",
-        "ai_score": 61.2,
+        "distance": "1200",
+        "ai_score": 60.6,
         "ai_tags": [
           "경량 부중(51.0kg) ⚡",
           "스피드 우수 🏎️"
@@ -15074,9 +15375,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "3",
+        "horse_dist": "",
         "speed_power": 15.450000000000003,
-        "distance": "1110",
-        "ai_score": 58.2,
+        "distance": "1200",
+        "ai_score": 57.6,
         "ai_tags": [
           "단거리 황금게이트 ⚡",
           "체급 최강자(탑웨이트) 🏋️"
@@ -15103,9 +15405,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "1",
+        "horse_dist": "",
         "speed_power": 23.800000000000004,
-        "distance": "1110",
-        "ai_score": 58.1,
+        "distance": "1200",
+        "ai_score": 57.1,
         "ai_tags": [
           "상위 기수",
           "우수 마방 🏆",
@@ -15133,9 +15436,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 22.05,
-        "distance": "1110",
-        "ai_score": 55.1,
+        "distance": "1200",
+        "ai_score": 54.4,
         "ai_tags": [
           "단거리 황금게이트 ⚡"
         ],
@@ -15161,9 +15465,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "5",
+        "horse_dist": "",
         "speed_power": 24.05,
-        "distance": "1110",
-        "ai_score": 54.9,
+        "distance": "1200",
+        "ai_score": 53.9,
         "ai_tags": [
           "상위 기수"
         ],
@@ -15189,9 +15494,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "9",
+        "horse_dist": "",
         "speed_power": 18.73,
-        "distance": "1110",
-        "ai_score": 50.6,
+        "distance": "1200",
+        "ai_score": 50.0,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
@@ -15217,9 +15523,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "10",
+        "horse_dist": "",
         "speed_power": 17.700000000000003,
-        "distance": "1110",
-        "ai_score": 49.3,
+        "distance": "1200",
+        "ai_score": 48.7,
         "ai_tags": [],
         "odds_display": "-"
       },
@@ -15243,9 +15550,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "4",
+        "horse_dist": "",
         "speed_power": 12.220000000000002,
-        "distance": "1110",
-        "ai_score": 48.8,
+        "distance": "1200",
+        "ai_score": 48.2,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
@@ -15262,7 +15570,7 @@
     "race_date": "20261005",
     "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
         "gate": "3",
@@ -15284,9 +15592,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "5",
+        "horse_dist": "",
         "speed_power": 30.1,
         "distance": "1200",
-        "ai_score": 69.5,
+        "ai_score": 68.7,
         "ai_tags": [
           "단거리 황금게이트 ⚡",
           "경량 부중(52.0kg) ⚡",
@@ -15314,9 +15623,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "1",
+        "horse_dist": "",
         "speed_power": 27.590000000000003,
         "distance": "1200",
-        "ai_score": 67.1,
+        "ai_score": 66.0,
         "ai_tags": [
           "상위 기수",
           "우수 마방 🏆",
@@ -15345,9 +15655,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "6",
+        "horse_dist": "",
         "speed_power": 28.83,
         "distance": "1200",
-        "ai_score": 66.0,
+        "ai_score": 64.7,
         "ai_tags": [
           "특급 기수 🏇",
           "단거리 황금게이트 ⚡",
@@ -15375,9 +15686,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "9",
+        "horse_dist": "",
         "speed_power": 16.0,
         "distance": "1200",
-        "ai_score": 58.5,
+        "ai_score": 57.9,
         "ai_tags": [
           "우수 마방 🏆",
           "체급 최강자(탑웨이트) 🏋️"
@@ -15404,9 +15716,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 27.000000000000004,
         "distance": "1200",
-        "ai_score": 57.6,
+        "ai_score": 56.6,
         "ai_tags": [
           "상위 기수"
         ],
@@ -15432,9 +15745,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "3",
+        "horse_dist": "",
         "speed_power": 22.950000000000003,
         "distance": "1200",
-        "ai_score": 54.5,
+        "ai_score": 53.9,
         "ai_tags": [
           "경량 부중(52.5kg) ⚡"
         ],
@@ -15460,9 +15774,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "10",
+        "horse_dist": "",
         "speed_power": 9.200000000000003,
         "distance": "1200",
-        "ai_score": 54.0,
+        "ai_score": 53.4,
         "ai_tags": [
           "외곽 모래회피 복병 🚀",
           "체급 최강자(탑웨이트) 🏋️"
@@ -15489,9 +15804,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "8",
+        "horse_dist": "",
         "speed_power": 19.700000000000003,
         "distance": "1200",
-        "ai_score": 51.3,
+        "ai_score": 50.7,
         "ai_tags": [
           "단거리 황금게이트 ⚡"
         ],
@@ -15517,9 +15833,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "7",
+        "horse_dist": "",
         "speed_power": 15.75,
         "distance": "1200",
-        "ai_score": 50.6,
+        "ai_score": 49.8,
         "ai_tags": [
           "외곽 모래회피 복병 🚀"
         ],
@@ -15545,24 +15862,25 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "4",
+        "horse_dist": "",
         "speed_power": 16.950000000000003,
         "distance": "1200",
-        "ai_score": 49.0,
+        "ai_score": 48.4,
         "ai_tags": [],
         "odds_display": "-"
       }
     ],
     "is_trio_target": true,
-    "trio_reason": "TOP 3 능력 분리 완성 (3-4위 격차 +7.5점) • 스피드/기수 우위 완벽 집중"
+    "trio_reason": "TOP 3 능력 분리 완성 (3-4위 격차 +6.8점) • 스피드/기수 우위 집중"
   },
   {
     "meet_code": "2",
     "meet_name": "제주",
     "race_no": "6",
     "race_date": "20261005",
-    "distance": "1300",
+    "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
         "gate": "3",
@@ -15584,9 +15902,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "3",
+        "horse_dist": "",
         "speed_power": 33.25,
-        "distance": "1300",
-        "ai_score": 72.7,
+        "distance": "1200",
+        "ai_score": 71.7,
         "ai_tags": [
           "상위 기수",
           "단거리 황금게이트 ⚡",
@@ -15615,9 +15934,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "5",
+        "horse_dist": "",
         "speed_power": 27.950000000000003,
-        "distance": "1300",
-        "ai_score": 63.8,
+        "distance": "1200",
+        "ai_score": 63.0,
         "ai_tags": [
           "경량 부중(52.5kg) ⚡",
           "스피드 우수 🏎️"
@@ -15644,9 +15964,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "7",
+        "horse_dist": "",
         "speed_power": 27.44,
-        "distance": "1300",
-        "ai_score": 58.2,
+        "distance": "1200",
+        "ai_score": 57.3,
         "ai_tags": [
           "단거리 황금게이트 ⚡"
         ],
@@ -15672,9 +15993,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "6",
+        "horse_dist": "",
         "speed_power": 12.450000000000003,
-        "distance": "1300",
-        "ai_score": 55.0,
+        "distance": "1200",
+        "ai_score": 54.4,
         "ai_tags": [
           "체급 최강자(탑웨이트) 🏋️"
         ],
@@ -15700,9 +16022,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "4",
+        "horse_dist": "",
         "speed_power": 26.6,
-        "distance": "1300",
-        "ai_score": 54.1,
+        "distance": "1200",
+        "ai_score": 53.2,
         "ai_tags": [],
         "odds_display": "-"
       },
@@ -15726,9 +16049,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 18.200000000000003,
-        "distance": "1300",
-        "ai_score": 50.6,
+        "distance": "1200",
+        "ai_score": 50.0,
         "ai_tags": [
           "단거리 황금게이트 ⚡"
         ],
@@ -15754,9 +16078,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "1",
+        "horse_dist": "",
         "speed_power": 14.950000000000003,
-        "distance": "1300",
-        "ai_score": 48.8,
+        "distance": "1200",
+        "ai_score": 48.2,
         "ai_tags": [],
         "odds_display": "-"
       }
@@ -15769,9 +16094,9 @@
     "meet_name": "제주",
     "race_no": "7",
     "race_date": "20261005",
-    "distance": "1300",
+    "distance": "1200",
     "track": "양호",
-    "version": "KRA전국 승부예상AI_V8.8",
+    "version": "KRA전국 승부예상AI_V8.9",
     "horses": [
       {
         "gate": "6",
@@ -15793,9 +16118,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "3",
+        "horse_dist": "",
         "speed_power": 32.65,
-        "distance": "1300",
-        "ai_score": 73.2,
+        "distance": "1200",
+        "ai_score": 72.3,
         "ai_tags": [
           "우수 마방 🏆",
           "경량 부중(51.5kg) ⚡",
@@ -15823,9 +16149,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "4",
+        "horse_dist": "",
         "speed_power": 25.340000000000003,
-        "distance": "1300",
-        "ai_score": 66.4,
+        "distance": "1200",
+        "ai_score": 65.3,
         "ai_tags": [
           "상위 기수",
           "우수 마방 🏆",
@@ -15854,9 +16181,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "6",
+        "horse_dist": "",
         "speed_power": 19.310000000000002,
-        "distance": "1300",
-        "ai_score": 60.5,
+        "distance": "1200",
+        "ai_score": 59.7,
         "ai_tags": [
           "체급 최강자(탑웨이트) 🏋️"
         ],
@@ -15882,9 +16210,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "5",
+        "horse_dist": "",
         "speed_power": 26.25,
-        "distance": "1300",
-        "ai_score": 58.6,
+        "distance": "1200",
+        "ai_score": 57.9,
         "ai_tags": [
           "단거리 황금게이트 ⚡",
           "스피드 우수 🏎️"
@@ -15911,9 +16240,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "8",
+        "horse_dist": "",
         "speed_power": 25.200000000000003,
-        "distance": "1300",
-        "ai_score": 57.2,
+        "distance": "1200",
+        "ai_score": 56.6,
         "ai_tags": [
           "경량 부중(51.0kg) ⚡"
         ],
@@ -15939,9 +16269,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "2",
+        "horse_dist": "",
         "speed_power": 25.200000000000003,
-        "distance": "1300",
-        "ai_score": 57.2,
+        "distance": "1200",
+        "ai_score": 56.6,
         "ai_tags": [
           "경량 부중(51.0kg) ⚡"
         ],
@@ -15967,9 +16298,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "7",
+        "horse_dist": "",
         "speed_power": 25.720000000000002,
-        "distance": "1300",
-        "ai_score": 53.9,
+        "distance": "1200",
+        "ai_score": 53.3,
         "ai_tags": [
           "단거리 황금게이트 ⚡"
         ],
@@ -15995,9 +16327,10 @@
         "ord2_cnt": "0",
         "is_front": false,
         "actual_ord": "1",
+        "horse_dist": "",
         "speed_power": 18.450000000000003,
-        "distance": "1300",
-        "ai_score": 51.5,
+        "distance": "1200",
+        "ai_score": 50.9,
         "ai_tags": [
           "단거리 황금게이트 ⚡"
         ],
