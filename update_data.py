@@ -9,7 +9,7 @@ from collections import Counter
 import time
 
 # =========================================================================
-# 프로그램 명칭: KRA전국 승부예상AI_V7.0 (4대 실전 역발상 전개 엔진)
+# 프로그램 명칭: KRA전국 승부예상AI_V7.0 (착순 정밀 수집 & 역발상 전개 엔진)
 # =========================================================================
 VERSION = "KRA전국 승부예상AI_V7.0"
 API_KEY = os.environ.get("KRA_API_KEY", "")
@@ -182,10 +182,22 @@ def fetch_meet_data(meet_code, meet_name, date_str):
             s1f_rank = gv(["g1p", "s1f", "g1pRank", "ord1p"]) or "99"
             is_front = True if s1f_rank in ["1", "2", "01", "02"] else False
 
+            # 🎯 [착순 정밀 수집 강화]
             ord_no = "-"
-            direct_ord = gv(["ordNo", "ord_no", "ord", "rc_ord", "rcOrd", "rank", "rankNo", "chaksun"])
-            if direct_ord and direct_ord.isdigit() and int(direct_ord) > 0:
-                ord_no = str(int(direct_ord))
+            direct_ord = gv(["ord", "ordNo", "ord_no", "rc_ord", "rcOrd", "rank", "rankNo", "chaksun"])
+            clean_ord = re.sub(r'[^0-9]', '', str(direct_ord))
+            if clean_ord and int(clean_ord) > 0:
+                ord_no = str(int(clean_ord))
+            else:
+                for child in it:
+                    tag_low = child.tag.lower()
+                    if any(ex in tag_low for ex in ["cnt", "s1f", "g1p", "g2p", "g3p", "g4p", "pass", "time"]):
+                        continue
+                    if any(k in tag_low for k in ["ord", "rank", "plc", "place", "chak"]):
+                        txt = re.sub(r'[^0-9]', '', str(child.text or ""))
+                        if txt and int(txt) > 0:
+                            ord_no = str(int(txt))
+                            break
 
             key = f"{meet_name}_{rc_no}_{date_str}"
             if key not in races:
@@ -236,9 +248,6 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 except: all_weights.append(55.0)
             max_race_weight = max(all_weights) if all_weights else 55.0
 
-            # =========================================================================
-            # 🎯 4대 실전 역발상 분석 채점 공식
-            # =========================================================================
             for h in r["horses"]:
                 h["distance"] = str(dist)
                 tags = []
@@ -255,7 +264,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 raw_jk = JOCKEY_RATES.get(h["jockey"], 12.0)
                 tr_rate = TRAINER_RATES.get(h["trainer"], 14.0)
 
-                # 💡 [역발상 1] 마칠기삼 거품 필터: 말 능력 부족 시 기수 점수 50% 디스카운트
+                # 💡 [역발상 1] 마칠기삼 거품 필터
                 if tot_rc >= 3 and quinella_rate < 15.0:
                     jk_rate = raw_jk * 0.45
                     tags.append("기수 거품 주의 🎈")
@@ -266,7 +275,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
 
                 if tr_rate >= 20.0: tags.append("우수 마방 🏆")
 
-                # 💡 [역발상 2] 부담중량 임계치 감점: 중장거리 57kg 이상 등짐 페널티
+                # 💡 [역발상 2] 부담중량 임계치 감점
                 weight_penalty = 0.0
                 if dist >= 1400 and clean_w >= 57.0:
                     weight_penalty = (clean_w - 56.5) * 2.5
@@ -279,19 +288,18 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 if dist <= 1300 and g <= 3: tags.append("단거리 황금게이트 ⚡")
                 elif g >= 8 and (not h["is_front"]): tags.append("외곽 모래회피 복병 🚀")
 
-                # 💡 [역발상 3] 집중 견제 페널티: [특급기수 + 인코스 + 선행마] 1착 자멸 감점
+                # 💡 [역발상 3] 집중 견제 페널티
                 target_mark_penalty = 0.0
                 if g <= 3 and h["is_front"] and raw_jk >= 24.0:
                     target_mark_penalty = 6.0
                     tags.append("집중 견제 주의 ⚠️")
 
-                # 💡 [역발상 4] 2선 프리런 마필 발굴: 앞선 싸움 피하는 선입 복병에게 우승 가산점
+                # 💡 [역발상 4] 2선 프리런 마필 발굴
                 free_run_bonus = 0.0
                 if not h["is_front"] and 4 <= g <= 9:
                     free_run_bonus = 8.0
                     tags.append("2선 프리런 황금전개 👑")
 
-                # 🥇 1착 우승 지수
                 score_1st = 25.0 + (win_rate * 0.7) + (jk_rate * 0.35) - weight_penalty - target_mark_penalty + free_run_bonus
                 if scenario_type == "MONOPOLY" and h["is_front"]:
                     score_1st += 18.0
@@ -300,11 +308,9 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                     if h["is_front"]: score_1st -= 12.0
                     else: score_1st += 8.0
 
-                # 🥈 2착 선입/버티기 지수
                 score_2nd = 25.0 + (quinella_rate * 0.5) + (jk_rate * 0.3) + (tr_rate * 0.3) - (weight_penalty * 0.5)
                 if dist <= 1300 and g <= 3: score_2nd += 5.0
 
-                # 🥉 3착 복병 지수 (경량 + 외곽 + 중장거리 막판 추입)
                 score_3rd = 25.0
                 if clean_w <= 52.5: score_3rd += 12.0
                 if g >= 8: score_3rd += 8.0
@@ -317,7 +323,6 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 h["score_3rd"] = score_3rd
                 h["ai_tags"] = tags
 
-            # 포지션 매칭
             sorted_1st = sorted(r["horses"], key=lambda x: x["score_1st"], reverse=True)
             pick_1st = sorted_1st[0]
             pick_1st["role_name"] = "1착 우승축 🥇"
