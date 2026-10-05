@@ -9,9 +9,9 @@ from collections import Counter
 import time
 
 # =========================================================================
-# 프로그램 명칭: KRA전국 승부예상AI_V8.9 (공식 거리 & 기수 정밀 검증 엔진)
+# 프로그램 명칭: KRA전국 승부예상AI_V9.0 (중장거리 전개·추입 역학 탑재 엔진)
 # =========================================================================
-VERSION = "KRA전국 승부예상AI_V8.9"
+VERSION = "KRA전국 승부예상AI_V9.0"
 API_KEY = os.environ.get("KRA_API_KEY", "")
 URL = "http://apis.data.go.kr/B551015/racedetailresult/getracedetailresult"
 
@@ -64,38 +64,27 @@ def parse_time_seconds(time_str):
     return None
 
 def clean_name(val):
-    """기수명 / 조교사명 정제 (공백 및 특수문자 제거)"""
     if not val: return ""
     v = re.sub(r'[\(\[\{].*?[\)\]\}]', '', str(val))
     return re.sub(r'[^가-힣a-zA-Z]', '', v).strip()
 
 def sanitize_jockey_and_trainer(jockey, trainer, meet_name):
-    """
-    🎯 [핵심] 기수-조교사 전도 현상(문세영 조교 등) 및 소속 오류 자가교정
-    """
     jk = clean_name(jockey)
     tr = clean_name(trainer)
 
-    # 1. 문세영이 조교사에 들어간 경우 교정 (문세영은 대한민국 대표 기수)
     if tr == "문세영":
-        # 만약 기수 자리에 실제 조교사 이름이 들어가 있다면 서로 교체
         if jk in TRAINER_RATES:
             jk, tr = tr, jk
         else:
-            # 기수 자리를 문세영으로 복원하고 조교사는 미정 처리 방지
             tr = "관리팀"
             jk = "문세영"
 
-    # 2. 기타 기수명이 조교사 자리에 잘못 들어간 경우 역스왑
     if tr in ["서승운", "김용근", "빅투아르", "유승완", "최시대", "다나카"] and jk in TRAINER_RATES:
         jk, tr = tr, jk
 
     return jk, tr
 
 def evaluate_trio_confidence(race):
-    """
-    🎯 삼복승 / 복연승 적중 유력 초엄격 판별 알고리즘 (단거리 능력 분리형 경주)
-    """
     horses = race.get("horses", [])
     if len(horses) < 6:
         return False, ""
@@ -105,7 +94,6 @@ def evaluate_trio_confidence(race):
     except:
         dist = 1200
 
-    # 단거리(1200m 이하) 한정
     if dist > 1200:
         return False, ""
 
@@ -114,9 +102,7 @@ def evaluate_trio_confidence(race):
 
     s1, s2, s3, s4 = h1.get("ai_score", 0), h2.get("ai_score", 0), h3.get("ai_score", 0), h4.get("ai_score", 0)
 
-    # 상위 3두 점수 최소 기준선
     cond_scores = (s1 >= 68.0 and s2 >= 62.0 and s3 >= 58.5)
-    # 3위와 4위의 명확한 점수 갭
     gap_3_4 = s3 - s4
     cond_gap = (gap_3_4 >= 3.2)
 
@@ -178,11 +164,8 @@ def fetch_meet_data(meet_code, meet_name, date_str):
 
             raw_jockey = gv(["jkName", "jk_name", "jockeyName", "jockey"]) or "기수"
             raw_trainer = gv(["trName", "tr_name", "trainerName", "trainer"]) or "조교사"
-            
-            # 🎯 기수 / 조교사 정밀 정제 및 교정
             jockey, trainer = sanitize_jockey_and_trainer(raw_jockey, raw_trainer, meet_name)
 
-            # 🎯 마사회 공식 거리 태그 직수신 (가장 중요!)
             raw_dist = gv(["rcDist", "rc_dist", "distance", "dist", "rc_distance"]) or ""
             clean_dist = re.sub(r'[^0-9]', '', raw_dist)
 
@@ -206,7 +189,6 @@ def fetch_meet_data(meet_code, meet_name, date_str):
             s1f_rank = gv(["g1p", "s1f", "g1pRank", "ord1p"]) or "99"
             is_front = True if s1f_rank in ["1", "2", "01", "02"] else False
 
-            # 착순 정확 추출
             ord_no = "-"
             direct_ord = gv(["ordNo", "ord_no", "ord", "rc_ord", "rcOrd", "rank", "rankNo", "chaksun"])
             if direct_ord and direct_ord.isdigit() and int(direct_ord) > 0:
@@ -235,7 +217,6 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                     "horses": []
                 }
 
-            # 경주 대표 거리가 비어있거나 부정확하면 채우기
             if clean_dist and int(clean_dist) >= 800:
                 races[key]["distance"] = clean_dist
 
@@ -267,9 +248,6 @@ def fetch_meet_data(meet_code, meet_name, date_str):
             })
 
         for r in races.values():
-            meet = r["meet_name"]
-            
-            # 🎯 경주거리 확정 (출전마들의 공식 거리 중 최빈값 채택으로 100% 보장)
             valid_dists = [h["horse_dist"] for h in r["horses"] if h.get("horse_dist") and int(h["horse_dist"]) >= 800]
             if valid_dists:
                 dist_counts = Counter(valid_dists)
@@ -277,7 +255,10 @@ def fetch_meet_data(meet_code, meet_name, date_str):
             
             dist = int(r["distance"])
 
-            # 최고 부담중량
+            # 🎯 [전개 분석 1] 경주 내 선행마 총 마릿수 확인 (선행 경합 과열 감지)
+            front_runner_count = sum(1 for h in r["horses"] if h["is_front"])
+            is_pace_overheated = (dist >= 1700 and front_runner_count >= 3)
+
             all_weights = []
             for h in r["horses"]:
                 try:
@@ -286,7 +267,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                     all_weights.append(55.0)
             max_race_weight = max(all_weights) if all_weights else 55.0
 
-            # 사전 순발력 파워 계산
+            # 사전 순발력 파워 계산 (거리별 차등)
             for h in r["horses"]:
                 jk_r = JOCKEY_RATES.get(h["jockey"], 12.0)
                 tr_r = TRAINER_RATES.get(h["trainer"], 14.0)
@@ -298,8 +279,16 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 
                 gate_power = 6.0 if g_val <= 3 else (4.0 if g_val <= 7 else 0.0)
                 weight_power = (55.0 - w_val) * 1.5
-                front_power = 10.0 if h["is_front"] else 0.0
-                h["speed_power"] = jk_r * 0.8 + tr_r * 0.4 + gate_power + weight_power + front_power
+
+                # 🎯 단거리는 선행력 우대, 중장거리 과열 경주는 선행 파워 억제
+                if dist <= 1300:
+                    front_power = 10.0 if h["is_front"] else 0.0
+                elif dist >= 1700 and is_pace_overheated:
+                    front_power = 0.0  # 선행 경합 자멸 위험 반영
+                else:
+                    front_power = 4.0 if h["is_front"] else 0.0
+
+                h["speed_power"] = jk_r * 0.7 + tr_r * 0.4 + gate_power + weight_power + front_power
 
             sorted_by_speed = sorted(r["horses"], key=lambda x: x["speed_power"], reverse=True)
             top_speed_gate = str(sorted_by_speed[0]["gate"]).strip() if sorted_by_speed else ""
@@ -329,7 +318,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                     score += (jk_rate * 0.45)
                     tags.append("말 검증필요 ⚠️")
                 else:
-                    score += (jk_rate * 0.70)
+                    score += (jk_rate * 0.65)
                     if jk_rate >= 24.0:
                         tags.append("특급 기수 🏇")
                     elif jk_rate >= 19.0:
@@ -340,20 +329,21 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 if tr_rate >= 20.0:
                     tags.append("우수 마방 🏆")
 
-                # 2. 거리별 게이트 가중치 (공식 거리에 맞게 정밀 반영)
+                # 2. 거리별 게이트 가중치
                 if dist <= 1300:
                     score += 6.0 if g <= 3 else (4.0 if g <= 7 else 0.0)
                     if g <= 3:
                         tags.append("단거리 황금게이트 ⚡")
                 elif dist >= 1700:
-                    score += 5.0 if g <= 4 else (3.0 if g <= 8 else 0.0)
+                    score += 4.0 if g <= 4 else (3.0 if g <= 8 else 0.0)
                 else:
                     score += 5.0 if g <= 4 else (3.0 if g <= 8 else 0.0)
 
                 # 3. 게이트 적성
                 if h["is_front"] and g <= 3:
-                    score += 4.0
-                    tags.append("인코스 찰떡궁합 🎯")
+                    if dist <= 1300:
+                        score += 4.0
+                        tags.append("인코스 찰떡궁합 🎯")
                 elif (not h["is_front"]) and g >= 8:
                     score += 3.0
                     tags.append("외곽 모래회피 복병 🚀")
@@ -363,9 +353,9 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                     score += 6.0
                     tags.append("숨은 다크호스 💥")
 
-                # 5. 부담중량 역학 (체급 최강자 탑웨이트 보정)
+                # 5. 부담중량 역학 (체급 최강자 탑웨이트)
                 if dist >= 1700 and clean_w <= 52.5:
-                    score += 2.0
+                    score += 3.0
                     tags.append(f"경량 부중({clean_w}kg) ⚡")
                 elif dist < 1700 and clean_w <= 52.5:
                     score += (55.0 - clean_w) * 1.8
@@ -397,17 +387,30 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                         score += 4.0
                         tags.append(f"검증된 입상마({quinella_rate}%)")
 
-                # 8. 선행력
-                if h["is_front"]:
-                    score += 5.0
-                    tags.append("선행 강세 🚀")
+                # 🎯 8. [전개 역학 핵심 개선] 선행 vs 추입 판별
+                if dist <= 1300:
+                    if h["is_front"]:
+                        score += 5.0
+                        tags.append("선행 강세 🚀")
+                elif dist >= 1700:
+                    # 중장거리에서 선행마가 3두 이상 몰려 오버페이스 자멸 위험이 클 때!
+                    if h["is_front"] and is_pace_overheated:
+                        score -= 4.0
+                        tags.append("선행 경합 자멸주의 ⚠️")
+                    elif not h["is_front"]:
+                        # 중장거리 뒤에서 힘을 아끼며 날아오는 추입마에게 대폭 가산점!
+                        score += 6.0
+                        tags.append("중장거리 막판 추입 🚀")
+                else:
+                    if h["is_front"]:
+                        score += 3.0
 
                 # 9. 승급전
                 if str(h.get("pre_ord", "")).strip() in ["1", "01"]:
                     score -= 5.0
                     tags.append("승급 첫 도전(검증 필요) 🧱")
 
-                # 🏁 경기 후 실제 완주 기록 뱃지 (정확한 공식 거리 기준 주파시간 대조)
+                # 🏁 경기 후 실제 완주 기록 뱃지 (정확한 공식 거리 기준)
                 sec = parse_time_seconds(h.get("rc_time", ""))
                 if sec:
                     base_time = {
@@ -419,7 +422,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                     elif diff >= 0.0:
                         tags.append("기록 우수")
 
-                # 🏁 경기 후 G1F 스퍼트 뱃지
+                # 🏁 경기 후 G1F 스퍼트 뱃지 (막판 200m)
                 try:
                     m_g1f = re.search(r'(\d+\.?\d*)', str(h.get("g1f_time", "")))
                     if m_g1f:
@@ -433,10 +436,8 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 h["ai_tags"] = tags
                 h["odds_display"] = "-"
 
-            # 경주마 점수 순 내림차순 정렬
             r["horses"].sort(key=lambda x: x["ai_score"], reverse=True)
 
-            # 🎯 삼복승/복연승 유력 경주 플래그 산출
             is_target, reason = evaluate_trio_confidence(r)
             r["is_trio_target"] = is_target
             r["trio_reason"] = reason
@@ -450,7 +451,6 @@ def fetch_meet_data(meet_code, meet_name, date_str):
 def sync_5weeks_archive():
     now = datetime.now(KST)
     
-    # 1. 기존 아카이브 로드
     existing_races = {}
     if os.path.exists("race_data.json"):
         try:
@@ -463,7 +463,6 @@ def sync_5weeks_archive():
         except Exception:
             existing_races = {}
 
-    # 2. 어제, 오늘, 내일 최신 데이터 수집 및 정밀 덮어쓰기
     dates_to_fetch = [
         (now - timedelta(days=1)).strftime("%Y%m%d"),
         now.strftime("%Y%m%d"),
@@ -478,7 +477,6 @@ def sync_5weeks_archive():
                 k = f"{r.get('race_date')}_{r.get('meet_name')}_{r.get('race_no')}"
                 existing_races[k] = r
 
-    # 3. 5주(35일) 범위 보존
     cutoff_date = (now - timedelta(days=35)).strftime("%Y%m%d")
     final_list = []
     for k, r in existing_races.items():
@@ -508,7 +506,7 @@ def main():
         ))
         with open("race_data.json", "w", encoding="utf-8") as f:
             json.dump(all_races, f, ensure_ascii=False, indent=2)
-        print(f"🎉 성공: [{VERSION}] 공식 거리 및 기수 정밀 검증 갱신 완료! (총 {len(all_races)}개 경주)")
+        print(f"🎉 성공: [{VERSION}] 중장거리 전개·추입 역학 탑재 완료! (총 {len(all_races)}개 경주)")
     else:
         print("❌ 데이터를 가져오지 못했습니다.")
 
