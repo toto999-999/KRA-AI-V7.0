@@ -9,7 +9,7 @@ from collections import Counter
 import time
 
 # =========================================================================
-# 프로그램 명칭: KRA전국 승부예상AI_V7.0 (착순 오염 완벽 차단 엔진)
+# 프로그램 명칭: KRA전국 승부예상AI_V7.0 (착순 100% 수신 복원 엔진)
 # =========================================================================
 VERSION = "KRA전국 승부예상AI_V7.0"
 API_KEY = os.environ.get("KRA_API_KEY", "")
@@ -112,7 +112,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
         items = root.findall(".//item")
         if not items: return []
 
-        print(f"[{meet_name}] API 데이터 수신: {len(items)}두")
+        print(f"[{meet_name}] API 응답: {len(items)}두 수신")
 
         races = {}
         for it in items:
@@ -121,7 +121,9 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                     n = it.find(t)
                     if n is not None and n.text and n.text.strip(): return n.text.strip()
                     for child in it:
-                        if child.tag.lower() == t.lower() and child.text and child.text.strip():
+                        # 태그명 순수 이름 추출 (네임스페이스 제거)
+                        tag_name = child.tag.split("}")[-1] if "}" in child.tag else child.tag
+                        if tag_name.lower() == t.lower() and child.text and child.text.strip():
                             return child.text.strip()
                 return ""
 
@@ -150,21 +152,14 @@ def fetch_meet_data(meet_code, meet_name, date_str):
             is_front = True if s1f_rank in ["1", "2", "01", "02"] else False
 
             # =========================================================================
-            # 🎯 [핵심 버그 수정] 이번 경기 '진짜 착순'만 핀포인트 추출! (과거 성적 차단)
+            # 🎯 [핵심] 마사회 진짜 착순 태그 'ord' 100% 추출! (과거 성적 완벽 배제)
             # =========================================================================
             ord_no = "-"
-            # 1. 오직 이번 경기 착순 공식 태그만 직접 조회 (pre, rec 등이 붙은 과거 태그 절대 금지!)
-            direct_ord = gv(["ordNo", "ord_no", "rcOrd", "rc_ord", "raceRk", "chaksun"])
-            
-            # ord 태그는 단독으로 정확히 일치할 때만 조회
-            if not direct_ord:
-                for child in it:
-                    if child.tag.lower() == "ord" and child.text and child.text.strip():
-                        direct_ord = child.text.strip()
-                        break
-
+            # 1. 마사회 표준 착순 태그 'ord', 'ordNo' 직접 조회
+            direct_ord = gv(["ord", "ordNo", "ord_no", "rcOrd", "rc_ord", "raceRk", "chaksun"])
             clean_ord = re.sub(r'[^0-9]', '', str(direct_ord or ""))
-            # 실제 출전마 수(최대 16두) 범위를 벗어나는 숫자는 배제!
+            
+            # 실제 착순 1~16위 범위만 이번 경기 착순으로 확정!
             if clean_ord and 1 <= int(clean_ord) <= 16:
                 ord_no = str(int(clean_ord))
 
@@ -232,7 +227,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 raw_jk = JOCKEY_RATES.get(h["jockey"], 12.0)
                 tr_rate = TRAINER_RATES.get(h["trainer"], 14.0)
 
-                # 역발상 필터
+                # 4대 역발상 필터
                 if tot_rc >= 3 and quinella_rate < 15.0:
                     jk_rate = raw_jk * 0.45
                     tags.append("기수 거품 주의 🎈")
@@ -322,14 +317,12 @@ def fetch_meet_data(meet_code, meet_name, date_str):
         return []
 
 def cleanse_corrupted_archive(races):
-    """과거 JSON에 잘못 들어간 16착, 19착 등 오염된 착순 일괄 정화"""
     for r in races:
         k = (r.get("race_date"), r.get("meet_name"), str(int(r.get("race_no"))))
         if k in OFFICIAL_DISTANCES:
             r["distance"] = OFFICIAL_DISTANCES[k]
             for h in r.get("horses", []):
                 h["distance"] = OFFICIAL_DISTANCES[k]
-                # 16두를 초과하는 비정상 착순(과거 착순) 즉시 초기화
                 try:
                     ord_val = int(h.get("actual_ord", "-"))
                     if ord_val > 16:
@@ -348,7 +341,7 @@ def sync_5weeks_archive():
                 for r in old_list:
                     k = f"{r.get('race_date')}_{r.get('meet_name')}_{r.get('race_no')}"
                     existing_races[k] = r
-            print(f"📦 기존 아카이브 오염 정화 완료: {len(existing_races)}개 경주")
+            print(f"📦 기존 저장소 로드 완료: {len(existing_races)}개 경주")
         except:
             existing_races = {}
 
@@ -386,7 +379,7 @@ def main():
         ))
         with open("race_data.json", "w", encoding="utf-8") as f:
             json.dump(all_races, f, ensure_ascii=False, indent=2)
-        print(f"🎉 성공: [{VERSION}] 착순 오염 완벽 차단 및 갱신 완료!")
+        print(f"🎉 성공: [{VERSION}] 착순 복원 갱신 완료! (총 {len(all_races)}개 경주)")
     else:
         print("❌ 데이터를 가져오지 못했습니다.")
 
