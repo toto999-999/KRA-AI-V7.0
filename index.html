@@ -231,7 +231,7 @@
                 <div id="horseList"></div>
             </div>
 
-            <!-- [탭 2] 뱃지 도감 (20종 완전체) -->
+            <!-- [탭 2] 뱃지 도감 (20종 완전체 복원) -->
             <div id="tab-badges" class="tab-content">
                 <div class="guide-card">
                     <div class="guide-title">🏷️ AI 핵심 뱃지 총람 (V7.0 역발상 전개 모델)</div>
@@ -417,7 +417,7 @@
         </div>
     </div>
 
-    <!-- 스크립트 로직 (얼마 전 잘 되던 원형 복원!) -->
+    <!-- 스크립트 로직 (과거 착순 오염 차단 및 렌더링 정상화) -->
     <script>
         const CORRECT_PIN = "1415";
 
@@ -586,6 +586,7 @@
             allRaceData.forEach(r => {
                 r.horses.forEach((h, idx) => {
                     const ordNum = parseInt(h.actual_ord, 10);
+                    // 1~3착의 정상 착순만 분석실에 적재
                     if (ordNum >= 1 && ordNum <= 3) {
                         const gNum = parseInt(h.gate, 10);
                         const wNum = parseFloat(h.weight) || 55;
@@ -676,7 +677,7 @@
         }
 
         // ========================================================
-        // 🐎 [1번 탭] 전개 포지션 추천 렌더링 (원형 복원!)
+        // 🐎 [1번 탭] 전개 포지션 추천 렌더링
         // ========================================================
         function renderRace(idx) {
             const race = allRaceData[idx];
@@ -708,15 +709,15 @@
             top3Box.innerHTML = `🎯 <strong>삼복승 조합</strong>: [${h1.gate}번] 축마 ➔ [${h2.gate}번] 선입 ➔ 🥉 <strong>[${h3.gate}번 ${h3.name}] 복병!</strong>`;
             patternBox.innerHTML = race.scenario_title ? `📊 ${race.scenario_title}<br><span style="font-size:0.75rem; opacity:0.85;">${race.scenario_desc || ''}</span>` : `📊 전개 분석 완료`;
 
-            // 얼마 전 잘 작동하던 착순 판정 로직으로 원복
-            const actual1st = race.horses.find(h => parseInt(h.actual_ord, 10) === 1);
-            const actual2nd = race.horses.find(h => parseInt(h.actual_ord, 10) === 2);
-            const actual3rd = race.horses.find(h => parseInt(h.actual_ord, 10) === 3);
+            // 진짜 이번 경기 착순 1착과 2착 확인
+            const actual1st = race.horses.find(h => parseInt(String(h.actual_ord).trim(), 10) === 1);
+            const actual2nd = race.horses.find(h => parseInt(String(h.actual_ord).trim(), 10) === 2);
+            const actual3rd = race.horses.find(h => parseInt(String(h.actual_ord).trim(), 10) === 3);
 
             banner.className = 'pick-banner';
 
             if (actual1st && actual2nd) {
-                const actualTop3Gates = [actual1st.gate, actual2nd.gate, (actual3rd ? actual3rd.gate : null)].filter(Boolean);
+                const actualTop3Gates = [actual1st.gate, actual2nd.gate, actual3rd ? actual3rd.gate : null].filter(Boolean);
                 const aiTop3 = [h1.gate, h2.gate, h3.gate];
                 const matchedInTop3 = aiTop3.filter(g => actualTop3Gates.includes(g)).length;
 
@@ -724,38 +725,44 @@
                     banner.classList.add('hit-exact');
                     bannerTitle.textContent = "🎯 복연승/삼복승 전개 적중!";
                     hitTag.textContent = "포지션 적중 🏆";
-                    recBox.textContent = `실제 결과: 1착 [${actual1st.gate}번] - 2착 [${actual2nd.gate}번]`;
+                    recBox.textContent = `실제 결과: 1착 [${actual1st.gate}번 ${actual1st.name}] - 2착 [${actual2nd.gate}번 ${actual2nd.name}]`;
                 } else if (h1.gate === actual1st.gate) {
                     banner.classList.add('hit-win');
                     bannerTitle.textContent = "🎯 1착 우승축마 적중!";
                     hitTag.textContent = "1착 적중 🥇";
-                    recBox.textContent = `실제 결과: 1착 [${actual1st.gate}번] - 2착 [${actual2nd.gate}번]`;
+                    recBox.textContent = `실제 결과: 1착 [${actual1st.gate}번 ${actual1st.name}] - 2착 [${actual2nd.gate}번 ${actual2nd.name}]`;
                 } else {
                     banner.classList.add('finished-miss');
                     bannerTitle.textContent = "🏁 경주 종료 (결과 복기)";
                     hitTag.textContent = "경기 완료";
-                    recBox.textContent = `실제 결과: 1착 [${actual1st.gate}번] - 2착 [${actual2nd.gate}번]`;
+                    recBox.textContent = `실제 결과: 1착 [${actual1st.gate}번 ${actual1st.name}] - 2착 [${actual2nd.gate}번 ${actual2nd.name}]`;
                 }
             } else {
+                // 아직 1착, 2착이 안 들어온 진짜 '경기 전' 상태
                 bannerTitle.textContent = "🏆 AI 전개 포지션 추천 (1착축 ✖ 2착선입 ✖ 3착복병)";
                 hitTag.textContent = "경기 전 예상";
             }
 
             race.horses.forEach((h, i) => {
                 const rankClass = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : '';
-                const ordNum = parseInt(h.actual_ord, 10);
+                const ordNum = parseInt(String(h.actual_ord).trim(), 10);
                 
+                // 16착 이상은 오염 데이터이므로 표시하지 않음
+                const isValidOrd = (!isNaN(ordNum) && ordNum >= 1 && ordNum <= 16);
+
                 let badgeHtml = '';
-                if (ordNum === 1) badgeHtml = '<span class="badge-1st">실제 1착 🥇</span>';
-                else if (ordNum === 2) badgeHtml = '<span class="badge-2nd">실제 2착 🥈</span>';
-                else if (ordNum === 3) badgeHtml = '<span class="badge-3rd">실제 3착 🥉</span>';
+                if (isValidOrd) {
+                    if (ordNum === 1) badgeHtml = '<span class="badge-1st">실제 1착 🥇</span>';
+                    else if (ordNum === 2) badgeHtml = '<span class="badge-2nd">실제 2착 🥈</span>';
+                    else if (ordNum === 3) badgeHtml = '<span class="badge-3rd">실제 3착 🥉</span>';
+                }
 
                 let roleBadgeHtml = '';
                 if (i === 0) roleBadgeHtml = '<span class="role-badge role-1st">1착 우승축 🥇</span>';
                 else if (i === 1) roleBadgeHtml = '<span class="role-badge role-2nd">2착 선입마 🥈</span>';
                 else if (i === 2) roleBadgeHtml = '<span class="role-badge role-3rd">3착 복병마 🥉</span>';
 
-                const resultStatus = (!ordNum || isNaN(ordNum) || ordNum === 0) ? '경기 전' : `실제 ${ordNum}착`;
+                const resultStatus = isValidOrd ? `실제 ${ordNum}착` : '경기 전';
 
                 let tagsHtml = '';
                 if (h.ai_tags && h.ai_tags.length > 0) {
