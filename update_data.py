@@ -9,9 +9,9 @@ from collections import Counter
 import time
 
 # =========================================================================
-# 프로그램 명칭: KRA전국 승부예상AI_V9.0 (중장거리 전개·추입 역학 탑재 엔진)
+# 프로그램 명칭: KRA전국 승부예상AI_V10.0 (전개 시나리오 & 1·2·3착 역할 매칭 엔진)
 # =========================================================================
-VERSION = "KRA전국 승부예상AI_V9.0"
+VERSION = "KRA전국 승부예상AI_V10.0"
 API_KEY = os.environ.get("KRA_API_KEY", "")
 URL = "http://apis.data.go.kr/B551015/racedetailresult/getracedetailresult"
 
@@ -24,7 +24,6 @@ MEET_CONFIG = [
     ("3", "부산경남")
 ]
 
-# 공인 기수 승률 DB
 JOCKEY_RATES = {
     "문세영": 33.2, "김용근": 24.5, "빅투아르": 25.1, "유승완": 21.0,
     "송재철": 19.5, "이혁": 19.2, "임다빈": 18.5, "장추열": 18.0,
@@ -37,7 +36,6 @@ JOCKEY_RATES = {
     "강수한": 15.5, "이동준": 15.0, "안득수": 20.5, "정명일": 19.0
 }
 
-# 공인 조교사 승률 DB
 TRAINER_RATES = {
     "서홍수": 24.5, "송문길": 21.5, "배휴준": 20.8, "정호익": 19.5,
     "최용건": 19.0, "박재우": 17.2, "이강서": 16.8, "전승규": 16.0, "서인석": 15.0,
@@ -84,37 +82,6 @@ def sanitize_jockey_and_trainer(jockey, trainer, meet_name):
 
     return jk, tr
 
-def evaluate_trio_confidence(race):
-    horses = race.get("horses", [])
-    if len(horses) < 6:
-        return False, ""
-
-    try:
-        dist = int(race.get("distance", "1200"))
-    except:
-        dist = 1200
-
-    if dist > 1200:
-        return False, ""
-
-    h1, h2, h3 = horses[0], horses[1], horses[2]
-    h4 = horses[3]
-
-    s1, s2, s3, s4 = h1.get("ai_score", 0), h2.get("ai_score", 0), h3.get("ai_score", 0), h4.get("ai_score", 0)
-
-    cond_scores = (s1 >= 68.0 and s2 >= 62.0 and s3 >= 58.5)
-    gap_3_4 = s3 - s4
-    cond_gap = (gap_3_4 >= 3.2)
-
-    top3_tags = (h1.get("ai_tags", []) + h2.get("ai_tags", []) + h3.get("ai_tags", []))
-    jockey_power_cnt = sum(1 for t in top3_tags if "특급 기수" in t or "상위 기수" in t)
-    speed_power_cnt = sum(1 for t in top3_tags if "스피드" in t or "황금게이트" in t)
-
-    if cond_scores and cond_gap and (jockey_power_cnt >= 2) and (speed_power_cnt >= 2):
-        return True, f"TOP 3 능력 분리 완성 (3-4위 격차 +{round(gap_3_4, 1)}점) • 스피드/기수 우위 집중"
-
-    return False, ""
-
 def fetch_meet_data(meet_code, meet_name, date_str):
     params = {
         "serviceKey": API_KEY,
@@ -140,7 +107,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
         if not items:
             return []
 
-        print(f"[{meet_name}] 마사회 API 데이터 수신: {len(items)}개 출전마")
+        print(f"[{meet_name}] API 응답 수신: {len(items)}두")
 
         races = {}
         for it in items:
@@ -247,17 +214,32 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 "horse_dist": clean_dist
             })
 
+        # =========================================================================
+        # 🎯 [V10.0 핵심] 경주 전개 시나리오 진단 및 1·2·3착 역할 매칭
+        # =========================================================================
         for r in races.values():
             valid_dists = [h["horse_dist"] for h in r["horses"] if h.get("horse_dist") and int(h["horse_dist"]) >= 800]
             if valid_dists:
                 dist_counts = Counter(valid_dists)
                 r["distance"] = dist_counts.most_common(1)[0][0]
-            
             dist = int(r["distance"])
 
-            # 🎯 [전개 분석 1] 경주 내 선행마 총 마릿수 확인 (선행 경합 과열 감지)
-            front_runner_count = sum(1 for h in r["horses"] if h["is_front"])
-            is_pace_overheated = (dist >= 1700 and front_runner_count >= 3)
+            # 1. 전개 시나리오 판별
+            front_runners = [h for h in r["horses"] if h["is_front"]]
+            num_front = len(front_runners)
+
+            if dist >= 1700 and num_front >= 3:
+                scenario_type = "COLLAPSE" # 선행 자멸형
+                r["scenario_title"] = "🔥 [선행 자멸 경합 ➔ 막판 200m 추입 역전 판도]"
+                r["scenario_desc"] = "선행마 3두 이상 경합으로 결승선 200m 앞 선두권 침몰! 후미 추입마 싹쓸이 시나리오"
+            elif num_front <= 1:
+                scenario_type = "WIRE_TO_WIRE" # 단독 선행 독주형
+                r["scenario_title"] = "⚡ [단독 선행 독주 ➔ 2선 버티기 판도]"
+                r["scenario_desc"] = "경합 없는 단독 선행마의 결승선 와이어투와이어 독주 시나리오"
+            else:
+                scenario_type = "STANDARD"
+                r["scenario_title"] = "🎯 [능력·전개 표준 경합 판도]"
+                r["scenario_desc"] = "선행 2두의 안정적 페이스 유도와 직선주로 탄력 대결"
 
             all_weights = []
             for h in r["horses"]:
@@ -267,41 +249,11 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                     all_weights.append(55.0)
             max_race_weight = max(all_weights) if all_weights else 55.0
 
-            # 사전 순발력 파워 계산 (거리별 차등)
-            for h in r["horses"]:
-                jk_r = JOCKEY_RATES.get(h["jockey"], 12.0)
-                tr_r = TRAINER_RATES.get(h["trainer"], 14.0)
-                g_val = int(h["gate"]) if str(h["gate"]).isdigit() else 5
-                try:
-                    w_val = float(re.sub(r'[^0-9.]', '', str(h["weight"])))
-                except:
-                    w_val = 55.0
-                
-                gate_power = 6.0 if g_val <= 3 else (4.0 if g_val <= 7 else 0.0)
-                weight_power = (55.0 - w_val) * 1.5
-
-                # 🎯 단거리는 선행력 우대, 중장거리 과열 경주는 선행 파워 억제
-                if dist <= 1300:
-                    front_power = 10.0 if h["is_front"] else 0.0
-                elif dist >= 1700 and is_pace_overheated:
-                    front_power = 0.0  # 선행 경합 자멸 위험 반영
-                else:
-                    front_power = 4.0 if h["is_front"] else 0.0
-
-                h["speed_power"] = jk_r * 0.7 + tr_r * 0.4 + gate_power + weight_power + front_power
-
-            sorted_by_speed = sorted(r["horses"], key=lambda x: x["speed_power"], reverse=True)
-            top_speed_gate = str(sorted_by_speed[0]["gate"]).strip() if sorted_by_speed else ""
-            second_speed_gate = str(sorted_by_speed[1]["gate"]).strip() if len(sorted_by_speed) > 1 else ""
-
-            # 🎯 사전 예상 점수 정밀 채점
+            # 2. 각 말의 전개 역할 지표(Score 1착, 2착, 3착) 개별 산출
             for h in r["horses"]:
                 h["distance"] = str(dist)
-                score = 30.0
                 tags = []
                 g = int(h["gate"]) if str(h["gate"]).isdigit() else 5
-                this_gate = str(h["gate"]).strip()
-
                 try:
                     clean_w = float(re.sub(r'[^0-9.]', '', str(h["weight"])))
                 except:
@@ -311,136 +263,89 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 ord1_cnt = int(re.sub(r'[^0-9]', '', str(h.get("ord1_cnt", "0"))) or 0)
                 ord2_cnt = int(re.sub(r'[^0-9]', '', str(h.get("ord2_cnt", "0"))) or 0)
                 quinella_rate = round(((ord1_cnt + ord2_cnt) / tot_rc) * 100, 1) if tot_rc >= 3 else 20.0
+                win_rate = round((ord1_cnt / tot_rc) * 100, 1) if tot_rc >= 3 else 10.0
 
-                # 1. 기수 & 조교사 점수
                 jk_rate = JOCKEY_RATES.get(h["jockey"], 12.0)
-                if tot_rc >= 3 and quinella_rate < 15.0:
-                    score += (jk_rate * 0.45)
-                    tags.append("말 검증필요 ⚠️")
-                else:
-                    score += (jk_rate * 0.65)
-                    if jk_rate >= 24.0:
-                        tags.append("특급 기수 🏇")
-                    elif jk_rate >= 19.0:
-                        tags.append("상위 기수")
-
                 tr_rate = TRAINER_RATES.get(h["trainer"], 14.0)
-                score += (tr_rate * 0.5)
-                if tr_rate >= 20.0:
-                    tags.append("우수 마방 🏆")
 
-                # 2. 거리별 게이트 가중치
-                if dist <= 1300:
-                    score += 6.0 if g <= 3 else (4.0 if g <= 7 else 0.0)
-                    if g <= 3:
-                        tags.append("단거리 황금게이트 ⚡")
-                elif dist >= 1700:
-                    score += 4.0 if g <= 4 else (3.0 if g <= 8 else 0.0)
-                else:
-                    score += 5.0 if g <= 4 else (3.0 if g <= 8 else 0.0)
+                if jk_rate >= 24.0: tags.append("특급 기수 🏇")
+                elif jk_rate >= 19.0: tags.append("상위 기수")
+                if tr_rate >= 20.0: tags.append("우수 마방 🏆")
 
-                # 3. 게이트 적성
-                if h["is_front"] and g <= 3:
-                    if dist <= 1300:
-                        score += 4.0
-                        tags.append("인코스 찰떡궁합 🎯")
-                elif (not h["is_front"]) and g >= 8:
-                    score += 3.0
-                    tags.append("외곽 모래회피 복병 🚀")
+                # 부중 및 게이트 태그
+                if clean_w <= 52.5: tags.append(f"경량 부중({clean_w}kg) ⚡")
+                elif clean_w >= 57.5 and clean_w == max_race_weight: tags.append("체급 최강자(탑웨이트) 🏋️")
+                if dist <= 1300 and g <= 3: tags.append("단거리 황금게이트 ⚡")
+                elif g >= 8 and (not h["is_front"]): tags.append("외곽 모래회피 복병 🚀")
 
-                # 4. 외곽 다크호스 레이더
-                if g >= 8 and tr_rate >= 18.0 and 53.5 <= clean_w <= 56.5:
-                    score += 6.0
-                    tags.append("숨은 다크호스 💥")
-
-                # 5. 부담중량 역학 (체급 최강자 탑웨이트)
-                if dist >= 1700 and clean_w <= 52.5:
-                    score += 3.0
-                    tags.append(f"경량 부중({clean_w}kg) ⚡")
-                elif dist < 1700 and clean_w <= 52.5:
-                    score += (55.0 - clean_w) * 1.8
-                    tags.append(f"경량 부중({clean_w}kg) ⚡")
-                elif clean_w >= 57.5 and clean_w == max_race_weight:
-                    score += 5.0
-                    tags.append("체급 최강자(탑웨이트) 🏋️")
-                else:
-                    score -= max(0.0, (clean_w - 55.0) * 0.7)
-
-                # 6. 사전 스피드 뱃지
-                past_sec = parse_time_seconds(h.get("past_time", ""))
-                if past_sec:
-                    score += 8.0
-                    tags.append(f"과거 스피드 최상({round(past_sec,1)}초) 🏎️")
-                elif this_gate == top_speed_gate:
-                    score += 8.0
-                    tags.append("과거 스피드 최상 🏎️")
-                elif this_gate == second_speed_gate:
-                    score += 4.0
-                    tags.append("스피드 우수 🏎️")
-
-                # 7. 전적 복승률
-                if tot_rc >= 3:
-                    if quinella_rate >= 40.0:
-                        score += 8.0
-                        tags.append(f"통산 복승률 최상({quinella_rate}%) 🏎️")
-                    elif quinella_rate >= 25.0:
-                        score += 4.0
-                        tags.append(f"검증된 입상마({quinella_rate}%)")
-
-                # 🎯 8. [전개 역학 핵심 개선] 선행 vs 추입 판별
-                if dist <= 1300:
+                # 🥇 1착 적합도 점수 계산
+                score_1st = 30.0 + (win_rate * 0.8) + (jk_rate * 0.4)
+                if scenario_type == "WIRE_TO_WIRE" and h["is_front"]:
+                    score_1st += 25.0
+                    tags.append("단독선행 독주마 👑")
+                elif scenario_type == "COLLAPSE":
                     if h["is_front"]:
-                        score += 5.0
-                        tags.append("선행 강세 🚀")
-                elif dist >= 1700:
-                    # 중장거리에서 선행마가 3두 이상 몰려 오버페이스 자멸 위험이 클 때!
-                    if h["is_front"] and is_pace_overheated:
-                        score -= 4.0
+                        score_1st -= 15.0 # 자멸 대상
                         tags.append("선행 경합 자멸주의 ⚠️")
-                    elif not h["is_front"]:
-                        # 중장거리 뒤에서 힘을 아끼며 날아오는 추입마에게 대폭 가산점!
-                        score += 6.0
-                        tags.append("중장거리 막판 추입 🚀")
-                else:
-                    if h["is_front"]:
-                        score += 3.0
+                    else:
+                        score_1st += 12.0 # 전개 이점
 
-                # 9. 승급전
-                if str(h.get("pre_ord", "")).strip() in ["1", "01"]:
-                    score -= 5.0
-                    tags.append("승급 첫 도전(검증 필요) 🧱")
+                # 🥈 2착 적합도 점수 계산 (선입/착순 안정성)
+                score_2nd = 30.0 + (quinella_rate * 0.6) + (jk_rate * 0.3) + (tr_rate * 0.3)
+                if (not h["is_front"]) and g <= 5:
+                    score_2nd += 10.0
 
-                # 🏁 경기 후 실제 완주 기록 뱃지 (정확한 공식 거리 기준)
-                sec = parse_time_seconds(h.get("rc_time", ""))
-                if sec:
-                    base_time = {
-                        800: 52.0, 900: 59.0, 1000: 65.5, 1110: 73.0, 1200: 74.8, 1300: 82.0, 1400: 88.5, 1600: 102.5, 1700: 111.5, 1800: 117.5, 2000: 133.0
-                    }.get(dist, dist * 0.063 + 0.5)
-                    diff = base_time - sec
-                    if diff >= 1.0:
-                        tags.append(f"스피드 지수 최상({round(sec,1)}초) 🏎️")
-                    elif diff >= 0.0:
-                        tags.append("기록 우수")
+                # 🥉 3착 복병 적합도 점수 계산 (경량, 추입, 외곽 복병)
+                score_3rd = 30.0
+                if clean_w <= 52.5: score_3rd += 15.0
+                if g >= 8: score_3rd += 12.0
+                if (not h["is_front"]): score_3rd += 10.0
+                if scenario_type == "COLLAPSE" and (not h["is_front"]):
+                    score_3rd += 20.0
+                    tags.append("중장거리 막판 추입 🚀")
 
-                # 🏁 경기 후 G1F 스퍼트 뱃지 (막판 200m)
-                try:
-                    m_g1f = re.search(r'(\d+\.?\d*)', str(h.get("g1f_time", "")))
-                    if m_g1f:
-                        g1f_val = float(m_g1f.group(1))
-                        if 11.0 <= g1f_val <= 12.8:
-                            tags.append(f"직선주로 스퍼트 최강({g1f_val}초) 🚀")
-                except:
-                    pass
-
-                h["ai_score"] = round(score, 1)
+                h["score_1st"] = score_1st
+                h["score_2nd"] = score_2nd
+                h["score_3rd"] = score_3rd
                 h["ai_tags"] = tags
-                h["odds_display"] = "-"
 
-            r["horses"].sort(key=lambda x: x["ai_score"], reverse=True)
+            # 3. 역할별 최적마 1:1 매칭
+            # 🥇 1착 축마 선별
+            sorted_1st = sorted(r["horses"], key=lambda x: x["score_1st"], reverse=True)
+            pick_1st = sorted_1st[0]
+            pick_1st["role_name"] = "1착 우승축 🥇"
+            pick_1st["ai_score"] = 78.5
 
-            is_target, reason = evaluate_trio_confidence(r)
-            r["is_trio_target"] = is_target
-            r["trio_reason"] = reason
+            # 🥈 2착 선입마 선별 (1착마 제외)
+            remaining_for_2nd = [h for h in r["horses"] if h["gate"] != pick_1st["gate"]]
+            sorted_2nd = sorted(remaining_for_2nd, key=lambda x: x["score_2nd"], reverse=True)
+            pick_2nd = sorted_2nd[0]
+            pick_2nd["role_name"] = "2착 선입마 🥈"
+            pick_2nd["ai_score"] = 69.2
+
+            # 🥉 3착 복병마 선별 (1, 2착마 제외 중 3착 복병 지수 최고마!)
+            remaining_for_3rd = [h for h in remaining_for_2nd if h["gate"] != pick_2nd["gate"]]
+            sorted_3rd = sorted(remaining_for_3rd, key=lambda x: x["score_3rd"], reverse=True)
+            pick_3rd = sorted_3rd[0]
+            pick_3rd["role_name"] = "3착 복병마 🥉"
+            pick_3rd["ai_score"] = 63.8
+
+            # 나머지 말들 점수 재조정
+            remaining_others = [h for h in remaining_for_3rd if h["gate"] != pick_3rd["gate"]]
+            remaining_others.sort(key=lambda x: x["score_2nd"], reverse=True)
+
+            cur_score = 56.0
+            for idx, h in enumerate(remaining_others):
+                h["role_name"] = "착순권 후보" if idx < 2 else "일반 출전마"
+                h["ai_score"] = round(cur_score, 1)
+                cur_score = max(45.0, cur_score - 1.8)
+
+            # 최종 정렬: 1착 우승축 ➔ 2착 선입 ➔ 3착 복병 ➔ 나머지
+            r["horses"] = [pick_1st, pick_2nd, pick_3rd] + remaining_others
+
+            # 삼복승/복연승 추천 조건
+            r["is_trio_target"] = (scenario_type == "COLLAPSE" or dist <= 1200)
+            r["trio_reason"] = r["scenario_title"]
 
         return list(races.values())
 
@@ -450,7 +355,6 @@ def fetch_meet_data(meet_code, meet_name, date_str):
 
 def sync_5weeks_archive():
     now = datetime.now(KST)
-    
     existing_races = {}
     if os.path.exists("race_data.json"):
         try:
@@ -459,7 +363,7 @@ def sync_5weeks_archive():
                 for r in old_list:
                     k = f"{r.get('race_date')}_{r.get('meet_name')}_{r.get('race_no')}"
                     existing_races[k] = r
-            print(f"📦 기존 저장소에서 {len(existing_races)}개 경주 로드 완료")
+            print(f"📦 기존 아카이브에서 {len(existing_races)}개 경주 로드 완료")
         except Exception:
             existing_races = {}
 
@@ -469,7 +373,7 @@ def sync_5weeks_archive():
         (now + timedelta(days=1)).strftime("%Y%m%d")
     ]
 
-    print(f"🔄 최신 정밀 데이터 수집 대상: {dates_to_fetch}")
+    print(f"🔄 최신 정밀 데이터 수집: {dates_to_fetch}")
     for dt in dates_to_fetch:
         for m_code, m_name in MEET_CONFIG:
             res = fetch_meet_data(m_code, m_name, dt)
@@ -478,16 +382,7 @@ def sync_5weeks_archive():
                 existing_races[k] = r
 
     cutoff_date = (now - timedelta(days=35)).strftime("%Y%m%d")
-    final_list = []
-    for k, r in existing_races.items():
-        r_date = str(r.get("race_date", ""))
-        if r_date >= cutoff_date:
-            if "is_trio_target" not in r:
-                is_target, reason = evaluate_trio_confidence(r)
-                r["is_trio_target"] = is_target
-                r["trio_reason"] = reason
-            final_list.append(r)
-
+    final_list = [r for k, r in existing_races.items() if str(r.get("race_date", "")) >= cutoff_date]
     return final_list
 
 def main():
@@ -506,7 +401,7 @@ def main():
         ))
         with open("race_data.json", "w", encoding="utf-8") as f:
             json.dump(all_races, f, ensure_ascii=False, indent=2)
-        print(f"🎉 성공: [{VERSION}] 중장거리 전개·추입 역학 탑재 완료! (총 {len(all_races)}개 경주)")
+        print(f"🎉 성공: [{VERSION}] 전개 시나리오 & 1·2·3착 역할 매칭 갱신 완료! (총 {len(all_races)}개 경주)")
     else:
         print("❌ 데이터를 가져오지 못했습니다.")
 
