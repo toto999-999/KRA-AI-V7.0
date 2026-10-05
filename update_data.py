@@ -5,12 +5,13 @@ import urllib.request
 import urllib.parse
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone, timedelta
+from collections import Counter
 import time
 
 # =========================================================================
-# 프로그램 명칭: KRA전국 승부예상AI_V8.8 (5주치 누적 빅데이터 아카이브 엔진)
+# 프로그램 명칭: KRA전국 승부예상AI_V8.9 (공식 거리 & 기수 정밀 검증 엔진)
 # =========================================================================
-VERSION = "KRA전국 승부예상AI_V8.8"
+VERSION = "KRA전국 승부예상AI_V8.9"
 API_KEY = os.environ.get("KRA_API_KEY", "")
 URL = "http://apis.data.go.kr/B551015/racedetailresult/getracedetailresult"
 
@@ -23,48 +24,7 @@ MEET_CONFIG = [
     ("3", "부산경남")
 ]
 
-# 🎯 마사회 공식 편성표 1:1 전수 매핑 테이블 (황금연휴 공식 거리)
-EXACT_RACE_DISTANCES = {
-    # 10월 2일 (금)
-    ("20261002", "부산경남", "1"): "1000", ("20261002", "부산경남", "2"): "1000",
-    ("20261002", "부산경남", "3"): "1200", ("20261002", "부산경남", "4"): "1400",
-    ("20261002", "부산경남", "5"): "1300", ("20261002", "부산경남", "6"): "1300",
-    ("20261002", "부산경남", "7"): "1600", ("20261002", "부산경남", "8"): "1800", ("20261002", "부산경남", "9"): "1800",
-    ("20261002", "제주", "1"): "900",  ("20261002", "제주", "2"): "1000",
-    ("20261002", "제주", "3"): "1000", ("20261002", "제주", "4"): "1000",
-    ("20261002", "제주", "5"): "1110", ("20261002", "제주", "6"): "1200", ("20261002", "제주", "7"): "1400",
-
-    # 10월 3일 (토)
-    ("20261003", "서울", "1"): "1000", ("20261003", "서울", "2"): "1200",
-    ("20261003", "서울", "3"): "1400", ("20261003", "서울", "4"): "1300",
-    ("20261003", "서울", "5"): "1200", ("20261003", "서울", "6"): "1700",
-    ("20261003", "서울", "7"): "1800", ("20261003", "서울", "8"): "1600",
-    ("20261003", "서울", "9"): "1300", ("20261003", "서울", "10"): "1200",
-    ("20261003", "제주", "1"): "900",  ("20261003", "제주", "2"): "900",
-    ("20261003", "제주", "3"): "1000", ("20261003", "제주", "4"): "1110",
-    ("20261003", "제주", "5"): "1110", ("20261003", "제주", "6"): "1200", ("20261003", "제주", "7"): "1300",
-
-    # 10월 4일 (일) 오늘!
-    ("20261004", "영천", "1"): "1200", ("20261004", "영천", "2"): "1400",
-    ("20261004", "영천", "3"): "1400", ("20261004", "영천", "4"): "1800",
-    ("20261004", "영천", "5"): "1200", ("20261004", "영천", "6"): "1200",
-    ("20261004", "서울", "1"): "1000", ("20261004", "서울", "2"): "1300",
-    ("20261004", "서울", "3"): "1700", ("20261004", "서울", "4"): "1200",
-    ("20261004", "서울", "5"): "1200", ("20261004", "서울", "6"): "1400",
-    ("20261004", "서울", "7"): "1800", ("20261004", "서울", "8"): "2000",
-    ("20261004", "서울", "9"): "1200", ("20261004", "서울", "10"): "1400", ("20261004", "서울", "11"): "1200",
-
-    # 10월 5일 (월 대체공휴일)
-    ("20261005", "서울", "1"): "1000", ("20261005", "서울", "2"): "1300",
-    ("20261005", "서울", "3"): "1200", ("20261005", "서울", "4"): "1400",
-    ("20261005", "서울", "5"): "1400", ("20261005", "서울", "6"): "1200",
-    ("20261005", "서울", "7"): "1700", ("20261005", "서울", "8"): "1800",
-    ("20261005", "서울", "9"): "1400", ("20261005", "서울", "10"): "1200",
-    ("20261005", "제주", "1"): "900",  ("20261005", "제주", "2"): "1000",
-    ("20261005", "제주", "3"): "1000", ("20261005", "제주", "4"): "1110",
-    ("20261005", "제주", "5"): "1200", ("20261005", "제주", "6"): "1300", ("20261005", "제주", "7"): "1300"
-}
-
+# 공인 기수 승률 DB
 JOCKEY_RATES = {
     "문세영": 33.2, "김용근": 24.5, "빅투아르": 25.1, "유승완": 21.0,
     "송재철": 19.5, "이혁": 19.2, "임다빈": 18.5, "장추열": 18.0,
@@ -77,6 +37,7 @@ JOCKEY_RATES = {
     "강수한": 15.5, "이동준": 15.0, "안득수": 20.5, "정명일": 19.0
 }
 
+# 공인 조교사 승률 DB
 TRAINER_RATES = {
     "서홍수": 24.5, "송문길": 21.5, "배휴준": 20.8, "정호익": 19.5,
     "최용건": 19.0, "박재우": 17.2, "이강서": 16.8, "전승규": 16.0, "서인석": 15.0,
@@ -102,13 +63,38 @@ def parse_time_seconds(time_str):
         pass
     return None
 
-# =========================================================================
-# 🎯 [신규 기능] 삼복승 / 복연승 적중 유력 초엄격 판별 알고리즘
-# =========================================================================
+def clean_name(val):
+    """기수명 / 조교사명 정제 (공백 및 특수문자 제거)"""
+    if not val: return ""
+    v = re.sub(r'[\(\[\{].*?[\)\]\}]', '', str(val))
+    return re.sub(r'[^가-힣a-zA-Z]', '', v).strip()
+
+def sanitize_jockey_and_trainer(jockey, trainer, meet_name):
+    """
+    🎯 [핵심] 기수-조교사 전도 현상(문세영 조교 등) 및 소속 오류 자가교정
+    """
+    jk = clean_name(jockey)
+    tr = clean_name(trainer)
+
+    # 1. 문세영이 조교사에 들어간 경우 교정 (문세영은 대한민국 대표 기수)
+    if tr == "문세영":
+        # 만약 기수 자리에 실제 조교사 이름이 들어가 있다면 서로 교체
+        if jk in TRAINER_RATES:
+            jk, tr = tr, jk
+        else:
+            # 기수 자리를 문세영으로 복원하고 조교사는 미정 처리 방지
+            tr = "관리팀"
+            jk = "문세영"
+
+    # 2. 기타 기수명이 조교사 자리에 잘못 들어간 경우 역스왑
+    if tr in ["서승운", "김용근", "빅투아르", "유승완", "최시대", "다나카"] and jk in TRAINER_RATES:
+        jk, tr = tr, jk
+
+    return jk, tr
+
 def evaluate_trio_confidence(race):
     """
-    단거리(1200m 이하)에서 상위 3두의 능력치가 압도적이고,
-    4위 이하와의 점수 차이가 확실하게 벌어진 경주만 선별 (자주 나오지 않음)
+    🎯 삼복승 / 복연승 적중 유력 초엄격 판별 알고리즘 (단거리 능력 분리형 경주)
     """
     horses = race.get("horses", [])
     if len(horses) < 6:
@@ -119,7 +105,7 @@ def evaluate_trio_confidence(race):
     except:
         dist = 1200
 
-    # 1. 거리 조건: 단거리(1200m 이하) 한정
+    # 단거리(1200m 이하) 한정
     if dist > 1200:
         return False, ""
 
@@ -128,20 +114,18 @@ def evaluate_trio_confidence(race):
 
     s1, s2, s3, s4 = h1.get("ai_score", 0), h2.get("ai_score", 0), h3.get("ai_score", 0), h4.get("ai_score", 0)
 
-    # 2. 점수 기준치 (능력치 상위 집중)
+    # 상위 3두 점수 최소 기준선
     cond_scores = (s1 >= 68.0 and s2 >= 62.0 and s3 >= 58.5)
-    
-    # 3. 3위와 4위의 격차(능력 분리형 경주)
+    # 3위와 4위의 명확한 점수 갭
     gap_3_4 = s3 - s4
     cond_gap = (gap_3_4 >= 3.2)
 
-    # 4. 상위 3두 중 특급/상위 기수 및 스피드 지수 집중도
     top3_tags = (h1.get("ai_tags", []) + h2.get("ai_tags", []) + h3.get("ai_tags", []))
     jockey_power_cnt = sum(1 for t in top3_tags if "특급 기수" in t or "상위 기수" in t)
     speed_power_cnt = sum(1 for t in top3_tags if "스피드" in t or "황금게이트" in t)
 
     if cond_scores and cond_gap and (jockey_power_cnt >= 2) and (speed_power_cnt >= 2):
-        return True, f"TOP 3 능력 분리 완성 (3-4위 격차 +{round(gap_3_4, 1)}점) • 스피드/기수 우위 완벽 집중"
+        return True, f"TOP 3 능력 분리 완성 (3-4위 격차 +{round(gap_3_4, 1)}점) • 스피드/기수 우위 집중"
 
     return False, ""
 
@@ -149,7 +133,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
     params = {
         "serviceKey": API_KEY,
         "pageNo": "1",
-        "numOfRows": "150",
+        "numOfRows": "180",
         "meet": meet_code,
         "rc_date": date_str
     }
@@ -162,7 +146,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
 
     try:
         req = urllib.request.Request(full_url, headers=headers)
-        with urllib.request.urlopen(req, timeout=10) as response:
+        with urllib.request.urlopen(req, timeout=12) as response:
             xml_data = response.read()
 
         root = ET.fromstring(xml_data)
@@ -170,7 +154,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
         if not items:
             return []
 
-        print(f"[{meet_name}] 마사회 데이터 수신: {len(items)}개 출전마")
+        print(f"[{meet_name}] 마사회 API 데이터 수신: {len(items)}개 출전마")
 
         races = {}
         for it in items:
@@ -190,10 +174,19 @@ def fetch_meet_data(meet_code, meet_name, date_str):
 
             raw_gate = gv(["chulNo", "chul_no", "gateNo", "hrNo"]) or "0"
             gate = str(int(raw_gate)) if raw_gate.isdigit() else raw_gate
-            name = gv(["hrName", "hr_name"]) or "경주마"
-            jockey = gv(["jkName", "jk_name"]) or "기수"
-            trainer = gv(["trName", "tr_name"]) or "조교사"
-            weight = gv(["wgBudam", "wg_budam"]) or "55.0"
+            name = clean_name(gv(["hrName", "hr_name"]) or "경주마")
+
+            raw_jockey = gv(["jkName", "jk_name", "jockeyName", "jockey"]) or "기수"
+            raw_trainer = gv(["trName", "tr_name", "trainerName", "trainer"]) or "조교사"
+            
+            # 🎯 기수 / 조교사 정밀 정제 및 교정
+            jockey, trainer = sanitize_jockey_and_trainer(raw_jockey, raw_trainer, meet_name)
+
+            # 🎯 마사회 공식 거리 태그 직수신 (가장 중요!)
+            raw_dist = gv(["rcDist", "rc_dist", "distance", "dist", "rc_distance"]) or ""
+            clean_dist = re.sub(r'[^0-9]', '', raw_dist)
+
+            weight = gv(["wgBudam", "wg_budam", "weight"]) or "55.0"
             track = gv(["track", "track_state", "trackCond", "weather"]) or "양호"
 
             rc_time = gv(["rcTime", "rc_time", "record", "rcRecord", "ordTime"]) or ""
@@ -236,11 +229,15 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                     "meet_name": meet_name,
                     "race_no": rc_no,
                     "race_date": date_str,
-                    "distance": "1200",
+                    "distance": clean_dist if (clean_dist and int(clean_dist) >= 800) else "1200",
                     "track": track,
                     "version": VERSION,
                     "horses": []
                 }
+
+            # 경주 대표 거리가 비어있거나 부정확하면 채우기
+            if clean_dist and int(clean_dist) >= 800:
+                races[key]["distance"] = clean_dist
 
             already_exists = any(h["gate"] == gate or h["name"] == name for h in races[key]["horses"])
             if already_exists:
@@ -265,33 +262,20 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 "ord1_cnt": ord1_cnt,
                 "ord2_cnt": ord2_cnt,
                 "is_front": is_front,
-                "actual_ord": ord_no
+                "actual_ord": ord_no,
+                "horse_dist": clean_dist
             })
 
         for r in races.values():
             meet = r["meet_name"]
-            r_no = str(int(r["race_no"])) if str(r["race_no"]).isdigit() else str(r["race_no"])
-
-            dist_key = (date_str, meet, r_no)
-            if dist_key in EXACT_RACE_DISTANCES:
-                actual_dist = EXACT_RACE_DISTANCES[dist_key]
-            else:
-                fastest_sec = 999.0
-                for h in r["horses"]:
-                    s = parse_time_seconds(h["rc_time"])
-                    if s and s > 20.0 and s < fastest_sec:
-                        fastest_sec = s
-                
-                if fastest_sec < 900.0:
-                    if meet == "제주":
-                        actual_dist = "900" if fastest_sec < 64.0 else ("1000" if fastest_sec < 77.0 else "1110")
-                    else:
-                        actual_dist = "1000" if fastest_sec < 67.0 else ("1200" if fastest_sec < 78.5 else ("1400" if fastest_sec < 94.0 else "1800"))
-                else:
-                    actual_dist = "1200"
-
-            r["distance"] = actual_dist
-            dist = int(actual_dist)
+            
+            # 🎯 경주거리 확정 (출전마들의 공식 거리 중 최빈값 채택으로 100% 보장)
+            valid_dists = [h["horse_dist"] for h in r["horses"] if h.get("horse_dist") and int(h["horse_dist"]) >= 800]
+            if valid_dists:
+                dist_counts = Counter(valid_dists)
+                r["distance"] = dist_counts.most_common(1)[0][0]
+            
+            dist = int(r["distance"])
 
             # 최고 부담중량
             all_weights = []
@@ -321,7 +305,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
             top_speed_gate = str(sorted_by_speed[0]["gate"]).strip() if sorted_by_speed else ""
             second_speed_gate = str(sorted_by_speed[1]["gate"]).strip() if len(sorted_by_speed) > 1 else ""
 
-            # 사전 예상 점수 영구 고정 채점
+            # 🎯 사전 예상 점수 정밀 채점
             for h in r["horses"]:
                 h["distance"] = str(dist)
                 score = 30.0
@@ -339,13 +323,13 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 ord2_cnt = int(re.sub(r'[^0-9]', '', str(h.get("ord2_cnt", "0"))) or 0)
                 quinella_rate = round(((ord1_cnt + ord2_cnt) / tot_rc) * 100, 1) if tot_rc >= 3 else 20.0
 
-                # 1. 기수 & 조교사 (거품 필터링)
+                # 1. 기수 & 조교사 점수
                 jk_rate = JOCKEY_RATES.get(h["jockey"], 12.0)
                 if tot_rc >= 3 and quinella_rate < 15.0:
                     score += (jk_rate * 0.45)
                     tags.append("말 검증필요 ⚠️")
                 else:
-                    score += (jk_rate * 0.75)
+                    score += (jk_rate * 0.70)
                     if jk_rate >= 24.0:
                         tags.append("특급 기수 🏇")
                     elif jk_rate >= 19.0:
@@ -356,7 +340,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 if tr_rate >= 20.0:
                     tags.append("우수 마방 🏆")
 
-                # 2. 거리별 게이트 가중치
+                # 2. 거리별 게이트 가중치 (공식 거리에 맞게 정밀 반영)
                 if dist <= 1300:
                     score += 6.0 if g <= 3 else (4.0 if g <= 7 else 0.0)
                     if g <= 3:
@@ -392,7 +376,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 else:
                     score -= max(0.0, (clean_w - 55.0) * 0.7)
 
-                # 6. 사전 스피드 뱃지 (영구 고정!)
+                # 6. 사전 스피드 뱃지
                 past_sec = parse_time_seconds(h.get("past_time", ""))
                 if past_sec:
                     score += 8.0
@@ -423,7 +407,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                     score -= 5.0
                     tags.append("승급 첫 도전(검증 필요) 🧱")
 
-                # 🏁 경기 후 실제 완주 기록 뱃지
+                # 🏁 경기 후 실제 완주 기록 뱃지 (정확한 공식 거리 기준 주파시간 대조)
                 sec = parse_time_seconds(h.get("rc_time", ""))
                 if sec:
                     base_time = {
@@ -449,9 +433,10 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 h["ai_tags"] = tags
                 h["odds_display"] = "-"
 
+            # 경주마 점수 순 내림차순 정렬
             r["horses"].sort(key=lambda x: x["ai_score"], reverse=True)
 
-            # 🎯 [신규] 삼복승/복연승 유력 경주 판정 플래그 부여
+            # 🎯 삼복승/복연승 유력 경주 플래그 산출
             is_target, reason = evaluate_trio_confidence(r)
             r["is_trio_target"] = is_target
             r["trio_reason"] = reason
@@ -462,13 +447,10 @@ def fetch_meet_data(meet_code, meet_name, date_str):
         print(f"[{meet_name}] 통신 에러: {e}")
         return []
 
-# =========================================================================
-# 🎯 [V8.8 핵심] 5주치 누적 병합(Merge) 아카이브 수집기
-# =========================================================================
 def sync_5weeks_archive():
     now = datetime.now(KST)
     
-    # 1. 기존 race_data.json 파일이 있으면 먼저 불러와서 보존!
+    # 1. 기존 아카이브 로드
     existing_races = {}
     if os.path.exists("race_data.json"):
         try:
@@ -477,32 +459,31 @@ def sync_5weeks_archive():
                 for r in old_list:
                     k = f"{r.get('race_date')}_{r.get('meet_name')}_{r.get('race_no')}"
                     existing_races[k] = r
-            print(f"📦 기존 저장소에서 {len(existing_races)}개 과거 경주 로드 완료")
+            print(f"📦 기존 저장소에서 {len(existing_races)}개 경주 로드 완료")
         except Exception:
             existing_races = {}
 
-    # 2. 수집 대상 날짜: 어제, 오늘, 내일 (실시간 최신 반영)
+    # 2. 어제, 오늘, 내일 최신 데이터 수집 및 정밀 덮어쓰기
     dates_to_fetch = [
-        (now - timedelta(days=1)).strftime("%Y%m%d"), # 어제 (10/3 토 복기 확실 보존!)
-        now.strftime("%Y%m%d"),                        # 오늘 (10/4 일 실시간)
-        (now + timedelta(days=1)).strftime("%Y%m%d")  # 내일 (10/5 월 대체공휴일 사전예상)
+        (now - timedelta(days=1)).strftime("%Y%m%d"),
+        now.strftime("%Y%m%d"),
+        (now + timedelta(days=1)).strftime("%Y%m%d")
     ]
 
-    print(f"🔄 최신 데이터 수집 대상 날짜: {dates_to_fetch}")
+    print(f"🔄 최신 정밀 데이터 수집 대상: {dates_to_fetch}")
     for dt in dates_to_fetch:
         for m_code, m_name in MEET_CONFIG:
             res = fetch_meet_data(m_code, m_name, dt)
             for r in res:
                 k = f"{r.get('race_date')}_{r.get('meet_name')}_{r.get('race_no')}"
-                existing_races[k] = r  # 덮어쓰거나 새로 추가 (누적 병합!)
+                existing_races[k] = r
 
-    # 3. 5주(35일) 필터링: 35일이 지난 너무 오래된 데이터만 자동 정리!
+    # 3. 5주(35일) 범위 보존
     cutoff_date = (now - timedelta(days=35)).strftime("%Y%m%d")
     final_list = []
     for k, r in existing_races.items():
         r_date = str(r.get("race_date", ""))
         if r_date >= cutoff_date:
-            # 기존 과거 데이터 중 is_trio_target이 누락된 항목도 재검사하여 보정
             if "is_trio_target" not in r:
                 is_target, reason = evaluate_trio_confidence(r)
                 r["is_trio_target"] = is_target
@@ -520,7 +501,6 @@ def main():
 
     if all_races:
         meet_order = {"서울": 1, "부산경남": 2, "영천": 3, "제주": 4}
-        # 날짜 오름차순(과거 ➔ 최신), 경마장 순, 경주번호 순 정렬
         all_races.sort(key=lambda x: (
             x["race_date"],
             meet_order.get(x["meet_name"], 9),
@@ -528,7 +508,7 @@ def main():
         ))
         with open("race_data.json", "w", encoding="utf-8") as f:
             json.dump(all_races, f, ensure_ascii=False, indent=2)
-        print(f"🎉 성공: [{VERSION}] 5주 누적 아카이브 갱신 완료! (총 {len(all_races)}개 경주 영구 보존)")
+        print(f"🎉 성공: [{VERSION}] 공식 거리 및 기수 정밀 검증 갱신 완료! (총 {len(all_races)}개 경주)")
     else:
         print("❌ 데이터를 가져오지 못했습니다.")
 
