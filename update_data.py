@@ -9,7 +9,7 @@ from collections import Counter
 import time
 
 # =========================================================================
-# 프로그램 명칭: KRA전국 승부예상AI_V7.0 (착순 100% 수신 복원 엔진)
+# 프로그램 명칭: KRA전국 승부예상AI_V7.0 (착순 파서 완전 복원 엔진)
 # =========================================================================
 VERSION = "KRA전국 승부예상AI_V7.0"
 API_KEY = os.environ.get("KRA_API_KEY", "")
@@ -112,7 +112,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
         items = root.findall(".//item")
         if not items: return []
 
-        print(f"[{meet_name}] API 응답: {len(items)}두 수신")
+        print(f"[{meet_name}] API 응답: {len(items)}두 수신 완료")
 
         races = {}
         for it in items:
@@ -121,7 +121,6 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                     n = it.find(t)
                     if n is not None and n.text and n.text.strip(): return n.text.strip()
                     for child in it:
-                        # 태그명 순수 이름 추출 (네임스페이스 제거)
                         tag_name = child.tag.split("}")[-1] if "}" in child.tag else child.tag
                         if tag_name.lower() == t.lower() and child.text and child.text.strip():
                             return child.text.strip()
@@ -152,16 +151,23 @@ def fetch_meet_data(meet_code, meet_name, date_str):
             is_front = True if s1f_rank in ["1", "2", "01", "02"] else False
 
             # =========================================================================
-            # 🎯 [핵심] 마사회 진짜 착순 태그 'ord' 100% 추출! (과거 성적 완벽 배제)
+            # 🎯 [얼마 전 100% 잘 되던 원래 착순 파서 완벽 복원!]
             # =========================================================================
             ord_no = "-"
-            # 1. 마사회 표준 착순 태그 'ord', 'ordNo' 직접 조회
-            direct_ord = gv(["ord", "ordNo", "ord_no", "rcOrd", "rc_ord", "raceRk", "chaksun"])
-            clean_ord = re.sub(r'[^0-9]', '', str(direct_ord or ""))
-            
-            # 실제 착순 1~16위 범위만 이번 경기 착순으로 확정!
-            if clean_ord and 1 <= int(clean_ord) <= 16:
-                ord_no = str(int(clean_ord))
+            direct_ord = gv(["ordNo", "ord_no", "ord", "rc_ord", "rcOrd", "rank", "rankNo", "chaksun"])
+            if direct_ord and direct_ord.isdigit() and int(direct_ord) > 0:
+                ord_no = str(int(direct_ord))
+            else:
+                for child in it:
+                    tag_low = (child.tag.split("}")[-1] if "}" in child.tag else child.tag).lower()
+                    # 직전 과거성적(pre)이나 통계(cnt, s1f) 제외하고 진짜 착순 태그 탐색
+                    if any(ex in tag_low for ex in ["pre", "cnt", "s1f", "g1p", "g2p", "g3p", "g4p", "pass", "time", "rec"]):
+                        continue
+                    if any(k in tag_low for k in ["ord", "rank", "plc", "place", "chak"]):
+                        txt = child.text.strip() if child.text else ""
+                        if txt.isdigit() and int(txt) > 0 and int(txt) <= 20:
+                            ord_no = str(int(txt))
+                            break
 
             key = f"{meet_name}_{rc_no}_{date_str}"
             if key not in races:
@@ -227,7 +233,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 raw_jk = JOCKEY_RATES.get(h["jockey"], 12.0)
                 tr_rate = TRAINER_RATES.get(h["trainer"], 14.0)
 
-                # 4대 역발상 필터
+                # 역발상 필터
                 if tot_rc >= 3 and quinella_rate < 15.0:
                     jk_rate = raw_jk * 0.45
                     tags.append("기수 거품 주의 🎈")
@@ -316,20 +322,6 @@ def fetch_meet_data(meet_code, meet_name, date_str):
         print(f"[{meet_name}] 통신 에러: {e}")
         return []
 
-def cleanse_corrupted_archive(races):
-    for r in races:
-        k = (r.get("race_date"), r.get("meet_name"), str(int(r.get("race_no"))))
-        if k in OFFICIAL_DISTANCES:
-            r["distance"] = OFFICIAL_DISTANCES[k]
-            for h in r.get("horses", []):
-                h["distance"] = OFFICIAL_DISTANCES[k]
-                try:
-                    ord_val = int(h.get("actual_ord", "-"))
-                    if ord_val > 16:
-                        h["actual_ord"] = "-"
-                except:
-                    pass
-
 def sync_5weeks_archive():
     now = datetime.now(KST)
     existing_races = {}
@@ -337,26 +329,36 @@ def sync_5weeks_archive():
         try:
             with open("race_data.json", "r", encoding="utf-8") as f:
                 old_list = json.load(f)
-                cleanse_corrupted_archive(old_list)
                 for r in old_list:
                     k = f"{r.get('race_date')}_{r.get('meet_name')}_{r.get('race_no')}"
                     existing_races[k] = r
-            print(f"📦 기존 저장소 로드 완료: {len(existing_races)}개 경주")
+            print(f"📦 기존 저장소 로드: {len(existing_races)}개 경주")
         except:
             existing_races = {}
 
     dates_to_fetch = [
-        (now - timedelta(days=1)).strftime("%Y%m%d"),
-        now.strftime("%Y%m%d"),
+        (now - timedelta(days=2)).strftime("%Y%m%d"), # 10월 3일도 안전하게 포함!
+        (now - timedelta(days=1)).strftime("%Y%m%d"), # 10월 4일 복구!
+        now.strftime("%Y%m%d"),                        # 10월 5일 실시간!
         (now + timedelta(days=1)).strftime("%Y%m%d")
     ]
 
-    print(f"🔄 최신 수집: {dates_to_fetch}")
+    print(f"🔄 최신 수집 날짜: {dates_to_fetch}")
     for dt in dates_to_fetch:
         for m_code, m_name in MEET_CONFIG:
             res = fetch_meet_data(m_code, m_name, dt)
             for r in res:
                 k = f"{r.get('race_date')}_{r.get('meet_name')}_{r.get('race_no')}"
+                
+                # 🎯 [기존 착순 보존] 새로 가져온 데이터가 아직 '-'인데 기존 데이터에 착순이 이미 있다면 보존!
+                if k in existing_races:
+                    old_race = existing_races[k]
+                    for new_h in r.get("horses", []):
+                        if new_h.get("actual_ord") == "-":
+                            old_h = next((h for h in old_race.get("horses", []) if h.get("gate") == new_h.get("gate")), None)
+                            if old_h and old_h.get("actual_ord") not in ["-", "", None]:
+                                new_h["actual_ord"] = old_h.get("actual_ord")
+                
                 existing_races[k] = r
 
     cutoff_date = (now - timedelta(days=35)).strftime("%Y%m%d")
@@ -379,7 +381,7 @@ def main():
         ))
         with open("race_data.json", "w", encoding="utf-8") as f:
             json.dump(all_races, f, ensure_ascii=False, indent=2)
-        print(f"🎉 성공: [{VERSION}] 착순 복원 갱신 완료! (총 {len(all_races)}개 경주)")
+        print(f"🎉 성공: [{VERSION}] 착순 파서 복원 및 갱신 완료! (총 {len(all_races)}개 경주)")
     else:
         print("❌ 데이터를 가져오지 못했습니다.")
 
