@@ -130,6 +130,23 @@
         .badge-table th { background: #f1f4f9; padding: 8px; text-align: left; color: #1e3c72; border-bottom: 1px solid #ddd; }
         .badge-table td { padding: 8px; border-bottom: 1px solid #eee; }
 
+        /* 실전 복기 미니 위젯 전용 스타일 */
+        .case-study-box {
+            background: #fff; border: 2px solid #1e3c72; border-radius: 10px; padding: 12px; margin: 12px 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+        }
+        .case-study-header {
+            background: #1e3c72; color: #fff; padding: 6px 10px; border-radius: 6px; font-size: 0.8rem;
+            font-weight: 800; display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;
+        }
+        .case-horse-row {
+            display: flex; justify-content: space-between; align-items: center; padding: 6px 8px;
+            border-bottom: 1px dashed #eee; font-size: 0.8rem;
+        }
+        .case-horse-row:last-child { border-bottom: none; }
+        .case-tag-won { background: #ffd700; color: #7a5800; padding: 1px 6px; border-radius: 4px; font-weight: 800; font-size: 0.72rem; }
+        .case-tag-loss { background: #eee; color: #888; padding: 1px 6px; border-radius: 4px; font-weight: 800; font-size: 0.72rem; }
+
         .filter-row { display: flex; gap: 6px; margin-bottom: 14px; }
         .filter-btn { flex: 1; padding: 8px 0; background: white; border: 1px solid #ddd; border-radius: 8px; font-size: 0.78rem; font-weight: bold; color: #666; cursor: pointer; text-align: center; }
         .filter-btn.active { background: #1e3c72; color: white; border-color: #1e3c72; }
@@ -206,6 +223,7 @@
         </nav>
 
         <div class="container">
+            <!-- [탭 1] 실시간 승부예측 -->
             <div id="tab-pred" class="tab-content active">
                 <div id="specialTargetBar" class="special-target-bar">
                     <span>🔥 AI 엄격선별: 삼복승·복연승 초강력 추천 경주!</span>
@@ -230,7 +248,7 @@
                 <div id="horseList"></div>
             </div>
 
-            <!-- 탭 2: 20종 뱃지도감 완전체 복원 -->
+            <!-- [탭 2] 뱃지 도감 (20종 완전체) -->
             <div id="tab-badges" class="tab-content">
                 <div class="guide-card">
                     <div class="guide-title">🏷️ AI 핵심 뱃지 총람 (V7.0 역발상 전개 모델)</div>
@@ -364,23 +382,105 @@
                 </div>
             </div>
 
-            <!-- 탭 3: 베팅가이드 -->
+            <!-- ======================================================== -->
+            <!-- 🎯 [탭 3] 베팅 가이드 (10/5 서울 10R 실전 복기 위젯 탑재!) -->
+            <!-- ======================================================== -->
             <div id="tab-betting" class="tab-content">
-                <div class="guide-card">
-                    <div class="guide-title">👑 V7.0 역발상 실전 베팅 비법</div>
-                    <div class="guide-box gold">
-                        <strong>1. 복승식 공략법</strong>: [1착 우승축] ✖ [2착 선입마] 2두 단통 승부!
+                
+                <!-- 👑 [신규 탑재] 10/5 서울 10R 실전 복기 위젯 & 베팅 비법 -->
+                <div class="guide-card" style="border: 2px solid #e63946;">
+                    <div class="guide-title" style="color:#e63946;">
+                        🔥 [10/5 서울 10R 실전 검증] 100배 고배당 쓸어 담는 '역발상 복병 축' 베팅 비법!
                     </div>
+                    <div class="guide-text">
+                        10월 5일 서울 10R에서 <strong>인기 1위마가 9착으로 침몰</strong>하고, AI가 집어낸 <strong>[3착 복병마 9번]이 1착 우승</strong>, <strong>[8번 복병]이 2착</strong>하여 초대박 배당이 터졌습니다! 이 화면이 나왔을 때 마권을 어떻게 짜야 하는지 완벽히 정리해 드립니다.
+                    </div>
+
+                    <!-- 실전 화면 재현 미니 위젯 -->
+                    <div class="case-study-box">
+                        <div class="case-study-header">
+                            <span>[10/5 서울 10R 1200m] 실전 AI 복기 화면</span>
+                            <span style="color:#ffd700;">실제 결과: 9번 ➔ 8번 ➔ 6번</span>
+                        </div>
+                        <div class="case-horse-row" style="background:#fff8f8;">
+                            <div>
+                                <span style="background:#e63946; color:#fff; padding:1px 5px; border-radius:4px; font-weight:800; font-size:0.75rem;">5번</span>
+                                <strong>용비태양</strong> (56.5kg / 서승운) <span class="ai-tag warn-tag">인기 1위</span>
+                            </div>
+                            <div><span class="case-tag-loss">실제 9착 (침몰)</span></div>
+                        </div>
+                        <div class="case-horse-row" style="background:#f0fdf4;">
+                            <div>
+                                <span style="background:#0284c7; color:#fff; padding:1px 5px; border-radius:4px; font-weight:800; font-size:0.75rem;">9번</span>
+                                <strong>혁무상</strong> (*52.5kg / 루이스) <span class="ai-tag gold-tag">경량·프리런·모래회피</span>
+                            </div>
+                            <div><span class="case-tag-won">실제 1착 우승! 🥇</span></div>
+                        </div>
+                        <div class="case-horse-row" style="background:#f0fdf4;">
+                            <div>
+                                <span style="background:#475569; color:#fff; padding:1px 5px; border-radius:4px; font-weight:800; font-size:0.75rem;">8번</span>
+                                <strong>송당황태자</strong> (56kg / 임다빈) <span class="ai-tag gold-tag">프리런·모래회피</span>
+                            </div>
+                            <div><span class="case-tag-won">실제 2착 준우승! 🥈</span></div>
+                        </div>
+                    </div>
+
+                    <div class="guide-sub">🎯 전략 1. 가장 안전하고 돈 되는 승식: 「복연승식 (와이드)」</div>
+                    <div class="guide-box gold">
+                        <strong>뱃지 조건이 가장 좋은 [9번 혁무상(52.5kg 경량 복병)]을 '축(Anchor)'으로 삼아 분산 베팅!</strong><br>
+                        • 조합: `[9번] ✖ [5번]`, `[9번] ✖ [3번]`, `[9번] ✖ [8번]`<br>
+                        • <strong>결과</strong>: <strong>9번-8번 복연승 대박 적중!</strong> (복연승 배당만 수십 배 회수)
+                    </div>
+
+                    <div class="guide-sub">🎯 전략 2. 수백 배 인생 마권: 「삼복승식 포메이션」</div>
                     <div class="guide-box purple">
-                        <strong>2. 삼복승·복연승 고배당 공략법</strong>: [1착 우승축] ➕ [2착 선입마] ➕ **[3착 복병마 🥉]** 묶어서 베팅!
+                        <strong>AI 추천 3착 복병인 9번을 축으로 놓고, 2선 프리런 복병마(8번, 6번)를 받치는 비법!</strong><br>
+                        • 1열(축마): `[9번 혁무상]`<br>
+                        • 2열(상위권): `[5번 용비태양]`, `[3번 레전드와우]`<br>
+                        • 3열(복병 받치기): `[8번 송당황태자]`, `[6번 그레이스루트]` (황금전개 뱃지마)<br>
+                        • <strong>결과</strong>: 9번(1착) - 8번(2착) - 6번(3착)으로 <strong>수백 배 초대박 삼복승 완벽 적중!</strong>
+                    </div>
+
+                    <div class="guide-sub">🎯 전략 3. 소액 로또: 「9번 단승식 / 연승식」</div>
+                    <div class="guide-box">
+                        • 9번 혁무상은 52.5kg으로 너무 가벼운데 배당판에서 비인기마(10배 이상)로 방치되었습니다.<br>
+                        • <strong>커피값 1~2천 원만 단승/연승에 얹어두어도 1착 골인 시 2~3만 원이 즉시 회수</strong>됩니다!
+                    </div>
+
+                    <div class="guide-box warn">
+                        <strong>👑 절대 불패 황금 수칙</strong><br>
+                        AI가 1~2위로 뽑았더라도 <strong>56.5kg 이상 무거운 인기마는 단통으로 가지 말고</strong>, 52kg대 가벼운 등짐에 황금전개 뱃지를 달고 3착 복병으로 뽑힌 <strong>[9번 혁무상] 같은 말을 축마로 삼아라!</strong>
+                    </div>
+                </div>
+
+                <!-- 기존 실전 가이드 -->
+                <div class="guide-card">
+                    <div class="guide-title">🌟 [서울 7R 실전 교훈] 중장거리(1700m+) 절대 불패 베팅법!</div>
+                    <div class="guide-box warn">
+                        <strong>⚠️ 선행마 3마리가 앞에서 치고 나갈 때 단승식 몰빵 금지!</strong><br>
+                        • 1700m 이상에서는 1~3위로 달리던 선행마들이 결승선 200m 앞에서 체력이 고갈되어 자멸합니다.<br>
+                        • 반드시 <strong>[중장거리 막판 추입 🚀]</strong> 뱃지가 달린 뒤쪽 추입마를 복연승/삼복승 축마로 삼아야 돈을 법니다!
+                    </div>
+                </div>
+
+                <div class="guide-card">
+                    <div class="guide-title">🟢 실전 베팅 3단계 & 자금 관리 황금수칙</div>
+                    <div class="guide-box">
+                        <strong>1단계: 승부할 경주 고르기</strong><br>
+                        상단에 [🔥 AI 엄격선별: 삼복승·복연승 추천] 배너가 뜬 경주를 최우선 승부처로 삼으세요!
+                    </div>
+                    <div class="guide-box gold">
+                        <strong>2단계: 초보자 추천 승식 「복연승식」</strong><br>
+                        AI 1착 우승축과 3착 복병마를 묶어 복연승식으로 사면, 둘 다 1·2·3착 안에만 들어오면 무조건 고배당 당첨입니다!
                     </div>
                     <div class="guide-box warn">
-                        <strong>3. 주의사항</strong>: [집중 견제 주의 ⚠️]나 [기수 거품 주의 🎈] 뱃지가 달린 말은 아무리 인기마라도 1착 단승식에 절대 넣지 마세요!
+                        <strong>3단계: 하루 예산 관리</strong><br>
+                        하루 예산은 1~2만 원으로 딱 정해두고 경주당 1,000원씩 분산 베팅하며 복기하세요!
                     </div>
                 </div>
             </div>
 
-            <!-- 탭 4: 입상마분석실 -->
+            <!-- [탭 4] 입상마 분석실 -->
             <div id="tab-winners" class="tab-content">
                 <div class="guide-card">
                     <div class="guide-title">📊 최근 5주간 실제 1·2·3착 입상마 빅데이터 통계</div>
@@ -416,7 +516,7 @@
         </div>
     </div>
 
-    <!-- 스크립트 로직 (얼마 전 잘 되던 복기 판정 100% 원복) -->
+    <!-- 스크립트 로직 -->
     <script>
         const CORRECT_PIN = "1415";
 
@@ -675,7 +775,7 @@
         }
 
         // ========================================================
-        // 🐎 [1번 탭] 전개 포지션 추천 렌더링 (원형 100% 복원!)
+        // 🐎 [1번 탭] 전개 포지션 추천 렌더링
         // ========================================================
         function renderRace(idx) {
             const race = allRaceData[idx];
@@ -707,15 +807,14 @@
             top3Box.innerHTML = `🎯 <strong>삼복승 조합</strong>: [${h1.gate}번] 축마 ➔ [${h2.gate}번] 선입 ➔ 🥉 <strong>[${h3.gate}번 ${h3.name}] 복병!</strong>`;
             patternBox.innerHTML = race.scenario_title ? `📊 ${race.scenario_title}<br><span style="font-size:0.75rem; opacity:0.85;">${race.scenario_desc || ''}</span>` : `📊 전개 분석 완료`;
 
-            // 얼마 전 잘 작동하던 착순 판정 100% 원복
-            const actual1st = race.horses.find(h => parseInt(h.actual_ord, 10) === 1);
-            const actual2nd = race.horses.find(h => parseInt(h.actual_ord, 10) === 2);
-            const actual3rd = race.horses.find(h => parseInt(h.actual_ord, 10) === 3);
+            const actual1st = race.horses.find(h => parseInt(String(h.actual_ord).trim(), 10) === 1);
+            const actual2nd = race.horses.find(h => parseInt(String(h.actual_ord).trim(), 10) === 2);
+            const actual3rd = race.horses.find(h => parseInt(String(h.actual_ord).trim(), 10) === 3);
 
             banner.className = 'pick-banner';
 
             if (actual1st && actual2nd) {
-                const actualTop3Gates = [actual1st.gate, actual2nd.gate, (actual3rd ? actual3rd.gate : null)].filter(Boolean);
+                const actualTop3Gates = [actual1st.gate, actual2nd.gate, actual3rd ? actual3rd.gate : null].filter(Boolean);
                 const aiTop3 = [h1.gate, h2.gate, h3.gate];
                 const matchedInTop3 = aiTop3.filter(g => actualTop3Gates.includes(g)).length;
 
@@ -742,7 +841,7 @@
 
             race.horses.forEach((h, i) => {
                 const rankClass = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : '';
-                const ordNum = parseInt(h.actual_ord, 10);
+                const ordNum = parseInt(String(h.actual_ord).trim(), 10);
                 const isValidOrd = (!isNaN(ordNum) && ordNum >= 1 && ordNum <= 20);
 
                 let badgeHtml = '';
