@@ -152,7 +152,7 @@
         .modal-title { font-size: 1.05rem; font-weight: 800; color: #1e3c72; margin-bottom: 10px; }
         .modal-input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; margin: 10px 0; font-size: 0.85rem; }
         .modal-btn-row { display: flex; gap: 8px; justify-content: flex-end; margin-top: 12px; }
-        .modal-btn { padding: 8px 14px; border-radius: 6px; border: none; font-weight: bold; cursor: font-size: 0.82rem; }
+        .modal-btn { padding: 8px 14px; border-radius: 6px; border: none; font-weight: bold; cursor: pointer; font-size: 0.82rem; }
         .modal-btn.primary { background: #1e3c72; color: white; }
         .modal-btn.secondary { background: #eee; color: #333; }
     </style>
@@ -179,7 +179,7 @@
                     <button class="btn-lock" onclick="lockApp()" title="화면 잠그기">🔒</button>
                 </div>
             </div>
-            <p id="dateInfo">공식 거리 & 전개 역학 엔진 가동 중...</p>
+            <p id="dateInfo">역발상 전개 엔진 가동 중...</p>
         </header>
 
         <div id="updateToast" class="update-toast"></div>
@@ -206,7 +206,7 @@
         </nav>
 
         <div class="container">
-            <!-- [탭 1] 승부예측 -->
+            <!-- [탭 1] 실시간 승부예측 -->
             <div id="tab-pred" class="tab-content active">
                 <div id="specialTargetBar" class="special-target-bar">
                     <span>🔥 AI 엄격선별: 삼복승·복연승 초강력 추천 경주!</span>
@@ -234,7 +234,7 @@
             <!-- [탭 2] 뱃지 도감 -->
             <div id="tab-badges" class="tab-content">
                 <div class="guide-card">
-                    <div class="guide-title">🏷️ AI 핵심 포지션 & 전개 뱃지 총람</div>
+                    <div class="guide-title">🏷️ AI 핵심 역발상 & 전개 뱃지 총람</div>
                     <table class="badge-table">
                         <thead>
                             <tr>
@@ -244,32 +244,32 @@
                         </thead>
                         <tbody>
                             <tr>
+                                <td><span class="ai-tag gold-tag">2선 프리런 황금전개 👑</span></td>
+                                <td><strong>[진짜 1착 승부마]</strong> 앞선 인기마들의 몸싸움 뒤에서 모래·바람 저항 없이 체력을 아끼다 쏘아 올리는 황금 전개마 (+8점)</td>
+                            </tr>
+                            <tr>
+                                <td><span class="ai-tag warn-tag">집중 견제 주의 ⚠️</span></td>
+                                <td><strong>[인기 1위마 함정]</strong> 특급 기수가 탄 안쪽 선행마로, 다른 모든 기수들의 집중 견제(몸싸움)를 받아 결승선 앞 자멸할 위험 마필 (-6점)</td>
+                            </tr>
+                            <tr>
+                                <td><span class="ai-tag warn-tag">기수 거품 주의 🎈</span></td>
+                                <td><strong>[이름값 거품]</strong> 말의 최근 성적은 부진한데 특급 기수의 이름값만 얹혀 배당판 인기만 끄는 가짜 우등생 (기수 점수 50% 삭감)</td>
+                            </tr>
+                            <tr>
+                                <td><span class="ai-tag warn-tag">과부중 주의(57kg+) 🧱</span></td>
+                                <td><strong>[등짐 핸디캡]</strong> 1400m 이상 중장거리에서 쇳덩이 같은 무거운 등짐으로 인해 막판 200m 언덕에서 다리가 묶일 마필</td>
+                            </tr>
+                            <tr>
                                 <td><span class="role-badge role-1st">1착 우승축 🥇</span></td>
-                                <td>전개상 몸싸움을 피하고 결승선을 1등으로 찍을 승부 축마</td>
+                                <td>견제 없이 제 페이스로 결승선을 1등으로 찍을 실전 승부 축마</td>
                             </tr>
                             <tr>
                                 <td><span class="role-badge role-2nd">2착 선입마 🥈</span></td>
-                                <td>1위마 뒤를 바짝 따라붙어 2착을 수성할 안정적인 연승마</td>
+                                <td>1위마 뒤를 차분히 따라붙어 2착을 수성할 안정적인 연승마</td>
                             </tr>
                             <tr>
                                 <td><span class="role-badge role-3rd">3착 복병마 🥉</span></td>
-                                <td><strong>[고배당 타겟]</strong> 경량 부중, 외곽 모래회피, 막판 추입으로 3착에 기습 입상할 복병</td>
-                            </tr>
-                            <tr>
-                                <td><span class="ai-tag gold-tag">중장거리 막판 추입 🚀</span></td>
-                                <td>앞선 선행마들이 자멸할 때 뒤에서 시속 60km로 날아오는 탄력마</td>
-                            </tr>
-                            <tr>
-                                <td><span class="ai-tag warn-tag">선행 경합 자멸주의 ⚠️</span></td>
-                                <td>선행마 3두 이상 몰려 결승선 200m 전 다리가 묶여 퍼질 위험 마필</td>
-                            </tr>
-                            <tr>
-                                <td><span class="ai-tag emerald-tag">입상 공식 부합 ✨</span></td>
-                                <td>최근 5주간 실제 1~3착 입상마들의 승리 공식과 완벽 부합</td>
-                            </tr>
-                            <tr>
-                                <td><span class="ai-tag purple-tag">외곽 모래회피 복병 🚀</span></td>
-                                <td>8~11번 외곽에서 시야를 열고 날아오는 외곽 전용마</td>
+                                <td><strong>[고배당 타겟]</strong> 52kg 이하 경량 부중, 외곽 모래회피, 막판 추입으로 3착에 기습 입상할 꿀배당 복병</td>
                             </tr>
                         </tbody>
                     </table>
@@ -279,7 +279,7 @@
             <!-- [탭 3] 베팅 가이드 -->
             <div id="tab-betting" class="tab-content">
                 <div class="guide-card">
-                    <div class="guide-title">👑 V7.0 역할 매칭 실전 베팅 비법</div>
+                    <div class="guide-title">👑 V7.0 역발상 실전 베팅 비법</div>
                     <div class="guide-box gold">
                         <strong>1. 복승식 공략법</strong>: [1착 우승축] ✖ [2착 선입마] 2두 단통 승부!
                     </div>
@@ -287,7 +287,7 @@
                         <strong>2. 삼복승·복연승 고배당 공략법</strong>: [1착 우승축] ➕ [2착 선입마] ➕ **[3착 복병마 🥉]** 묶어서 베팅!
                     </div>
                     <div class="guide-box warn">
-                        <strong>3. 주의사항</strong>: [선행 경합 자멸주의 ⚠️] 뱃지가 달린 말은 아무리 인기마라도 1착 단승식에 절대 넣지 마세요!
+                        <strong>3. 주의사항</strong>: [집중 견제 주의 ⚠️]나 [기수 거품 주의 🎈] 뱃지가 달린 말은 아무리 인기마라도 1착 단승식에 절대 넣지 마세요!
                     </div>
                 </div>
             </div>
@@ -328,7 +328,7 @@
         </div>
     </div>
 
-    <!-- 프론트 스크립트 -->
+    <!-- 스크립트 로직 -->
     <script>
         const CORRECT_PIN = "1415";
 
@@ -404,7 +404,7 @@
         function executeWorkflow(token) {
             const toast = document.getElementById('updateToast');
             toast.style.display = 'block';
-            toast.innerHTML = "🚀 V7.0 전개 역학 분석 동기화 중입니다!<br><span style='font-size:0.75rem; color:#ffeaa7;'>(마사회 서버 통신 중)</span>";
+            toast.innerHTML = "🚀 V7.0 역발상 전개 엔진 데이터 동기화 중입니다!<br><span style='font-size:0.75rem; color:#ffeaa7;'>(약 1분 소요)</span>";
 
             fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/actions/workflows/update.yml/dispatches`, {
                 method: 'POST',
@@ -528,7 +528,7 @@
             if (totalWinners > 0) {
                 document.getElementById('statAvgWeight').textContent = (totalWeight / totalWinners).toFixed(1) + ' kg';
                 document.getElementById('statOutsideRate').textContent = ((outsideCount / totalWinners) * 100).toFixed(0) + ' %';
-                document.getElementById('statTopBadge').textContent = '외곽 모래회피 🚀';
+                document.getElementById('statTopBadge').textContent = '2선 프리런 황금전개 👑';
             }
             renderWinnersTab('all');
         }
@@ -558,8 +558,9 @@
                 let tagsHtml = '';
                 if (h.ai_tags && h.ai_tags.length > 0) {
                     tagsHtml = '<div class="tag-list" style="margin-top:6px;">' + h.ai_tags.map(t => {
-                        const isWarn = t.includes('자멸주의') || t.includes('검증필요');
-                        return `<span class="ai-tag ${isWarn ? 'warn-tag' : ''}">${t}</span>`;
+                        const isWarn = t.includes('주의') || t.includes('자멸') || t.includes('거품');
+                        const isGold = t.includes('프리런') || t.includes('독주마');
+                        return `<span class="ai-tag ${isWarn ? 'warn-tag' : (isGold ? 'gold-tag' : '')}">${t}</span>`;
                     }).join('') + '</div>';
                 }
 
@@ -666,8 +667,8 @@
                 let tagsHtml = '';
                 if (h.ai_tags && h.ai_tags.length > 0) {
                     tagsHtml = '<div class="tag-list">' + h.ai_tags.map(t => {
-                        const isWarn = t.includes('자멸주의') || t.includes('검증필요');
-                        const isGold = t.includes('추입') || t.includes('독주마');
+                        const isWarn = t.includes('주의') || t.includes('자멸') || t.includes('거품');
+                        const isGold = t.includes('프리런') || t.includes('독주마');
                         return `<span class="ai-tag ${isWarn ? 'warn-tag' : (isGold ? 'gold-tag' : '')}">${t}</span>`;
                     }).join('') + '</div>';
                 }
