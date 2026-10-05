@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>KRA전국 승부예상AI_V8.8</title>
+    <title>KRA전국 승부예상AI_V9.0</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif; }
         body { background-color: #f4f6f9; color: #333; padding-bottom: 40px; }
@@ -73,7 +73,7 @@
         .pick-sub-list { font-size: 0.85rem; font-weight: 600; opacity: 0.95; margin-top: 6px; padding-top: 6px; border-top: 1px solid rgba(255,255,255,0.25); }
         .pick-extra-list { font-size: 0.82rem; font-weight: 700; color: #fff; background: rgba(0,0,0,0.22); padding: 5px 8px; border-radius: 6px; margin-top: 6px; display: flex; align-items: center; gap: 4px; }
         
-        /* 🎯 [신규] 삼복승/복연승 유력 추천 경주 강조 바 */
+        /* 🎯 삼복승/복연승 유력 추천 경주 강조 바 */
         .special-target-bar {
             display: none; background: linear-gradient(135deg, #ff416c, #ff4b2b);
             color: #fff; padding: 6px 10px; border-radius: 8px; margin-bottom: 10px;
@@ -103,6 +103,7 @@
         .ai-tag.gold-tag { background: #fff3cd; color: #856404; border: 1px solid #ffeeba; font-weight: 800; }
         .ai-tag.purple-tag { background: #f3e8ff; color: #6b21a8; border: 1px solid #e9d5ff; font-weight: 800; }
         .ai-tag.emerald-tag { background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7; font-weight: 800; box-shadow: 0 1px 3px rgba(16,185,129,0.2); }
+        .ai-tag.warn-tag { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; font-weight: 800; }
         
         .score-info { text-align: right; flex-shrink: 0; margin-left: 8px; }
         .win-rate { font-size: 1.15rem; font-weight: 800; color: #1e3c72; }
@@ -125,7 +126,6 @@
         .badge-table th { background: #f1f4f9; padding: 8px; text-align: left; color: #1e3c72; border-bottom: 1px solid #ddd; }
         .badge-table td { padding: 8px; border-bottom: 1px solid #eee; }
 
-        /* 4번 탭 스타일 */
         .filter-row { display: flex; gap: 6px; margin-bottom: 14px; }
         .filter-btn { flex: 1; padding: 8px 0; background: white; border: 1px solid #ddd; border-radius: 8px; font-size: 0.78rem; font-weight: bold; color: #666; cursor: pointer; text-align: center; }
         .filter-btn.active { background: #1e3c72; color: white; border-color: #1e3c72; }
@@ -158,7 +158,7 @@
     <div id="lockScreen">
         <div class="lock-box">
             <div class="lock-icon">🔐</div>
-            <div class="lock-title">KRA전국 승부예상AI_V8.8</div>
+            <div class="lock-title">KRA전국 승부예상AI_V9.0</div>
             <div class="lock-desc">비밀번호(PIN 4자리)를 입력하세요.</div>
             <input type="password" id="pinInput" class="pin-input" maxlength="4" pattern="[0-9]*" inputmode="numeric" placeholder="••••">
             <button class="pin-btn" onclick="checkPin()">잠금 해제</button>
@@ -169,7 +169,7 @@
     <div id="mainApp">
         <header>
             <div class="header-top">
-                <h1>🐎 KRA전국 승부예상AI_V8.8</h1>
+                <h1>🐎 KRA전국 승부예상AI_V9.0</h1>
                 <div class="header-btns">
                     <button class="btn-instant-update" onclick="triggerImmediateUpdate()">⚡ 최신결과 갱신</button>
                     <button class="btn-lock" onclick="lockApp()" title="화면 잠그기">🔒</button>
@@ -208,8 +208,6 @@
         <div class="container">
             <!-- [탭 1] 실시간 승부예측 -->
             <div id="tab-pred" class="tab-content active">
-                
-                <!-- 🎯 [신규] 삼복승 / 복연승 유력 추천 경주일 때만 깜짝 노출되는 하이라이트 배너 -->
                 <div id="specialTargetBar" class="special-target-bar">
                     <span>🔥 AI 엄격선별: 삼복승·복연승 초강력 추천 경주!</span>
                     <span id="targetBadgeDetail" style="font-size:0.72rem; opacity:0.9;">TOP 3 집중 분리</span>
@@ -236,8 +234,8 @@
             <!-- [탭 2] 뱃지 도감 -->
             <div id="tab-badges" class="tab-content">
                 <div class="guide-card">
-                    <div class="guide-title">🏷️ AI 핵심 뱃지 총람 (V8.8 5주 누적 모델)</div>
-                    <div class="guide-text">AI가 체급, 게이트적성, 주파기록, 기수·조교사, 입상패턴을 종합 분석하여 부착하는 뱃지입니다.</div>
+                    <div class="guide-title">🏷️ AI 핵심 뱃지 총람 (V9.0 전개·추입 엔진)</div>
+                    <div class="guide-text">AI가 체급, 게이트, 주파기록, 기수, **중장거리 전개 역학(선행 과열 vs 막판 200m 추입)**을 종합 분석하여 부착하는 뱃지입니다.</div>
                     
                     <table class="badge-table">
                         <thead>
@@ -248,16 +246,20 @@
                         </thead>
                         <tbody>
                             <tr>
+                                <td><span class="ai-tag gold-tag">중장거리 막판 추입 🚀</span></td>
+                                <td><strong>[1700m+ 역전]</strong> 앞선의 무리한 선두 싸움을 피해 힘을 아끼다 결승선 200m에서 날아오는 진짜배기 추입마 (+6점)</td>
+                            </tr>
+                            <tr>
+                                <td><span class="ai-tag warn-tag">선행 경합 자멸주의 ⚠️</span></td>
+                                <td><strong>[1700m+ 경고]</strong> 선행마가 3두 이상 몰려 초반 오버페이스로 결승선 200m 앞 다리가 묶여 자멸할 위험 마필 (-4점)</td>
+                            </tr>
+                            <tr>
                                 <td><span class="ai-tag emerald-tag">입상 공식 부합 ✨</span></td>
                                 <td><strong>[5주 빅데이터 검증]</strong> 최근 5주간 실제 1~3착 입상마들의 승리 공식과 완벽 부합하는 정예마</td>
                             </tr>
                             <tr>
                                 <td><span class="ai-tag purple-tag">체급 최강자(탑웨이트) 🏋️</span></td>
                                 <td><strong>[핸디캡 최강]</strong> 마사회가 실력을 인정해 57.5~60kg 최고 무게를 얹은 챔피언 능력마 (+5점)</td>
-                            </tr>
-                            <tr>
-                                <td><span class="ai-tag purple-tag">인코스 찰떡궁합 🎯</span></td>
-                                <td><strong>[게이트 적성]</strong> 1~3번 안쪽 게이트를 받고 최단거리로 파고드는 안쪽 전용 선행마 (+4점)</td>
                             </tr>
                             <tr>
                                 <td><span class="ai-tag purple-tag">외곽 모래회피 복병 🚀</span></td>
@@ -268,40 +270,12 @@
                                 <td><strong>[실전 복병]</strong> 외곽 게이트 + 상위 마방 + 53.5~56.5kg 적정 체급을 갖춘 고배당 우승마 (+6점)</td>
                             </tr>
                             <tr>
-                                <td><span class="ai-tag gold-tag">통산 복승률 최상 🏎️</span></td>
-                                <td><strong>[경기 전]</strong> 3전 이상 출전마 중 1~2착 복승률이 40% 이상인 최상급 검증마</td>
-                            </tr>
-                            <tr>
-                                <td><span class="ai-tag">검증된 입상마</span></td>
-                                <td><strong>[경기 전]</strong> 통산 복승률 25% 이상으로 꾸준히 1~2착에 들어오는 안정권 마필</td>
-                            </tr>
-                            <tr>
-                                <td><span class="ai-tag gold-tag">과거 스피드 최상 🏎️</span></td>
-                                <td><strong>[경기 전]</strong> 그 경주에서 가장 순발력과 가속도가 뛰어난 스피드 1위 후보마</td>
-                            </tr>
-                            <tr>
-                                <td><span class="ai-tag">스피드 우수 🏎️</span></td>
-                                <td><strong>[경기 전]</strong> 그 경주에서 두 번째로 순발력이 뛰어난 스피드 2위 후보마</td>
-                            </tr>
-                            <tr>
-                                <td><span class="ai-tag gold-tag">스피드 지수 최상 🏎️</span></td>
-                                <td><strong>[경기 후]</strong> 오늘 실제 결승선을 기준보다 1초 이상 빠르게 통과한 우승마</td>
-                            </tr>
-                            <tr>
                                 <td><span class="ai-tag">직선주로 스퍼트 최강 🚀</span></td>
                                 <td><strong>[경기 후]</strong> 결승선 앞 200m(G1F)를 12.8초 이하로 주파한 막판 탄력마</td>
                             </tr>
                             <tr>
                                 <td><span class="ai-tag">특급 기수 🏇</span></td>
                                 <td>최근 1년 복승률 24% 이상 최상위 기수 (서울/부경/영천/제주 다승왕 포함!)</td>
-                            </tr>
-                            <tr>
-                                <td><span class="ai-tag">상위 기수</span></td>
-                                <td>최근 1년 복승률 19% 이상의 검증된 실력파 기수</td>
-                            </tr>
-                            <tr>
-                                <td><span class="ai-tag">우수 마방 🏆</span></td>
-                                <td>최근 1년 입상률 20% 이상의 명문 조교사(팀) 관리마 (제주 포함!)</td>
                             </tr>
                             <tr>
                                 <td><span class="ai-tag">단거리 황금게이트 ⚡</span></td>
@@ -314,116 +288,24 @@
                         </tbody>
                     </table>
                 </div>
-
-                <div class="guide-card">
-                    <div class="guide-title">❓ 한 말이 뱃지를 다 받을 수 있나?</div>
-                    <div class="guide-box warn">
-                        <strong>결론: 절대 불가능합니다!</strong><br>
-                        인코스 vs 외곽선호, 특급 vs 상위 기수처럼 서로 반대되는 뱃지들이 있기 때문에 이론상 최다 뱃지는 <strong>약 6~7개</strong>입니다. 보통 실전 승부마는 <strong>3~4개</strong> 정도 붙습니다.
-                    </div>
-                </div>
-
-                <div class="guide-card">
-                    <div class="guide-title">🦄 V8.8 궁극의 '괴물말' 예시</div>
-                    <div class="horse-card rank-1" style="margin-top:10px;">
-                        <div class="gate-no">1</div>
-                        <div class="horse-info">
-                            <div class="horse-name">슈퍼트리플크라운 <span class="badge-1st">예상 1위</span></div>
-                            <div class="jockey-name">문세영 기수 | 라이스 조교 (*58.0kg)</div>
-                            <div class="tag-list" style="margin-top:4px;">
-                                <span class="ai-tag">특급 기수 🏇</span>
-                                <span class="ai-tag">우수 마방 🏆</span>
-                                <span class="ai-tag purple-tag">체급 최강자(탑웨이트) 🏋️</span>
-                                <span class="ai-tag purple-tag">인코스 찰떡궁합 🎯</span>
-                                <span class="ai-tag emerald-tag">입상 공식 부합 ✨</span>
-                                <span class="ai-tag gold-tag">과거 스피드 최상 🏎️</span>
-                            </div>
-                        </div>
-                        <div class="score-info">
-                            <div class="win-rate">105.2점</div>
-                            <div style="font-size:0.7rem; color:#888;">단승 1.8배</div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <!-- [탭 3] 베팅 가이드 -->
             <div id="tab-betting" class="tab-content">
                 <div class="guide-card">
-                    <div class="guide-title">🌟 [10/3 실전 검증] 돈 벌어주는 3대 황금 승부 팁!</div>
-                    <div class="guide-text">10월 3일 17개 경주 실전 결과에서 100% 검증된 <strong>프로들의 진짜배기 3대 승부 공식</strong>입니다!</div>
-
-                    <div class="guide-sub">👑 팁 1. 절대 불패 치트키: [모래회피 🚀] + [체급최강자 🏋️]</div>
-                    <div class="guide-box gold">
-                        <strong>외곽 8~11번 게이트에서 [체급 최강자(탑웨이트 57.5~60kg) 🏋️]와 [외곽 모래회피 🚀]가 동시에 달린 말은 무조건 1착 축마입니다!</strong><br>
-                        • <strong>실전 적중 사례</strong>: 서울 10R [11번 스팔타 57.5kg] ➔ <strong>1착 우승!</strong>, 제주 7R [10번 드림볼트 60kg] ➔ <strong>1착 우승!</strong>
-                    </div>
-
-                    <div class="guide-sub">🚀 팁 2. 8~11번 게이트의 [외곽 모래회피 복병 🚀]은 무조건 마권에 넣어라!</div>
-                    <div class="guide-box purple">
-                        <strong>비인기 복병마라도 외곽 게이트에 모래회피 뱃지가 달렸다면 복연승/삼복승에 무조건 받쳐두세요!</strong><br>
-                        • <strong>실전 적중 사례</strong>: 서울 3R, 7R, 10R 등 대부분의 경주에서 8번, 9번, 10번, 11번 외곽 복병마들이 1·2·3착을 싹쓸이했습니다.
-                    </div>
-
-                    <div class="guide-sub">⚠️ 팁 3. [특급기수 + 안쪽게이트] 인기 1위마는 무조건 의심하라!</div>
+                    <div class="guide-title">🌟 [서울 7R 실전 교훈] 중장거리(1700m+) 절대 불패 베팅법!</div>
                     <div class="guide-box warn">
-                        <strong>서승운, 다나카, 문세영이 탔다고 무조건 단승식에 몰빵하면 큰코다칩니다!</strong><br>
-                        • <strong>원리</strong>: 특급 기수가 타면 다른 모든 기수들이 그 말만 집중 마크하고 몸싸움을 겁니다. 안쪽에서 무리하게 선두 싸움을 하다가 결승선 200m 전에서 다리가 풀려 자멸하므로, 복연승식으로 안전하게 분산 베팅해야 합니다.
-                    </div>
-                </div>
-
-                <div class="guide-card">
-                    <div class="guide-title">💥 [필승 공략] 4대 황금 뱃지 조합 & TOP 3 베팅 비법</div>
-                    <div class="guide-sub">🏆 1. [1착 확률 70%+] 단거리 독주 조합</div>
-                    <div class="guide-box">
-                        • <strong>조합 뱃지</strong>: <span class="ai-tag purple-tag">인코스 찰떡궁합 🎯</span> + <span class="ai-tag">선행 강세 🚀</span> (+ <span class="ai-tag">특급 기수 🏇</span>)<br>
-                        • <strong>추천</strong>: 단승식(1착) 또는 복승식 축마
-                    </div>
-
-                    <div class="guide-sub">🏋️ 2. [제주 6R 교훈] 체급 최강자 탑웨이트 조합</div>
-                    <div class="guide-box purple">
-                        • <strong>조합 뱃지</strong>: <span class="ai-tag purple-tag">체급 최강자(탑웨이트) 🏋️</span> + <span class="ai-tag">특급 기수 🏇</span> / <span class="ai-tag">우수 마방 🏆</span><br>
-                        • <strong>추천</strong>: 복승식·복연승식 1순위 축마!
-                    </div>
-
-                    <div class="guide-sub">🚀 3. [고배당 대박] 외곽 모래회피 복병 조합</div>
-                    <div class="guide-box gold">
-                        • <strong>조합 뱃지</strong>: <span class="ai-tag purple-tag">외곽 모래회피 복병 🚀</span> + <span class="ai-tag">경량 부중 ⚡</span><br>
-                        • <strong>추천</strong>: 복연승식(1~3착) 1~2천원 무조건 받치기!
-                    </div>
-
-                    <div class="guide-sub">🛡️ 4. [원금 보존 방패] 절대 안정 축마 조합</div>
-                    <div class="guide-box">
-                        • <strong>조합 뱃지</strong>: <span class="ai-tag">우수 마방 🏆</span> + <span class="ai-tag">특급 기수 🏇</span> + <span class="ai-tag">스피드 최상 🏎️</span><br>
-                        • <strong>추천</strong>: 복연승식(1~3착) 또는 삼복승식 축마
-                    </div>
-                </div>
-
-                <div class="guide-card">
-                    <div class="guide-title">🟢 실전 베팅 3단계 & 자금 관리 황금수칙</div>
-                    <div class="guide-box">
-                        <strong>1단계: 승부할 경주 고르기</strong><br>
-                        1등 말의 AI 점수가 80점 이상으로 높고 2등과 4~5점 이상 벌어져 있을 때만 승부하세요!
-                    </div>
-                    <div class="guide-box gold">
-                        <strong>2단계: 초보자 추천 승식 「복연승식」</strong><br>
-                        AI 1위와 2위를 묶어 복연승식으로 사면, 순서 상관없이 둘 다 1·2·3착 안에만 들어오면 무조건 당첨됩니다!
-                    </div>
-                    <div class="guide-box warn">
-                        <strong>3단계: 하루 예산 관리</strong><br>
-                        하루 예산은 1~2만 원으로 딱 정해두고 경주당 1,000원씩 분산 베팅하며 복기하세요!
+                        <strong>⚠️ 선행마 3마리가 앞에서 치고 나갈 때 단승식 몰빵 금지!</strong><br>
+                        • 1700m 이상에서는 1~3위로 달리던 선행마들이 결승선 200m 앞에서 체력이 고갈되어 자멸합니다.<br>
+                        • 반드시 <strong>[중장거리 막판 추입 🚀]</strong> 뱃지가 달린 뒤쪽 추입마를 복연승/삼복승 축마로 삼아야 돈을 법니다!
                     </div>
                 </div>
             </div>
 
-            <!-- ======================================================== -->
-            <!-- 📊 [탭 4] 입상마 분석실 (5주치 누적 통계 표기!) -->
-            <!-- ======================================================== -->
+            <!-- [탭 4] 입상마 분석실 -->
             <div id="tab-winners" class="tab-content">
                 <div class="guide-card">
                     <div class="guide-title">📊 최근 5주간 실제 1·2·3착 입상마 빅데이터 통계</div>
-                    <div class="guide-text">최근 5주(35일) 동안 실제로 결승선을 1~3착으로 통과한 수백 마리의 승리 공식을 집계한 브리핑입니다.</div>
-
                     <div class="stat-grid">
                         <div class="stat-card">
                             <div class="stat-label">5주 누적 입상마</div>
@@ -456,7 +338,7 @@
         </div>
     </div>
 
-    <!-- 스크립트 로직 (5주치 누적 자동분석 엔진) -->
+    <!-- 스크립트 로직 (기존 100% 호환) -->
     <script>
         const CORRECT_PIN = "1415";
 
@@ -572,7 +454,6 @@
         let allRaceData = [];
         let globalWinnersList = [];
 
-        // 🎯 [신규] 프론트엔드 자체 검증 Fallback 판별 함수 (JSON 이전 버전 호환)
         function checkRaceTrioTarget(r) {
             if (r.is_trio_target !== undefined) return r.is_trio_target;
             const dist = parseInt(r.distance, 10) || 1200;
@@ -605,7 +486,6 @@
                     const select = document.getElementById('raceSelect');
                     select.innerHTML = '';
                     
-                    // 최신 경기부터 드롭다운에 추가
                     data.forEach((r, idx) => {
                         const opt = document.createElement('option');
                         opt.value = idx;
@@ -619,7 +499,6 @@
                             datePrefix = `${m}/${d} `;
                         }
 
-                        // 🎯 [신규] 유력 추천 경주 드롭다운 표기 추가
                         const isTarget = checkRaceTrioTarget(r);
                         const targetBadge = isTarget ? "🔥[삼복·복연] " : "";
 
@@ -631,13 +510,11 @@
                         select.appendChild(opt);
                     });
 
-                    // 드롭다운 기본값을 가장 최신 날짜의 첫 번째 경주로 선택!
                     const latestIdx = data.length > 0 ? (data.length - 1) : 0;
                     select.value = latestIdx;
 
-                    document.getElementById('dateInfo').textContent = `${data[latestIdx].race_date} AI V8.8 5주 누적 분석`;
+                    document.getElementById('dateInfo').textContent = `${data[latestIdx].race_date} AI V9.0 5주 누적 분석`;
                     
-                    // 5주치 입상마 전체 통계 빌드
                     buildWinnersAnalytics();
                     renderRace(latestIdx);
                 })
@@ -652,7 +529,6 @@
             let outsideCount = 0;
             const badgeCountMap = {};
 
-            // 5주치 모든 경주에서 1·2·3착마 전수 집계!
             allRaceData.forEach(r => {
                 r.horses.forEach((h, idx) => {
                     const ordNum = parseInt(h.actual_ord, 10);
@@ -683,7 +559,6 @@
                 });
             });
 
-            // 최신 날짜의 입상마가 위에 오도록 역순 정렬
             globalWinnersList.sort((a, b) => b.race_date.localeCompare(a.race_date));
 
             const totalWinners = globalWinnersList.length;
@@ -740,7 +615,8 @@
                 if (h.ai_tags && h.ai_tags.length > 0) {
                     tagsHtml = '<div class="tag-list" style="margin-top:6px;">' + h.ai_tags.map(t => {
                         const isEmerald = t.includes('입상 공식');
-                        return `<span class="ai-tag ${isEmerald ? 'emerald-tag' : ''}">${t}</span>`;
+                        const isWarn = t.includes('자멸주의') || t.includes('검증필요');
+                        return `<span class="ai-tag ${isEmerald ? 'emerald-tag' : (isWarn ? 'warn-tag' : '')}">${t}</span>`;
                     }).join('') + '</div>';
                 }
 
@@ -784,7 +660,6 @@
 
             distLabel.textContent = `경주 (${race.distance || '1200'}m | ${race.track || '주로 양호'})`;
 
-            // 🎯 [신규] 삼복승 / 복연승 엄격 승부 경주 배너 표시 제어
             const isTargetRace = checkRaceTrioTarget(race);
             if (isTargetRace) {
                 targetBar.style.display = 'flex';
@@ -815,12 +690,14 @@
                 const hasTopSpeed = tags.some(t => t.includes('스피드 최상'));
                 const hasLightWeight = tags.some(t => t.includes('경량 부중'));
                 const hasDarkHorse = tags.some(t => t.includes('다크호스') || t.includes('꿀배당'));
+                const hasChaser = tags.some(t => t.includes('추입'));
 
                 let isWinnerPattern = false;
                 if (hasTopWeight && (hasTopJockey || hasSandAvoid)) isWinnerPattern = true;
                 else if (hasSandAvoid && (hasTopJockey || hasTopSpeed || hasDarkHorse)) isWinnerPattern = true;
                 else if (hasInCourse && (hasTopJockey || hasTopTrainer) && hasTopSpeed) isWinnerPattern = true;
                 else if (hasLightWeight && hasTopSpeed && hasTopTrainer) isWinnerPattern = true;
+                else if (hasChaser && (hasTopJockey || hasLightWeight)) isWinnerPattern = true;
 
                 if (isWinnerPattern) {
                     patternMatchedGates.push(h.gate);
@@ -896,10 +773,11 @@
                 let tagsHtml = '';
                 if (h.ai_tags && h.ai_tags.length > 0) {
                     tagsHtml = '<div class="tag-list">' + h.ai_tags.map(t => {
-                        const isGold = t.includes('복승률') || t.includes('스피드');
+                        const isGold = t.includes('복승률') || t.includes('스피드') || t.includes('추입');
                         const isPurple = t.includes('눈가면') || t.includes('조교') || t.includes('훈련') || t.includes('콤비') || t.includes('체급') || t.includes('탑웨이트') || t.includes('찰떡') || t.includes('모래회피') || t.includes('다크호스');
                         const isEmerald = t.includes('입상 공식');
-                        const tagClass = isEmerald ? 'emerald-tag' : (isPurple ? 'purple-tag' : (isGold ? 'gold-tag' : ''));
+                        const isWarn = t.includes('자멸주의') || t.includes('검증필요');
+                        const tagClass = isWarn ? 'warn-tag' : (isEmerald ? 'emerald-tag' : (isPurple ? 'purple-tag' : (isGold ? 'gold-tag' : '')));
                         return `<span class="ai-tag ${tagClass}">${t}</span>`;
                     }).join('') + '</div>';
                 }
