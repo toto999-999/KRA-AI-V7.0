@@ -9,7 +9,7 @@ from collections import Counter
 import time
 
 # =========================================================================
-# 프로그램 명칭: KRA전국 승부예상AI_V7.0 (착순 파서 완전 복원 엔진)
+# 프로그램 명칭: KRA전국 승부예상AI_V7.0 (주말 사전 출마표 수집 확장 엔진)
 # =========================================================================
 VERSION = "KRA전국 승부예상AI_V7.0"
 API_KEY = os.environ.get("KRA_API_KEY", "")
@@ -112,7 +112,7 @@ def fetch_meet_data(meet_code, meet_name, date_str):
         items = root.findall(".//item")
         if not items: return []
 
-        print(f"[{meet_name}] API 응답: {len(items)}두 수신 완료")
+        print(f"[{meet_name} {date_str}] API 응답: {len(items)}두 수신 완료")
 
         races = {}
         for it in items:
@@ -136,6 +136,9 @@ def fetch_meet_data(meet_code, meet_name, date_str):
             raw_trainer = gv(["trName", "tr_name", "trainerName", "trainer"]) or "조교사"
             jockey, trainer = sanitize_jockey_and_trainer(raw_jockey, raw_trainer)
 
+            raw_dist = gv(["rcDist", "rc_dist", "distance", "dist", "rc_distance"]) or ""
+            clean_dist = re.sub(r'[^0-9]', '', raw_dist)
+
             weight = gv(["wgBudam", "wg_budam", "weight"]) or "55.0"
             track = gv(["track", "track_state", "trackCond", "weather"]) or "양호"
             rc_time = gv(["rcTime", "rc_time", "record", "rcRecord", "ordTime"]) or ""
@@ -150,17 +153,14 @@ def fetch_meet_data(meet_code, meet_name, date_str):
             s1f_rank = gv(["g1p", "s1f", "g1pRank", "ord1p"]) or "99"
             is_front = True if s1f_rank in ["1", "2", "01", "02"] else False
 
-            # =========================================================================
-            # 🎯 [얼마 전 100% 잘 되던 원래 착순 파서 완벽 복원!]
-            # =========================================================================
+            # 착순 정확 추출
             ord_no = "-"
             direct_ord = gv(["ordNo", "ord_no", "ord", "rc_ord", "rcOrd", "rank", "rankNo", "chaksun"])
-            if direct_ord and direct_ord.isdigit() and int(direct_ord) > 0:
+            if direct_ord and direct_ord.isdigit() and int(direct_ord) > 0 and int(direct_ord) <= 20:
                 ord_no = str(int(direct_ord))
             else:
                 for child in it:
                     tag_low = (child.tag.split("}")[-1] if "}" in child.tag else child.tag).lower()
-                    # 직전 과거성적(pre)이나 통계(cnt, s1f) 제외하고 진짜 착순 태그 탐색
                     if any(ex in tag_low for ex in ["pre", "cnt", "s1f", "g1p", "g2p", "g3p", "g4p", "pass", "time", "rec"]):
                         continue
                     if any(k in tag_low for k in ["ord", "rank", "plc", "place", "chak"]):
@@ -171,7 +171,10 @@ def fetch_meet_data(meet_code, meet_name, date_str):
 
             key = f"{meet_name}_{rc_no}_{date_str}"
             if key not in races:
-                dist_lookup = OFFICIAL_DISTANCES.get((date_str, meet_name, rc_no), "1200")
+                dist_lookup = OFFICIAL_DISTANCES.get((date_str, meet_name, rc_no))
+                if not dist_lookup:
+                    dist_lookup = clean_dist if (clean_dist and int(clean_dist) >= 800) else "1200"
+
                 races[key] = {
                     "meet_code": meet_code,
                     "meet_name": meet_name,
@@ -191,10 +194,15 @@ def fetch_meet_data(meet_code, meet_name, date_str):
                 "weight": weight, "track": track, "rc_time": rc_time, "past_time": past_time,
                 "g1f_time": g1f_time, "win_odds": win_odds, "pre_ord": pre_ord,
                 "rc_cnt": rc_cnt, "ord1_cnt": ord1_cnt, "ord2_cnt": ord2_cnt,
-                "is_front": is_front, "actual_ord": ord_no
+                "is_front": is_front, "actual_ord": ord_no, "horse_dist": clean_dist
             })
 
         for r in races.values():
+            valid_dists = [h["horse_dist"] for h in r["horses"] if h.get("horse_dist") and int(h["horse_dist"]) >= 800]
+            if valid_dists:
+                dist_counts = Counter(valid_dists)
+                r["distance"] = dist_counts.most_common(1)[0][0]
+
             dist = int(r["distance"])
             front_cnt = sum(1 for h in r["horses"] if h["is_front"])
 
@@ -322,6 +330,9 @@ def fetch_meet_data(meet_code, meet_name, date_str):
         print(f"[{meet_name}] 통신 에러: {e}")
         return []
 
+# =========================================================================
+# 🎯 [핵심 수정] 이번 주말(금, 토, 일 D+5) 출마표까지 모두 포섭하는 확장 수집기
+# =========================================================================
 def sync_5weeks_archive():
     now = datetime.now(KST)
     existing_races = {}
@@ -332,25 +343,29 @@ def sync_5weeks_archive():
                 for r in old_list:
                     k = f"{r.get('race_date')}_{r.get('meet_name')}_{r.get('race_no')}"
                     existing_races[k] = r
-            print(f"📦 기존 저장소 로드: {len(existing_races)}개 경주")
+            print(f"📦 기존 저장소 로드 완료: {len(existing_races)}개 경주")
         except:
             existing_races = {}
 
-    dates_to_fetch = [
-        (now - timedelta(days=2)).strftime("%Y%m%d"), # 10월 3일도 안전하게 포함!
-        (now - timedelta(days=1)).strftime("%Y%m%d"), # 10월 4일 복구!
-        now.strftime("%Y%m%d"),                        # 10월 5일 실시간!
-        (now + timedelta(days=1)).strftime("%Y%m%d")
-    ]
+    # 🎯 과거 3일 복기부터 ~ 앞으로 5일(이번 주 금·토·일·월 출마표)까지 모두 수집!
+    dates_to_fetch = []
+    # 1. 과거 3일치 (10/4, 10/5, 10/6)
+    for i in range(3, 0, -1):
+        dates_to_fetch.append((now - timedelta(days=i)).strftime("%Y%m%d"))
+    # 2. 오늘 (10/7)
+    dates_to_fetch.append(now.strftime("%Y%m%d"))
+    # 3. 앞으로 5일치 (10/8 목, 10/9 금, 10/10 토, 10/11 일, 10/12 월)
+    for i in range(1, 6):
+        dates_to_fetch.append((now + timedelta(days=i)).strftime("%Y%m%d"))
 
-    print(f"🔄 최신 수집 날짜: {dates_to_fetch}")
+    print(f"🔄 수집 대상 전체 날짜 (주말 출마표 포함): {dates_to_fetch}")
     for dt in dates_to_fetch:
         for m_code, m_name in MEET_CONFIG:
             res = fetch_meet_data(m_code, m_name, dt)
             for r in res:
                 k = f"{r.get('race_date')}_{r.get('meet_name')}_{r.get('race_no')}"
                 
-                # 🎯 [기존 착순 보존] 새로 가져온 데이터가 아직 '-'인데 기존 데이터에 착순이 이미 있다면 보존!
+                # 기존에 이미 확정된 착순이 있다면 덮어쓰기 방지
                 if k in existing_races:
                     old_race = existing_races[k]
                     for new_h in r.get("horses", []):
@@ -358,7 +373,7 @@ def sync_5weeks_archive():
                             old_h = next((h for h in old_race.get("horses", []) if h.get("gate") == new_h.get("gate")), None)
                             if old_h and old_h.get("actual_ord") not in ["-", "", None]:
                                 new_h["actual_ord"] = old_h.get("actual_ord")
-                
+
                 existing_races[k] = r
 
     cutoff_date = (now - timedelta(days=35)).strftime("%Y%m%d")
@@ -381,7 +396,7 @@ def main():
         ))
         with open("race_data.json", "w", encoding="utf-8") as f:
             json.dump(all_races, f, ensure_ascii=False, indent=2)
-        print(f"🎉 성공: [{VERSION}] 착순 파서 복원 및 갱신 완료! (총 {len(all_races)}개 경주)")
+        print(f"🎉 성공: [{VERSION}] 주말(10/9~10/11) 출마표 포함 갱신 완료! (총 {len(all_races)}개 경주)")
     else:
         print("❌ 데이터를 가져오지 못했습니다.")
 
